@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_memory_main.c                                 :+:      :+:    :+:   */
+/*   free_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 09:50:25 by syl               #+#    #+#             */
-/*   Updated: 2025/05/23 14:04:19 by syl              ###   ########.fr       */
+/*   Created: 2025/05/22 20:41:40 by syl               #+#    #+#             */
+/*   Updated: 2025/05/23 14:22:57 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_pix ***init_memory_main(void)
+void free_main(t_pix ***pix, t_scene *scene)
 {
-	t_pix	***pix;
 
-	pix = NULL;
-	pix = malloc_pix_array(WND_HEIGHT, WND_WIDTH);
-	if (!pix)
-	{
-		printf("Failing at allocating pix memory \n");
-		exit(EXIT_FAILURE);
-	}
-	malloc_pix_struct(pix, WND_HEIGHT, WND_WIDTH);
-	printf("ok malloc pix struct\n");
-//	malloc_hits_main(pix, WND_HEIGHT, WND_WIDTH, 4, 4);
-	return (pix);
+	// delink
+	if (scene)
+		free_scene(scene);
+	free(scene);
+	scene = NULL;
+	free_hits_cph(pix, WND_HEIGHT, WND_WIDTH);
+	printf("after free hits\n");
+	free_pix_struct(pix, WND_HEIGHT, WND_WIDTH);
+	free_pix_array(pix, WND_HEIGHT, WND_WIDTH);
 }

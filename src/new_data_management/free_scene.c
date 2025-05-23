@@ -1,30 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_memory_main.c                                 :+:      :+:    :+:   */
+/*   free_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 09:50:25 by syl               #+#    #+#             */
-/*   Updated: 2025/05/23 14:04:19 by syl              ###   ########.fr       */
+/*   Created: 2025/05/23 13:35:27 by syl               #+#    #+#             */
+/*   Updated: 2025/05/23 14:52:25 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_pix ***init_memory_main(void)
+void	free_scene(t_scene *scene)
 {
-	t_pix	***pix;
-
-	pix = NULL;
-	pix = malloc_pix_array(WND_HEIGHT, WND_WIDTH);
-	if (!pix)
+	if (!scene)
+		return;
+	if (scene->obj)
 	{
-		printf("Failing at allocating pix memory \n");
-		exit(EXIT_FAILURE);
+		free_obj_cph(scene);
+		free(scene->obj);
+		scene->obj = NULL;
 	}
-	malloc_pix_struct(pix, WND_HEIGHT, WND_WIDTH);
-	printf("ok malloc pix struct\n");
-//	malloc_hits_main(pix, WND_HEIGHT, WND_WIDTH, 4, 4);
-	return (pix);
+	
+//	free_cam(scene)
 }
+
+/*
+void	free_cam(t_scene *scene)
+{
+	if (scene->cam == NULL)
+		return ;
+	
+}*/

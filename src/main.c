@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/23 09:04:44 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/23 14:16:31 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,11 +75,32 @@ static void	setup_window_context(t_program_context *context)
 int	main(int argc, char **argv)
 {
 	t_pix ***pix;
+	t_scene *scene;
 
 	pix = NULL;
+	scene = NULL;
+	scene = init_first_scene_memory();
+	if (!scene)
+		return (1);
+	if (check_file(scene, argc, argv[1]) == false)
+	{
+		free(scene);
+		printf("problem with file in cph \n");
+		scene = NULL;
+		return (1);
+	}
+	printf("ok check file \n");
+	if (init_scene_memory(scene) == false)
+	{
+		free(scene);
+		scene = NULL;
+		printf("problem with scene memory allocation \n");
+		exit(1);
+	}
+	printf("scene allocated \n");
 	pix = init_memory_main();
 	printf("memory allocated \n");
-	free_main(pix);
+	free_main(pix, scene);
 /*	t_program_context	*context;
 
 	if (check_args(argc, argv) == EXIT_FAILURE)

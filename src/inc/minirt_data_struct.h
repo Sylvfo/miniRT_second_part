@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/22 20:55:30 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/23 22:13:02 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ typedef struct s_color
 	int		rgb; //valeur une seule int pour afficher sur l image. Calcule a la fin. 
 }	t_color;
 
+//A EFFACER
 // fait par mate pour le parsing. 
 // pas utilise dans le code apres. Mais pk pas pour parcourir les objets
 typedef struct num_obj
@@ -89,12 +90,12 @@ typedef struct s_camera
 	float		*m_transl; // matrice translation pour deplacer
 	float		*m_transf; // matrice transformation
 	float		*m_inverse; // matrice inverse a utiliser pour les calculs des rays de chaque pixel . 
-	float		view_width; // taille de l image
-	float		view_height;
-	float		canva_height; // taille du viewport
-	float		canva_width;
-	float		half_height; // utilise une fois il me semble dasn pixel size
-	float		half_width; 
+	float		view_width; // A RETIRER
+	float		view_height;// A RETIRER
+	float		canva_height; // A RETIRER
+	float		canva_width; // A RETIRER
+	float		half_height; /// A RETIRER
+	float		half_width; // A RETIRER
 	float		pixel_size; //taille des pixels pour calculer les points sur le viewport et les rays
 }	t_camera;
 
@@ -110,6 +111,15 @@ typedef struct s_image
 	void	*mlx_win;
 }	t_image;
 
+typedef struct s_hits
+{
+	float		t1;// distance de l intersection 
+	float		t2; // distance de l intersection 2
+	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
+	t_coord		*r_origin;// ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
+	t_coord		*r_dir; // ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
+	int			type;//type d objet intersecte
+}	t_hits;
 
 // ca c est toutes les donnees reprises des hits et preparees pour les calcules de la lumieres. 
 // ct complique de juste link les choses entre elles donc ya pas mal de copies.
@@ -143,23 +153,29 @@ typedef struct s_comps
 	float	height;
 }	t_comps;
 
-typedef struct s_hits
+//POUR NOUVELLE DATA STRUCT
+typedef struct s_scene
 {
-	float		t1;// distance de l intersection 
-	float		t2; // distance de l intersection 2
-	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
-	t_coord		*r_origin;// ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
-	t_coord		*r_dir; // ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
-	int			type;//type d objet intersecte
-}	t_hits;
+	int		nb_sphere;
+	int		nb_plan;
+	int		nb_cylinder;
+	int		nb_lights;
+	int		wnd_height;
+	int		wnd_width;
+	t_camera	*cam; // camera
+	t_image		*ima; // 
+	t_obj		***obj; // tous les objets. allocation et free fonctionne. 
+	t_light		***lux;
+	bool	bonus_mode;
+} t_scene;
 
 typedef struct s_pix
 {
 	// pointeurs sur data en commun
-	t_camera	*cam; // camera
-	t_image		*ima; // image. A suprimmer pc maintenant dans programme context
-	t_obj		***obj; // tous les objets
-	t_light		***lux; // toutes les lumieres?
+	t_camera	*cam; // // A RETIRER
+	t_image		*ima; // A RETIRER
+	t_obj		***obj; // A RETIRER
+	t_light		***lux; // A RETIRER
 	// elements propres a chaque pixel pour ses calculs. 
 	t_coord		*p_viewport;// pour calculer le ray. utilise 1 fois
 	t_coord		*p_viewport_world; // pour calculer le ray. utilise 1 fois
@@ -168,8 +184,11 @@ typedef struct s_pix
 	t_color		*color; // utilise 1 fois avec la light a la fin. mais enregiste avant avec closest obj
 	t_hits		***hits; // resultat de tous les 
 	t_comps		*comps;
+	// obj adresse with x and y or pointer on object??
 }	t_pix;
 
+
+//// A RETIRER
 //fait par mate au dernier moment. 
 typedef struct s_program_context
 {

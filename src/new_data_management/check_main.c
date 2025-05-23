@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_free.c                                         :+:      :+:    :+:   */
+/*   check_main.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 20:41:40 by syl               #+#    #+#             */
-/*   Updated: 2025/05/23 10:25:47 by syl              ###   ########.fr       */
+/*   Created: 2025/05/23 13:12:44 by syl               #+#    #+#             */
+/*   Updated: 2025/05/23 14:13:03 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void free_main(t_pix ***pix)
+bool	check_file(t_scene *scene,int argc, char *filename)
 {
-	free_hits_cph(pix, WND_HEIGHT + 5, WND_WIDTH);
-	printf("after free hits\n");
-	free_pix_struct(pix, WND_HEIGHT, WND_WIDTH);
-	free_pix_array(pix, WND_HEIGHT, WND_WIDTH);
+	if (argc != 2)
+	{
+		printf("Usage: Please enter filename.rt\n");
+		return (false);
+	}
+	(void) filename;
+	// a changer pc il faut prendre depuis check arg. 
+	scene->nb_sphere = 3;
+	scene->nb_plan = 2;
+	scene->nb_cylinder = 4;
+	scene->nb_lights = 2;
+//	if (check_rt(argv, scene) == true)
+//		return (true);
+	return (true);
 }
