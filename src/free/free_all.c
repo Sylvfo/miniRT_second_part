@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   free_all.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 00:00:00 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 16:29:35 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/23 08:47:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
+/*
 static void	free_context_content(t_program_context *context)
 {
 	if (context->pix && context->pix[0] && context->pix[0][0])
@@ -37,4 +37,4 @@ void	free_all(t_program_context *context)
 	if (context->num_obj)
 		free(context->num_obj);
 	free(context);
-}
+}*/

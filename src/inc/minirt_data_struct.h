@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/22 15:30:22 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/22 20:55:30 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,16 +68,6 @@ typedef struct s_obj
 	t_coord	*v_sph_camera;
 	float	radius;
 }	t_obj;
-
-typedef struct s_hits
-{
-	float		t1;// distance de l intersection 
-	float		t2; // distance de l intersection 2
-	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
-	t_coord		*r_origin;// ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
-	t_coord		*r_dir; // ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
-	int			type;//type d objet intersecte
-}	t_hits;
 
 typedef struct s_light
 {
@@ -152,6 +142,16 @@ typedef struct s_comps
 	t_coord	*view_dir;
 	float	height;
 }	t_comps;
+
+typedef struct s_hits
+{
+	float		t1;// distance de l intersection 
+	float		t2; // distance de l intersection 2
+	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
+	t_coord		*r_origin;// ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
+	t_coord		*r_dir; // ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
+	int			type;//type d objet intersecte
+}	t_hits;
 
 typedef struct s_pix
 {

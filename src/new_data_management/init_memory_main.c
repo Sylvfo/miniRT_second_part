@@ -1,35 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_hooks_function.c                             :+:      :+:    :+:   */
+/*   init_memory_main.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 10:33:55 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/22 21:16:07 by syl              ###   ########.fr       */
+/*   Created: 2025/05/22 09:50:25 by syl               #+#    #+#             */
+/*   Updated: 2025/05/23 10:25:35 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	ft_exit(t_program_context *context)
+t_pix ***init_memory_main(void)
 {
-	(void) context;
-//	free_all(context);
-	exit(0);
-	return (0);
-}
+	t_pix	***pix;
 
-int	ft_keys(int keycode, t_program_context *context)
-{
-	printf("keycode: %d\n", keycode);
-	if (keycode == 65307)
+	pix = NULL;
+	pix = malloc_pix_array(WND_HEIGHT, WND_WIDTH);
+	if (!pix)
 	{
-		printf("ESC pressed.\nWindow closed\n");
-		(void) context;
-//		free_all(context);
-		exit(0);
-		return (0);
+		printf("Failing at allocating pix memory \n");
+		exit(EXIT_FAILURE);
 	}
-	return (0);
+	malloc_pix_struct(pix, WND_HEIGHT, WND_WIDTH);
+	printf("ok malloc pix struct\n");
+	malloc_hits_main(pix, WND_HEIGHT, WND_WIDTH, 4, 4);
+	return (pix);
 }

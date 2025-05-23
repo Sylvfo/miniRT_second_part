@@ -1,0 +1,14 @@
+Malloc:
+
+layers
+
+toutes valeurs init a NULL 
+Malloc
+verifier si Malloc ok
+
+si pas ok = valeur a NULL
+return false
+
+bords du tableau a NULL
+
+

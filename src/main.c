@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 16:50:49 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/23 09:04:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	error_exit(const char *msg, t_program_context *context)
 {
 	(void) context;
 	printf("%s\n", msg);
-	free_all(context);
+	//free_all(context);
 	exit(EXIT_FAILURE);
 }
 
@@ -74,7 +74,13 @@ static void	setup_window_context(t_program_context *context)
 
 int	main(int argc, char **argv)
 {
-	t_program_context	*context;
+	t_pix ***pix;
+
+	pix = NULL;
+	pix = init_memory_main();
+	printf("memory allocated \n");
+	free_main(pix);
+/*	t_program_context	*context;
 
 	if (check_args(argc, argv) == EXIT_FAILURE)
 		return (EXIT_FAILURE);
@@ -90,8 +96,8 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	setup_window_context(context);
 	save_scene_file(argv[1], context);
-	raytracing(context->pix);
+//	raytracing(context->pix);
 	pix_to_window(context->pix, context);
-	image_hooks(context);
+	image_hooks(context);*/
 	return (EXIT_SUCCESS);
 }

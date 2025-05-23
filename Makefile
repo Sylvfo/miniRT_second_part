@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+         #
+#    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/05/15 19:16:53 by cmegret          ###   ########.fr        #
+#    Updated: 2025/05/23 09:33:17 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ NAME = minirt
 CC = cc
 
 # Flags de compilation -Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror #-Iincludes
+CFLAGS = #-Wall -Wextra -Werror #-Iincludes
 LIBFLAGS = -Llib/libft -lft
 
 # Fichiers sources
@@ -138,7 +138,12 @@ SRCS = ./src/main.c \
 	./src/free/free_lights.c \
 	./src/free/free_pixels.c \
 	./src/free/free_pixels2.c \
-
+	./src/new_data_management/init_memory_main.c \
+	./src/new_data_management/init_pix.c \
+	./src/new_data_management/new_free.c \
+	./src/new_data_management/init_hits.c \
+	./src/new_data_management/free_pix.c \
+	 
 # Détection de l'OS pour choisir la bonne version de la MLX
 UNAME_S := $(shell uname -s)
 ifeq ($(UNAME_S),Darwin)

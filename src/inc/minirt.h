@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/15 00:07:21 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/22 20:28:27 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # include "minirt_ray_calculs.h"
 # include "minirt_vect_point_color.h"
 # include "minirt_window.h"
+# include "new_memory.h"
 
 # define WND_WIDTH 1200
 # define WND_HEIGHT 1000

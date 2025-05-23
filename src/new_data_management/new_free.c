@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_hooks_function.c                             :+:      :+:    :+:   */
+/*   new_free.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 10:33:55 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/22 21:16:07 by syl              ###   ########.fr       */
+/*   Created: 2025/05/22 20:41:40 by syl               #+#    #+#             */
+/*   Updated: 2025/05/23 10:25:47 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	ft_exit(t_program_context *context)
+void free_main(t_pix ***pix)
 {
-	(void) context;
-//	free_all(context);
-	exit(0);
-	return (0);
-}
-
-int	ft_keys(int keycode, t_program_context *context)
-{
-	printf("keycode: %d\n", keycode);
-	if (keycode == 65307)
-	{
-		printf("ESC pressed.\nWindow closed\n");
-		(void) context;
-//		free_all(context);
-		exit(0);
-		return (0);
-	}
-	return (0);
+	free_hits_cph(pix, WND_HEIGHT + 5, WND_WIDTH);
+	printf("after free hits\n");
+	free_pix_struct(pix, WND_HEIGHT, WND_WIDTH);
+	free_pix_array(pix, WND_HEIGHT, WND_WIDTH);
 }

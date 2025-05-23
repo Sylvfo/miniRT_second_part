@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   event_hooks_function.c                             :+:      :+:    :+:   */
+/*   main_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/15 10:33:55 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/22 21:16:07 by syl              ###   ########.fr       */
+/*   Created: 2025/05/22 09:33:08 by syl               #+#    #+#             */
+/*   Updated: 2025/05/23 09:18:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	ft_exit(t_program_context *context)
+/*
+t_pix ***init_data(file name)
 {
-	(void) context;
-//	free_all(context);
-	exit(0);
-	return (0);
-}
+	t_pix	***pix;
 
-int	ft_keys(int keycode, t_program_context *context)
-{
-	printf("keycode: %d\n", keycode);
-	if (keycode == 65307)
+	pix = NULL;
+	if (check_file( fff ) == false)
+		return (NULL);
+	pix = init_memory();
+	if (pix == NULL)
+		return (NULL);
+	if (save_data() == false)
 	{
-		printf("ESC pressed.\nWindow closed\n");
-		(void) context;
-//		free_all(context);
-		exit(0);
-		return (0);
+		free (pix);
+		return (NULL);
 	}
-	return (0);
-}
+	return (pix);
+}*/
