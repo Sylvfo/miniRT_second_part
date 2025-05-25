@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_ray_calculs.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/05/11 20:31:15 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 16:47:29 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 # include "minirt_data_struct.h"
 
+// 00_raytracing_main.c
 void	raytracing(t_pix ***pix);
+//new
+t_color background_color(t_obj *obj_zero, t_light *lux_zero);
+
 
 void	view_camera(t_camera *cam);
 void	pixel_size(t_pix *pix);
@@ -25,8 +29,10 @@ void	init_camera_pix_ray(t_pix *pix);
 void	init_viewport_x_y(t_pix *pix, int x, int y);
 void	init_viewport(t_pix ***pix);
 
-void	apply_transformation_obj(t_pix *pix);
-void	apply_transformation(t_pix ***pix);
+//void	apply_transformation_obj(t_pix *pix);
+//void	apply_transformation(t_pix ***pix);
+void	apply_transformation(t_pix *pix,t_obj *obj, t_mem *memory_shuttle);
+
 void	set_transformation_obj(t_obj *obj);
 void	set_transformation(t_obj ***obj);
 void	matrix_transformations(t_pix ***pix);

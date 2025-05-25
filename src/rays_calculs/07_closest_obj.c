@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   07_closest_obj.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 10:48:36 by syl               #+#    #+#             */
-/*   Updated: 2025/05/15 11:47:15 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:13:31 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//NORMALEMENT PLUS BESOIN....
+/*
 void	save_in_comps(t_pix *pix, int a, int b)
 {
 	pix->comps->t_count = pix->hits[a][b]->t_count;
@@ -81,4 +83,4 @@ void	prepare_comps_plan(t_pix *pix)
 	normalize_vector_na(pix->comps->v_norm_parral);
 	if (dot_product(pix->comps->v_norm_parral, pix->comps->v_eye) < 0)
 		negat_na(pix->comps->v_norm_parral, pix->comps->v_norm_parral);
-}
+}*/

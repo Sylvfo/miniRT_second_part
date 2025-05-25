@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:34 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/23 08:48:04 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 17:15:14 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 bool	intersect_plan_shadow(t_pix *pix, int pln_num, int lux_num)
 {
 	t_coord	p0_minus_p;
@@ -32,3 +33,4 @@ bool	intersect_plan_shadow(t_pix *pix, int pln_num, int lux_num)
 		return (true);
 	return (false);
 }
+*/

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   10_shadows.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 09:20:52 by syl               #+#    #+#             */
-/*   Updated: 2025/05/15 10:44:09 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:14:40 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
+//A REVOIR AVEC NOUVELLE DATA STRUCTURE
+/*
 void	prepare_v_light(t_pix *pix, int lux_num)
 {
 	t_coord	offset_point;
@@ -52,4 +53,4 @@ bool	intersect_objects_shadow(t_pix *pix, int lux_num)
 		a++;
 	}
 	return (false);
-}
+}*/

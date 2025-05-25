@@ -3,36 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   03_m_transformations.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:01:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/11 20:57:07 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 16:47:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	apply_transformation_obj(t_pix *pix)
+//normalement ok
+void	apply_transformation(t_pix *pix,t_obj *obj, t_mem *memory_shuttle)
 {
-	int	a;
-	int	b;
-
-	a = 1;
-	while (pix->obj[a] != NULL)
-	{
-		b = 0;
-		while (pix->obj[a][b] != NULL)
-		{
-			matrix_point_multiplication_new(pix->hits[a][b]->r_origin,
-				pix->obj[a][b]->m_inv, pix->r_origin);
-			matrix_point_multiplication_new(pix->hits[a][b]->r_dir,
-				pix->obj[a][b]->m_inv, pix->r_dir);
-			b++;
-		}
-		a++;
-	}
+	matrix_point_multiplication_new(memory_shuttle->r_origin_m,
+		obj->m_inv, pix->r_origin);
+	matrix_point_multiplication_new(memory_shuttle->r_dir_m,
+				obj->m_inv, pix->r_dir);
 }
 
+/*
+Normalement plus besoin
 void	apply_transformation(t_pix ***pix)
 {
 	int	x;
@@ -49,8 +39,9 @@ void	apply_transformation(t_pix ***pix)
 		}
 		x++;
 	}
-}
+}*/
 
+//ok =)
 void	set_transformation_obj(t_obj *obj)
 {
 	translation_matrix_coord(obj);
@@ -68,6 +59,7 @@ void	set_transformation_obj(t_obj *obj)
 	inverse_matrix_44(obj->m_inv, obj->m_transf);
 }
 
+// ok =)
 void	set_transformation(t_obj ***obj)
 {
 	int	a;
@@ -86,8 +78,9 @@ void	set_transformation(t_obj ***obj)
 	}
 }
 
+// ok =) enventuellement retirer
 void	matrix_transformations(t_pix ***pix)
 {
 	set_transformation(pix[0][0]->obj);
-	apply_transformation(pix);
+//	apply_transformation(pix);
 }

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   09_light_shadow_main.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:44:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/15 11:43:19 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:14:25 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//A REVOIR AVEC NOUVELLE DATA STRUCTURE
+/*
 float	light_intensity(t_pix *pix)
 {
 	float	intensity;
@@ -65,4 +67,4 @@ void	new_light(t_pix ***pix)
 		}
 		x++;
 	}
-}
+}*/

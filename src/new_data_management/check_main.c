@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:12:44 by syl               #+#    #+#             */
-/*   Updated: 2025/05/23 14:13:03 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 10:03:23 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ bool	check_file(t_scene *scene,int argc, char *filename)
 	}
 	(void) filename;
 	// a changer pc il faut prendre depuis check arg. 
-	scene->nb_sphere = 3;
-	scene->nb_plan = 2;
-	scene->nb_cylinder = 4;
-	scene->nb_lights = 2;
+	scene->nb_sphere = 70;
+	scene->nb_plan = 47;
+	scene->nb_cylinder = 80;
+	scene->nb_lights = 132;
 //	if (check_rt(argv, scene) == true)
 //		return (true);
 	return (true);

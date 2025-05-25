@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   06_intersect_cylinder.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:29:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/15 11:16:02 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:13:02 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+// TOUT A MODIFIER AVEC NOUVELLE DATA STRUCTURE
+/*
 void	cut_cylinder(t_pix *pix, int cyl_n, float t1, float t2)
 {
 	float	y1;
@@ -103,4 +105,4 @@ void	intersect_cylinder(t_pix *pix, int cyl_n)
 	cut_cylinder(pix, cyl_n, (-b - simple_sqrt(discriminant)) / (2 * a),
 		(-b + simple_sqrt(discriminant)) / (2 * a));
 	intersect_caps(pix, cyl_n);
-}
+}*/

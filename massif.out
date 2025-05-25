@@ -1,0 +1,759 @@
+desc: --massif-out-file=massif.out
+cmd: ./minirt image/simple.rt
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=56566773
+mem_heap_B=53207928
+mem_heap_extra_B=8870000
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=124756308
+mem_heap_B=116023760
+mem_heap_extra_B=19615048
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=177703110
+mem_heap_B=130755824
+mem_heap_extra_B=26981080
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=220634259
+mem_heap_B=142701104
+mem_heap_extra_B=32953720
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=5
+#-----------
+time=264996367
+mem_heap_B=156586520
+mem_heap_extra_B=39509624
+mem_stacks_B=0
+heap_tree=detailed
+n6: 156586520 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 105600000 0x118051: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 105600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 105600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x1181EA: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x11821F: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 9600000 0x117FDE: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 9600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 9600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 2380280 0x118471: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 2380280 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 2380280 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 2380280 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n0: 606240 in 20 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=6
+#-----------
+time=319375429
+mem_heap_B=187996656
+mem_heap_extra_B=51131376
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=388065119
+mem_heap_B=227672768
+mem_heap_extra_B=65811536
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=430996565
+mem_heap_B=252470592
+mem_heap_extra_B=74986728
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=486807477
+mem_heap_B=284707776
+mem_heap_extra_B=86914488
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=555497786
+mem_heap_B=324384272
+mem_heap_extra_B=101594792
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=608788977
+mem_heap_B=355166024
+mem_heap_extra_B=112984040
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=645421105
+mem_heap_B=376325264
+mem_heap_extra_B=120812960
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=696706033
+mem_heap_B=405948160
+mem_heap_extra_B=131773432
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=769970159
+mem_heap_B=448266560
+mem_heap_extra_B=147431240
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=821254992
+mem_heap_B=477889416
+mem_heap_extra_B=158391696
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=857887120
+mem_heap_B=499048656
+mem_heap_extra_B=166220616
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=916498548
+mem_heap_B=532903432
+mem_heap_extra_B=178746880
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=960457104
+mem_heap_B=558294520
+mem_heap_extra_B=188141584
+mem_stacks_B=0
+heap_tree=detailed
+n8: 558294520 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 323746680 0x118471: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 323746680 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 323746680 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 323746680 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 105600000 0x118051: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 105600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 105600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 64749344 0x118401: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 64749344 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 64749344 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 64749344 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x1181EA: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x11821F: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 16187360 0x1183B9: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 16187360 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 16187360 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 16187360 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 9600000 0x117FDE: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 9600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 9600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n0: 11136 in 18 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=19
+#-----------
+time=1024852423
+mem_heap_B=595490176
+mem_heap_extra_B=201903976
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=1076368642
+mem_heap_B=625246672
+mem_heap_extra_B=212913880
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=1115005806
+mem_heap_B=647564040
+mem_heap_extra_B=221171304
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=1166522068
+mem_heap_B=677320576
+mem_heap_extra_B=232181224
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=1230917348
+mem_heap_B=714516192
+mem_heap_extra_B=245943600
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=1269554524
+mem_heap_B=736833568
+mem_heap_extra_B=254201032
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=1333949825
+mem_heap_B=774029224
+mem_heap_extra_B=267963424
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=1372586993
+mem_heap_B=796346592
+mem_heap_extra_B=276220848
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=1424103249
+mem_heap_B=826103136
+mem_heap_extra_B=287230776
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=1501377586
+mem_heap_B=870737872
+mem_heap_extra_B=303745624
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=1552893823
+mem_heap_B=900494368
+mem_heap_extra_B=314755528
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=1626389423
+mem_heap_B=942946480
+mem_heap_extra_B=330462808
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=1670348107
+mem_heap_B=968337640
+mem_heap_extra_B=339857536
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=1736286065
+mem_heap_B=1006424352
+mem_heap_extra_B=353949624
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=1802224086
+mem_heap_B=1044511096
+mem_heap_extra_B=368041720
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=1846182770
+mem_heap_B=1069902256
+mem_heap_extra_B=377436448
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=1921854710
+mem_heap_B=1113611136
+mem_heap_extra_B=393608736
+mem_stacks_B=0
+heap_tree=peak
+n7: 1113611136 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 768000000 0x118471: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 768000000 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 768000000 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 768000000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 153600000 0x118401: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 153600000 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 153600000 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 153600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 105600000 0x118051: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 105600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 105600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 38400000 0x1183B9: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 38400000 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 38400000 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 38400000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x1181EA: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x11821F: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n0: 9611136 in 19 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=36
+#-----------
+time=1987792663
+mem_heap_B=1068906888
+mem_heap_extra_B=377068400
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=2053730661
+mem_heap_B=1024203464
+mem_heap_extra_B=360528136
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=2119668626
+mem_heap_B=979500032
+mem_heap_extra_B=343987864
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=2163627277
+mem_heap_B=949697752
+mem_heap_extra_B=332961024
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=2207585933
+mem_heap_B=919895464
+mem_heap_extra_B=321934176
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=2273523907
+mem_heap_B=875192032
+mem_heap_extra_B=305393904
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=2317482558
+mem_heap_B=845389752
+mem_heap_extra_B=294367064
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=2361441214
+mem_heap_B=815587464
+mem_heap_extra_B=283340216
+mem_stacks_B=0
+heap_tree=detailed
+n7: 815587464 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 529582640 0x118471: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 529582640 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 529582640 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 529582640 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 105916544 0x118401: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 105916544 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 105916544 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 105916544 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 105600000 0x118051: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 105600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 105600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 26479136 0x1183B9: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 26479136 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 26479136 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 26479136 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x1181EA: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x11821F: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n0: 9609144 in 19 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=2427379188
+mem_heap_B=770884032
+mem_heap_extra_B=266799944
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=2471337839
+mem_heap_B=741081752
+mem_heap_extra_B=255773104
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=2515296495
+mem_heap_B=711279464
+mem_heap_extra_B=244746256
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=2581234460
+mem_heap_B=666576032
+mem_heap_extra_B=228205984
+mem_stacks_B=0
+heap_tree=detailed
+n8: 666576032 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 410373480 0x118471: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 410373480 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 410373480 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 410373480 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 105600000 0x118051: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 105600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 105600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 82074720 0x118401: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 82074720 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 82074720 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 82074720 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 20518688 0x1183B9: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 20518688 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 20518688 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 20518688 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x1181EA: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x11821F: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 9600000 0x117FDE: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 9600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 9600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n0: 9144 in 18 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=48
+#-----------
+time=2647172434
+mem_heap_B=621872600
+mem_heap_extra_B=211665712
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=2691131085
+mem_heap_B=592070320
+mem_heap_extra_B=200638872
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=2727763239
+mem_heap_B=567235120
+mem_heap_extra_B=191449848
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=2764395393
+mem_heap_B=542399920
+mem_heap_extra_B=182260824
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=2801027538
+mem_heap_B=517564720
+mem_heap_extra_B=173071800
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=2837659692
+mem_heap_B=492729520
+mem_heap_extra_B=163882776
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=2874291846
+mem_heap_B=467894320
+mem_heap_extra_B=154693752
+mem_stacks_B=0
+heap_tree=detailed
+n8: 467894320 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 251428120 0x118471: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 251428120 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 251428120 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 251428120 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 105600000 0x118051: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 105600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 105600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 50285632 0x118401: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 50285632 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 50285632 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 50285632 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x1181EA: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x11821F: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 12571424 0x1183B9: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 12571424 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 12571424 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 12571424 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 9600000 0x117FDE: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 9600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 9600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n0: 9144 in 18 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=55
+#-----------
+time=2910924000
+mem_heap_B=443059120
+mem_heap_extra_B=145504728
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=2947556154
+mem_heap_B=418223920
+mem_heap_extra_B=136315704
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=2984188308
+mem_heap_B=393388720
+mem_heap_extra_B=127126680
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=3020820462
+mem_heap_B=368553520
+mem_heap_extra_B=117937656
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=3057452607
+mem_heap_B=343718320
+mem_heap_extra_B=108748632
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=3094084761
+mem_heap_B=318883120
+mem_heap_extra_B=99559608
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=3130716915
+mem_heap_B=294047920
+mem_heap_extra_B=90370584
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=3167349069
+mem_heap_B=269212720
+mem_heap_extra_B=81181560
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=3203981223
+mem_heap_B=244377520
+mem_heap_extra_B=71992536
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=3240613377
+mem_heap_B=219542320
+mem_heap_extra_B=62803512
+mem_stacks_B=0
+heap_tree=detailed
+n7: 219542320 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 105600000 0x118051: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 105600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 105600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 52746520 0x118471: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 52746520 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 52746520 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 52746520 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x1181EA: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 19200000 0x11821F: malloc_pix_struct (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 19200000 0x117F3C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 19200000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 10549312 0x118401: malloc_hits (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 10549312 0x11836D: malloc_hits_main (in /home/syl/42/miniRT_second_part/minirt)
+   n1: 10549312 0x117F6C: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+    n0: 10549312 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n1: 9600000 0x117FDE: malloc_pix_array (in /home/syl/42/miniRT_second_part/minirt)
+  n1: 9600000 0x117F02: init_memory_main (in /home/syl/42/miniRT_second_part/minirt)
+   n0: 9600000 0x10ACC5: main (in /home/syl/42/miniRT_second_part/minirt)
+ n0: 2646488 in 19 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=65
+#-----------
+time=3277245531
+mem_heap_B=194707120
+mem_heap_extra_B=53614488
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=3313877685
+mem_heap_B=169871920
+mem_heap_extra_B=44425464
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=3350509851
+mem_heap_B=150964776
+mem_heap_extra_B=37085880
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=3387141993
+mem_heap_B=143303528
+mem_heap_extra_B=33255256
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=3423774126
+mem_heap_B=135642280
+mem_heap_extra_B=29424632
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=3460406268
+mem_heap_B=127981032
+mem_heap_extra_B=25594008
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=3497038401
+mem_heap_B=120319784
+mem_heap_extra_B=21763384
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=3533670541
+mem_heap_B=98252480
+mem_heap_extra_B=16380440
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=3570302728
+mem_heap_B=47315336
+mem_heap_extra_B=7887096
+mem_stacks_B=0
+heap_tree=empty

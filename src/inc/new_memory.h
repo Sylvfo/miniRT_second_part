@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:27:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/23 15:31:56 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 11:09:23 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 
 t_pix	***malloc_pix_array(int height, int width);
 void	malloc_pix_struct(t_pix ***pix, int height, int width);
+void	pix_values_null(t_pix *pix);
 
 //init_hits.c
 void	malloc_hits_main(t_pix ***pix, int height, int width, int types, int objs);

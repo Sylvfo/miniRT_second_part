@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_scene_camera.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:20:32 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/13 14:39:54 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 14:55:16 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	init_pix_camera(t_pix ***pix)
 {
-	color_int_to_rgb(BAKGROUND_COLOR, pix[0][0]->obj[0][0]->color);
+	color_int_to_rgb(BAKGROUND_COLOR, pix[0][0]->obj[0][0]->color);// a modifier....
 	pix[0][0]->obj[0][0]->color->r
 		= int_to_float(pix[0][0]->obj[0][0]->color->r);
 	pix[0][0]->obj[0][0]->color->g

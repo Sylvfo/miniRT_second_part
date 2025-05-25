@@ -12,6 +12,8 @@
 
 #include "../inc/minirt.h"
 
+////A REVOIR AVEC NOUVELLE DATA STRUCTURE
+/*
 float	compute_pointlight(t_pix *pix, t_light *lux)
 {
 	float	n_dot_l;
@@ -53,4 +55,4 @@ float	compute_specular(t_pix *pix, t_light *lux)
 		specular_intensity = lux->ratio * power_term * 0.5f;
 	}
 	return (specular_intensity);
-}
+}*/

@@ -3,15 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   08_prepare_comps.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 14:00:25 by syl               #+#    #+#             */
-/*   Updated: 2025/05/15 11:49:40 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 17:13:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//A REVOIR AVEC NOUVELLE DATA STRUCTURE
+/*
 void	normal_at_cyl(t_comps *comps)
 {
 	t_coord	local_normal_vec;
@@ -117,4 +119,4 @@ void	prepare_computation(t_pix ***pix)
 		}
 		x++;
 	}
-}
+}*/

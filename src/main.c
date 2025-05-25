@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/23 14:16:31 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 16:46:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	main(int argc, char **argv)
 {
 	t_pix ***pix;
 	t_scene *scene;
+	t_mem **memory_shuttle;
 
 	pix = NULL;
 	scene = NULL;

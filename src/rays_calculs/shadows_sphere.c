@@ -6,12 +6,14 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:17 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/23 08:47:03 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 17:15:29 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//A REVOIR AVEC NOUVELLE DATA STRUCTURE
+/*
 static void	calculate_shadow_sphere_coeffs(t_pix *pix, t_obj *sphere,
 	float *coeffs)
 {
@@ -57,4 +59,4 @@ bool	intersect_sphere_shadow(t_pix *pix, int sphere_num, int lux_num)
 	discriminant = coeffs[1] * coeffs[1] - 4.0f * coeffs[0] * coeffs[2];
 	return (check_shadow_sphere_roots(discriminant, coeffs,
 			pix->comps->distance_light_p_touch));
-}
+}*/

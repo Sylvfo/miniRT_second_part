@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:46:14 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/23 08:47:36 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 17:15:05 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
+//A REVOIR AVEC NOUVELLE DATA STRUCTURE
+/*
 static bool	check_shadow_cyl_body_t(float t, t_coord *s_o_local,
 	t_coord *s_d_local, float max_dist)
 {
@@ -118,3 +119,4 @@ bool	intersect_cylinder_shadow(t_pix *pix, int cyl_num, int lux_num)
 		return (true);
 	return (false);
 }
+*/

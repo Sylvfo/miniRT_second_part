@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:27:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/23 13:56:39 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 11:10:40 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,22 @@ t_pix	***malloc_pix_array(int height, int width)
 			pix[i][j] = malloc(sizeof(t_pix));
 			if (!pix[i][j])
 				return (free_partial_pix(pix, i + 1, j));
-			pix[i][j]->hits = NULL;
-			pix[i][j]->p_viewport = NULL;
-			pix[i][j]->p_viewport_world = NULL;
+			pix_values_null(pix[i][j]);
 			j++;
 		}
 		i++;
 	}
 	return (pix);
+}
+
+void	pix_values_null(t_pix *pix)
+{
+//	pix->hits = NULL;
+	pix->p_viewport = NULL;
+	pix->p_viewport_world = NULL;
+	pix->r_dir = NULL;
+	pix->r_origin = NULL;
+	pix->color = NULL;
 }
 
 void	malloc_pix_struct(t_pix ***pix, int height, int width)
@@ -60,6 +68,8 @@ void	malloc_pix_struct(t_pix ***pix, int height, int width)
 			{
 				pix[i][j]->p_viewport = malloc(sizeof(t_coord));
 				pix[i][j]->p_viewport_world = malloc(sizeof(t_coord));
+				pix[i][j]->r_dir;
+				pix[i]
 			}
 			j++;
 		}
