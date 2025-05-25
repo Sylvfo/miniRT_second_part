@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_object_alloc.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:34:01 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/11 13:41:00 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:50:52 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 bool	allocate_object_arrays(t_obj ***obj, t_num_obj *num_obj)
 {
 	obj[0] = malloc(2 * sizeof(t_obj *));
@@ -52,3 +53,4 @@ bool	init_obj_struct(t_obj **o, bool has_v_axe)
 	}
 	return (true);
 }
+*/

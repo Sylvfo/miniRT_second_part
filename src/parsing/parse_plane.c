@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_plane.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 11:15:29 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 12:10:16 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:26:57 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 int	validate_plane(char *line, t_num_obj *num_obj)
 {
 	t_coord	point;
@@ -33,4 +34,4 @@ int	validate_plane(char *line, t_num_obj *num_obj)
 		return (1);
 	num_obj->plan++;
 	return (0);
-}
+}*/

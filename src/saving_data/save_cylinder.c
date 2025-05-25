@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   save_cylinder.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:13:39 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/13 15:32:46 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:28:48 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static void	parse_cylinder_params(char **line, t_cylinder_params *params)
 {
 	skip_whitespace((const char **)line);
@@ -64,4 +65,4 @@ void	save_cylinder(char *line, t_program_context *context)
 		return ;
 	set_cylinder_obj(cylinder, &params);
 	context->num_obj->cylinder++;
-}
+}*/

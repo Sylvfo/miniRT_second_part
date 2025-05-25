@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01_camera_construction.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:51:52 by syl               #+#    #+#             */
-/*   Updated: 2025/05/11 19:39:24 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 20:00:49 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,31 @@ void	view_camera(t_camera *cam)
 	matrix_mult_3(cam->m_transf, cam->m_orient, cam->m_transl);
 }
 
-void	pixel_size(t_pix *pix)
+float	pixel_size(t_camera *cam)
 {
 	float	half_view;
 	float	aspect;
+	float	pixel_size;
 
-	half_view = tan(pix->cam->fov / 2);
-	aspect = pix->cam->canva_width / pix->cam->canva_height;
+	half_view = tan(cam->fov / 2);
+	aspect = cam->canva_width / cam->canva_height;
 	if (aspect >= 1)
 	{
-		pix->cam->half_width = half_view;
-		pix->cam->half_height = half_view / aspect;
+		cam->half_width = half_view;
+		cam->half_height = half_view / aspect;
 	}
 	else
 	{
-		pix->cam->half_width = half_view * aspect;
-		pix->cam->half_height = half_view;
+		cam->half_width = half_view * aspect;
+		cam->half_height = half_view;
 	}
-	pix->cam->pixel_size = (pix->cam->half_width * 2) / pix->cam->canva_width;
+	pixel_size = (cam->half_width * 2) / cam->canva_width;
+	return (pixel_size);
 }
 
-void	constructing_camera(t_pix ***pix)
+void	constructing_camera(t_scene *scene)
 {
-	view_camera(pix[0][0]->cam);
-	inverse_matrix_44(pix[0][0]->cam->m_inverse, pix[0][0]->cam->m_transf);
-	pixel_size(pix[0][0]);
+	view_camera(scene->cam);
+	inverse_matrix_44(scene->cam->m_inverse, scene->cam->m_transf);
+	scene->pixel_size = pixel_size(scene->cam);
 }

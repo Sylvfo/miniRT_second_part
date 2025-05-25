@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   save_plane.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:13:43 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/12 10:32:31 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:29:08 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static void	parse_plane_coordinates(char **line, t_coord *coord)
 {
 	skip_whitespace((const char **)line);
@@ -67,4 +68,4 @@ void	save_plane(char *line, t_program_context *context)
 		return ;
 	update_plane_properties(plane, &coord, &orientation, &color);
 	context->num_obj->plan++;
-}
+}*/

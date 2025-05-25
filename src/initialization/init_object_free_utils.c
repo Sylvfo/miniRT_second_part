@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_object_free_utils.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:07 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 10:45:11 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:51:01 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 void	free_and_null(void **ptr_addr)
 {
 	if (ptr_addr && *ptr_addr)
@@ -54,3 +55,4 @@ void	free_obj_array_items(t_obj **obj_array, int count)
 		free(obj_array);
 	}
 }
+*/

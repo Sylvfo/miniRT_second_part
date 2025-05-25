@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_hits_cylinders.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 08:11:07 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 08:13:54 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:49:48 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static int	allocate_single_hit(t_hits **hit)
 {
 	*hit = malloc(sizeof(t_hits));
@@ -80,4 +81,4 @@ void	init_hits_cylinders(t_hits ***hits, t_num_obj *num_obj)
 		i++;
 	}
 	hits[3][num_obj->cylinder] = NULL;
-}
+}*/

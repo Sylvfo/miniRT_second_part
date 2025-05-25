@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_object_free.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:34:22 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 08:25:50 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:51:11 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static void	free_obj_background(t_obj ***obj)
 {
 	if (obj && obj[0] && obj[0][0])
@@ -65,3 +66,4 @@ void	free_object(t_obj ***obj, t_num_obj *num_obj)
 	free_obj_cylinders(obj, num_obj->cylinder);
 	free(obj);
 }
+*/

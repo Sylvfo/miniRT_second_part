@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_scene_obj.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:20:41 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/13 14:36:02 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:52:05 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/initialization.h"
 
+/*
 static void	init_obj_matrix_fields(t_obj *obj)
 {
 	obj->m_transl = create_indentity_matrix_44();
@@ -47,3 +48,4 @@ bool	init_obj_matrices(t_obj ***obj)
 	}
 	return (true);
 }
+*/

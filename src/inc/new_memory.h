@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:27:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 11:09:23 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 21:00:27 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,24 +17,26 @@
 
 //memory init
 
-//init_pix.c
+//no_parsing.c
+void	no_parsing(t_scene *scene);
 
+//init_pix.c
 t_pix	***malloc_pix_array(int height, int width);
 void	malloc_pix_struct(t_pix ***pix, int height, int width);
 void	pix_values_null(t_pix *pix);
 
 //init_hits.c
-void	malloc_hits_main(t_pix ***pix, int height, int width, int types, int objs);
-t_hits	***malloc_hits(int types, int objs);
+//void	malloc_hits_main(t_pix ***pix, int height, int width, int types, int objs);
+//t_hits	***malloc_hits(int types, int objs);
 
 //init_memory_main.c
 t_pix ***init_memory_main(void);
 
 // new_free.c
-void free_main(t_pix ***pix, t_scene *scene);
-void	free_hits_cph(t_pix ***pix, int height, int width);
-void	free_hits_new(t_hits ***hits, int types, int objs);
-void	*free_partial_hits(t_hits ***hits, int i_max, int j_max);
+void free_main(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle);
+//void	free_hits_cph(t_pix ***pix, int height, int width);
+//void	free_hits_new(t_hits ***hits, int types, int objs);
+//void	*free_partial_hits(t_hits ***hits, int i_max, int j_max);
 
 //free_pix.c
 void	*free_partial_pix(t_pix ***pix, int height, int width);
@@ -57,7 +59,14 @@ void free_each_obj_coord(t_obj *obj);
 bool	init_each_obj_matrix(t_obj *obj);
 void	free_each_obj_matrix(t_obj *obj);
 
+t_image	*create_image(void);
+
+//init_memory_shuttle.c
+t_mem	*init_memory_shuttle(void);
+void	memory_shuttle_values_null(t_mem *memory_shuttle);
+bool init_shuttle_values(t_mem *memory_shuttle);
+void	free_memory_shuttle(t_mem *memory_shuttle);
 //free_scene.c
 void	free_scene(t_scene *scene);
-
+void	free_ima(t_scene *scene);
 #endif

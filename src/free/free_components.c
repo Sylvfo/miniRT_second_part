@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_components.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:20:00 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 16:40:16 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 20:22:05 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 void	free_obj(t_obj *obj)
 {
 	if (!obj)
@@ -36,3 +37,4 @@ void	free_obj_array(t_obj **objs)
 	}
 	free(objs);
 }
+*/

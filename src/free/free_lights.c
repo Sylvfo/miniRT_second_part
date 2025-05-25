@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_lights.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:25:00 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 16:29:07 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 20:22:27 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 void	free_light(t_light *light)
 {
 	if (!light)
@@ -62,3 +63,4 @@ void	free_camera(t_camera *camera)
 		free(camera->v_axe);
 	free(camera);
 }
+*/

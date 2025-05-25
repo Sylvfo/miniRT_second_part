@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_hits_background.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 14:47:15 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 08:15:44 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:49:17 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static int	allocate_background_hit_coords(t_hits *hit)
 {
 	hit->r_dir = malloc(sizeof(t_coord));
@@ -58,4 +59,4 @@ void	init_hits_background(t_hits ***hits)
 		return ;
 	}
 	hits[0][1] = NULL;
-}
+}*/

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_basics.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:10:00 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 14:08:19 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 20:21:57 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 void	free_matrix(float *matrix)
 {
 	if (matrix)
@@ -62,3 +63,4 @@ void	free_ima(t_program_context *context)
 	free(context->ima);
 	context->ima = NULL;
 }
+*/

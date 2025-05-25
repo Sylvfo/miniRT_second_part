@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_comps.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:39:56 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 16:40:20 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 20:22:17 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static void	free_comps5(t_comps *comps)
 {
 	if (comps->v_point_to_light)
@@ -124,3 +125,4 @@ void	free_comps(t_comps *comps)
 	}
 	free_comps2(comps);
 }
+*/

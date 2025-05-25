@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_hits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/10 13:46:52 by syl               #+#    #+#             */
-/*   Updated: 2025/05/15 11:51:09 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:50:22 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 t_hits	***init_hits(t_num_obj *num_obj)
 {
 	t_hits	***hits;
@@ -69,3 +70,4 @@ void	assign_hits_to_pix(t_pix ***pix, t_num_obj *num_obj)
 		i++;
 	}
 }
+*/

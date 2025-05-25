@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_hits.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 14:15:00 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 16:29:26 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 20:20:09 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static void	free_hit_content(t_hits *hit)
 {
 	if (!hit)
@@ -96,3 +97,4 @@ void	free_hits(t_program_context *context)
 		x++;
 	}
 }
+*/

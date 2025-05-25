@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 17:15:58 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 20:47:09 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	int	x;
 	int	y;
 	//
-	constructing_camera(pix, scene);
-	init_viewport(pix);
-	matrix_transformations(scene);
+	constructing_camera(scene);
+	init_viewport(pix, scene->cam);
+	matrix_transformations(scene->obj);
 	return ;
 
 //	pix[0][0]->lux[1][0]->p_coord->t = 1;
@@ -29,7 +29,7 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 		y = 0;
 		while (y < WND_HEIGHT)
 		{
-			pix[x][y]->color = raytracer(pix[x][y], scene, memory_shuttle);
+			*(pix[x][y]->color) = raytracer(pix[x][y], scene, memory_shuttle);
 			y++;
 		}
 		x++;
@@ -49,15 +49,16 @@ t_color background_color(t_obj *obj_zero, t_light *lux_zero)
 
 //CELUI CI POUR LA PARTIE PAS BONUS....
 //t_pix pour les rays...
-t_color	raytracer(t_pix *pix, t_scene *scene, t_mem **memory_shuttle)
+t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 {
 	t_color	color;
 
-	main_intersections2(pix, scene->obj, memory_shuttle);
+	main_intersections(pix, scene->obj, memory_shuttle);
 	// deja faire sans les lumieres...
 	color.r = scene->obj[pix->obj_a][pix->obj_b]->color->r;
 	color.g = scene->obj[pix->obj_a][pix->obj_b]->color->g;
 	color.b = scene->obj[pix->obj_a][pix->obj_b]->color->b;
+	clean_memory_shuttle(memory_shuttle);
 	return (color);
 	// a voir les lumieres apres...
 /*	if (pix->obj_a == 0)
@@ -70,6 +71,14 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem **memory_shuttle)
 	return (color);*/
 }
 
+
+void	clean_memory_shuttle(t_mem *memory_shuttle)
+{
+	memory_shuttle->closestt = INT_MAX;
+	memory_shuttle->obj_a = 0;
+	memory_shuttle->obj_b = 0;
+	memory_shuttle->t_count = 0;
+}
 
 /*
 	BONUS

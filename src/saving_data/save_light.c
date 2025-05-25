@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   save_light.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:13:30 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/12 10:33:32 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:28:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static void	save_ambient_light(char *line, t_pix **pix)
 {
 	t_color	color;
@@ -68,3 +69,4 @@ void	save_light(char *line, t_program_context *context)
 	else if (line[0] == 'L')
 		save_other_light(line, context->pix[0], context->num_obj);
 }
+*/

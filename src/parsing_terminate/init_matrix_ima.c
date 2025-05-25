@@ -6,13 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:31 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/23 09:17:01 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 20:54:36 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-static t_image	*create_image(void)
+t_image	*create_image(void)
 {
 	t_image	*ima;
 
@@ -33,6 +33,7 @@ static t_image	*create_image(void)
 	return (ima);
 }
 
+/*
 bool	init_ima(t_program_context *context)
 {
 	t_image	*ima;
@@ -44,4 +45,4 @@ bool	init_ima(t_program_context *context)
 	context->mlx_ptr = ima->mlx_ptr;
 	context->mlx_win = ima->mlx_win;
 	return (true);
-}
+}*/

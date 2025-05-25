@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_camera.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 11:12:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 12:14:00 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:26:24 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static int	parse_camera_fov(char **line, float *fov)
 {
 	if (!line || !*line || !fov || !**line)
@@ -45,4 +46,4 @@ int	validate_camera(char *line)
 	if (check_only_spaces(line))
 		return (1);
 	return (0);
-}
+}*/

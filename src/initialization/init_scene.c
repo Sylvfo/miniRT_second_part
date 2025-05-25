@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:16:29 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/11 17:22:16 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:52:41 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/initialization.h"
 
+/*
 bool	init_scene_structures(t_pix ***pix)
 {
 	init_pix_camera(pix);
@@ -28,4 +29,4 @@ bool	init_scene_structures(t_pix ***pix)
 	}
 	init_pix_comps(pix);
 	return (true);
-}
+}*/

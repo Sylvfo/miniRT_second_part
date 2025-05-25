@@ -3,18 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   scene_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:52:27 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/12 09:33:09 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:27:56 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+
 /* ----------------------------------------------------------------------------
 	Parse une ligne du fichier de scène.
 ---------------------------------------------------------------------------- */
+/*
 void	parse_line(char *line, t_program_context *context)
 {
 	while (*line == ' ' || *line == '\t')
@@ -37,11 +39,12 @@ void	parse_line(char *line, t_program_context *context)
 	else if (!ft_strncmp(line, "cy", 2)
 		&& validate_cylinder(line, context->num_obj))
 		error_exit("Invalid cylinder data", context);
-}
+}*/
 
 /* ----------------------------------------------------------------------------
 Traite chaque ligne lue depuis le buffer.
 ---------------------------------------------------------------------------- */
+/*
 void	process_buffer(char *buf, t_program_context *context)
 {
 	char	*line;
@@ -57,11 +60,12 @@ void	process_buffer(char *buf, t_program_context *context)
 		parse_line(line, context);
 		line += i + 1;
 	}
-}
+}*/
 
 /* ----------------------------------------------------------------------------
 	Lit et traite un fichier de scène.
 ---------------------------------------------------------------------------- */
+/*
 void	parse_scene_file(const char *filename, t_program_context *context)
 {
 	int		fd;
@@ -82,3 +86,4 @@ void	parse_scene_file(const char *filename, t_program_context *context)
 		error_exit("Failed to read file during parsing", context);
 	close(fd);
 }
+*/

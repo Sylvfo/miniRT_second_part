@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_hits_alloc.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 14:46:38 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/11 14:47:06 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:49:06 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 bool	allocate_hits_arrays(t_hits ***hits, t_num_obj *num_obj)
 {
 	hits[0] = malloc(2 * sizeof(t_hits *));
@@ -28,4 +29,4 @@ bool	allocate_hits_arrays(t_hits ***hits, t_num_obj *num_obj)
 		return (false);
 	}
 	return (true);
-}
+}*/

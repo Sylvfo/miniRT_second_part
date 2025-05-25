@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:01:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 16:47:55 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 20:09:39 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	set_transformation_obj(t_obj *obj)
 }
 
 // ok =)
-void	set_transformation(t_obj ***obj)
+void	matrix_transformations(t_obj ***obj)
 {
 	int	a;
 	int	b;
@@ -78,9 +78,10 @@ void	set_transformation(t_obj ***obj)
 	}
 }
 
+/*
 // ok =) enventuellement retirer
 void	matrix_transformations(t_pix ***pix)
 {
 	set_transformation(pix[0][0]->obj);
 //	apply_transformation(pix);
-}
+}*/

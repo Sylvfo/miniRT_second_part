@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/25 16:46:58 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 21:21:19 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./inc/minirt.h"
 
+/*
 void	error_exit(const char *msg, t_program_context *context)
 {
 	(void) context;
@@ -70,16 +71,17 @@ static void	setup_window_context(t_program_context *context)
 		perror("Failed to initialize image");
 		error_exit(NULL, context);
 	}
-}
+}*/
 
 int	main(int argc, char **argv)
 {
-	t_pix ***pix;
+	t_pix ***pix;//ok
 	t_scene *scene;
-	t_mem **memory_shuttle;
+	t_mem *memory_shuttle;//ok
 
 	pix = NULL;
 	scene = NULL;
+	memory_shuttle = NULL;
 	scene = init_first_scene_memory();
 	if (!scene)
 		return (1);
@@ -96,30 +98,19 @@ int	main(int argc, char **argv)
 		free(scene);
 		scene = NULL;
 		printf("problem with scene memory allocation \n");
-		exit(1);
+		return (1);
 	}
 	printf("scene allocated \n");
 	pix = init_memory_main();
-	printf("memory allocated \n");
-	free_main(pix, scene);
-/*	t_program_context	*context;
+	memory_shuttle = init_memory_shuttle();
+	//save datas(scene, argv[1]);
+//	no_parsing(scene);//pour les testes de Sylvie
 
-	if (check_args(argc, argv) == EXIT_FAILURE)
-		return (EXIT_FAILURE);
-	context = init_context();
-	if (!context)
-		return (EXIT_FAILURE);
-	parse_scene_file(argv[1], context);
-	context->pix = init_data(context->num_obj);
-	if (!context->pix)
-		error_exit("Failed to initialize pixel data", context);
-	assign_hits_to_pix(context->pix, context->num_obj);
-	if (!init_scene_structures(context->pix))
-		return (EXIT_FAILURE);
-	setup_window_context(context);
-	save_scene_file(argv[1], context);
-//	raytracing(context->pix);
-	pix_to_window(context->pix, context);
-	image_hooks(context);*/
+	printf("memory allocated \n");
+	raytracing(pix, scene, memory_shuttle);
+	pix_to_window(pix, scene);
+	image_hooks(scene);
+	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
 }
+

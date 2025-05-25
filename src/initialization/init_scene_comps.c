@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_scene_comps.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:20:35 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/12 12:42:56 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:51:48 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/initialization.h"
 
+/*
 static int	init_comps_vectors_allocs(t_comps *c, t_pix *pix)
 {
 	c->r_dir = malloc(sizeof(t_coord));
@@ -94,3 +95,4 @@ void	init_pix_comps(t_pix ***pix)
 		x++;
 	}
 }
+*/

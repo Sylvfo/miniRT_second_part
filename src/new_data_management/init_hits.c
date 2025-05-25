@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 21:04:27 by syl               #+#    #+#             */
-/*   Updated: 2025/05/23 09:37:35 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 19:42:21 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 void	malloc_hits_main(t_pix ***pix, int height, int width, int types, int objs)
 {
 	int	i;
@@ -123,13 +124,13 @@ void	free_hits_cph(t_pix ***pix, int height, int width)
 		{
 			free_hits_new(pix[i][j]->hits, 4, 4);
 			pix[i][j]->hits = NULL;
-		/*	if (pix[i][j]->hits)
-			{
-				free_hits_new(pix[i][j]->hits, 4, 4);
-				pix[i][j]->hits = NULL;
-			}*/
+	//		if (pix[i][j]->hits)
+	//		{
+	//			free_hits_new(pix[i][j]->hits, 4, 4);
+	//			pix[i][j]->hits = NULL;
+	//		}
 			j++;
 		}
 		i++;
 	}
-}
+}*/

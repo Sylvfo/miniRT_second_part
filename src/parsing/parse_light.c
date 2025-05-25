@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_light.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 10:59:19 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 12:10:34 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:26:49 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 int	validate_ambient(char *line)
 {
 	float	ratio;
@@ -56,4 +57,4 @@ int	validate_light(char *line, t_num_obj *num_obj)
 		return (1);
 	num_obj->light++;
 	return (0);
-}
+}*/

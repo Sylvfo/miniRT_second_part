@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_checks.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 17:04:44 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 12:11:05 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:26:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static int	is_valid_dimension(float dimension)
 {
 	return (dimension > 0.0f);
@@ -57,4 +58,4 @@ int	validate_orientation_vector(float ox, float oy, float oz)
 int	validate_fov(float fov)
 {
 	return (fov <= 0.0f || fov > 180.0f);
-}
+}*/

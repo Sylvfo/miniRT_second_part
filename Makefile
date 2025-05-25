@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/05/23 14:04:48 by syl              ###   ########.fr        #
+#    Updated: 2025/05/25 19:48:12 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -146,6 +146,8 @@ SRCS = ./src/main.c \
 	./src/new_data_management/check_main.c \
 	./src/new_data_management/init_scene.c \
 	./src/new_data_management/free_scene.c \
+	./src/new_data_management/no_parsing.c \
+	./src/new_data_management/init_memory_shuttle.c \
 	 
 # Détection de l'OS pour choisir la bonne version de la MLX
 UNAME_S := $(shell uname -s)

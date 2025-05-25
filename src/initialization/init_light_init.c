@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_light_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 14:30:05 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/11 14:32:58 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:50:38 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 t_light	***allocate_light_arrays(t_num_obj *num_obj)
 {
 	t_light	***light;
@@ -52,4 +53,4 @@ t_light	**init_light_array(int count)
 	}
 	light_array[count] = NULL;
 	return (light_array);
-}
+}*/

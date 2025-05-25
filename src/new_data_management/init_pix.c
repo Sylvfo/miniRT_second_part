@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:27:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 11:10:40 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 20:37:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,11 @@ void	pix_values_null(t_pix *pix)
 	pix->r_dir = NULL;
 	pix->r_origin = NULL;
 	pix->color = NULL;
+	pix->obj_a = 0;// a deplacer
+	pix->obj_b = 0;// a deplacer
 }
 
+//REFAIRE COMME IL FAUT!!!
 void	malloc_pix_struct(t_pix ***pix, int height, int width)
 {
 	int	i;
@@ -68,8 +71,9 @@ void	malloc_pix_struct(t_pix ***pix, int height, int width)
 			{
 				pix[i][j]->p_viewport = malloc(sizeof(t_coord));
 				pix[i][j]->p_viewport_world = malloc(sizeof(t_coord));
-				pix[i][j]->r_dir;
-				pix[i]
+				pix[i][j]->r_dir = malloc(sizeof(t_coord));
+				pix[i][j]->r_origin = malloc(sizeof(t_coord));
+				pix[i][j]->color = malloc(sizeof(t_color));
 			}
 			j++;
 		}

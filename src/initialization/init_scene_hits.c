@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_scene_hits.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:20:39 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/11 17:25:43 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:51:57 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/initialization.h"
 
+/*
 bool	init_hits_matrices(t_hits ***hits)
 {
 	int	a;
@@ -34,3 +35,4 @@ bool	init_hits_matrices(t_hits ***hits)
 	}
 	return (true);
 }
+*/

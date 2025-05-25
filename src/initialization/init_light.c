@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_light.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:09:29 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/14 22:10:41 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:50:45 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 void	free_light_memory(t_light ***light, int count)
 {
 	int	i;
@@ -52,3 +53,4 @@ t_light	***init_light(t_num_obj *num_obj)
 	}
 	return (light);
 }
+*/

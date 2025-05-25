@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_object_init.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 13:34:12 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/11 13:38:24 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:51:22 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static bool	init_obj_background(t_obj ***obj)
 {
 	if (!init_obj_struct(&obj[0][0], false))
@@ -78,3 +79,4 @@ bool	initialize_object_arrays(t_obj ***obj, t_num_obj *num_obj)
 	obj[4] = NULL;
 	return (true);
 }
+*/

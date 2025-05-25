@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:20:32 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/25 14:55:16 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 19:51:38 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/initialization.h"
 
+/*
 void	init_pix_camera(t_pix ***pix)
 {
 	color_int_to_rgb(BAKGROUND_COLOR, pix[0][0]->obj[0][0]->color);// a modifier....
@@ -34,3 +35,4 @@ void	init_pix_camera(t_pix ***pix)
 	pix[0][0]->cam->canva_height = WND_HEIGHT;
 	pix[0][0]->cam->canva_width = WND_WIDTH;
 }
+*/

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_hits_spheres.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 14:47:15 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 08:17:07 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:50:14 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static int	allocate_sphere_hit_memory(t_hits **hit_ptr)
 {
 	*hit_ptr = malloc(sizeof(t_hits));
@@ -81,3 +82,4 @@ void	init_hits_spheres(t_hits ***hits, t_num_obj *num_obj)
 	}
 	hits[1][num_obj->sphere] = NULL;
 }
+*/

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_color.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 17:04:31 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 12:12:35 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:26:41 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static int	parse_one_color(char **line, float *value)
 {
 	if (!line || !*line || !**line)
@@ -50,4 +51,4 @@ int	parse_color(char **line, float *r, float *g, float *b)
 	if (*r < 0 || *r > 255 || *g < 0 || *g > 255 || *b < 0 || *b > 255)
 		return (1);
 	return (0);
-}
+}*/

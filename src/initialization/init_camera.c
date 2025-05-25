@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:09:34 by cmegret           #+#    #+#             */
-/*   Updated: 2025/03/10 15:47:03 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 19:48:45 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 t_camera	*init_camera(void)
 {
 	t_camera	*camera;
@@ -38,4 +39,4 @@ t_camera	*init_camera(void)
 	camera->v_axe->t = 0;
 	camera->fov = 90.0f;
 	return (camera);
-}
+}*/

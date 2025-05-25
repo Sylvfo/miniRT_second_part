@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_sphere_cylinder.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 11:16:28 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 12:10:56 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:27:06 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static int	parse_object_center(char **line, t_coord *center)
 {
 	if (!line || !*line || !center || !**line)
@@ -79,3 +80,4 @@ int	validate_cylinder(char *line, t_num_obj *num_obj)
 	num_obj->cylinder++;
 	return (0);
 }
+*/

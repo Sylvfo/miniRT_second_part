@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   parse_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 11:00:31 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 12:11:14 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:27:15 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 void	skip_whitespace(const char **str)
 {
 	while (*str && **str && ft_isspace(**str))
@@ -50,3 +51,4 @@ int	parse_coordinates(char **line, float *x, float *y, float *z)
 		return (1);
 	return (0);
 }
+*/

@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   free_pixels2.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 16:43:22 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 16:44:53 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 20:22:37 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static void	free_pix_content_members(t_pix *pix)
 {
 	if (pix->p_viewport)
@@ -85,3 +86,4 @@ void	free_pix(t_pix ***pix, int rows, int cols)
 	}
 	free(pix);
 }
+*/

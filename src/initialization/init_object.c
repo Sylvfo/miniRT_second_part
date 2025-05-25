@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_object.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 12:09:23 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/11 13:36:19 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:51:29 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 t_obj	***init_object(t_num_obj *num_obj)
 {
 	t_obj	***obj;
@@ -31,3 +32,4 @@ t_obj	***init_object(t_num_obj *num_obj)
 	}
 	return (obj);
 }
+*/

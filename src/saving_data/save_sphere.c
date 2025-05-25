@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   save_sphere.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:13:35 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 11:50:16 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:29:26 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static void	set_sphere_color(t_obj *sphere, t_color *color)
 {
 	sphere->color->r = color->r;
@@ -61,4 +62,4 @@ void	save_sphere(char *line, t_program_context *context)
 	set_sphere_color(sphere, &color);
 	set_sphere_defaults(sphere, diameter);
 	context->num_obj->sphere++;
-}
+}*/

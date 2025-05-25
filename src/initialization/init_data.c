@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_data.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/21 21:47:24 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/15 08:26:15 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:48:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 static t_pix	**init_pix_row(int cols)
 {
 	t_pix	**row;
@@ -121,7 +122,7 @@ t_pix	***init_data(t_num_obj *num_obj)
 	}
 	assign_camera_obj_light_to_pix(pix, cam, obj, lux);
 	return (pix);
-}
+}*/
 
 /*
 t_pix	***init_data(t_num_obj *num_obj)

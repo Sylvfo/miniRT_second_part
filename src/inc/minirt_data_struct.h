@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 17:11:19 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 20:02:08 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,8 @@ typedef struct s_camera
 	float		view_height;// A RETIRER
 	float		canva_height; // A RETIRER
 	float		canva_width; // A RETIRER
-	float		half_height; /// A RETIRER
-	float		half_width; // A RETIRER
+	float		half_height; /// utilise dans init viewport xy
+	float		half_width; // utilise dans init viewport xy
 	float		pixel_size; //taille des pixels pour calculer les points sur le viewport et les rays
 }	t_camera;
 
@@ -177,6 +177,7 @@ typedef struct s_scene
 	int		nb_lights;
 	int		wnd_height;
 	int		wnd_width;
+	float	pixel_size;
 	t_camera	*cam; // camera
 	t_image		*ima; // 
 	t_obj		***obj; // tous les objets. allocation et free fonctionne. 

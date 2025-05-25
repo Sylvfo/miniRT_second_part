@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:00:12 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 16:46:30 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 20:21:11 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle)
 		{
 			apply_transformation(pix, obj[a][b], memory_shuttle);
 			if (a == 1)
-				intersect_sphere(memory_shuttle, b);
+				intersect_sphere(pix, b, memory_shuttle);
 /*			if (a == 2)
 				intersect_plan(memory_shuttle, b);
 			if (a == 3)
@@ -81,7 +81,8 @@ void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle)
 	}
 }
 
-
+/*
+Surement a effacer
 void	intersect_pix_obj2(t_pix *pix)
 {
 	int	a;

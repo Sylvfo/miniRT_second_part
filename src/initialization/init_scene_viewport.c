@@ -3,15 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   init_scene_viewport.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/11 17:20:44 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/11 20:59:43 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/25 19:52:12 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/initialization.h"
 
+/*
 void	init_pix_viewport(t_pix ***pix)
 {
 	int	x;
@@ -32,3 +33,4 @@ void	init_pix_viewport(t_pix ***pix)
 		x++;
 	}
 }
+*/

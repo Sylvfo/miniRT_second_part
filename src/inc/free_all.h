@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:02:20 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/22 21:13:41 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/25 21:00:48 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	free_all(t_program_context *context);
 void	free_matrix(float *matrix);
 void	free_coord(t_coord *coord);
 void	free_color(t_color *color);
-void	free_ima(t_program_context *context);
+//void	free_ima(t_program_context *context);
 void	free_obj(t_obj *obj);
 void	free_obj_array(t_obj **objs);
 void	free_comps(t_comps *comps);
@@ -31,5 +31,6 @@ void	free_pix_viewport(t_pix *pix);
 void	free_pix_components(t_pix *pix);
 void	free_pix_content(t_pix *pix);
 void	free_pix(t_pix ***pix, int rows, int cols);
+
 
 #endif
