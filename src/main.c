@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/26 09:55:59 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 14:48:04 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,13 +85,13 @@ int	main(int argc, char **argv)
 	scene = init_first_scene_memory();
 	if (!scene)
 		return (1);
-	if (check_file(scene, argc, argv[1]) == false)
+/*	if (check_file(scene, argc, argv[1]) == false)
 	{
 		free(scene);
 		printf("problem with file in cph \n");
 		scene = NULL;
 		return (1);
-	}
+	}*/
 	printf("ok check file \n");
 	if (init_scene_memory(scene) == false)
 	{
@@ -104,12 +104,13 @@ int	main(int argc, char **argv)
 	pix = init_memory_main();
 	memory_shuttle = init_memory_shuttle();
 	//save datas(scene, argv[1]);
-//	no_parsing(scene);//pour les testes de Sylvie
-
+	no_parsing(scene);//pour les testes de Sylvie
+	base_data2(scene);
 	printf("memory allocated \n");
-//	raytracing(pix, scene, memory_shuttle);
-//	pix_to_window(pix, scene);
-//	image_hooks(scene);
+	raytracing(pix, scene, memory_shuttle);
+	printf("after raytracing \n");
+	pix_to_window(pix, scene);
+	image_hooks(scene);
 	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/26 10:07:33 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 14:53:38 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@
 # include "minirt_window.h"
 # include "new_memory.h"
 
-# define WND_WIDTH 1200
+# define WND_WIDTH 1000
 # define WND_HEIGHT 1000
 
-# define BAKGROUND_COLOR 12701914
+# define BAKGROUND_COLOR 711850
 # define EPSILON 0.001
 # define PI 3.1415926535
 # define PIRAD 0.017453

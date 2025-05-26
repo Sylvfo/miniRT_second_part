@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:12:44 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 10:03:23 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 14:47:42 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 bool	check_file(t_scene *scene,int argc, char *filename)
 {
 	if (argc != 2)
@@ -21,11 +22,13 @@ bool	check_file(t_scene *scene,int argc, char *filename)
 	}
 	(void) filename;
 	// a changer pc il faut prendre depuis check arg. 
-	scene->nb_sphere = 70;
+	scene->nb_sphere = 2;
 	scene->nb_plan = 47;
 	scene->nb_cylinder = 80;
 	scene->nb_lights = 132;
+	scene->wnd_height = WND_HEIGHT;
+	scene->wnd_width = WND_WIDTH;
 //	if (check_rt(argv, scene) == true)
 //		return (true);
 	return (true);
-}
+}*/

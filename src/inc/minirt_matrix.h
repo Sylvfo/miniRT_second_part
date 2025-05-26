@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 08:38:36 by syl               #+#    #+#             */
-/*   Updated: 2025/05/14 19:41:47 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 14:39:16 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ float	*create_indentity_matrix_44(void);
 //matrix_utils.c
 void	matrix_from_coord(t_coord *p_v_1, float coord[4]);
 bool	check_matrix_44_coord(float *m_a, t_coord *p_v_1);
+void	print_matrix_44(float *m);
 
 //matrix_operations.c
 void	matrix_division(float *m_matrix, float div);

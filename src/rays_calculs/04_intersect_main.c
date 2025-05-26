@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:00:12 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 20:21:11 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 15:26:16 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,22 +63,36 @@ void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle)
 	int a;
 	int b;
 
-	a = 1;
+	apply_transformation(pix, obj[1][0], memory_shuttle);
+	intersect_sphere(pix, 0, memory_shuttle);
+	apply_transformation(pix, obj[1][1], memory_shuttle);
+	intersect_sphere(pix, 1, memory_shuttle);
+//	intersect_sphere(pix, b, memory_shuttle);
+//	printf("obj [a][b] %.4f \n", obj[1][0]->diam);
+//	apply_transformation(pix, obj[1][0], memory_shuttle);
+//	apply_transformation(pix, obj[1][1], memory_shuttle);
+//	printf("obj [a][b] diam %.4f \n", obj[1][1]->diam);
+/*	a = 1;
 	while (a < 4)
 	{
-		while (obj[a][b] != NULL) //tous les objets...
+		b = 0;
+		while (b < 2)// (obj[a][b] != NULL) //tous les objets...
 		{
-			apply_transformation(pix, obj[a][b], memory_shuttle);
+			apply_transformation(pix, obj[1][b], memory_shuttle);
+			//apply_transformation(pix, obj[a][b], memory_shuttle);
 			if (a == 1)
 				intersect_sphere(pix, b, memory_shuttle);
-/*			if (a == 2)
-				intersect_plan(memory_shuttle, b);
-			if (a == 3)
-				intersect_cylinder(memory_shuttle, b);*/
+//			if (a == 2)
+//				intersect_plan(memory_shuttle, b);
+//			if (a == 3)
+//				intersect_cylinder(memory_shuttle, b);
 			
 	//		closest obj in pix...
+			b++;
 		}
-	}
+		a++;
+	}*/
+//	printf("fin main intersection \n");
 }
 
 /*

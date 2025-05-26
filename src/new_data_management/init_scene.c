@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 10:17:48 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 14:07:36 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,13 @@ t_scene *init_first_scene_memory(void)
 	scene->ima = NULL;
 	scene->obj = NULL;
 	scene->lux = NULL;
+	//A MODIFIER
+	scene->nb_sphere = 2;
+	scene->nb_plan = 1;
+	scene->nb_cylinder = 1;
+	scene->nb_lights = 1;
+	scene->wnd_height = WND_HEIGHT;
+	scene->wnd_width = WND_WIDTH;
 	return (scene);
 }
 
@@ -35,7 +42,8 @@ bool	init_scene_memory(t_scene *scene)
 	scene->ima = create_image();
 	if (init_obj_cph(scene) == false)
 		return (false);
-//	scene->lux = init_lux_cph(scene);
+	if (init_lux_cph(scene) == false)
+		return (false);
 	return (true);
 }
 
@@ -52,6 +60,8 @@ bool init_obj_cph(t_scene *scene)
 	scene->obj[0][0] = malloc(sizeof(t_obj));
 	if (!scene->obj[0][0])
 		return (false);
+	if (init_each_obj(scene->obj[0][0]) == false)
+			return (false);
 	scene->obj[0][1] = NULL;
 	// spheres
 	b = 0;
@@ -101,25 +111,29 @@ bool init_each_obj(t_obj *obj)
 	obj->color = malloc(sizeof(t_color));
 	if (!obj->color)
 		return (false);
+	obj->color->r = 0.0;
+	obj->color->g = 0.0;
+	obj->color->b = 0.0;
+	obj->color->rgb = 0;
+	obj->type = NONE;
 	return (true);
 }
 
-
 bool	init_each_obj_matrix(t_obj *obj)
 {
-	obj->m_transl = create_matrix(4, 4);
+	obj->m_transl = create_indentity_matrix_44();
 	if (!obj->m_transl)
 		return (false);
-	obj->m_rot = create_matrix(4, 4);
+	obj->m_rot = create_indentity_matrix_44();
 	if (!obj->m_rot)
 		return (false);
-	obj->m_scale = create_matrix(4, 4);
+	obj->m_scale = create_indentity_matrix_44();
 	if (!obj->m_scale)
 		return (false);
-	obj->m_transf = create_matrix(4, 4);
+	obj->m_transf = create_indentity_matrix_44();
 	if (!obj->m_transf)
 		return (false);
-	obj->m_inv = create_matrix(4, 4);
+	obj->m_inv = create_indentity_matrix_44();
 	if (!obj->m_inv)
 		return (false);
 	return (true);
@@ -156,19 +170,19 @@ void	free_each_obj_matrix(t_obj *obj)
 
 bool init_each_obj_coord(t_obj *obj)
 {
-	obj->p_coord = malloc(sizeof(t_coord));
+	obj->p_coord = create_point(0, 0, 0);
 	if (!obj->p_coord)
 		return (false);
-	obj->v_axe = malloc(sizeof(t_coord));
+	obj->v_axe = create_vector(0, 0, 0);
 	if (!obj->v_axe)
 		return (false);
-	obj->v_axe_r = malloc(sizeof(t_coord));
+	obj->v_axe_r = create_vector(0, 0, 0);
 	if (!obj->v_axe_r)
 		return (false);
-	obj->from = malloc(sizeof(t_coord));
+	obj->from = create_vector(0, 0, 0);
 	if (!obj->from)
 		return (false);
-	obj->v_sph_camera = malloc(sizeof(t_coord));
+	obj->v_sph_camera = create_vector(0, 0, 0);
 	if (!obj->v_sph_camera)
 		return (false);
 	return (true);
@@ -226,6 +240,7 @@ void free_obj_cph(t_scene *scene)
 		return ;
 	if (scene->obj[0][0])
 	{
+		free_each_obj(scene->obj[0][0]);
 		free(scene->obj[0][0]);
 		scene->obj[0][0] = NULL;
 	}

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 10:05:29 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 12:05:23 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,36 +30,6 @@ typedef struct s_color
 	float	b; //valeurs entre 0 et 1
 	int		rgb; //valeur une seule int pour afficher sur l image. Calcule a la fin. 
 }	t_color;
-
-/*
-// A supprimer. 
-typedef struct s_hits
-{
-	float		t1;// distance de l intersection 
-	float		t2; // distance de l intersection 2
-	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
-	t_coord		*r_origin;// ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
-	t_coord		*r_dir; // ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
-	int			type;//type d objet intersecte
-}	t_hits;
-*/
-
-/*
-//A EFFACER
-// fait par mate pour le parsing. 
-// pas utilise dans le code apres. Mais pk pas pour parcourir les objets
-typedef struct num_obj
-{
-	int		sphere;
-	int		plan;
-	int		cylinder;
-	int		light;
-}	t_num_obj;*/
-
-//////////////////NOUVELLE DATA STRUCTURE/////////////////////////
-
-//coord et couleurs a remettre ici
-
 
 ////////// SCENE //////////
 // object[0][0]->color = backgroud color
@@ -97,40 +67,6 @@ typedef struct s_light
 	t_color		*color; // a initialiser a blanc pour la partie obligatoire. Revoir ce calcul pour les lumieres colorees. 
 }	t_light;
 
-/*
-// A ENLEVER
-// ca c est toutes les donnees reprises des hits et preparees pour les calcules de la lumieres. 
-// ct complique de juste link les choses entre elles donc ya pas mal de copies.
-// si on fait la reflexion, il faudra garder en memoire plusieurs objets pour faire les calculs de memoire
-// pour l instant il y a en a un seul par pixel
-typedef struct s_comps
-{
-	t_coord	*r_origin; //ray de l objet le plus proche modifie par les matrices. 
-	t_coord	*r_dir; //ray de l objet le plus proche modifie par les matrices. 
-	float	closestt; // distance de l objet le plus proche
-	int		t_count; // nombre d objets intersect. pas tellement utile pour l instant a part pour les caps des cylindres
-	int		type; // type d objet croise
-	t_obj	*obj; // pointeur sur objet croise. 
-	t_color	*obj_color; // couleur de l objet
-	t_coord	*origin_zero; // coord (0,0,0) 
-	t_coord	*object_normal; // tout le reste besoin pour les calculs de la lumiere. 
-	float	*transp_inv;
-	t_coord	*p_space;
-	float	*obj_inv;
-	t_coord	*p_touch;
-	t_coord	*v_eye;
-	t_coord	*v_norm_parral;
-	bool	inside;
-	t_coord	*v_light_to_point;
-	float	distance_light_p_touch;
-	t_coord	*v_sphere_to_point;
-	t_coord	*v_point_to_light;
-	t_coord	*reflect_dir;
-	t_coord	*scalar;
-	t_coord	*view_dir;
-	float	height;
-}	t_comps;*/
-
 // A garder
 //Peut etre simplifiee mais prend pas beaucoup de memoire...
 typedef struct s_camera
@@ -146,15 +82,14 @@ typedef struct s_camera
 	float		*m_transl; // matrice translation pour deplacer
 	float		*m_transf; // matrice transformation
 	float		*m_inverse; // matrice inverse a utiliser pour les calculs des rays de chaque pixel . 
-	float		view_width; // A RETIRER
-	float		view_height;// A RETIRER
-	float		canva_height; // A RETIRER
-	float		canva_width; // A RETIRER
+//	float		view_width; // A RETIRER
+//	float		view_height;// A RETIRER
+//	float		canva_height; // A RETIRER
+//	float		canva_width; // A RETIRER
 	float		half_height; /// utilise dans init viewport xy
 	float		half_width; // utilise dans init viewport xy
 	float		pixel_size; //taille des pixels pour calculer les points sur le viewport et les rays
 }	t_camera;
-
 
 // la structure a ete deplacee au dernier moment par le mate. Je sais pas ce qui est utilise mnt...
 typedef struct s_image
@@ -177,7 +112,6 @@ typedef struct s_scene
 	int		nb_lights;
 	int		wnd_height;
 	int		wnd_width;
-	float	pixel_size;
 	t_camera	*cam; // camera ok
 	t_image		*ima; // 
 	t_obj		***obj; // tous les objets. allocation et free fonctionne. 
@@ -265,18 +199,5 @@ typedef struct s_pix
 	// obj adresse with x and y or pointer on object??
 }	t_pix;
 
-/*
-//// A RETIRER
-//fait par mate au dernier moment. 
-typedef struct s_program_context
-{
-	t_pix		***pix;
-	t_num_obj	*num_obj;
-	int			width;
-	int			height;
-	t_image		*ima;
-	void		*mlx_ptr;
-	void		*mlx_win;
-}	t_program_context;*/
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:27:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 20:37:58 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 12:39:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ t_pix	***malloc_pix_array(int height, int width)
 	int		i;
 	int		j;
 
-	pix = malloc(sizeof(t_pix **) * height);
+	pix = malloc(sizeof(t_pix **) * (height));
 	if (!pix)
 		return (NULL);
 	i = 0;
-	while (i < height)
+	while (i < (height))
 	{
-		pix[i] = malloc(sizeof(t_pix *) * width);
+		pix[i] = malloc(sizeof(t_pix *) * (width));
 		if (!pix[i])
 			return (free_partial_pix(pix, i, width));
 		j = 0;
-		while (j < width)
+		while (j < (width))
 		{
 			pix[i][j] = malloc(sizeof(t_pix));
 			if (!pix[i][j])
@@ -62,18 +62,22 @@ void	malloc_pix_struct(t_pix ***pix, int height, int width)
 	if (!pix)
 		return ;
 	i = 0;
-	while (i < height)
+	while (i < (height))
 	{
 		j = 0;
-		while (j < width)
+		while (j < (width))
 		{
 			if (pix[i][j] != NULL)
 			{
-				pix[i][j]->p_viewport = malloc(sizeof(t_coord));
-				pix[i][j]->p_viewport_world = malloc(sizeof(t_coord));
-				pix[i][j]->r_dir = malloc(sizeof(t_coord));
-				pix[i][j]->r_origin = malloc(sizeof(t_coord));
+				pix[i][j]->p_viewport = create_point(0, 0, 0);
+				pix[i][j]->p_viewport_world = create_point(0, 0, 0);
+				pix[i][j]->r_dir = create_vector(0, 0, 0);
+				pix[i][j]->r_origin = create_vector(0, 0, 0);
 				pix[i][j]->color = malloc(sizeof(t_color));
+				pix[i][j]->color->r = 0.0;
+				pix[i][j]->color->g = 0.0;
+				pix[i][j]->color->b = 0.0;
+				pix[i][j]->color->rgb = 0;
 			}
 			j++;
 		}

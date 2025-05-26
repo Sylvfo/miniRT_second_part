@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:27 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 20:34:10 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 14:12:09 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,18 +37,28 @@ void	memory_shuttle_values_null(t_mem *memory_shuttle)
 	memory_shuttle->r_origin_m = NULL;
 	memory_shuttle->r_dir_m = NULL;
 	memory_shuttle->v_sph_camera = NULL;
+	memory_shuttle->t1 = 0.0;
+	memory_shuttle->t2 = 0.0;
+	memory_shuttle->t_count = 0.0;
+	memory_shuttle->closestt = INT_MAX;
+	memory_shuttle->obj_a = NONE;
+	memory_shuttle->obj_b = 0;
+	memory_shuttle->origin_zero = NULL;
 }
 
 bool init_shuttle_values(t_mem *memory_shuttle)
 {
-	memory_shuttle->r_origin_m = malloc(sizeof(t_coord));
+	memory_shuttle->r_origin_m = create_point(0, 0, 0);
 	if (!memory_shuttle->r_origin_m)
 		return (false);
-	memory_shuttle->r_dir_m = malloc(sizeof(t_coord));
+	memory_shuttle->r_dir_m = create_vector(0, 0, 0);
 	if (!memory_shuttle->r_dir_m)
 		return (false);
-	memory_shuttle->v_sph_camera = malloc(sizeof(t_coord));
+	memory_shuttle->v_sph_camera = create_vector(0, 0, 0);
 	if (!memory_shuttle->v_sph_camera)
+		return (false);
+	memory_shuttle->origin_zero = create_point(0, 0, 0);
+	if (!memory_shuttle->origin_zero)
 		return (false);
 	return (true);
 }
@@ -69,6 +79,11 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 	{
 		free(memory_shuttle->v_sph_camera);
 		memory_shuttle->v_sph_camera = NULL;
+	}
+	if (memory_shuttle->origin_zero)
+	{
+		free(memory_shuttle->origin_zero);
+		memory_shuttle->origin_zero = NULL;
 	}	
 }
 /*

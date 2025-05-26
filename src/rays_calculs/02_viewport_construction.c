@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:57:11 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 20:08:50 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 15:18:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,13 @@ void	init_camera_pix_ray(t_pix *pix, t_camera *cam)
 {
 	matrix_point_multiplication_new(pix->r_origin, cam->m_inverse,
 		cam->p_zero);
+//	print_point(pix->r_origin);
 	matrix_point_multiplication_new(pix->p_viewport_world,
 		cam->m_inverse, pix->p_viewport);
+//	print_point(pix->p_viewport_world);
 	substraction_p_to_v_na(pix->r_dir, pix->p_viewport_world, pix->r_origin);
 	normalize_vector_na(pix->r_dir);
+//	print_vector(pix->r_dir);
 }
 
 void	init_viewport_x_y(t_pix *pix, t_camera *cam, int x, int y)
@@ -28,6 +31,7 @@ void	init_viewport_x_y(t_pix *pix, t_camera *cam, int x, int y)
 		- ((x + 0.5) * cam->pixel_size);
 	pix->p_viewport->y = cam->half_height
 		- ((y + 0.5) * cam->pixel_size);
+	pix->p_viewport->z = -1;
 }
 
 void	init_viewport(t_pix ***pix, t_camera *cam)
@@ -35,6 +39,9 @@ void	init_viewport(t_pix ***pix, t_camera *cam)
 	int	x;
 	int	y;
 
+	printf("cam half width %.2f \n", cam->half_width);
+	printf("cam half width %.2f \n", cam->half_height);
+	printf("cam pix size %.5f \n", cam->pixel_size);
 	x = 0;
 	while (x < WND_WIDTH)
 	{
@@ -47,4 +54,7 @@ void	init_viewport(t_pix ***pix, t_camera *cam)
 		}
 		x++;
 	}
+	printf("end init viewport\n");
 }
+
+

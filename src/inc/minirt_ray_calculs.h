@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 10:09:14 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 15:24:29 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ void	clean_memory_shuttle(t_mem *memory_shuttle);
 
 //01_camera_construction.c
 void	view_camera(t_camera *cam);
-float	pixel_size(t_camera *cam);
+//float	pixel_size(t_camera *cam);
+void	pixel_size(t_scene *scene);
+//void	pixel_size(t_camera *cam);
 void	constructing_camera(t_scene *scene);
 
 //02_viewport_construction.c
@@ -40,7 +42,7 @@ void	set_transformation_obj(t_obj *obj);
 //void	set_transformation(t_obj ***obj);
 //void	matrix_transformations(t_pix ***pix);
 void	matrix_transformations(t_obj ***obj);
-
+void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);
 
 //void	intersect_pix_obj(t_pix *pix);
 void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle);
