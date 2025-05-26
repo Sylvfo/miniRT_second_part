@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   saving.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:06:16 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/12 10:18:13 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/26 10:07:11 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define SAVING_H
 
 # include "minirt.h"
-
+/*
 typedef struct s_cylinder_params
 {
 	t_coord	coord;
@@ -34,6 +34,6 @@ void	save_light(char *line, t_program_context *context);
 void	save_camera(char *line, t_program_context *context);
 void	save_sphere(char *line, t_program_context *context);
 void	save_plane(char *line, t_program_context *context);
-void	save_cylinder(char *line, t_program_context *context);
+void	save_cylinder(char *line, t_program_context *context);*/
 
 #endif

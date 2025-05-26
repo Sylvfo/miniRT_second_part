@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 16:02:20 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/25 21:00:48 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 10:08:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "minirt_data_struct.h"
 
+/*
 void	free_all(t_program_context *context);
 void	free_matrix(float *matrix);
 void	free_coord(t_coord *coord);
@@ -30,7 +31,7 @@ void	free_camera(t_camera *camera);
 void	free_pix_viewport(t_pix *pix);
 void	free_pix_components(t_pix *pix);
 void	free_pix_content(t_pix *pix);
-void	free_pix(t_pix ***pix, int rows, int cols);
+void	free_pix(t_pix ***pix, int rows, int cols);*/
 
 
 #endif

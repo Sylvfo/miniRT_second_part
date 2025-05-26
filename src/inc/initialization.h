@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 11:21:36 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/22 20:32:20 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 10:07:46 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "minirt.h"
 # include "minirt_data_struct.h"
 
+/*
 t_pix		***init_data(t_num_obj *num_obj);
 
 t_obj		***init_object(t_num_obj *num_obj);
@@ -63,6 +64,6 @@ void		assign_hits_to_pix(t_pix ***pix, t_num_obj *num_obj);
 void		init_hits_spheres(t_hits ***hits, t_num_obj *num_obj);
 void		init_hits_plans(t_hits ***hits, t_num_obj *num_obj);
 void		init_hits_cylinders(t_hits ***hits, t_num_obj *num_obj);
-void		init_hits_background(t_hits ***hits);
+void		init_hits_background(t_hits ***hits);*/
 
 #endif

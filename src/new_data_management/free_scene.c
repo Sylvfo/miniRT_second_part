@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:35:27 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 21:00:32 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 09:55:48 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,7 @@ void	free_scene(t_scene *scene)
 		free(scene->ima);
 		scene->ima = NULL;
 	}
-	
-//	free_cam(scene)
+	free_cam_cph(scene);
 }
 
 /*

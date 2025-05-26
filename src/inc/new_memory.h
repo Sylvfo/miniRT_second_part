@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:27:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 21:00:27 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 10:15:49 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,15 @@ void	free_each_obj_matrix(t_obj *obj);
 
 t_image	*create_image(void);
 
+//init_cam.c
+bool init_cam_cph(t_scene *scene);
+void cam_value_null(t_camera *cam);
+bool init_cam_coord(t_camera *cam);
+bool init_cam_matrix(t_camera *cam);
+void free_cam_cph(t_scene *scene);
+void free_cam_coord(t_camera *cam);
+void free_cam_matrix(t_camera *cam);
+
 //init_memory_shuttle.c
 t_mem	*init_memory_shuttle(void);
 void	memory_shuttle_values_null(t_mem *memory_shuttle);
@@ -69,4 +78,8 @@ void	free_memory_shuttle(t_mem *memory_shuttle);
 //free_scene.c
 void	free_scene(t_scene *scene);
 void	free_ima(t_scene *scene);
+
+//init_lux.c
+
+
 #endif

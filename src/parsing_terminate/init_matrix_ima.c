@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:31 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/25 20:54:36 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 10:12:28 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@ t_image	*create_image(void)
 {
 	t_image	*ima;
 
+	ima = NULL;
 	ima = malloc(sizeof(t_image));
 	if (!ima)
 		return (NULL);
+	ima->addr = NULL;
+	ima->img = NULL;
+	ima->mlx_ptr = NULL;
+	ima->mlx_win = NULL;
 	ima->mlx_ptr = mlx_init();
 	if (!ima->mlx_ptr)
 	{

@@ -1,44 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_scene.c                                       :+:      :+:    :+:   */
+/*   init_lux.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 10:17:48 by syl              ###   ########.fr       */
+/*   Created: 2025/05/26 10:14:23 by syl               #+#    #+#             */
+/*   Updated: 2025/05/26 10:18:02 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_scene *init_first_scene_memory(void)
-{
-	t_scene *scene;
-
-	scene = malloc(sizeof(t_scene));
-	if (!scene)
-		return (NULL);
-	scene->cam = NULL;
-	scene->ima = NULL;
-	scene->obj = NULL;
-	scene->lux = NULL;
-	return (scene);
-}
-
-bool	init_scene_memory(t_scene *scene)
-{
-	if (!scene)
-		return (false);
-	if (init_cam_cph(scene) == false)
-		return (false);
-	scene->ima = create_image();
-	if (init_obj_cph(scene) == false)
-		return (false);
-//	scene->lux = init_lux_cph(scene);
-	return (true);
-}
-
+/*
 bool init_obj_cph(t_scene *scene)
 {
 	int		a;
@@ -242,4 +216,4 @@ void free_obj_cph(t_scene *scene)
 	}
 	free(scene->obj[1]);
 	scene->obj[1] = NULL;
-}
+}*/

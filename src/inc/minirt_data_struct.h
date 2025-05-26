@@ -6,13 +6,12 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 20:02:08 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 10:05:29 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_DATA_STRUCT_H
 # define MINIRT_DATA_STRUCT_H
-
 
 //coordonnes pour vecteurs et points
 typedef struct s_coord
@@ -32,7 +31,7 @@ typedef struct s_color
 	int		rgb; //valeur une seule int pour afficher sur l image. Calcule a la fin. 
 }	t_color;
 
-
+/*
 // A supprimer. 
 typedef struct s_hits
 {
@@ -43,9 +42,9 @@ typedef struct s_hits
 	t_coord		*r_dir; // ray de chaque pixel modifier avec les matrices de transformation pour chaque objet
 	int			type;//type d objet intersecte
 }	t_hits;
+*/
 
-
-
+/*
 //A EFFACER
 // fait par mate pour le parsing. 
 // pas utilise dans le code apres. Mais pk pas pour parcourir les objets
@@ -55,7 +54,7 @@ typedef struct num_obj
 	int		plan;
 	int		cylinder;
 	int		light;
-}	t_num_obj;
+}	t_num_obj;*/
 
 //////////////////NOUVELLE DATA STRUCTURE/////////////////////////
 
@@ -98,6 +97,7 @@ typedef struct s_light
 	t_color		*color; // a initialiser a blanc pour la partie obligatoire. Revoir ce calcul pour les lumieres colorees. 
 }	t_light;
 
+/*
 // A ENLEVER
 // ca c est toutes les donnees reprises des hits et preparees pour les calcules de la lumieres. 
 // ct complique de juste link les choses entre elles donc ya pas mal de copies.
@@ -129,7 +129,7 @@ typedef struct s_comps
 	t_coord	*scalar;
 	t_coord	*view_dir;
 	float	height;
-}	t_comps;
+}	t_comps;*/
 
 // A garder
 //Peut etre simplifiee mais prend pas beaucoup de memoire...
@@ -138,7 +138,7 @@ typedef struct s_camera
 	t_coord		*p_coord;
 	t_coord		*v_axe;
 	float		fov;
-	t_coord		*p_zero;
+	t_coord		*p_zero; // vraiment utile??
 	t_coord		*v_up; // vecteurs pour calculer l orientation de la cam
 	t_coord		*v_left; // vecteurs pour calculer l orientation de la cam
 	t_coord		*v_true_up; // vecteurs pour calculer l orientation de la cam
@@ -178,7 +178,7 @@ typedef struct s_scene
 	int		wnd_height;
 	int		wnd_width;
 	float	pixel_size;
-	t_camera	*cam; // camera
+	t_camera	*cam; // camera ok
 	t_image		*ima; // 
 	t_obj		***obj; // tous les objets. allocation et free fonctionne. 
 	t_light		***lux;
@@ -186,7 +186,7 @@ typedef struct s_scene
 //	int background_color;
 } t_scene;
 
-
+//Nouvelle data structure
 typedef struct s_intertt
 {
 	float	t1;
@@ -265,6 +265,7 @@ typedef struct s_pix
 	// obj adresse with x and y or pointer on object??
 }	t_pix;
 
+/*
 //// A RETIRER
 //fait par mate au dernier moment. 
 typedef struct s_program_context
@@ -276,6 +277,6 @@ typedef struct s_program_context
 	t_image		*ima;
 	void		*mlx_ptr;
 	void		*mlx_win;
-}	t_program_context;
+}	t_program_context;*/
 
 #endif

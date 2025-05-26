@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/25 21:21:19 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 09:55:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,9 +107,9 @@ int	main(int argc, char **argv)
 //	no_parsing(scene);//pour les testes de Sylvie
 
 	printf("memory allocated \n");
-	raytracing(pix, scene, memory_shuttle);
-	pix_to_window(pix, scene);
-	image_hooks(scene);
+//	raytracing(pix, scene, memory_shuttle);
+//	pix_to_window(pix, scene);
+//	image_hooks(scene);
 	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
 }

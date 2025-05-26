@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 20:47:04 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 10:09:14 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,8 @@ void	find_closest_obj(t_pix ***pix);
 void	prepare_comps_plan(t_pix *pix);
 
 void	prepare_computation_pix(t_pix *pix);
-void	normal_caps(t_comps *comps);
-void	normal_at_na(t_comps *comps);
+//void	normal_caps(t_comps *comps);
+//void	normal_at_na(t_comps *comps);
 void	prepare_computation(t_pix ***pix);
 
 float	light_intensity(t_pix *pix);

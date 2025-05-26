@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/22 20:28:27 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 10:07:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ enum e_axes
 };
 
 int		main(int argc, char **argv);
-void	error_exit(const char *msg, t_program_context *context);
+//void	error_exit(const char *msg, t_program_context *context);
 
 #endif
