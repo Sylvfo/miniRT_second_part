@@ -35,7 +35,7 @@ bool init_lux_cph(t_scene *scene)
 	scene->lux[1] = malloc(sizeof(t_light *) * (scene->nb_lights));
 	if (!scene->lux[1])
 		return (false);
-	while (b < scene->nb_sphere)
+	while (b < scene->nb_lights)
 	{
 		scene->lux[1][b] = malloc(sizeof(t_light));
 		if (!scene->lux[1][b])
@@ -108,12 +108,15 @@ void free_lux_cph(t_scene *scene)
 	free(scene->lux[0]);//???
 	scene->lux[0] = NULL;
 	b = 0;
-	while (b < scene->nb_sphere)
+	while (b < scene->nb_lights)
 	{
-		free_each_lux(scene->lux[1][b]);
+		if (scene->lux[1][b])
+		{
+			free_each_lux(scene->lux[1][b]);
 		//free les coord...
-		free(scene->lux[1][b]);
-		scene->lux[1][b] = NULL;
+			free(scene->lux[1][b]);
+			scene->lux[1][b] = NULL;
+		}	
 		b++;
 	}
 	free(scene->lux[1]);

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:12:48 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 15:25:42 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 17:27:22 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,12 @@ void	no_parsing(t_scene *scene)
 	scene->obj[1][1]->color->r = 0.8;
 	scene->obj[1][1]->type = SPHERE; /// A reprendre
 
-	scene->lux[0][0]->ratio = 1.8;
+	scene->lux[0][0]->ratio = 0.4;
 	scene->lux[0][0]->color->r = 0.5;
 	scene->lux[0][0]->color->g = 0.2;
 	scene->lux[0][0]->color->b = 0.8;
 
-	scene->lux[1][0]->ratio = 1.8;
+	scene->lux[1][0]->ratio = 0.8;
 	scene->lux[1][0]->p_coord->x = 2;
 	scene->lux[1][0]->p_coord->y = 5;
 	scene->lux[1][0]->p_coord->z = 2;

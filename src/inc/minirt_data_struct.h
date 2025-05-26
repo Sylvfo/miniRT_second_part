@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 12:05:23 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 18:08:54 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,28 +133,17 @@ typedef struct s_mem
 {
 	t_coord		*r_origin_m; //ray modifie par matrice a recalculer pour chaque objet
 	t_coord		*r_dir_m;
-	
-
 	// tout ca modifie avec calcul intersection
-	// distance et obj type pourrait etre dans pix. 
 	float		t1;// distance de l intersection 
 	float		t2; // distance de l intersection 2
 	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
 	float		closestt;
-	
-	int			obj_a;
+	int			obj_a;//copie dans pix
 	int			obj_b;
-
 	t_coord		*v_sph_camera;
-
+	t_coord	*origin_zero;
 	/////// DEUXIEME PARTIE
-	t_coord *r_ray_relf_origin;// pas encore utilise
-	t_coord *r_ray_relf_dir;// pas encore utilise
-	t_coord	*r_next_ray_origin;
-	t_coord *r_next_ray_dir;
-	// pour calcul lumiere
-	// A VOIR DANS UN DEUXIEME TEMPS CE QU ON PEUT SIMPLIFIER
-	t_coord	*origin_zero; // coord (0,0,0) ON PEUT COORS OBJ [0][0] besoin dans intersect sphere
+	 // coord (0,0,0) ON PEUT COORS OBJ [0][0] besoin dans intersect sphere
 	t_coord	*object_normal; // tout le reste besoin pour les calculs de la lumiere. 
 	float	*transp_inv; 
 	t_coord	*p_space;
@@ -166,37 +155,31 @@ typedef struct s_mem
 	t_coord	*v_light_to_point;
 	float	distance_light_p_touch;
 	t_coord	*v_sphere_to_point;
-	t_coord	*v_point_to_light;
+	t_coord	*v_point_to_light; // reuse for ray reflexion??
 	t_coord	*reflect_dir;
 	t_coord	*scalar;
 	t_coord	*view_dir;
 	//bonus
+	t_coord *r_ray_relf_origin;// pas encore utilise
+	t_coord *r_ray_relf_dir;// pas encore utilise
+	t_coord	*r_next_ray_origin;
+	t_coord *r_next_ray_dir;
 	bool		is_avaible; //or mutex???
 } t_mem;
 
 //dans bonus regarder si objet modifie. 
 typedef struct s_pix
 {
-	// pointeurs sur data en commun
-//	t_camera	*cam; // // A RETIRER
-//	t_image		*ima; // A RETIRER
-///	t_obj		***obj; // A RETIRER
-//	t_light		***lux; // A RETIRER
-//	t_hits		***hits; // A retirer
-//	t_comps		*comps; // A retirer
 	// elements propres a chaque pixel pour ses calculs. 
 	t_coord		*p_viewport;// a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois
 	t_coord		*p_viewport_world; // a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois
 	t_coord		*r_origin; // RAY! =)
 	t_coord		*r_dir; // RAY! =)
 	t_color		*color; //  =)
-	//avaible or done for threads....
-
 	// a faire une copie apres avoir trouve closest obj
-	int			obj_a;
-	int			obj_b;
-
-	// obj adresse with x and y or pointer on object??
+	int			obj_a;//rename type 
+	int			obj_b;//rename obj num
+	//avaible or done for threads....
 }	t_pix;
 
 

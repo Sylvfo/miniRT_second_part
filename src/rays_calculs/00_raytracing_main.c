@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 15:24:58 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/26 21:11:15 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,29 +55,20 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 {
 	t_color	color;
 	clean_memory_shuttle(memory_shuttle);
-//	apply_transformation(pix, scene->obj[1][0], memory_shuttle);
-//	printf("memory shuttle  clostestt %f \n", memory_shuttle->closestt);
-//	print_point(memory_shuttle->r_origin_m);
-//	print_vector(memory_shuttle->r_dir_m);
 	main_intersections(pix, scene->obj, memory_shuttle);
 	closest_obj_in_pix(pix, memory_shuttle);
-//	printf("obj num a%i b%i\n",pix->obj_a, pix->obj_b);
-//	printf("obj color %.2f \n", scene->obj[0][0]->color->r);
-	// deja faire sans les lumieres...
-	color.r = scene->obj[pix->obj_a][pix->obj_b]->color->r;
-	color.g = scene->obj[pix->obj_a][pix->obj_b]->color->g;
-	color.b = scene->obj[pix->obj_a][pix->obj_b]->color->b;
-//	clean_memory_shuttle(memory_shuttle);
-	return (color);
-	// a voir les lumieres apres...
-/*	if (pix->obj_a == 0)
+	if (pix->obj_a == 0)
 	{
 		color = background_color(scene->obj[0][0], scene->lux[0][0]);
 		return (color);
 	}
-	prepare_computation(pix);
-	color = new_light(pix);
-	return (color);*/
+	color.r = scene->obj[pix->obj_a][pix->obj_b]->color->r;
+	color.g = scene->obj[pix->obj_a][pix->obj_b]->color->g;
+	color.b = scene->obj[pix->obj_a][pix->obj_b]->color->b;
+	return (color);	
+//	prepare_computation(pix);
+//	color = new_light(pix);
+//	return (color);
 }
 
 void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle)
