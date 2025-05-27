@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 18:08:54 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 11:52:50 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ typedef struct s_light
 }	t_light;
 
 // A garder
-//Peut etre simplifiee mais prend pas beaucoup de memoire...
 typedef struct s_camera
 {
 	t_coord		*p_coord;
@@ -82,10 +81,6 @@ typedef struct s_camera
 	float		*m_transl; // matrice translation pour deplacer
 	float		*m_transf; // matrice transformation
 	float		*m_inverse; // matrice inverse a utiliser pour les calculs des rays de chaque pixel . 
-//	float		view_width; // A RETIRER
-//	float		view_height;// A RETIRER
-//	float		canva_height; // A RETIRER
-//	float		canva_width; // A RETIRER
 	float		half_height; /// utilise dans init viewport xy
 	float		half_width; // utilise dans init viewport xy
 	float		pixel_size; //taille des pixels pour calculer les points sur le viewport et les rays
@@ -126,6 +121,7 @@ typedef struct s_intertt
 	float	t1;
 	float	t2;
 	int		t_count;
+	float	closestt;
 } t_intertt;
 
 //POUR NOUVELLE DATA STRUCT
@@ -134,8 +130,8 @@ typedef struct s_mem
 	t_coord		*r_origin_m; //ray modifie par matrice a recalculer pour chaque objet
 	t_coord		*r_dir_m;
 	// tout ca modifie avec calcul intersection
-	float		t1;// distance de l intersection 
-	float		t2; // distance de l intersection 2
+	float		t1;// distance de l intersection NECASSAIRE?
+	float		t2; // distance de l intersection 2 NECESSAIRE?
 	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
 	float		closestt;
 	int			obj_a;//copie dans pix
@@ -144,13 +140,17 @@ typedef struct s_mem
 	t_coord	*origin_zero;
 	/////// DEUXIEME PARTIE
 	 // coord (0,0,0) ON PEUT COORS OBJ [0][0] besoin dans intersect sphere
-	t_coord	*object_normal; // tout le reste besoin pour les calculs de la lumiere. 
+	t_coord	*object_normal; // in prepare comp. 
+	t_coord	*p_touch;// in prepare comp. 
+	t_coord	*v_eye;// in prepare comp. 
+	t_coord	*v_norm_parral;// in prepare comp.
+
 	float	*transp_inv; 
 	t_coord	*p_space;
 	float	*obj_inv;
-	t_coord	*p_touch;
-	t_coord	*v_eye;
-	t_coord	*v_norm_parral;
+
+	
+	
 	bool	inside;
 	t_coord	*v_light_to_point;
 	float	distance_light_p_touch;

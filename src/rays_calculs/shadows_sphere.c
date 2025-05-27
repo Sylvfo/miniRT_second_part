@@ -6,13 +6,61 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:17 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/25 17:15:29 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 15:37:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 //A REVOIR AVEC NOUVELLE DATA STRUCTURE
+
+static void	calculate_shadow_sphere_coeffs(t_mem *memory_shuttle, t_obj *sphere,
+	float *coeffs)
+{
+	t_coord	sphere_to_point;
+
+	substraction_p_to_v_na(&sphere_to_point, memory_shuttle->p_touch,
+		sphere->p_coord);
+	coeffs[0] = dot_product(memory_shuttle->v_light_to_point,
+			memory_shuttle->v_light_to_point);
+	coeffs[1] = 2.0f * dot_product(&sphere_to_point,
+			memory_shuttle->v_light_to_point);
+	coeffs[2] = dot_product(&sphere_to_point, &sphere_to_point)
+		- (sphere->radius * sphere->radius);
+}
+
+
+static bool	check_shadow_sphere_roots(float discriminant, float *coeffs,
+	float max_dist)
+{
+	float	sqrt_discr;
+	float	root1;
+	float	root2;
+
+	if (discriminant < 0.0f)
+		return (false);
+	sqrt_discr = sqrtf(discriminant);
+	root1 = (-coeffs[1] - sqrt_discr) / (2.0f * coeffs[0]);
+	root2 = (-coeffs[1] + sqrt_discr) / (2.0f * coeffs[0]);
+	if ((root1 > EPSILON && root1 < max_dist)
+		|| (root2 > EPSILON && root2 < max_dist))
+		return (true);
+	return (false);
+}
+
+bool	intersect_sphere_shadow(t_obj *sphere, t_mem *memory_shuttle)
+{
+	float	coeffs[3];
+	float	discriminant;
+
+	calculate_shadow_sphere_coeffs(memory_shuttle, sphere, coeffs);
+	discriminant = coeffs[1] * coeffs[1] - 4.0f * coeffs[0] * coeffs[2];
+	return (check_shadow_sphere_roots(discriminant, coeffs,
+			memory_shuttle->distance_light_p_touch));
+}
+
+
+//ANCIENNE
 /*
 static void	calculate_shadow_sphere_coeffs(t_pix *pix, t_obj *sphere,
 	float *coeffs)

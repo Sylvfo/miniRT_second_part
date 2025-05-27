@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   colors_operation.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:57:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/11 15:51:45 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/27 10:19:25 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,4 +123,17 @@ void	scalar_mult_color(t_color *c_1, float scale)
 		c_1->g = 1;
 	if (c_1->b > 1)
 		c_1->b = 1;
+}
+
+void	multipling_color(t_color *c_1, t_color *c_2)
+{
+	if (!c_1 || !c_2)
+	{
+		printf("miss a colour \n");
+		return ;
+	}
+	c_1->r *= c_2->r;
+	c_1->g *= c_2->g;
+	c_1->b *= c_2->b;
+	color_float_to_int(c_1);
 }

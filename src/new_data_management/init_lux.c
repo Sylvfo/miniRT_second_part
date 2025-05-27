@@ -73,7 +73,7 @@ bool init_each_lux(t_light *lux)
 		return (lux);
 
 	init_each_lux_null(lux);
-	lux->p_coord = malloc(sizeof(t_coord));
+	lux->p_coord = create_point(0, 0, 0);
 	if (!lux->p_coord)
 		return (false);
 	lux->color = malloc(sizeof(t_color));

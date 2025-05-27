@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 15:24:29 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 14:45:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,38 @@ bool	check_cap(t_pix *pix, float t, int cyl_n);
 void	intersect_caps(t_pix *pix, int cyl_n);
 void	intersect_cylinder(t_pix *pix, int cyl_n);
 
-void	save_in_comps(t_pix *pix, int a, int b);
-void	closest_obj(t_pix *pix);
-void	find_closest_obj(t_pix ***pix);
-void	prepare_comps_plan(t_pix *pix);
+//void	save_in_comps(t_pix *pix, int a, int b);
+//void	closest_obj(t_pix *pix);
+//void	find_closest_obj(t_pix ***pix);
+//void	prepare_comps_plan(t_pix *pix);
 
-void	prepare_computation_pix(t_pix *pix);
+//08_prepare_comps.c
+void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle);
 //void	normal_caps(t_comps *comps);
-//void	normal_at_na(t_comps *comps);
-void	prepare_computation(t_pix ***pix);
+void	normal_at_na(t_mem *mem_shuttle);
+///void	prepare_computation(t_pix ***pix);
 
-float	light_intensity(t_pix *pix);
-void	new_light(t_pix ***pix);
+//09_light_shadow_main.c
+//float	light_intensity(t_pix *pix);
+//t_color	new_light(t_mem *memory_shuttle);
+t_color	new_light(t_scene *scene, t_mem *memory_shuttle, t_color color);
+t_color	light_intensity(t_scene *scene, t_mem *memory_shuttle);
+float	light_intensity_old(t_scene *scene, t_mem *memory_shuttle);
+float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle);
+//10_shadows.c
+void	prepare_v_light(t_mem *memory_shuttle, t_coord *lux_p_coord);
+//void	prepare_v_light(t_pix *pix, int lux_num);
+bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle, int lux_num);
 
-void	prepare_v_light(t_pix *pix, int lux_num);
-bool	intersect_objects_shadow(t_pix *pix, int lux_num);
-bool	intersect_sphere_shadow(t_pix *pix, int sphere_num, int lux_num);
+//shadows_sphere.c
+bool	intersect_sphere_shadow(t_obj *sphere, t_mem *memory_shuttle);
 bool	intersect_plan_shadow(t_pix *pix, int pln_num, int lux_num);
 bool	intersect_cylinder_shadow(t_pix *pix, int cyl_num, int lux_num);
 
-float	compute_pointlight(t_pix *pix, t_light *lux);
+//float	compute_pointlight(t_mem *memory_shuttle, t_light *lux);
+t_color	compute_pointlight(t_mem *memory_shuttle, t_light *lux, t_color color);
+float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux);
+//float	compute_pointlight(t_pix *pix, t_light *lux);
 float	compute_specular(t_pix *pix, t_light *lux);
 
 #endif

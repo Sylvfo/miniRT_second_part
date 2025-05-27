@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_vect_point_color.h                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:15:23 by syl               #+#    #+#             */
-/*   Updated: 2025/05/11 17:45:09 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/27 10:19:24 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ float	int_to_float(int value);
 void	color_float_to_int(t_color *c_color);
 int		float_to_byte(float f);
 void	color_int_to_rgb(int int_color, t_color *rgb);
+void	multipling_color(t_color *c_1, t_color *c_2);
+
 
 //set_colors.c
 t_color	*create_color(int r, int g, int b);

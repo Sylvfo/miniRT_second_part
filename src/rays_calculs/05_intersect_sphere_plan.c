@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:04:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 15:25:10 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 14:59:24 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ void	intersect_sphere(t_pix *pix, int sph_num, t_mem *memory_shuttle)
 	result.t1 = (-b - sqrt(discriminant)) / (2 * a);
 	result.t2 = (-b + sqrt(discriminant)) / (2 * a);
 	result.t_count = 2;
+	result.closestt = 0.0;
 	closestt(memory_shuttle, result, sph_num);
 	return ;
 }
@@ -98,14 +99,15 @@ void	closestt(t_mem *memory_shuttle, t_intertt result, int sph_num)
 	if (result.t1 < memory_shuttle->closestt)
 	{
 	//	printf("-");
-		memory_shuttle->t1 = result.t1;
+		memory_shuttle->closestt = result.t1;
 		memory_shuttle->obj_a = 1;
 		memory_shuttle->obj_b = sph_num;
+	//	memory_shuttle->closestt = result.closestt;
 	}
 	if (result.t2 < memory_shuttle->closestt)
 	{
 	//	printf(".");
-		memory_shuttle->t1 = result.t2;
+		memory_shuttle->closestt = result.t2;
 		memory_shuttle->obj_a = 1;
 		memory_shuttle->obj_b = sph_num;
 	}

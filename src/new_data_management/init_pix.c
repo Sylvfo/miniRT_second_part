@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:27:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 12:39:44 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 11:17:32 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	malloc_pix_struct(t_pix ***pix, int height, int width)
 		{
 			if (pix[i][j] != NULL)
 			{
-				pix[i][j]->p_viewport = create_point(0, 0, 0);
+				pix[i][j]->p_viewport = create_point(0, 0, -1);//IMPORTANT
 				pix[i][j]->p_viewport_world = create_point(0, 0, 0);
 				pix[i][j]->r_dir = create_vector(0, 0, 0);
 				pix[i][j]->r_origin = create_vector(0, 0, 0);

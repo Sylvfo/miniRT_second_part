@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 21:11:15 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 15:19:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,10 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 {
 	int	x;
 	int	y;
-	//
-	constructing_camera(scene);
-	//print_matrix_44(scene->cam->m_inverse);
-	init_viewport(pix, scene->cam);
 	
+	constructing_camera(scene);
+	init_viewport(pix, scene->cam);
 	matrix_transformations(scene->obj);
-
-
-//	pix[0][0]->lux[1][0]->p_coord->t = 1;
 	x = 0;
 	while (x < WND_WIDTH)
 	{
@@ -54,6 +49,9 @@ t_color background_color(t_obj *obj_zero, t_light *lux_zero)
 t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 {
 	t_color	color;
+	float	intensity;
+
+	//INIT COLOR?
 	clean_memory_shuttle(memory_shuttle);
 	main_intersections(pix, scene->obj, memory_shuttle);
 	closest_obj_in_pix(pix, memory_shuttle);
@@ -65,16 +63,21 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	color.r = scene->obj[pix->obj_a][pix->obj_b]->color->r;
 	color.g = scene->obj[pix->obj_a][pix->obj_b]->color->g;
 	color.b = scene->obj[pix->obj_a][pix->obj_b]->color->b;
-	return (color);	
-//	prepare_computation(pix);
-//	color = new_light(pix);
-//	return (color);
+//	printf("closest %.4f \n", memory_shuttle->closestt);
+	printf("sph radius %.3f sph diam %.3f \n", scene->obj[1][0]->radius,  scene->obj[1][0]->diam);
+	printf("sph radius %.3f sph diam %.3f \n", scene->obj[1][1]->radius,  scene->obj[1][1]->diam);
+	prepare_computation(pix, scene->obj, memory_shuttle);
+	intensity = light_intensity_cph(scene, memory_shuttle);
+	scalar_mult_color(&color, intensity);
+	//color = new_light(scene, memory_shuttle, color);
+	return (color);
 }
 
 void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle)
 {
 	pix->obj_a = memory_shuttle->obj_a;
 	pix->obj_b = memory_shuttle->obj_b;
+//	pix->obj_a = memory_shuttle->closestt;
 }
 
 void	clean_memory_shuttle(t_mem *memory_shuttle)
