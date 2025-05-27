@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 15:19:33 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 16:06:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 		y = 0;
 		while (y < WND_HEIGHT)
 		{
+			clean_memory_shuttle(memory_shuttle);
 			*(pix[x][y]->color) = raytracer(pix[x][y], scene, memory_shuttle);
 			y++;
 		}
@@ -52,7 +53,8 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	float	intensity;
 
 	//INIT COLOR?
-	clean_memory_shuttle(memory_shuttle);
+	// a retirer ici
+	color = background_color(scene->obj[0][0], scene->lux[0][0]);
 	main_intersections(pix, scene->obj, memory_shuttle);
 	closest_obj_in_pix(pix, memory_shuttle);
 	if (pix->obj_a == 0)
@@ -63,10 +65,8 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	color.r = scene->obj[pix->obj_a][pix->obj_b]->color->r;
 	color.g = scene->obj[pix->obj_a][pix->obj_b]->color->g;
 	color.b = scene->obj[pix->obj_a][pix->obj_b]->color->b;
-//	printf("closest %.4f \n", memory_shuttle->closestt);
-	printf("sph radius %.3f sph diam %.3f \n", scene->obj[1][0]->radius,  scene->obj[1][0]->diam);
-	printf("sph radius %.3f sph diam %.3f \n", scene->obj[1][1]->radius,  scene->obj[1][1]->diam);
 	prepare_computation(pix, scene->obj, memory_shuttle);
+	return (color);
 	intensity = light_intensity_cph(scene, memory_shuttle);
 	scalar_mult_color(&color, intensity);
 	//color = new_light(scene, memory_shuttle, color);
@@ -77,7 +77,6 @@ void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle)
 {
 	pix->obj_a = memory_shuttle->obj_a;
 	pix->obj_b = memory_shuttle->obj_b;
-//	pix->obj_a = memory_shuttle->closestt;
 }
 
 void	clean_memory_shuttle(t_mem *memory_shuttle)
@@ -86,6 +85,23 @@ void	clean_memory_shuttle(t_mem *memory_shuttle)
 	memory_shuttle->obj_a = 0;
 	memory_shuttle->obj_b = 0;
 	memory_shuttle->t_count = 0;
+	memory_shuttle->distance_light_p_touch = 0.0;
+	vector_fill(memory_shuttle->object_normal, 0, 0, 0);
+	vector_fill(memory_shuttle->v_eye, 0, 0, 0);
+	memory_shuttle->p_space->x = 0.0;
+	memory_shuttle->p_space->y = 0.0;
+	memory_shuttle->p_space->z = 0.0;
+	memory_shuttle->p_touch->x = 0.0;
+	memory_shuttle->p_touch->y = 0.0;
+	memory_shuttle->p_touch->z = 0.0;
+	vector_fill(memory_shuttle->v_light_to_point, 0, 0, 0);
+	vector_fill(memory_shuttle->v_point_to_light, 0, 0, 0);
+	vector_fill(memory_shuttle->reflect_dir, 0, 0, 0);
+	vector_fill(memory_shuttle->scalar, 0, 0, 0);
+	vector_fill(memory_shuttle->view_dir, 0, 0, 0);
+	init_matrix_zero(memory_shuttle->obj_inv);
+	init_matrix_zero(memory_shuttle->transp_inv);
+//	memory_shuttle->inside == false;
 }
 
 /*

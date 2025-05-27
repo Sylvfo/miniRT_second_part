@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_operations_length.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 21:36:44 by syl               #+#    #+#             */
-/*   Updated: 2025/05/11 17:45:11 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/27 16:09:51 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	scalar_mult_na(t_coord *result, t_coord *v_1, float scale)
 	result->x = scale * v_1->x;
 	result->y = scale * v_1->y;
 	result->z = scale * v_1->z;
-	result->t = 0;
+//	result->t = 0;
 }
 
 /**

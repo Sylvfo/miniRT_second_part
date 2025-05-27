@@ -41,7 +41,6 @@ t_color	compute_pointlight(t_mem *memory_shuttle, t_light *lux, t_color color)
 	return (color);
 }
 
-
 float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux)
 {
 	float	n_dot_l;
@@ -51,7 +50,7 @@ float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux)
 	substraction_p_to_v_na(memory_shuttle->v_point_to_light, lux->p_coord,
 		memory_shuttle->p_touch);
 	printf("%.2f 2nd closestt \n", memory_shuttle->closestt);
-	print_point(memory_shuttle->p_touch);
+//	print_point(memory_shuttle->p_touch);
 //	print_vector(memory_shuttle->v_point_to_light);
 	normalize_vector_na(memory_shuttle->v_point_to_light);
 	n_dot_l = dot_product(memory_shuttle->v_norm_parral,

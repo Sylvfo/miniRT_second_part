@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 14:00:25 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 14:17:46 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 16:11:52 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,18 +29,17 @@ void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 	p_local_on_surface.z = 0;
 
 	scalar_mult_na(&term_for_p_local, mem_shuttle->r_dir_m, mem_shuttle->closestt);
-//	printf("closestt %.4f \n", mem_shuttle->closestt);
-//	term_for_p_local.t = 1;
+	printf("closestt %.4f \n", mem_shuttle->closestt);
+//	print_vector(mem_shuttle->r_dir_m);
 //	print_point(&term_for_p_local);
 	addition_na(&p_local_on_surface, mem_shuttle->r_origin_m, &term_for_p_local);
 	p_local_on_surface.t = 1;
 	matrix_point_multiplication_new(mem_shuttle->p_touch,
 		obj[1][pix->obj_b]->m_transf, &p_local_on_surface);
-	//print_point(&p_local_on_surface);
-//	print_point(mem_shuttle->p_touch);
-/*	if (pix->obj_b == 0)// 	MATRIX PAREIL
+	print_point(&p_local_on_surface);
+	print_point(mem_shuttle->p_touch);
+/*	if (pix->obj_b == 0)// 	MATRIX PAREIL OK
 		print_matrix_44(obj[1][pix->obj_b]->m_transf);*/
-
 	negat_na(mem_shuttle->v_eye, pix->r_dir); // PIX_R_DIR!!! A REVOIR POUR RECURSIVITE
 	if (pix->obj_a == SPHERE)
 	{
@@ -123,6 +122,7 @@ void	normal_at_na(t_mem *mem_shuttle)
 	matrix_point_multiplication_new_2(mem_shuttle->v_norm_parral,
 		mem_shuttle->transp_inv, mem_shuttle->object_normal);
 	normalize_vector_na(mem_shuttle->v_norm_parral);
+	printf("hehre\n");
 }
 
 /* // NORMALEMENT PLUS BESOIN

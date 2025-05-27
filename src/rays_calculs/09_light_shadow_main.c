@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:44:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 15:43:13 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 15:52:06 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,20 +82,16 @@ float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 	int		i;
 
 	intensity = 0.0;
-//	intensity += scene->lux[0][0]->ratio;
+	intensity += scene->lux[0][0]->ratio;
 	i = 0;
 	while (scene->lux[1][i] != NULL)
 	{
-		intensity = intensity + compute_pointlight_old(memory_shuttle, scene->lux[1][i]);
-	//	prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord);
-	//	if (intersect_objects_shadow(scene, memory_shuttle, i) == false)
-	//	{
-	//		intensity = intensity + compute_pointlight_old(memory_shuttle, scene->lux[1][i]);
-
+		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord);
+		if (intersect_objects_shadow(scene, memory_shuttle, i) == false)
+		{
+			intensity = intensity + compute_pointlight_old(memory_shuttle, scene->lux[1][i]);
 		//	intensity = intensity + compute_specular(pix, pix->lux[1][i]);
-	//	}
-	//	else
-	//		return (0.0);
+		}
 		i++;
 	}
 	return (intensity);

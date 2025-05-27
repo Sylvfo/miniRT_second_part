@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/05/25 19:48:12 by syl              ###   ########.fr        #
+#    Updated: 2025/05/26 11:00:08 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,6 +148,9 @@ SRCS = ./src/main.c \
 	./src/new_data_management/free_scene.c \
 	./src/new_data_management/no_parsing.c \
 	./src/new_data_management/init_memory_shuttle.c \
+	./src/new_data_management/base_data.c \
+	./src/new_data_management/init_cam.c \
+	./src/new_data_management/init_lux.c \
 	 
 # Détection de l'OS pour choisir la bonne version de la MLX
 UNAME_S := $(shell uname -s)
@@ -229,21 +232,21 @@ $(TEST_NAME): $(TEST_OBJS) $(LIBFT) $(MLX_DIR)/libmlx.a
 	@echo "$(GREEN)\nCompilation des tests réussie!\n$(RESET)"
 
 # Règle pour la norminette
-norm:
-	@echo "$(YELLOW)Exécution de norminette sur les fichiers spécifiés dans SRC...$(RESET)"
-	@norminette $(SRCS) > norminette_output.txt || (echo "")
-	@error=0; \
-	while IFS= read -r line; do \
-		if ! echo "$$line" | grep -q 'OK!$$'; then \
-			echo "$(RED)Erreur dans le fichier : $$line$(RESET)"; \
-			error=1; \
-		fi; \
-	done < norminette_output.txt || (echo "$(MAGENTA)Erreur lors de la vérification du résultat de norminette$(RESET)"); \
-	if [ $$error -eq 0 ]; then \
-		echo "$(GREEN)Tous les fichiers spécifiés dans SRC sont conformes à la norme.$(RESET)"; \
-	fi
-	@rm norminette_output.txt
-	@echo " "
+#norm:
+#	@echo "$(YELLOW)Exécution de norminette sur les fichiers spécifiés dans SRC...$(RESET)"
+#	@norminette $(SRCS) > norminette_output.txt || (echo "")
+#	@error=0; \
+#	while IFS= read -r line; do \
+#		if ! echo "$$line" | grep -q 'OK!$$'; then \
+#			echo "$(RED)Erreur dans le fichier : $$line$(RESET)"; \
+#			error=1; \
+#		fi; \
+#	done < norminette_output.txt || (echo "$(MAGENTA)Erreur lors de la vérification du résultat de norminette$(RESET)"); \
+#	if [ $$error -eq 0 ]; then \
+#		echo "$(GREEN)Tous les fichiers spécifiés dans SRC sont conformes à la norme.$(RESET)"; \
+#	fi
+#	@rm norminette_output.txt
+#	@echo " "
 
 debug: CFLAGS += -g
 debug: re
