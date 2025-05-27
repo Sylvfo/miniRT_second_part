@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:44:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 15:52:06 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 16:35:41 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@
 
 
 /*
-// return color. 
+// PF c est la nouvelle fonction de couleur que j avais commence et qui retourne des couleurs.  
 // white intensity is 200,200,200
 //t_color	light_intensity(t_scene *scene, t_mem *memory_shuttle)
-float	light_intensity_old(t_scene *scene, t_mem *memory_shuttle) // besoin scene??
 {
 	t_color	intensity;
 	t_color	intensity2;
@@ -76,6 +75,7 @@ t_color	new_light(t_scene *scene, t_mem *memory_shuttle, t_color color)
 	return (color);
 }*/
 
+//PF regarde la dedans. 
 float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 {
 	float	intensity;
@@ -86,15 +86,20 @@ float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 	i = 0;
 	while (scene->lux[1][i] != NULL)
 	{
+		//PF regarde la dedans. 
 		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord);
+		//PF regarde la dedans. 
 		if (intersect_objects_shadow(scene, memory_shuttle, i) == false)
 		{
+			//PF regarde la dedans. 
 			intensity = intensity + compute_pointlight_old(memory_shuttle, scene->lux[1][i]);
-		//	intensity = intensity + compute_specular(pix, pix->lux[1][i]);
+			// PF il faudrait remettre la nouvelle data structure dans cette fonction
+			// il faudrait aussi reflechir a comment 
+			//	intensity = intensity + compute_specular(pix, pix->lux[1][i]);
 		}
 		i++;
 	}
-	return (intensity);
+	return (intensity); //return color??
 }
 //PAS BESOIN??
 /*
@@ -127,7 +132,7 @@ void	new_light(t_pix ***pix)
 
 
 /*
-ANCIENNE
+ANCIENNE QUI FONCTIONNAIT
 
 //A REVOIR AVEC NOUVELLE DATA STRUCTURE
 /*

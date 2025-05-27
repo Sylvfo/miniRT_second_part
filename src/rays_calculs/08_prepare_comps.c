@@ -6,13 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 14:00:25 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 16:11:52 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 16:30:42 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//A REVOIR AVEC NOUVELLE DATA STRUCTURE
+//
 void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 {
 	t_coord	term_for_p_local;
@@ -43,10 +43,13 @@ void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 	negat_na(mem_shuttle->v_eye, pix->r_dir); // PIX_R_DIR!!! A REVOIR POUR RECURSIVITE
 	if (pix->obj_a == SPHERE)
 	{
+		//PF il y a peut des des problemes la dedans. J ai pas encore trop bien verifie. 
 		normal_at_na(mem_shuttle);
+		// PF ca c est quand on est dedans une sphere je crois
 		if (dot_product(mem_shuttle->v_norm_parral, mem_shuttle->v_eye) < 0)
 			negat_na(mem_shuttle->v_norm_parral, mem_shuttle->v_norm_parral);
 	}
+	//PF On fera les autres formes apres
 //	print_point(mem_shuttle->p_touch);
 /*	if (pix->comps->type == CYLINDER)
 	{
@@ -112,9 +115,11 @@ void	normal_caps(t_comps *comps)
 //RENOMMER NORMAL SPHERE?
 void	normal_at_na(t_mem *mem_shuttle)
 {
-//	printf("enter in normal at\n");
+	printf("enter in normal at\n");
 	matrix_point_multiplication_new(mem_shuttle->p_space,
 		mem_shuttle->obj_inv, mem_shuttle->p_touch);
+	print_point(mem_shuttle->p_touch);
+	print_point(mem_shuttle->p_space);
 	substraction_p_to_v_na(mem_shuttle->object_normal,
 		mem_shuttle->p_space, mem_shuttle->origin_zero);
 	normalize_vector_na(mem_shuttle->object_normal);

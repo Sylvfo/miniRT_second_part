@@ -12,8 +12,6 @@
 
 #include "../inc/minirt.h"
 
-////A REVOIR AVEC NOUVELLE DATA STRUCTURE
-
 t_color	compute_pointlight(t_mem *memory_shuttle, t_light *lux, t_color color)
 {
 	float	n_dot_l;

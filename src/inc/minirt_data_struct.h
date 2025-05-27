@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 15:55:51 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/27 16:21:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,8 +144,8 @@ typedef struct s_mem
 	t_coord	*p_touch;// in prepare comp. 
 	t_coord	*v_eye;// in prepare comp. 
 	t_coord	*v_norm_parral;// in prepare comp.
-	float	*transp_inv; 
-	t_coord	*p_space;
+	float	*transp_inv; // in raytracer. 
+	t_coord	*p_space; // in prepare comps. 
 	float	*obj_inv;
 //	bool	inside;
 	t_coord	*v_light_to_point;
