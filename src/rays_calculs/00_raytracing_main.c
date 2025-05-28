@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 16:29:17 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:40:12 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,13 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	
 	// PF Construit tout ce qui est commun. 
 	constructing_camera(scene);
+	printf("matrix camera inv \n");
+	print_matrix_44(scene->cam->m_inverse);
 	init_viewport(pix, scene->cam);
 	matrix_transformations(scene->obj);
+	print_matrix_44(scene->obj[1][0]->m_inv);
+	printf("lux position \n");
+	print_point(scene->lux[1][0]->p_coord);
 	// PF ensuite fait les calculs pour chaque pixel 
 	x = 0;
 	while (x < WND_WIDTH)
@@ -37,8 +42,6 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	return ;
 }
 
-//CELUI CI POUR LA PARTIE PAS BONUS....
-//t_pix pour les rays...
 t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 {
 	t_color	color;
@@ -58,10 +61,8 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	color.r = scene->obj[pix->obj_a][pix->obj_b]->color->r;
 	color.g = scene->obj[pix->obj_a][pix->obj_b]->color->g;
 	color.b = scene->obj[pix->obj_a][pix->obj_b]->color->b;
-	// PF Rahlahlah la j ai toujours des problemes avec p_touch et les normales
-	// les erreurs actuelles viennent surement de la...
+	// PF Je crois que j ai regle le probleme. s
 	prepare_computation(pix, scene->obj, memory_shuttle);
-	
 	// PF le but serait que la fonction de lumiere retourne une couleur. Comme ca on pourra l utiliser dans 
 	// la recursivite pour les reflexion et eventuellement la transparence. 
 	// mais on avait fait une fonction de lumiere qui retourne juste un float d intensite. 
@@ -71,12 +72,7 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	return (color);
 }
 
-void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle)
-{
-	pix->obj_a = memory_shuttle->obj_a;
-	pix->obj_b = memory_shuttle->obj_b;
-	
-}
+
 
 void	clean_memory_shuttle(t_mem *memory_shuttle)
 {

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 16:21:55 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 10:07:14 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,14 +130,18 @@ typedef struct s_mem
 	t_coord		*r_origin_m; //ray modifie par matrice a recalculer pour chaque objet
 	t_coord		*r_dir_m;
 	// tout ca modifie avec calcul intersection
-	float		t1;// distance de l intersection NECASSAIRE?
-	float		t2; // distance de l intersection 2 NECESSAIRE?
+//	float		t1;// distance de l intersection NECASSAIRE?
+//	float		t2; // distance de l intersection 2 NECESSAIRE?
+	//closest obj
 	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
 	float		closestt;
 	int			obj_a;//copie dans pix
 	int			obj_b;
-	t_coord		*v_sph_camera;
-	t_coord	*origin_zero;
+	t_coord		*r_dir_closest_obj;
+	t_coord		*r_origin_closest_obj;
+
+	t_coord		*v_sph_camera;// a supprimer?
+	t_coord		*origin_zero;
 	/////// DEUXIEME PARTIE
 	 // coord (0,0,0) ON PEUT COORS OBJ [0][0] besoin dans intersect sphere
 	t_coord	*object_normal; // in prepare comp. 

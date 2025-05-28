@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/26 14:53:38 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:12:00 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@
 # define WND_HEIGHT 1000
 
 # define BAKGROUND_COLOR 711850
-# define EPSILON 0.001
+# define EPSILON 0.00001
 # define PI 3.1415926535
 # define PIRAD 0.017453
 # define SHININESS 80.0

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 14:00:25 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 16:30:42 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 10:49:06 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 	t_coord	term_for_p_local;
 	t_coord	p_local_on_surface;
 
-	term_for_p_local.t = 1;
+/*	term_for_p_local.t = 1;
 	term_for_p_local.x = 0;
 	term_for_p_local.y = 0;
 	term_for_p_local.z = 0;
@@ -26,20 +26,31 @@ void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 	p_local_on_surface.t = 1;
 	p_local_on_surface.x = 0;
 	p_local_on_surface.y = 0;
-	p_local_on_surface.z = 0;
+	p_local_on_surface.z = 0;*/
 
-	scalar_mult_na(&term_for_p_local, mem_shuttle->r_dir_m, mem_shuttle->closestt);
-	printf("closestt %.4f \n", mem_shuttle->closestt);
-//	print_vector(mem_shuttle->r_dir_m);
-//	print_point(&term_for_p_local);
-	addition_na(&p_local_on_surface, mem_shuttle->r_origin_m, &term_for_p_local);
-	p_local_on_surface.t = 1;
+
+//	printf("closestt %.4f \n", mem_shuttle->closestt);//ok
+//	print_vector(mem_shuttle->r_dir_closest_obj);//ok
+	scalar_mult_na(&term_for_p_local, mem_shuttle->r_dir_closest_obj, mem_shuttle->closestt);
+	term_for_p_local.t = 1;
+//	print_point(&term_for_p_local);//ok
+	addition_na(&p_local_on_surface, mem_shuttle->r_origin_closest_obj, &term_for_p_local);
+	//LLLLLAAAAAAAAAAAAA
+//	print_point(mem_shuttle->r_origin_closest_obj);//ICI ERREUR!!!!
 	matrix_point_multiplication_new(mem_shuttle->p_touch,
 		obj[1][pix->obj_b]->m_transf, &p_local_on_surface);
-	print_point(&p_local_on_surface);
-	print_point(mem_shuttle->p_touch);
+
+//	print_point(&term_for_p_local);
+
+//	p_local_on_surface.t = 1;
+
+//	print_point(&p_local_on_surface);
+//	printf("p_touch\n");
+//	print_point(mem_shuttle->p_touch);
 /*	if (pix->obj_b == 0)// 	MATRIX PAREIL OK
 		print_matrix_44(obj[1][pix->obj_b]->m_transf);*/
+
+
 	negat_na(mem_shuttle->v_eye, pix->r_dir); // PIX_R_DIR!!! A REVOIR POUR RECURSIVITE
 	if (pix->obj_a == SPHERE)
 	{
@@ -115,19 +126,21 @@ void	normal_caps(t_comps *comps)
 //RENOMMER NORMAL SPHERE?
 void	normal_at_na(t_mem *mem_shuttle)
 {
-	printf("enter in normal at\n");
+//	printf("enter in normal at\n");
 	matrix_point_multiplication_new(mem_shuttle->p_space,
 		mem_shuttle->obj_inv, mem_shuttle->p_touch);
-	print_point(mem_shuttle->p_touch);
-	print_point(mem_shuttle->p_space);
+//	print_point(mem_shuttle->p_touch);
+//	print_point(mem_shuttle->p_space);
 	substraction_p_to_v_na(mem_shuttle->object_normal,
 		mem_shuttle->p_space, mem_shuttle->origin_zero);
+//	print_point(mem_shuttle->origin_zero);
 	normalize_vector_na(mem_shuttle->object_normal);
 	transpose_matrix(mem_shuttle->transp_inv, mem_shuttle->obj_inv);
 	matrix_point_multiplication_new_2(mem_shuttle->v_norm_parral,
 		mem_shuttle->transp_inv, mem_shuttle->object_normal);
 	normalize_vector_na(mem_shuttle->v_norm_parral);
-	printf("hehre\n");
+//	print_vector(mem_shuttle->v_norm_parral);
+//	printf("hehre\n");
 }
 
 /* // NORMALEMENT PLUS BESOIN

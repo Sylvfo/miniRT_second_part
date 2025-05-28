@@ -6,13 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:17 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/27 15:37:44 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:05:48 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//A REVOIR AVEC NOUVELLE DATA STRUCTURE
+//FAIT PAR CORENTIN
 
 static void	calculate_shadow_sphere_coeffs(t_mem *memory_shuttle, t_obj *sphere,
 	float *coeffs)
@@ -42,8 +42,8 @@ static bool	check_shadow_sphere_roots(float discriminant, float *coeffs,
 	sqrt_discr = sqrtf(discriminant);
 	root1 = (-coeffs[1] - sqrt_discr) / (2.0f * coeffs[0]);
 	root2 = (-coeffs[1] + sqrt_discr) / (2.0f * coeffs[0]);
-	if ((root1 > EPSILON && root1 < max_dist)
-		|| (root2 > EPSILON && root2 < max_dist))
+	if ((root1 > 0.001 && root1 < max_dist)
+		|| (root2 > 0.001 && root2 < max_dist))
 		return (true);
 	return (false);
 }

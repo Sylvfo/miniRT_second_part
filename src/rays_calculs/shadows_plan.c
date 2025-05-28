@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:34 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/25 17:15:14 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:06:06 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ bool	intersect_plan_shadow(t_pix *pix, int pln_num, int lux_num)
 	(void)lux_num;
 	plan = pix->obj[PLAN][pln_num];
 	denom = dot_product(plan->v_axe, pix->comps->v_light_to_point);
-	if (fabs(denom) < EPSILON)
+	if (fabs(denom) < EPSILON)//changer EPSILON par 0.001?
 		return (false);
 	p0_minus_p.x = plan->p_coord->x - pix->comps->p_touch->x;
 	p0_minus_p.y = plan->p_coord->y - pix->comps->p_touch->y;

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:01:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 15:20:13 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:35:28 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,45 +15,22 @@
 //normalement ok
 void	apply_transformation(t_pix *pix,t_obj *obj, t_mem *memory_shuttle)
 {
-//	print_point(pix->r_origin);
-//	print_vector(pix->r_dir);
 	matrix_point_multiplication_new(memory_shuttle->r_origin_m,
 		obj->m_inv, pix->r_origin);
-//	print_point(memory_shuttle->r_origin_m);
 	matrix_point_multiplication_new(memory_shuttle->r_dir_m,
 				obj->m_inv, pix->r_dir);
 }
-
-/*
-Normalement plus besoin
-void	apply_transformation(t_pix ***pix)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	while (x < WND_WIDTH)
-	{
-		y = 0;
-		while (y < WND_HEIGHT)
-		{
-			apply_transformation_obj(pix[x][y]);
-			y++;
-		}
-		x++;
-	}
-}*/
 
 //ok =)
 void	set_transformation_obj(t_obj *obj)
 {
 	translation_matrix_coord(obj);
 	matrix_mult_2(obj->m_transf, obj->m_transl);
-/*	if (obj->type == PLAN) || obj->type == CYLINDER)
+	if (obj->type == PLAN || obj->type == CYLINDER)
 	{
 		rotation_from_vector(obj);
 		matrix_mult_2(obj->m_transf, obj->m_rot);
-	}*/
+	}
 	if (obj->type == SPHERE) // || obj->type == CYLINDER)
 	{
 		scaling_matrix_coord(obj);
@@ -81,11 +58,3 @@ void	matrix_transformations(t_obj ***obj)
 		a++;
 	}
 }
-
-/*
-// ok =) enventuellement retirer
-void	matrix_transformations(t_pix ***pix)
-{
-	set_transformation(pix[0][0]->obj);
-//	apply_transformation(pix);
-}*/

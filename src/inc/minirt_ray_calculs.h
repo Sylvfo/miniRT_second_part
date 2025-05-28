@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 14:45:33 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:41:15 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@ void	clean_memory_shuttle(t_mem *memory_shuttle);
 
 //01_camera_construction.c
 void	view_camera(t_camera *cam);
-//float	pixel_size(t_camera *cam);
 void	pixel_size(t_scene *scene);
-//void	pixel_size(t_camera *cam);
 void	constructing_camera(t_scene *scene);
 
 //02_viewport_construction.c
@@ -35,34 +33,26 @@ void	init_viewport_x_y(t_pix *pix, t_camera *cam, int x, int y);
 void	init_viewport(t_pix ***pix, t_camera *cam);
 
 //03_m_transformations.c
-//void	apply_transformation_obj(t_pix *pix);
-//void	apply_transformation(t_pix ***pix);
 void	apply_transformation(t_pix *pix,t_obj *obj, t_mem *memory_shuttle);
 void	set_transformation_obj(t_obj *obj);
-//void	set_transformation(t_obj ***obj);
-//void	matrix_transformations(t_pix ***pix);
 void	matrix_transformations(t_obj ***obj);
-void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);
 
-//void	intersect_pix_obj(t_pix *pix);
+//04_intersect_main.c
 void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle);
-//void	main_intersections(t_pix ***pix);
+void 	closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);// A DEPL
+
+
 
 void	intersect_plan(t_pix *pix, int plan_num);
-//void	intersect_sphere(t_pix *pix, int sph_num);
 void	intersect_sphere(t_pix *pix, int sph_num, t_mem *memory_shuttle);
-void	closestt(t_mem *memory_shuttle, t_intertt result, int sph_num);
-
-
 void	cut_cylinder(t_pix *pix, int cyl_n, float t1, float t2);
 bool	check_cap(t_pix *pix, float t, int cyl_n);
 void	intersect_caps(t_pix *pix, int cyl_n);
 void	intersect_cylinder(t_pix *pix, int cyl_n);
 
-//void	save_in_comps(t_pix *pix, int a, int b);
-//void	closest_obj(t_pix *pix);
-//void	find_closest_obj(t_pix ***pix);
-//void	prepare_comps_plan(t_pix *pix);
+//07_closest_obj.c 
+void	closestt(t_mem *memory_shuttle, t_intertt result, int sph_num);
+void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);
 
 //08_prepare_comps.c
 void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle);
@@ -71,8 +61,6 @@ void	normal_at_na(t_mem *mem_shuttle);
 ///void	prepare_computation(t_pix ***pix);
 
 //09_light_shadow_main.c
-//float	light_intensity(t_pix *pix);
-//t_color	new_light(t_mem *memory_shuttle);
 t_color	new_light(t_scene *scene, t_mem *memory_shuttle, t_color color);
 t_color	light_intensity(t_scene *scene, t_mem *memory_shuttle);
 float	light_intensity_old(t_scene *scene, t_mem *memory_shuttle);
@@ -87,10 +75,8 @@ bool	intersect_sphere_shadow(t_obj *sphere, t_mem *memory_shuttle);
 bool	intersect_plan_shadow(t_pix *pix, int pln_num, int lux_num);
 bool	intersect_cylinder_shadow(t_pix *pix, int cyl_num, int lux_num);
 
-//float	compute_pointlight(t_mem *memory_shuttle, t_light *lux);
-t_color	compute_pointlight(t_mem *memory_shuttle, t_light *lux, t_color color);
+//11_light.c
+float	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord);
 float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux);
-//float	compute_pointlight(t_pix *pix, t_light *lux);
-float	compute_specular(t_pix *pix, t_light *lux);
 
 #endif

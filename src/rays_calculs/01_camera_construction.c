@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:51:52 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 15:14:52 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:33:06 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,29 +41,6 @@ void	view_camera(t_camera *cam)
 	matrix_mult_3(cam->m_transf, cam->m_orient, cam->m_transl);
 }
 
-/*
-void	pixel_size(t_scene *scene)
-{
-	float	half_view;
-	float	aspect;
-
-	half_view = tan(scene->cam->fov / 2);
-	aspect = scene->wnd_width / scene->wnd_height;
-	if (aspect >= 1)
-	{
-		scene->cam->half_width = half_view;
-		scene->cam->half_height = half_view / aspect;
-	}
-	else
-	{
-		scene->cam->half_width = half_view * aspect;
-		scene->cam->half_height = half_view;
-	}
-	scene->cam->pixel_size = (scene->cam->half_width * 2) / scene->wnd_width;
-	return ;
-}*/
-
-
 void	pixel_size(t_scene *scene)
 {
 	float	half_view;
@@ -85,33 +62,9 @@ void	pixel_size(t_scene *scene)
 	return ;
 }
 
-
-/*
-void	pixel_size(t_camera *cam)
-{
-	float	half_view;
-	float	aspect;
-
-	half_view = tan(cam->fov / 2);
-	aspect = cam->canva_width / cam->canva_height;
-	if (aspect >= 1)
-	{
-		cam->half_width = half_view;
-		cam->half_height = half_view / aspect;
-	}
-	else
-	{
-		cam->half_width = half_view * aspect;
-		cam->half_height = half_view;
-	}
-	cam->pixel_size = (cam->half_width * 2) / cam->canva_width;
-	return ;
-}*/
-
 void	constructing_camera(t_scene *scene)
 {
 	view_camera(scene->cam);
 	inverse_matrix_44(scene->cam->m_inverse, scene->cam->m_transf);
-	print_matrix_44(scene->cam->m_inverse);
 	pixel_size(scene);
 }

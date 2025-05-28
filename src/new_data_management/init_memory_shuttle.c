@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:27 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 13:49:24 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 10:09:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ void	memory_shuttle_values_null(t_mem *memory_shuttle)
 	memory_shuttle->r_origin_m = NULL;
 	memory_shuttle->r_dir_m = NULL;
 	memory_shuttle->v_sph_camera = NULL;
-	memory_shuttle->t1 = 0.0;
-	memory_shuttle->t2 = 0.0;
+//	memory_shuttle->t1 = 0.0;
+//	memory_shuttle->t2 = 0.0;
 	memory_shuttle->t_count = 0.0;
 	memory_shuttle->closestt = INT_MAX;
 	memory_shuttle->obj_a = NONE;
@@ -72,6 +72,12 @@ bool init_shuttle_values(t_mem *memory_shuttle)
 		return (false);
 	memory_shuttle->r_dir_m = create_vector(0, 0, 0);
 	if (!memory_shuttle->r_dir_m)
+		return (false);
+	memory_shuttle->r_dir_closest_obj = create_vector(0, 0, 0);
+	if (!memory_shuttle->r_dir_closest_obj)
+		return (false);
+	memory_shuttle->r_origin_closest_obj = create_point(0, 0, 0);
+	if (!memory_shuttle->r_origin_closest_obj)
 		return (false);
 	memory_shuttle->v_sph_camera = create_vector(0, 0, 0);
 	if (!memory_shuttle->v_sph_camera)
@@ -132,6 +138,16 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 	{
 		free(memory_shuttle->r_dir_m);
 		memory_shuttle->r_dir_m = NULL;
+	}
+/*	if (memory_shuttle->r_dir_closest_obj)
+	{
+		free(memory_shuttle->r_dir_closest_obj);
+		memory_shuttle->r_dir_closest_obj = NULL;
+	}*/
+	if (memory_shuttle->r_origin_closest_obj)
+	{
+		free(memory_shuttle->r_origin_closest_obj);
+		memory_shuttle->r_origin_closest_obj = NULL;
 	}
 	if (memory_shuttle->v_sph_camera)
 	{

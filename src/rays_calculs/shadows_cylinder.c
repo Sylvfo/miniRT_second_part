@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:46:14 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/25 17:15:05 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:06:22 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static bool	check_shadow_cyl_body_t(float t, t_coord *s_o_local,
 {
 	float	y_intersect;
 
-	if (t > EPSILON && t < max_dist)
+	if (t > EPSILON && t < max_dist)// changer epsilon par 0.001?
 	{
 		y_intersect = s_o_local->y + t * s_d_local->y;
 		if (y_intersect >= -1.0f && y_intersect <= 1.0f)

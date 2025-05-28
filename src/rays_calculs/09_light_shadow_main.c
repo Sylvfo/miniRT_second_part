@@ -6,76 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:44:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/27 16:35:41 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:43:22 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//A REVOIR AVEC NOUVELLE DATA STRUCTURE
-
-
-/*
-// PF c est la nouvelle fonction de couleur que j avais commence et qui retourne des couleurs.  
-// white intensity is 200,200,200
-//t_color	light_intensity(t_scene *scene, t_mem *memory_shuttle)
-{
-	t_color	intensity;
-	t_color	intensity2;
-	int		i;
-	float oldintensity;
-
-	oldintensity = scene->lux[0][0]->ratio;
-
-
-	intensity.r = scene->lux[0][0]->ratio;
-	intensity.g = scene->lux[0][0]->ratio;
-	intensity.b = scene->lux[0][0]->ratio;
-	intensity.rgb = 0.0;
-	i = 0;
-	//toutes les lumieres
-//	prepare_v_light(memory_shuttle, scene->lux[1][0]->p_coord);
-	oldintensity = oldintensity + compute_pointlight_old(memory_shuttle, scene->lux[1][0]);
-//	intensity2 = compute_pointlight(memory_shuttle, scene->lux[1][0], intensity);
-//	intensity.r = intensity.r + intensity2.r;
-//	intensity.g = intensity.g + intensity2.g;
-//	intensity.b = intensity.b + intensity2.b;
-	while (scene->lux[1][i] != NULL)
-	{
-		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord);
-	//	if (intersect_objects_shadow(scene, memory_shuttle, i) == false)
-	//	{
-		//	printf("in shad\n");
-		//	intensity = compute_pointlight(memory_shuttle, scene->lux[1][i], intensity);
-			// ok	intensity = intensity + compute_pointlight(pix, pix->lux[1][i]);
-		//		intensity = intensity + compute_specular(pix, pix->lux[1][i]);
-	//	}
-
-		intensity = compute_pointlight(memory_shuttle, scene->lux[1][i], intensity);
-		i++;
-	}
-//	scalar_mult_color()
-	return (oldintensity);
-//	return (intensity);
-}*/
-
-/*
-t_color	new_light(t_scene *scene, t_mem *memory_shuttle, t_color color)
-{
-	t_color intensity;
-	float old_int;
-
-	old_int = light_intensity_old(scene, memory_shuttle);
-
-	scalar_mult_color(&color, old_int);
-	//INIT INTENSITIY?
-//	intensity = light_intensity(scene, memory_shuttle);
-	//
-//	multipling_color(&color, &intensity);
-	return (color);
-}*/
-
-//PF regarde la dedans. 
+//A REVOIR AVEC RETOUR COULEUR
 float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 {
 	float	intensity;
@@ -86,16 +23,13 @@ float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 	i = 0;
 	while (scene->lux[1][i] != NULL)
 	{
-		//PF regarde la dedans. 
-		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord);
-		//PF regarde la dedans. 
+		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord); 
 		if (intersect_objects_shadow(scene, memory_shuttle, i) == false)
 		{
-			//PF regarde la dedans. 
 			intensity = intensity + compute_pointlight_old(memory_shuttle, scene->lux[1][i]);
 			// PF il faudrait remettre la nouvelle data structure dans cette fonction
 			// il faudrait aussi reflechir a comment 
-			//	intensity = intensity + compute_specular(pix, pix->lux[1][i]);
+			intensity = intensity + compute_specular(memory_shuttle, scene->lux[1][i], scene->cam->p_coord);
 		}
 		i++;
 	}
@@ -130,9 +64,8 @@ void	new_light(t_pix ***pix)
 	}
 }*/
 
-
 /*
-ANCIENNE QUI FONCTIONNAIT
+ANCIENNE QUI FONCTIONNAIT A EFFACER QUAND TOUT FONCTIONNE
 
 //A REVOIR AVEC NOUVELLE DATA STRUCTURE
 /*

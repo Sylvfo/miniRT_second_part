@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 14:54:35 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/27 13:35:52 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 08:08:28 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,6 @@ void	matrix_from_coord(t_coord *p_v_1, float coord[4])
 
 void	print_matrix_44(float *m)
 {
-	int	i;
-
-	i = 0;
 	printf("%.2f - ", m[0]);
 	printf("%.2f \n", m[1]);
 	printf("%.2f - ", m[2]);
