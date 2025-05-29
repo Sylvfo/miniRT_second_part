@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 11:40:12 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:04:39 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,10 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	
 	// PF Construit tout ce qui est commun. 
 	constructing_camera(scene);
-	printf("matrix camera inv \n");
-	print_matrix_44(scene->cam->m_inverse);
 	init_viewport(pix, scene->cam);
+	printf("after viewport \n");
 	matrix_transformations(scene->obj);
-	print_matrix_44(scene->obj[1][0]->m_inv);
-	printf("lux position \n");
-	print_point(scene->lux[1][0]->p_coord);
+	printf("after transformation\n");
 	// PF ensuite fait les calculs pour chaque pixel 
 	x = 0;
 	while (x < WND_WIDTH)
@@ -48,6 +45,7 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	float	intensity;
 
 	// PF je pense que ca marche
+	
 	main_intersections(pix, scene->obj, memory_shuttle);
 	copy_matrix_44(memory_shuttle->obj_inv, scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->m_inv);
 	// PF pour garder en memoire l objet le plus proche de chaque pixel
@@ -61,7 +59,8 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	color.r = scene->obj[pix->obj_a][pix->obj_b]->color->r;
 	color.g = scene->obj[pix->obj_a][pix->obj_b]->color->g;
 	color.b = scene->obj[pix->obj_a][pix->obj_b]->color->b;
-	// PF Je crois que j ai regle le probleme. s
+	// PF Je crois que j ai regle le probleme
+	//printf("obj height %.3f \n", scene->obj[3][0]->height);
 	prepare_computation(pix, scene->obj, memory_shuttle);
 	// PF le but serait que la fonction de lumiere retourne une couleur. Comme ca on pourra l utiliser dans 
 	// la recursivite pour les reflexion et eventuellement la transparence. 
@@ -72,10 +71,9 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	return (color);
 }
 
-
-
 void	clean_memory_shuttle(t_mem *memory_shuttle)
 {
+	//ICI CHANGER LES RAYONS POUR LE NEXT SI RECURSIVITE. 
 	memory_shuttle->closestt = INT_MAX;
 	memory_shuttle->obj_a = 0;
 	memory_shuttle->obj_b = 0;

@@ -47,3 +47,18 @@ boucle pix x y
 init color a zero. 
 
 cph = copenhague. Donc des fonctions que j ai refais a copenhague. on pourra enlever
+
+pas envie de changer les matrices....
+
+init memoire:
+pointeur sur  NULL
+malloc avec check
+return false
+ini valeurs a zero ou pointeurs a null
+ok free si 1 return false?
+
+liberer memoire
+tester si exiter
+free
+pointeur sur null
+etc....

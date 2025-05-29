@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_matrix_rotation_rodrigues.c                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:01:11 by syl               #+#    #+#             */
-/*   Updated: 2025/05/11 17:51:02 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/29 13:46:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,18 @@ void	rotation_from_vector(t_obj *obj)
 		return ;
 	}
 	cross_product_na(obj->v_axe_r, obj->from, obj->v_axe);
+	printf("cross p \n");
+	print_vector(obj->v_axe_r);
+	printf("from \n");
+	print_vector(obj->from);
+	printf("obj->v_axe \n");
+	print_vector(obj->v_axe);
 	dot = dot_product(obj->from, obj->v_axe);
 	dot = fmaxf(-1.0f, fminf(1.0f, dot));
 	angle = acosf(dot);
 	if (fabs(angle) < EPSILON)
 		return ;
+//	print_vector(obj->v_axe_r);
 	normalize_vector_na(obj->v_axe_r);
 	c = cos(angle);
 	s = sin(angle);

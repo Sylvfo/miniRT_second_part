@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 11:41:15 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 15:00:24 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,20 +42,27 @@ void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle);
 void 	closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);// A DEPL
 
 
-
-void	intersect_plan(t_pix *pix, int plan_num);
+void	intersect_plan(t_mem *memory_shuttle, int plan_num);
 void	intersect_sphere(t_pix *pix, int sph_num, t_mem *memory_shuttle);
-void	cut_cylinder(t_pix *pix, int cyl_n, float t1, float t2);
-bool	check_cap(t_pix *pix, float t, int cyl_n);
-void	intersect_caps(t_pix *pix, int cyl_n);
-void	intersect_cylinder(t_pix *pix, int cyl_n);
+//void	cut_cylinder(t_pix *pix, int cyl_n, float t1, float t2);
+//bool	check_cap(t_mem *memory_shuttle, float t);
+//bool	check_cap(t_pix *pix, float t, int cyl_n);
+//void	intersect_caps(t_pix *pix, int cyl_n);
+//void	intersect_cylinder(t_pix *pix, int cyl_n);
 
+//06_intersect_cylinder.c
+void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n);
+void	cut_cylinder(t_mem *memory_shuttle, int cyl_n, float t1, float t2);
+void	intersect_caps(t_mem *memory_shuttle, int cyl_n);
+void	handle_cap(t_mem *memory_shuttle, int cyl_n, float y_pos, int cap_type);
+bool	check_cap(t_mem *memory_shuttle, float t);
 //07_closest_obj.c 
-void	closestt(t_mem *memory_shuttle, t_intertt result, int sph_num);
+void	closestt(t_mem *memory_shuttle, t_intertt result, int obj_type, int obj_num);
 void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);
 
 //08_prepare_comps.c
 void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle);
+void	prepare_comps_plan(t_mem *mem_shuttle, t_obj ***obj);
 //void	normal_caps(t_comps *comps);
 void	normal_at_na(t_mem *mem_shuttle);
 ///void	prepare_computation(t_pix ***pix);

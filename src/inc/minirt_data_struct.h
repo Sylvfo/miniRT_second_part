@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 09:05:26 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 15:24:00 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef struct s_coord
 	float	x;
 	float	y;
 	float	z;
-	int		t; // 0 si c est un vecteur, 1 si c est un point. 
+	int		t; // 0 si c est un vecteur, 1 si c est un point
 }	t_coord;
 
 //couleurs
@@ -46,8 +46,8 @@ typedef struct s_obj
 	float	height;
 	t_coord	*v_axe; 
 	int		type;
-	bool	closed_up; // pour cylindres si fermes ou pas
-	bool	closed_down; // pareil
+//	bool	closed_up; // pour cylindres si fermes ou pas
+//	bool	closed_down; // pareil
 	//
 	float	*m_transl; // matrice de translation
 	float	*m_rot; // matrice rotation
@@ -128,29 +128,24 @@ typedef struct s_intertt
 typedef struct s_mem
 {
 	//ray main
-	//ray 
 	//ray next pour recursivite et ce sera a changer dans clean shuttle. 
 	t_coord		*r_origin_m; //ray modifie par matrice a recalculer pour chaque objet
 	t_coord		*r_dir_m;
-	// tout ca modifie avec calcul intersection
-//	float		t1;// distance de l intersection NECASSAIRE?
-//	float		t2; // distance de l intersection 2 NECESSAIRE?
-	//closest obj
+	// POUR CALCULS INTERSECTIONS
 	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
 	float		closestt;
 	int			obj_a;//copie dans pix
 	int			obj_b;
 	t_coord		*r_dir_closest_obj;
 	t_coord		*r_origin_closest_obj;
-
+	/////////////
 	t_coord		*v_sph_camera;// a supprimer?
 	t_coord		*origin_zero;
-	/////// DEUXIEME PARTIE
-	 // coord (0,0,0) ON PEUT COORS OBJ [0][0] besoin dans intersect sphere
-	t_coord	*object_normal; // in prepare comp. 
+	/////// POUR CALCULS OMBRES / LUMIERES
+	t_coord	*object_normal; // in prepare comp. // a garder?
 	t_coord	*p_touch;// in prepare comp. 
 	t_coord	*v_eye;// in prepare comp. 
-	t_coord	*v_norm_parral;// in prepare comp.
+	t_coord	*v_norm_parral;// in prepare comp. // celle ci utilisee pour la lumiere??
 	float	*transp_inv; // in raytracer. 
 	t_coord	*p_space; // in prepare comps. 
 	float	*obj_inv;
@@ -163,10 +158,7 @@ typedef struct s_mem
 	t_coord	*scalar;
 	t_coord	*view_dir;
 	//bonus
-	t_coord *r_ray_relf_origin;// pas encore utilise
-	t_coord *r_ray_relf_dir;// pas encore utilise
-	t_coord	*r_next_ray_origin;
-	t_coord *r_next_ray_dir;
+	//QQCH SI RECURSIVITE OU NOMBRE RECURSIVITE
 	bool		is_avaible; //or mutex???
 } t_mem;
 
@@ -176,7 +168,7 @@ typedef struct s_pix
 	// elements propres a chaque pixel pour ses calculs. 
 	t_coord		*p_viewport;// a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois
 	t_coord		*p_viewport_world; // a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois
-	t_coord		*r_origin; // RAY! =) renommer ray_pix_origin
+	t_coord		*r_origin; // RAY! =) renommer ray_pix_origin CHANGE???
 	t_coord		*r_dir; // RAY! =) renommer ray_pix_dir
 	t_color		*color; //  =)
 	// a faire une copie apres avoir trouve closest obj

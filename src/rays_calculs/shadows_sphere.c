@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:17 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/28 11:05:48 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 11:38:09 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ static void	calculate_shadow_sphere_coeffs(t_mem *memory_shuttle, t_obj *sphere,
 	coeffs[2] = dot_product(&sphere_to_point, &sphere_to_point)
 		- (sphere->radius * sphere->radius);
 }
-
 
 static bool	check_shadow_sphere_roots(float discriminant, float *coeffs,
 	float max_dist)

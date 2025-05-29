@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:34 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/28 11:06:06 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:22:56 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ bool	intersect_plan_shadow(t_pix *pix, int pln_num, int lux_num)
 	if (t > EPSILON && t < pix->comps->distance_light_p_touch)
 		return (true);
 	return (false);
-}
-*/
+}*/

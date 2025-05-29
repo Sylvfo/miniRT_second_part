@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:01:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 11:35:28 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:44:06 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,39 @@ void	set_transformation_obj(t_obj *obj)
 {
 	translation_matrix_coord(obj);
 	matrix_mult_2(obj->m_transf, obj->m_transl);
+	printf("m_transf 1");
+		print_matrix_44(obj->m_transf);
 	if (obj->type == PLAN || obj->type == CYLINDER)
 	{
 		rotation_from_vector(obj);
 		matrix_mult_2(obj->m_transf, obj->m_rot);
+		printf("m_rot");
+		print_matrix_44(obj->m_rot);
 	}
-	if (obj->type == SPHERE) // || obj->type == CYLINDER)
+	if (obj->type == SPHERE || obj->type == CYLINDER)
 	{
 		scaling_matrix_coord(obj);
 		matrix_mult_2(obj->m_transf, obj->m_scale);
 	}
 	inverse_matrix_44(obj->m_inv, obj->m_transf);
+	printf("obj->m_inv");
+	print_matrix_44(obj->m_inv);
 }
 
-// ok =)
+//PF ici ok avec les boucles d objets??? A verifier
 void	matrix_transformations(t_obj ***obj)
 {
 	int	a;
 	int	b;
-
-	a = 1;
-	while (a < 2) //(obj[a] != NULL)
+	printf("obj height %.3f \n", obj[3][0]->height);
+	a = 0;
+	while (a < 4) //(obj[a] != NULL)
 	{
 		b = 0;
-		while (b < 2)//(obj[a][b] != NULL)
+		while (b < 1)//(obj[a][b] != NULL)
 		{
+			printf("obj num %i, type %i \n", a, obj[a][b]->type);
 			set_transformation_obj(obj[a][b]);
-			//print_matrix_44(obj[a][b]->m_inv);
 			b++;
 		}
 		a++;

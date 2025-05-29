@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:51:07 by syl               #+#    #+#             */
-/*   Updated: 2025/05/14 12:21:35 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 15:22:45 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,14 @@ void	scaling_matrix_coord(t_obj *obj)
 {
 	if (obj->type == CYLINDER)
 	{
+		print_matrix_44(obj->m_scale);
+		printf("obj diam %.2f \n", obj->diam);
+		printf("obj height %.2f \n", obj->height);
 		matrix_fill(obj->m_scale, 0, 0, obj->diam);
 		matrix_fill(obj->m_scale, 1, 1, obj->height);
 		matrix_fill(obj->m_scale, 2, 2, obj->diam);
+		printf("HHHHHHHH\n");
+		print_matrix_44(obj->m_scale);
 	}
 	else
 	{

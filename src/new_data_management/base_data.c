@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 11:46:55 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:49:42 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,13 @@ void	base_data2(t_scene *scene)
 		scene->obj[1][b]->radius = scene->obj[1][b]->diam;// / 2;
 //		scene->obj[1][b]->radius /= 2;
 		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
+		b++;
+	}
+	b = 0;
+	while(b < 1)
+	{
+		scene->obj[3][b]->diam = scene->obj[1][b]->diam / 2;
+		scene->obj[3][b]->radius = scene->obj[1][b]->diam;// / 2;
 		b++;
 	}
 

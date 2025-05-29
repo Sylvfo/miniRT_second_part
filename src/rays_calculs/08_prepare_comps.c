@@ -6,13 +6,12 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 14:00:25 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 10:49:06 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:50:21 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//
 void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 {
 	t_coord	term_for_p_local;
@@ -28,29 +27,13 @@ void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 	p_local_on_surface.y = 0;
 	p_local_on_surface.z = 0;*/
 
-
-//	printf("closestt %.4f \n", mem_shuttle->closestt);//ok
-//	print_vector(mem_shuttle->r_dir_closest_obj);//ok
 	scalar_mult_na(&term_for_p_local, mem_shuttle->r_dir_closest_obj, mem_shuttle->closestt);
 	term_for_p_local.t = 1;
-//	print_point(&term_for_p_local);//ok
+
 	addition_na(&p_local_on_surface, mem_shuttle->r_origin_closest_obj, &term_for_p_local);
-	//LLLLLAAAAAAAAAAAAA
-//	print_point(mem_shuttle->r_origin_closest_obj);//ICI ERREUR!!!!
+
 	matrix_point_multiplication_new(mem_shuttle->p_touch,
 		obj[1][pix->obj_b]->m_transf, &p_local_on_surface);
-
-//	print_point(&term_for_p_local);
-
-//	p_local_on_surface.t = 1;
-
-//	print_point(&p_local_on_surface);
-//	printf("p_touch\n");
-//	print_point(mem_shuttle->p_touch);
-/*	if (pix->obj_b == 0)// 	MATRIX PAREIL OK
-		print_matrix_44(obj[1][pix->obj_b]->m_transf);*/
-
-
 	negat_na(mem_shuttle->v_eye, pix->r_dir); // PIX_R_DIR!!! A REVOIR POUR RECURSIVITE
 	if (pix->obj_a == SPHERE)
 	{
@@ -68,8 +51,72 @@ void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 		if (dot_product(pix->comps->v_norm_parral, pix->comps->v_eye) < 0)
 			negat_na(pix->comps->v_norm_parral, pix->comps->v_norm_parral);
 	}*/
-//	else if (pix->comps->type == PLAN)
-//		prepare_comps_plan(pix);
+	else if (pix->obj_a == PLAN)
+		prepare_comps_plan(mem_shuttle, obj);
+}
+
+void	prepare_comps_plan(t_mem *mem_shuttle,t_obj ***obj)
+{
+	copy_coord(mem_shuttle->v_norm_parral, obj[2][mem_shuttle->obj_b]->v_axe);
+	normalize_vector_na(mem_shuttle->v_norm_parral);
+	if (dot_product(mem_shuttle->v_norm_parral, mem_shuttle->v_eye) < 0)
+		negat_na(mem_shuttle->v_norm_parral, mem_shuttle->v_norm_parral);
+}
+
+void	normal_at_cyl(t_mem *mem_shuttle)
+{
+	t_coord	local_normal_vec;
+
+	matrix_point_multiplication_new(mem_shuttle->p_space, mem_shuttle->obj_inv,
+		mem_shuttle->p_touch);
+	if (mem_shuttle->t_count == 8)
+		vector_fill(&local_normal_vec, 0, -1, 0);
+	else if (mem_shuttle->t_count == 9)
+		vector_fill(&local_normal_vec, 0, 1, 0);
+	else
+	{
+		local_normal_vec.x = mem_shuttle->p_space->x;
+		local_normal_vec.y = 0;
+		local_normal_vec.z = mem_shuttle->p_space->z;
+	}
+	local_normal_vec.t = 0;
+	normalize_vector_na(&local_normal_vec);
+	transpose_matrix(mem_shuttle->transp_inv, mem_shuttle->obj_inv);
+	matrix_point_multiplication_new_2(mem_shuttle->v_norm_parral,
+		mem_shuttle->transp_inv, &local_normal_vec);
+	normalize_vector_na(mem_shuttle->v_norm_parral);
+}
+
+/*//A VOIR APRES
+void	normal_caps(t_comps *comps)
+{
+	float	dist;void	prepare_comps_plan(t_pix *pix)
+{
+	copy_coord(pix->comps->v_norm_parral, pix->comps->obj->v_axe);
+	normalize_vector_na(pix->comps->v_norm_parral);
+	if (dot_product(pix->comps->v_norm_parral, pix->comps->v_eye) < 0)
+		negat_na(pix->comps->v_norm_parral, pix->comps->v_norm_parral);
+}
+
+	dist = (comps->p_space->x * comps->p_space->x)
+		+ (comps->p_space->z * comps->p_space->z);
+	if (dist <= 1 && fabs(comps->p_space->y - comps->height) < EPSILON)
+	{
+		comps->v_norm_parral->x = 0;
+		comps->v_norm_parral->y = 1;
+		comps->v_norm_parral->z = 0;
+		return ;
+	}
+	if (dist <= 1 && fabs(comps->p_space->y + comps->height) < EPSILON)
+	{
+		comps->v_norm_parral->x = 0;
+		comps->v_norm_parral->y = -1;
+		comps->v_norm_parral->z = 0;
+		return ;
+	}
+	comps->v_norm_parral->x = comps->p_space->x;
+	comps->v_norm_parral->y = 0;
+	comps->v_norm_parral->z = comps->p_space->z;
 }
 
 /* A VOIR APRES
@@ -99,7 +146,13 @@ void	normal_at_cyl(t_comps *comps)
 //A VOIR APRES
 void	normal_caps(t_comps *comps)
 {
-	float	dist;
+	float	dist;void	prepare_comps_plan(t_pix *pix)
+{
+	copy_coord(pix->comps->v_norm_parral, pix->comps->obj->v_axe);
+	normalize_vector_na(pix->comps->v_norm_parral);
+	if (dot_product(pix->comps->v_norm_parral, pix->comps->v_eye) < 0)
+		negat_na(pix->comps->v_norm_parral, pix->comps->v_norm_parral);
+}
 
 	dist = (comps->p_space->x * comps->p_space->x)
 		+ (comps->p_space->z * comps->p_space->z);

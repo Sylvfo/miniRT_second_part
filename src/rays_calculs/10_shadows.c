@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 09:20:52 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 08:36:12 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:28:28 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,10 @@ bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle, int lux_num
 		{
 			if (a == SPHERE)
 				in_shadow = intersect_sphere_shadow(scene->obj[a][b], memory_shuttle);
-		//	else if (a == PLAN)
-		//		in_shadow = intersect_plan_shadow(pix, b, lux_num);
-		//	else if (a == CYLINDER)
-		//		in_shadow = intersect_cylinder_shadow(pix, b, lux_num);
+	/*		else if (a == PLAN)
+				in_shadow = intersect_plan_shadow(pix, b, lux_num);
+			else if (a == CYLINDER)
+				in_shadow = intersect_cylinder_shadow(pix, b, lux_num);*/
 			if (in_shadow)
 				return (true);
 			b++;

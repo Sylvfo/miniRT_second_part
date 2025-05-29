@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/26 14:48:04 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:49:36 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,16 @@ int	main(int argc, char **argv)
 	pix = NULL;
 	scene = NULL;
 	memory_shuttle = NULL;
+	// PF ici je fais deja une alloc afin de pouvoir enregistrer
+	// combien il y a de spheres, plans et cylindre lors de 
+	// la premiere lecture
 	scene = init_first_scene_memory();
 	if (!scene)
 		return (1);
+	// PF A faire cette fonction est pour checker si le fichier .rt
+	// est conforme. Pense juste au fait que pour la partie
+	// obligatoire on est sense pouvoir entrer des lumieres sans
+	// couleurs
 /*	if (check_file(scene, argc, argv[1]) == false)
 	{
 		free(scene);
@@ -92,7 +99,13 @@ int	main(int argc, char **argv)
 		scene = NULL;
 		return (1);
 	}*/
+
 	printf("ok check file \n");
+	//PF ici normalement ca devrait marcher...
+	// c est tous les mallocs pour les objets. 
+	// Mais pas tout a ete bien fait. 
+	// Si tu as le temps tu peux mettre de lordre
+	// le seul probleme c est les boucles while sur tous les objets
 	if (init_scene_memory(scene) == false)
 	{
 		free(scene);
@@ -101,10 +114,23 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	printf("scene allocated \n");
+	//PF ici normalement ca devrait marcher...
+	// c est tous les mallocs pour pixels. 
+	// Pareil c est un peu le chaos. Mais je pourrais voir moi plus tard
 	pix = init_memory_main();
 	memory_shuttle = init_memory_shuttle();
+	//PF ici il faut recreer une fonction qui relit le fichier
+	// et qui enregistre dans la structure scene
+	// prevoit deja qu on va surement ajouter d autres objets dans les bonus
+	// et eventuellement d autres petites choses comme la taille de la fenetre
+	// un mode preview, etcc... on verra plus tard. Mais il y aura des petits trucs 
+	// a rajouter
+	pix = init_memory_main();
 	//save datas(scene, argv[1]);
+	//PF no_parsing a effacer une fois que le programme prendra le fichier.rt
 	no_parsing(scene);//pour les testes de Sylvie
+	//PF important! Il y a des donnees a modifier avant de lancer le programme
+	// Je pense il faut pas y toucher pour l instant...
 	base_data2(scene);
 	printf("memory allocated \n");
 	raytracing(pix, scene, memory_shuttle);

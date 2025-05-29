@@ -6,13 +6,107 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:29:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 17:13:02 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 16:28:36 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-// TOUT A MODIFIER AVEC NOUVELLE DATA STRUCTURE
+bool	check_cap(t_mem *memory_shuttle, float t)
+{
+	float	x;
+	float	z;
+
+	x = memory_shuttle->r_origin_m->x + t * memory_shuttle->r_dir_m->x;
+	z = memory_shuttle->r_origin_m->z + t * memory_shuttle->r_dir_m->z;
+	if (x * x + z * z <= 1)
+		return (true);
+	return (false);
+}
+
+void	handle_cap(t_mem *memory_shuttle, int cyl_n, float y_pos, int cap_type)
+{
+	float	t;
+
+	t = (y_pos - memory_shuttle->r_origin_m->y)
+		/ memory_shuttle->r_dir_m->y;
+	if (check_cap(memory_shuttle, t) == true
+		&& t < memory_shuttle->closestt)//&& t < pix->hits[3][cyl_n]->t2)
+	{
+		memory_shuttle->t_count = cap_type;
+		memory_shuttle->closestt = t;
+		memory_shuttle->obj_a = 3;
+		memory_shuttle->obj_b = cyl_n;
+	}
+}
+
+void	intersect_caps(t_mem *memory_shuttle, int cyl_n)
+{
+	if (fabs(memory_shuttle->r_dir_m->y) < 0.0001)
+		return ;
+	handle_cap(memory_shuttle, cyl_n, -1, 8);//up
+	handle_cap(memory_shuttle, cyl_n, 1, 9);//down
+}
+
+void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n)
+{
+	float	a;
+	float	b;
+	float	c;
+	float	discriminant;
+
+	a = memory_shuttle->r_dir_m->x * memory_shuttle->r_dir_m->x
+		+ memory_shuttle->r_dir_m->z * memory_shuttle->r_dir_m->z;
+	if (fabs(a) < EPSILON)
+		return ;
+	b = 2 * memory_shuttle->r_origin_m->x * memory_shuttle->r_dir_m->x
+		+ 2 * memory_shuttle->r_origin_m->z * memory_shuttle->r_dir_m->z;
+	c = memory_shuttle->r_origin_m->x * memory_shuttle->r_origin_m->x
+		+ memory_shuttle->r_origin_m->z * memory_shuttle->r_origin_m->z
+		- 1;
+	discriminant = b * b - 4 * a * c;
+	if (discriminant < 0)
+		return ;
+	
+	memory_shuttle->t_count = 2;
+	cut_cylinder(memory_shuttle, cyl_n, (-b - simple_sqrt(discriminant)) / (2 * a),
+		(-b + simple_sqrt(discriminant)) / (2 * a));
+	intersect_caps(memory_shuttle, cyl_n);
+}
+
+//void	cut_cylinder(t_pix *pix, int cyl_n, float t1, float t2)
+void	cut_cylinder(t_mem *memory_shuttle, int cyl_n, float t1, float t2)
+{
+	float	y1;
+	float	y2;
+	float	tmp;
+	t_intertt result;
+
+	result.t1 = INT_MAX;
+	result.t2 = INT_MAX;
+	result.t_count = 0;
+	if (t1 > t2)
+	{
+		tmp = t1;
+		t1 = t2;
+		t2 = tmp;
+	}
+	y1 = memory_shuttle->r_origin_m->y + t1 * memory_shuttle->r_dir_m->y;
+	if (-1 < y1 && y1 < 1)
+	{
+		result.t1 = t1;
+		result.t_count = 1;
+	}
+	y2 = memory_shuttle->r_origin_m->y + t2 * memory_shuttle->r_dir_m->y;
+	if (-1 < y2 && y2 < 1)
+	{
+		result.t1 = t1;
+		result.t_count++;
+	}
+	closestt(memory_shuttle, result, 3, cyl_n);
+}
+
+// ANCIENNES
 /*
 void	cut_cylinder(t_pix *pix, int cyl_n, float t1, float t2)
 {
