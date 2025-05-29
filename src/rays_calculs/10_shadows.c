@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 09:20:52 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 11:08:25 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 08:36:12 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,11 @@ bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle, int lux_num
 	bool	in_shadow;
 
 	in_shadow = false;
-	a = 0;
-	while (scene->obj[a] != NULL)
+	a = 1;
+	while (a < 2)//  (scene->obj[a] != NULL)
 	{
 		b = 0;
-		while (scene->obj[a][b] != NULL)
+		while (b < 2)//(scene->obj[a][b] != NULL)
 		{
 			if (a == SPHERE)
 				in_shadow = intersect_sphere_shadow(scene->obj[a][b], memory_shuttle);

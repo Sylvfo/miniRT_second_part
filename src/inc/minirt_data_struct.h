@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 10:07:14 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 09:05:26 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,9 @@ typedef struct s_intertt
 //POUR NOUVELLE DATA STRUCT
 typedef struct s_mem
 {
+	//ray main
+	//ray 
+	//ray next pour recursivite et ce sera a changer dans clean shuttle. 
 	t_coord		*r_origin_m; //ray modifie par matrice a recalculer pour chaque objet
 	t_coord		*r_dir_m;
 	// tout ca modifie avec calcul intersection
@@ -173,8 +176,8 @@ typedef struct s_pix
 	// elements propres a chaque pixel pour ses calculs. 
 	t_coord		*p_viewport;// a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois
 	t_coord		*p_viewport_world; // a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois
-	t_coord		*r_origin; // RAY! =)
-	t_coord		*r_dir; // RAY! =)
+	t_coord		*r_origin; // RAY! =) renommer ray_pix_origin
+	t_coord		*r_dir; // RAY! =) renommer ray_pix_dir
 	t_color		*color; //  =)
 	// a faire une copie apres avoir trouve closest obj
 	int			obj_a;//rename type 

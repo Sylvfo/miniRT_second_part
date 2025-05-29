@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 14:07:36 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 09:20:16 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ t_scene *init_first_scene_memory(void)
 	scene->lux = NULL;
 	//A MODIFIER
 	scene->nb_sphere = 2;
-	scene->nb_plan = 1;
+	scene->nb_plan = 2;
 	scene->nb_cylinder = 1;
 	scene->nb_lights = 1;
 	scene->wnd_height = WND_HEIGHT;
@@ -75,6 +75,30 @@ bool init_obj_cph(t_scene *scene)
 		if (!scene->obj[1][b])
 			return (false);
 		if (init_each_obj(scene->obj[1][b]) == false)
+			return (false);
+		b++;
+	}
+	b = 0;
+	scene->obj[2] = NULL;
+	scene->obj[2] = malloc(sizeof(t_obj *) * (scene->nb_plan));
+	while (b < scene->nb_plan)
+	{
+		scene->obj[2][b] = malloc(sizeof(t_obj));
+		if (!scene->obj[2][b])
+			return (false);
+		if (init_each_obj(scene->obj[2][b]) == false)
+			return (false);
+		b++;
+	}
+	b = 0;
+	scene->obj[3] = NULL;
+	scene->obj[3] = malloc(sizeof(t_obj *) * (scene->nb_cylinder));
+	while (b < scene->nb_cylinder)
+	{
+		scene->obj[3][b] = malloc(sizeof(t_obj));
+		if (!scene->obj[3][b])
+			return (false);
+		if (init_each_obj(scene->obj[3][b]) == false)
 			return (false);
 		b++;
 	}
@@ -257,4 +281,26 @@ void free_obj_cph(t_scene *scene)
 	}
 	free(scene->obj[1]);
 	scene->obj[1] = NULL;
+	b = 0;
+	while (b < scene->nb_plan)
+	{
+		free_each_obj(scene->obj[2][b]);
+		//free les coord...
+		free(scene->obj[2][b]);
+		scene->obj[2][b] = NULL;
+		b++;
+	}
+	free(scene->obj[2]);
+	scene->obj[2] = NULL;
+	b = 0;
+	while (b < scene->nb_cylinder)
+	{
+		free_each_obj(scene->obj[3][b]);
+		//free les coord...
+		free(scene->obj[3][b]);
+		scene->obj[3][b] = NULL;
+		b++;
+	}
+	free(scene->obj[3]);
+	scene->obj[3] = NULL;
 }

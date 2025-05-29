@@ -6,13 +6,14 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 11:02:51 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/28 11:46:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 // modifications a faire avec les donnes de base...
+// a faire apres que les donnees ont ete enregistrees. 
 void	base_data2(t_scene *scene)
 {
 	int i;

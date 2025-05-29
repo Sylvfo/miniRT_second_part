@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:27 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 10:09:44 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 09:03:22 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,16 @@ t_mem	*init_memory_shuttle(void)
 	return (mem_shuttle);
 }
 
-
-
-
 void	memory_shuttle_values_null(t_mem *memory_shuttle)
 {
-	//coord
 	memory_shuttle->r_origin_m = NULL;
 	memory_shuttle->r_dir_m = NULL;
 	memory_shuttle->v_sph_camera = NULL;
-//	memory_shuttle->t1 = 0.0;
-//	memory_shuttle->t2 = 0.0;
 	memory_shuttle->t_count = 0.0;
 	memory_shuttle->closestt = INT_MAX;
 	memory_shuttle->obj_a = NONE;
 	memory_shuttle->obj_b = 0;
 	memory_shuttle->origin_zero = NULL;
-///part 2
 	memory_shuttle->object_normal = NULL;
 	memory_shuttle->p_space = NULL;
 	memory_shuttle->p_touch = NULL;
@@ -60,7 +53,6 @@ void	memory_shuttle_values_null(t_mem *memory_shuttle)
 	memory_shuttle->reflect_dir = NULL;
 	memory_shuttle->scalar = NULL;
 	memory_shuttle->view_dir = NULL;
-	//matrix
 	memory_shuttle->obj_inv = NULL;
 	memory_shuttle->transp_inv = NULL;
 }
@@ -139,11 +131,11 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 		free(memory_shuttle->r_dir_m);
 		memory_shuttle->r_dir_m = NULL;
 	}
-/*	if (memory_shuttle->r_dir_closest_obj)
+	if (memory_shuttle->r_dir_closest_obj)
 	{
 		free(memory_shuttle->r_dir_closest_obj);
 		memory_shuttle->r_dir_closest_obj = NULL;
-	}*/
+	}
 	if (memory_shuttle->r_origin_closest_obj)
 	{
 		free(memory_shuttle->r_origin_closest_obj);
@@ -199,7 +191,6 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 		free(memory_shuttle->v_point_to_light);
 		memory_shuttle->v_point_to_light = NULL;
 	}
-
 	if (memory_shuttle->reflect_dir)
 	{
 		free(memory_shuttle->reflect_dir);
@@ -226,50 +217,3 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 		memory_shuttle->transp_inv = NULL;
 	}
 }
-
-
-/*
-typedef struct s_mem
-{
-	t_coord		*r_origin_m; //ray modifie par matrice a recalculer pour chaque objet
-	t_coord		*r_dir_m;
-	
-
-	// tout ca modifie avec calcul intersection
-	// distance et obj type pourrait etre dans pix. 
-	float		t1;// distance de l intersection 
-	float		t2; // distance de l intersection 2
-	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
-	float		closestt;
-	
-	int			obj_a;
-	int			obj_b;
-
-	t_coord		*v_sph_camera;
-
-	/////// DEUXIEME PARTIE
-	t_coord *r_ray_relf_origin;// pas encore utilise
-	t_coord *r_ray_relf_dir;// pas encore utilise
-	t_coord	*r_next_ray_origin;
-	t_coord *r_next_ray_dir;
-	// pour calcul lumiere
-	// A VOIR DANS UN DEUXIEME TEMPS CE QU ON PEUT SIMPLIFIER
-	t_coord	*origin_zero; // coord (0,0,0) ON PEUT COORS OBJ [0][0] besoin dans intersect sphere
-	t_coord	*object_normal; // tout le reste besoin pour les calculs de la lumiere. 
-	float	*transp_inv; 
-	t_coord	*p_space;
-	float	*obj_inv;
-	t_coord	*p_touch;
-	t_coord	*v_eye;
-	t_coord	*v_norm_parral;
-	bool	inside;
-	t_coord	*v_light_to_point;
-	float	distance_light_p_touch;
-	t_coord	*v_sphere_to_point;
-	t_coord	*v_point_to_light;
-	t_coord	*reflect_dir;
-	t_coord	*scalar;
-	t_coord	*view_dir;
-	//bonus
-	bool		is_avaible; //or mutex???
-} t_mem;*/

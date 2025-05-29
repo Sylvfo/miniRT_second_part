@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:44:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 11:43:22 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/29 08:33:45 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 	intensity = 0.0;
 	intensity += scene->lux[0][0]->ratio;
 	i = 0;
-	while (scene->lux[1][i] != NULL)
+	while (i < 1)// (scene->lux[1][i] != NULL)
 	{
 		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord); 
 		if (intersect_objects_shadow(scene, memory_shuttle, i) == false)
