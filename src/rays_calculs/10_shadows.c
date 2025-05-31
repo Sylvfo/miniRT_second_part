@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 09:20:52 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 16:20:22 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 17:56:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle, int lux_num
 
 	in_shadow = false;
 	a = 1;
+	//BOUCLE OBJ
 	while (a < 4)//  (scene->obj[a] != NULL)
 	{
 		b = 0;

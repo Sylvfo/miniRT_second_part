@@ -20,7 +20,6 @@ float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux)
 	int counttest;
 
 	intensity = 0.0f;
-
 	substraction_p_to_v_na(memory_shuttle->v_point_to_light, lux->p_coord,
 		memory_shuttle->p_touch);
 	normalize_vector_na(memory_shuttle->v_point_to_light);

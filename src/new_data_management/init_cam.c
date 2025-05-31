@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:17:48 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 11:59:34 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 18:06:04 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void cam_value_null(t_camera *cam)
 {
 	cam->p_coord = NULL;
 	cam->v_axe = NULL;
-	cam->p_zero = NULL;
+//	cam->p_zero = NULL;
 	cam->v_up = NULL;
 	cam->v_left = NULL;
 	cam->v_true_up = NULL;
@@ -50,9 +50,6 @@ bool init_cam_coord(t_camera *cam)
 		return (false);
 	cam->v_axe = create_vector(0, 0, 0);
 	if (!cam->v_axe)
-		return (false);
-	cam->p_zero = create_point(0, 0, 0);
-	if (!cam->p_zero)
 		return (false);
 	cam->v_up =  create_vector(0, 1, 0);
 	if (!cam->v_up)
@@ -108,11 +105,6 @@ void free_cam_coord(t_camera *cam)
 	{
 		free(cam->v_axe);
 		cam->v_axe = NULL;
-	}
-	if (cam->p_zero)
-	{
-		free(cam->p_zero);
-		cam->p_zero = NULL;
 	}
 	if (cam->v_up)
 	{

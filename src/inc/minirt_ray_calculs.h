@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:25:13 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 21:26:57 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,14 +57,10 @@ void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);
 
 //08_prepare_comps.c
 void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle);
-void	prepare_comps_plan(t_mem *mem_shuttle, t_obj ***obj);
-void	normal_at_na(t_mem *mem_shuttle);
-void	normal_at_cyl(t_mem *mem_shuttle, t_obj ***obj);
+void	normal_sphere(t_mem *mem_shuttle);
+void	normal_cylinder(t_mem *mem_shuttle, t_obj ***obj);
 
 //09_light_shadow_main.c
-t_color	new_light(t_scene *scene, t_mem *memory_shuttle, t_color color);
-t_color	light_intensity(t_scene *scene, t_mem *memory_shuttle);
-float	light_intensity_old(t_scene *scene, t_mem *memory_shuttle);
 float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle);
 
 //10_shadows.c

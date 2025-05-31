@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:08:33 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 20:54:30 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ bool	init_scene_memory(t_scene *scene)
 		return (false);
 	if (init_cam_cph(scene) == false)
 		return (false);
+	scene->ima = NULL;
 	scene->ima = create_image();
 	if (init_obj_cph(scene) == false)
 		return (false);

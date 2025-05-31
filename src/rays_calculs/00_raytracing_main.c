@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 16:48:30 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 21:02:23 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	matrix_transformations(scene->obj);
 	// PF ensuite fait les calculs pour chaque pixel 
 	x = 0;
+	//BOUCLE PIX
 	while (x < WND_WIDTH)
 	{
 		y = 0;
@@ -75,8 +76,8 @@ void	clean_memory_shuttle(t_mem *memory_shuttle)
 	memory_shuttle->obj_b = 0;
 	memory_shuttle->t_count = 0;
 	memory_shuttle->distance_light_p_touch = 0.0;
-	vector_fill(memory_shuttle->object_normal, 0, 0, 0);
-	vector_fill(memory_shuttle->v_eye, 0, 0, 0);
+//	vector_fill(memory_shuttle->object_normal, 0, 0, 0);
+//	vector_fill(memory_shuttle->v_eye, 0, 0, 0);
 	memory_shuttle->p_space->x = 0.0;
 	memory_shuttle->p_space->y = 0.0;
 	memory_shuttle->p_space->z = 0.0;

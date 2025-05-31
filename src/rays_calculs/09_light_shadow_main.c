@@ -6,13 +6,14 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:44:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 16:45:40 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 21:25:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 //A REVOIR AVEC RETOUR COULEUR
+//enter color
 float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 {
 	float	intensity;
@@ -21,6 +22,7 @@ float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 	intensity = 0.0;
 	intensity += scene->lux[0][0]->ratio;
 	i = 0;
+	//BOUCLE LUX
 	while (i < 1)// (scene->lux[1][i] != NULL)
 	{
 		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord); 

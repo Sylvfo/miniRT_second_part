@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:27 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 09:03:22 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 21:07:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	memory_shuttle_values_null(t_mem *memory_shuttle)
 	memory_shuttle->obj_a = NONE;
 	memory_shuttle->obj_b = 0;
 	memory_shuttle->origin_zero = NULL;
-	memory_shuttle->object_normal = NULL;
+	//memory_shuttle->object_normal = NULL;
 	memory_shuttle->p_space = NULL;
 	memory_shuttle->p_touch = NULL;
 	memory_shuttle->p_space = NULL;
-	memory_shuttle->v_eye = NULL;
+//	memory_shuttle->v_eye = NULL;
 	memory_shuttle->v_norm_parral = NULL;
 	memory_shuttle->v_light_to_point = NULL;
-	memory_shuttle->v_sphere_to_point = NULL;
+//	memory_shuttle->v_sphere_to_point = NULL;
 	memory_shuttle->v_point_to_light = NULL; 
 	memory_shuttle->reflect_dir = NULL;
 	memory_shuttle->scalar = NULL;
@@ -77,27 +77,27 @@ bool init_shuttle_values(t_mem *memory_shuttle)
 	memory_shuttle->origin_zero = create_point(0, 0, 0);
 	if (!memory_shuttle->origin_zero)
 		return (false);
-	memory_shuttle->object_normal = create_vector(0, 0, 0);
-	if (!memory_shuttle->object_normal)
-		return (false);
+//	memory_shuttle->object_normal = create_vector(0, 0, 0);
+//	if (!memory_shuttle->object_normal)
+//		return (false);
 	memory_shuttle->p_space = create_point(0, 0, 0);
 	if (!memory_shuttle->p_space)
 		return (false);
 	memory_shuttle->p_touch = create_point(0, 0, 0);
 	if (!memory_shuttle->p_touch)
 		return (false);
-	memory_shuttle->v_eye = create_vector(0, 0, 0);
-	if (!memory_shuttle->v_eye)
-		return (false);
+//	memory_shuttle->v_eye = create_vector(0, 0, 0);
+//	if (!memory_shuttle->v_eye)
+//		return (false);
 	memory_shuttle->v_norm_parral = create_vector(0, 0, 0);
 	if (!memory_shuttle->v_norm_parral)
 		return (false);
 	memory_shuttle->v_light_to_point = create_vector(0, 0, 0);
 	if (!memory_shuttle->v_light_to_point)
 		return (false);
-	memory_shuttle->v_sphere_to_point = create_vector(0, 0, 0);
-	if (!memory_shuttle->v_sphere_to_point)
-		return (false);
+//	memory_shuttle->v_sphere_to_point = create_vector(0, 0, 0);
+//	if (!memory_shuttle->v_sphere_to_point)
+//		return (false);
 	memory_shuttle->v_point_to_light = create_vector(0, 0, 0);
 	if (!memory_shuttle->v_point_to_light)
 		return (false);
@@ -151,11 +151,11 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 		free(memory_shuttle->origin_zero);
 		memory_shuttle->origin_zero = NULL;
 	}
-	if (memory_shuttle->object_normal)
-	{
-		free(memory_shuttle->object_normal);
-		memory_shuttle->object_normal = NULL;
-	}
+//	if (memory_shuttle->object_normal)
+//	{
+//		free(memory_shuttle->object_normal);
+//		memory_shuttle->object_normal = NULL;
+//	}
 	if (memory_shuttle->p_space)
 	{
 		free(memory_shuttle->p_space);
@@ -166,11 +166,11 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 		free(memory_shuttle->p_touch);
 		memory_shuttle->p_touch = NULL;
 	}
-		if (memory_shuttle->v_eye)
-	{
-		free(memory_shuttle->v_eye);
-		memory_shuttle->v_eye = NULL;
-	}
+	//if (memory_shuttle->v_eye)
+	//{
+//		free(memory_shuttle->v_eye);
+//		memory_shuttle->v_eye = NULL;
+//	}
 	if (memory_shuttle->v_norm_parral)
 	{
 		free(memory_shuttle->v_norm_parral);
@@ -181,11 +181,11 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 		free(memory_shuttle->v_light_to_point);
 		memory_shuttle->v_light_to_point = NULL;
 	}
-	if (memory_shuttle->v_sphere_to_point)
-	{
-		free(memory_shuttle->v_sphere_to_point);
-		memory_shuttle->v_sphere_to_point = NULL;
-	}
+//	if (memory_shuttle->v_sphere_to_point)
+//	{
+//		free(memory_shuttle->v_sphere_to_point);
+//		memory_shuttle->v_sphere_to_point = NULL;
+//	}
 	if (memory_shuttle->v_point_to_light)
 	{
 		free(memory_shuttle->v_point_to_light);

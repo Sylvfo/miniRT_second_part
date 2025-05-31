@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:57:11 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 16:41:29 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 20:17:11 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,13 @@
 
 void	init_camera_pix_ray(t_pix *pix, t_camera *cam)
 {
-	matrix_point_multiplication_new(pix->r_origin, cam->m_inverse,
-		cam->p_zero);
+	t_coord p_zero;
+
+	p_zero.x = 0.0;
+	p_zero.y = 0.0;
+	p_zero.z = 0.0;
+	p_zero.t = 1;
+	matrix_point_multiplication_new(pix->r_origin, cam->m_inverse, &p_zero);
 	matrix_point_multiplication_new(pix->p_viewport_world,
 		cam->m_inverse, pix->p_viewport);
 	substraction_p_to_v_na(pix->r_dir, pix->p_viewport_world, pix->r_origin);
@@ -36,6 +41,7 @@ void	init_viewport(t_pix ***pix, t_camera *cam)
 	int	y;
 
 	x = 0;
+	//BOUCLE PIX
 	while (x < WND_WIDTH)
 	{
 		y = 0;
@@ -48,5 +54,3 @@ void	init_viewport(t_pix ***pix, t_camera *cam)
 		x++;
 	}
 }
-
-

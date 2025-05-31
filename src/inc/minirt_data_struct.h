@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 16:32:12 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 21:26:56 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,15 +40,12 @@ typedef struct s_obj
 {
 	t_coord	*p_coord; 
 	t_color	*color;
-	float	difuse; // a voir pour bonus...
-	float	specular; // a boir pour bonus...
+	float	difuse; // a voir pour bonus... mettre en local_
+	float	specular; // a boir pour bonus... mettre en local??
 	float	diam;
 	float	height;
-	t_coord	*v_axe; 
+	t_coord	*v_axe;
 	int		type;
-//	bool	closed_up; // pour cylindres si fermes ou pas
-//	bool	closed_down; // pareil
-	//
 	float	*m_transl; // matrice de translation
 	float	*m_rot; // matrice rotation
 	float	*m_scale; // matrice scaling
@@ -57,23 +54,26 @@ typedef struct s_obj
 	t_coord	*v_axe_r;
 	t_coord	*from;
 	t_coord	*v_sph_camera;
-	float	radius;
+	float	radius; //UTILISER DIAM?
+	//	bool	closed_up; // pour cylindres si fermes ou pas bonus
+//	bool	closed_down; // pareil
 }	t_obj;
 
+//PARFAIT =)
 typedef struct s_light
 {
 	t_coord		*p_coord;
 	float		ratio;
-	t_color		*color; // a initialiser a blanc pour la partie obligatoire. Revoir ce calcul pour les lumieres colorees. 
+	t_color		*color;
 }	t_light;
 
-// A garder
+//PARFAIT =)
+// Pourrait etre simplifie mais c est complique pour pas grand chose. Et problemes de norme. 
 typedef struct s_camera
 {
 	t_coord		*p_coord;
 	t_coord		*v_axe;
 	float		fov;
-	t_coord		*p_zero; // vraiment utile??
 	t_coord		*v_up; // vecteurs pour calculer l orientation de la cam
 	t_coord		*v_left; // vecteurs pour calculer l orientation de la cam
 	t_coord		*v_true_up; // vecteurs pour calculer l orientation de la cam
@@ -86,7 +86,7 @@ typedef struct s_camera
 	float		pixel_size; //taille des pixels pour calculer les points sur le viewport et les rays
 }	t_camera;
 
-// la structure a ete deplacee au dernier moment par le mate. Je sais pas ce qui est utilise mnt...
+// QU EST CE QUI EST VRAIMENT UTILISE?
 typedef struct s_image
 {
 	void	*img;
@@ -98,7 +98,7 @@ typedef struct s_image
 	void	*mlx_win;
 }	t_image;
 
-//POUR NOUVELLE DATA STRUCT
+//PARFAIT =)
 typedef struct s_scene
 {
 	int		nb_sphere;
@@ -107,12 +107,11 @@ typedef struct s_scene
 	int		nb_lights;
 	int		wnd_height;
 	int		wnd_width;
-	t_camera	*cam; // camera ok
-	t_image		*ima; // 
-	t_obj		***obj; // tous les objets. allocation et free fonctionne. 
+	t_camera	*cam;
+	t_image		*ima;
+	t_obj		***obj;
 	t_light		***lux;
 	bool	bonus_mode;
-//	int background_color;
 } t_scene;
 
 //Nouvelle data structure
@@ -133,29 +132,26 @@ typedef struct s_mem
 	t_coord		*r_dir_m;
 	// POUR CALCULS INTERSECTIONS
 	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
-	float		closestt;
-	int			obj_a;//copie dans pix
-	int			obj_b;
-	t_coord		*r_dir_closest_obj;
-	t_coord		*r_origin_closest_obj;
+	float		closestt;//IMPORTANT
+	int			obj_a;//IMPORTANT
+	int			obj_b;// IMPORTANT
+	t_coord		*r_dir_closest_obj; //IMPORTANT
+	t_coord		*r_origin_closest_obj; //IMPORTANT
 	/////////////
-	t_coord		*v_sph_camera;// a supprimer?
-	t_coord		*origin_zero;
+	t_coord		*v_sph_camera;// a supprimer? a cause norminette
+	t_coord		*origin_zero;//a supprimer? a cause norminette
 	/////// POUR CALCULS OMBRES / LUMIERES
-	t_coord	*object_normal; // in prepare comp. // a garder?
-	t_coord	*p_touch;// in prepare comp. 
-	t_coord	*v_eye;// in prepare comp. 
-	t_coord	*v_norm_parral;// in prepare comp. // celle ci utilisee pour la lumiere??
-	float	*transp_inv; // in raytracer. 
-	t_coord	*p_space; // in prepare comps. 
-	float	*obj_inv;
-	t_coord	*v_light_to_point;
-	float	distance_light_p_touch;
-	t_coord	*v_sphere_to_point;
+	t_coord	*p_touch;// IMPORTANT
+	t_coord	*v_norm_parral;// IMPORTANT
+	float	*transp_inv; // local mais difficile a faire en local
+	t_coord	*p_space; // LOCAL
+	float	*obj_inv; //MODIFIER??
+	t_coord	*v_light_to_point; //IMPORTANT
+	float	distance_light_p_touch; //IMPORTANT
 	t_coord	*v_point_to_light; // reuse for ray reflexion??
-	t_coord	*reflect_dir;
-	t_coord	*scalar;
-	t_coord	*view_dir;
+	t_coord	*reflect_dir;//LOCAL
+	t_coord	*scalar; //LOCAL mais un peu complique a changer
+	t_coord	*view_dir;//LOCAL
 	//bonus
 	//QQCH SI RECURSIVITE OU NOMBRE RECURSIVITE
 	bool		is_avaible; //or mutex???
@@ -165,16 +161,14 @@ typedef struct s_mem
 typedef struct s_pix
 {
 	// elements propres a chaque pixel pour ses calculs. 
-	t_coord		*p_viewport;// a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois
-	t_coord		*p_viewport_world; // a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois
+	t_coord		*p_viewport;// a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois On peut retirer... mais est ce que ce sera plus rapide?
+	t_coord		*p_viewport_world; // a voir plus tard pour simplifier pour calculer le ray. utilise 1 fois On peut retirer... mais est ce que ce sera plus rapide?
 	t_coord		*r_origin; // RAY! =) renommer ray_pix_origin CHANGE???
 	t_coord		*r_dir; // RAY! =) renommer ray_pix_dir
 	t_color		*color; //  =)
-	// a faire une copie apres avoir trouve closest obj
 	int			obj_a;//rename type 
 	int			obj_b;//rename obj num
 	//avaible or done for threads....
 }	t_pix;
-
 
 #endif

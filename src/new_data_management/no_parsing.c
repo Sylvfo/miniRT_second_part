@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:12:48 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:13:58 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 21:26:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	no_parsing(t_scene *scene)
 	scene->cam->v_axe->z = -1;
 	scene->cam->fov = 90;
 
-	scene->obj[1][0]->p_coord->x = 0.0;
+	scene->obj[1][0]->p_coord->x = -1.0;
 	scene->obj[1][0]->p_coord->y = 0.0;
 	scene->obj[1][0]->p_coord->z = 0.0;
 	scene->obj[1][0]->diam = 2.0;
@@ -74,7 +74,7 @@ void	no_parsing(t_scene *scene)
 
 
 	scene->obj[3][0]->p_coord->x = -4.5;
-	scene->obj[3][0]->p_coord->y = 2.5;
+	scene->obj[3][0]->p_coord->y = -4.5;
 	scene->obj[3][0]->p_coord->z = 0;
 	/*
 		scene->obj[3][0]->v_axe->x = -0.2;
@@ -85,9 +85,13 @@ void	no_parsing(t_scene *scene)
 	scene->obj[3][0]->v_axe->x = 0.5;
 	scene->obj[3][0]->v_axe->y = 0.8660;
 	scene->obj[3][0]->v_axe->z = 0;*/
-	scene->obj[3][0]->v_axe->x = -0.2;
+/*	scene->obj[3][0]->v_axe->x = -0.2;
 	scene->obj[3][0]->v_axe->y = -0.3;
-	scene->obj[3][0]->v_axe->z = -1;
+	scene->obj[3][0]->v_axe->z = -1;*/
+	
+	scene->obj[3][0]->v_axe->x = 0;
+	scene->obj[3][0]->v_axe->y = 1;
+	scene->obj[3][0]->v_axe->z = 0;
 	scene->obj[3][0]->height = 5;
 	scene->obj[3][0]->diam = 3;
 	scene->obj[3][0]->color->r = 0.78;

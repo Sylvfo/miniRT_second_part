@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:29:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 16:42:17 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 20:45:21 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ t_intertt	intersect_caps(t_mem *memory_shuttle, t_intertt result, int cyl_n)
 
 	if (fabs(memory_shuttle->r_dir_m->y) < 1.17549435e-38f)
 		return (result);
+	// ici voir si les cylindres sont fermes dans les bonus....
 	result = handle_cap(memory_shuttle, result, cyl_n, -1, 8);
 	result = handle_cap(memory_shuttle, result, cyl_n, 1, 9);
 	return (result);
