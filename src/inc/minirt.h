@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/29 13:57:45 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 15:54:05 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ enum e_obj_type
 	CYLINDER,
 };
 
+/*
 // pas utisie
 enum e_axes
 {
@@ -59,7 +60,7 @@ enum e_axes
 	axe_z,
 	left_h,
 	right_h,
-};
+};*/
 
 int		main(int argc, char **argv);
 //void	error_exit(const char *msg, t_program_context *context);

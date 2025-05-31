@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/11 10:48:36 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 15:58:34 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 13:50:54 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	closestt(t_mem *memory_shuttle, t_intertt result, int obj_type, int obj_num
 		memory_shuttle->closestt = result.t1;
 		memory_shuttle->obj_a = obj_type;
 		memory_shuttle->obj_b = obj_num;
-		memory_shuttle->t_count = 2;//??
+		memory_shuttle->t_count = result.t_count;
 		copy_coord(memory_shuttle->r_dir_closest_obj, memory_shuttle->r_dir_m);
 		copy_coord(memory_shuttle->r_origin_closest_obj, memory_shuttle->r_origin_m);
 	}
@@ -29,7 +29,7 @@ void	closestt(t_mem *memory_shuttle, t_intertt result, int obj_type, int obj_num
 		memory_shuttle->closestt = result.t2;
 		memory_shuttle->obj_a = obj_type;
 		memory_shuttle->obj_b = obj_num;
-		memory_shuttle->t_count = 2;//??
+		memory_shuttle->t_count = result.t_count;
 		copy_coord(memory_shuttle->r_dir_closest_obj, memory_shuttle->r_dir_m);
 		copy_coord(memory_shuttle->r_origin_closest_obj, memory_shuttle->r_origin_m);
 	}

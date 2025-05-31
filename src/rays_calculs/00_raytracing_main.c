@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 16:04:39 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 14:02:56 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	float	intensity;
 
 	// PF je pense que ca marche
-	
+	intensity = 1.0;
 	main_intersections(pix, scene->obj, memory_shuttle);
 	copy_matrix_44(memory_shuttle->obj_inv, scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->m_inv);
 	// PF pour garder en memoire l objet le plus proche de chaque pixel
@@ -62,7 +62,7 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	// PF Je crois que j ai regle le probleme
 	//printf("obj height %.3f \n", scene->obj[3][0]->height);
 	prepare_computation(pix, scene->obj, memory_shuttle);
-	// PF le but serait que la fonction de lumiere retourne une couleur. Comme ca on pourra l utiliser dans 
+//	// PF le but serait que la fonction de lumiere retourne une couleur. Comme ca on pourra l utiliser dans 
 	// la recursivite pour les reflexion et eventuellement la transparence. 
 	// mais on avait fait une fonction de lumiere qui retourne juste un float d intensite. 
 	intensity = light_intensity_cph(scene, memory_shuttle);

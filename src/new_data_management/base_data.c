@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 16:49:42 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 10:23:50 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,19 +56,26 @@ void	base_data2(t_scene *scene)
 
 	a = 1;
 	b = 0;
+	// SPHERES
 	while(b < 2)
 	{
 		scene->obj[1][b]->diam = scene->obj[1][b]->diam / 2;
-		scene->obj[1][b]->radius = scene->obj[1][b]->diam;// / 2;
+		scene->obj[1][b]->radius = scene->obj[1][b]->diam / 2;
+		scene->obj[1][b]->difuse = 0.7;
+		scene->obj[1][b]->specular = 0.2;
 //		scene->obj[1][b]->radius /= 2;
 		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
 		b++;
 	}
+	// CYL
 	b = 0;
 	while(b < 1)
 	{
-		scene->obj[3][b]->diam = scene->obj[1][b]->diam / 2;
-		scene->obj[3][b]->radius = scene->obj[1][b]->diam;// / 2;
+		scene->obj[3][b]->diam = scene->obj[3][b]->diam / 2;
+		scene->obj[3][b]->radius = scene->obj[3][b]->diam / 2;
+		scene->obj[3][b]->height = scene->obj[3][b]->height / 2;
+		scene->obj[3][b]->difuse = 0.7;
+		scene->obj[3][b]->specular = 0.2;
 		b++;
 	}
 

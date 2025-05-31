@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 15:00:24 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 13:54:42 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,12 @@ void	intersect_sphere(t_pix *pix, int sph_num, t_mem *memory_shuttle);
 
 //06_intersect_cylinder.c
 void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n);
-void	cut_cylinder(t_mem *memory_shuttle, int cyl_n, float t1, float t2);
-void	intersect_caps(t_mem *memory_shuttle, int cyl_n);
-void	handle_cap(t_mem *memory_shuttle, int cyl_n, float y_pos, int cap_type);
+t_intertt	cut_cylinder(t_mem *memory_shuttle, int cyl_n, float t1, float t2);
+//void	cut_cylinder(t_mem *memory_shuttle, int cyl_n, float t1, float t2);
+t_intertt	intersect_caps(t_mem *memory_shuttle, t_intertt result, int cyl_n);
+//void	handle_cap(t_mem *memory_shuttle, int cyl_n, float y_pos, int cap_type);
 bool	check_cap(t_mem *memory_shuttle, float t);
+t_intertt	handle_cap(t_mem *memory_shuttle, t_intertt result, int cyl_n, float y_pos, int cap_type);
 //07_closest_obj.c 
 void	closestt(t_mem *memory_shuttle, t_intertt result, int obj_type, int obj_num);
 void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);
@@ -66,6 +68,7 @@ void	prepare_comps_plan(t_mem *mem_shuttle, t_obj ***obj);
 //void	normal_caps(t_comps *comps);
 void	normal_at_na(t_mem *mem_shuttle);
 ///void	prepare_computation(t_pix ***pix);
+void	normal_at_cyl(t_mem *mem_shuttle, t_obj ***obj);
 
 //09_light_shadow_main.c
 t_color	new_light(t_scene *scene, t_mem *memory_shuttle, t_color color);
