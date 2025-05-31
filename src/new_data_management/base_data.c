@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 10:23:50 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:40:25 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	base_data2(t_scene *scene)
 	}
 	if (scene->bonus_mode == true)
 	{
-		while (i < scene->nb_lights)
+		while (i < scene->nb_lights)// mettres les lum a 1
 		{
 			if (scene->lux[1][i]->color->r != 0.0)
 				scene->lux[1][i]->color->r /= 255.0;
@@ -62,7 +62,15 @@ void	base_data2(t_scene *scene)
 		scene->obj[1][b]->diam = scene->obj[1][b]->diam / 2;
 		scene->obj[1][b]->radius = scene->obj[1][b]->diam / 2;
 		scene->obj[1][b]->difuse = 0.7;
-		scene->obj[1][b]->specular = 0.2;
+		scene->obj[1][b]->specular = 0.8;
+//		scene->obj[1][b]->radius /= 2;
+		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
+		b++;
+	}
+	while(b < 2)
+	{
+		scene->obj[2][b]->difuse = 0.9;
+		scene->obj[2][b]->specular = 0.9;
 //		scene->obj[1][b]->radius /= 2;
 		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
 		b++;
@@ -74,22 +82,8 @@ void	base_data2(t_scene *scene)
 		scene->obj[3][b]->diam = scene->obj[3][b]->diam / 2;
 		scene->obj[3][b]->radius = scene->obj[3][b]->diam / 2;
 		scene->obj[3][b]->height = scene->obj[3][b]->height / 2;
-		scene->obj[3][b]->difuse = 0.7;
-		scene->obj[3][b]->specular = 0.2;
+		scene->obj[3][b]->difuse = 0.9;
+		scene->obj[3][b]->specular = 0.9;
 		b++;
 	}
-
-/*	while (b < )// a modifier
-	{
-		while(b < scene->nb_sphere)
-		{
-			scene->obj[a][b]->diam = scene->obj[a][b]->diam / 2;
-			scene->obj[a][b]->radius = scene->obj[a][b]->diam ;
-			b++;
-		}
-		a++;
-	}*/
-	
-	
- 	//DIAM ETC...
 }

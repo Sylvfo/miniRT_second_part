@@ -6,13 +6,12 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:29:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 15:54:16 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:42:17 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//ok
 bool	check_cap(t_mem *memory_shuttle, float t)
 {
 	float	x;
@@ -87,7 +86,6 @@ void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n)
 	closestt(memory_shuttle, result, 3, cyl_n);
 }
 
-//void	cut_cylinder(t_pix *pix, int cyl_n, float t1, float t2)
 t_intertt	cut_cylinder(t_mem *memory_shuttle, int cyl_n, float t1, float t2)
 {
 	float	y1;

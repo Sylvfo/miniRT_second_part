@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 15:24:00 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:32:12 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ typedef struct s_mem
 	float	*transp_inv; // in raytracer. 
 	t_coord	*p_space; // in prepare comps. 
 	float	*obj_inv;
-//	bool	inside;
 	t_coord	*v_light_to_point;
 	float	distance_light_p_touch;
 	t_coord	*v_sphere_to_point;

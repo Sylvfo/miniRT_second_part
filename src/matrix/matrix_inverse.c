@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/09 09:54:40 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 10:42:40 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:49:20 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ void	inverse_matrix_44(float *m_inverted, float *m_matrix)
 		printf("matrix not invertible \n");
 		return ;
 	}
-	printf("u\n");
 	transpose_matrix(m_transpose, minor_matrix);
 	while (i < 18)
 	{

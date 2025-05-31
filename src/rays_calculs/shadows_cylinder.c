@@ -6,13 +6,12 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:46:14 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/28 11:06:22 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:20:21 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-//A REVOIR AVEC NOUVELLE DATA STRUCTURE
-/*
+
 static bool	check_shadow_cyl_body_t(float t, t_coord *s_o_local,
 	t_coord *s_d_local, float max_dist)
 {
@@ -78,45 +77,41 @@ static bool	intersect_cyl_caps_shadow_calc(t_coord *s_o_l, t_coord *s_d_l,
 
 	if (fabs(s_d_l->y) < EPSILON)
 		return (false);
-	if (cyl->closed_down)
-	{
-		t = (-1.0f - s_o_l->y) / s_d_l->y;
-		if (check_shadow_cyl_cap_t(t, s_o_l, s_d_l, max_d))
-			return (true);
-	}
-	if (cyl->closed_up)
-	{
-		t = (1.0f - s_o_l->y) / s_d_l->y;
-		if (check_shadow_cyl_cap_t(t, s_o_l, s_d_l, max_d))
-			return (true);
-	}
+//	if (cyl->closed_down)
+//	{
+	t = (-1.0f - s_o_l->y) / s_d_l->y;
+	if (check_shadow_cyl_cap_t(t, s_o_l, s_d_l, max_d))
+		return (true);
+//	}
+//	if (cyl->closed_up)
+//	{
+	t = (1.0f - s_o_l->y) / s_d_l->y;
+	if (check_shadow_cyl_cap_t(t, s_o_l, s_d_l, max_d))
+		return (true);
+//	}
 	return (false);
 }
 
-bool	intersect_cylinder_shadow(t_pix *pix, int cyl_num, int lux_num)
+bool	intersect_cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder)
 {
-	t_obj	*cylinder;
 	t_coord	s_o_world;
 	t_coord	s_o_local;
 	t_coord	s_d_local;
 	t_coord	temp_s_d_transform;
 
-	(void)lux_num;
-	cylinder = pix->obj[CYLINDER][cyl_num];
-	scalar_mult_na(&s_o_world, pix->comps->v_norm_parral, EPSILON * 10.0f);
-	addition_na(&s_o_world, pix->comps->p_touch, &s_o_world);
+	scalar_mult_na(&s_o_world, memory_shuttle->v_norm_parral, EPSILON * 10.0f);
+	addition_na(&s_o_world, memory_shuttle->p_touch, &s_o_world);
 	matrix_point_multiplication_new(&s_o_local, cylinder->m_inv, &s_o_world);
-	copy_coord(&temp_s_d_transform, pix->comps->v_light_to_point);
+	copy_coord(&temp_s_d_transform, memory_shuttle->v_light_to_point);
 	temp_s_d_transform.t = 0;
 	matrix_point_multiplication_new(&s_d_local, cylinder->m_inv,
 		&temp_s_d_transform);
 	normalize_vector_na(&s_d_local);
 	if (intersect_cyl_body_shadow_calc(&s_o_local, &s_d_local,
-			pix->comps->distance_light_p_touch, cylinder))
+			memory_shuttle->distance_light_p_touch, cylinder))
 		return (true);
 	if (intersect_cyl_caps_shadow_calc(&s_o_local, &s_d_local,
-			pix->comps->distance_light_p_touch, cylinder))
+			memory_shuttle->distance_light_p_touch, cylinder))
 		return (true);
 	return (false);
 }
-*/

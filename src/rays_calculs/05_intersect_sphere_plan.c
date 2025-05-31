@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:04:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 14:35:33 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:32:47 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,8 @@ void	intersect_plan(t_mem *memory_shuttle, int plan_num)
 	t_intertt result;
 
 	if (fabs(memory_shuttle->r_dir_m->y) < EPSILON)
-	{
 		return ;
-	}
 	result.t1 = -(memory_shuttle->r_origin_m->y / memory_shuttle->r_dir_m->y);
-//	printf("closest t in plan %.3f \n", result.t1);
-//	print_point(memory_shuttle->r_origin_m);
-//	print_vector(memory_shuttle->r_dir_m);
 	result.t2 = INT_MAX;
 	result.t_count = 1;
 	closestt(memory_shuttle, result, PLAN, plan_num);
@@ -53,57 +48,6 @@ void	intersect_sphere(t_pix *pix, int sph_num, t_mem *memory_shuttle)
 	result.t1 = (-b - sqrt(discriminant)) / (2 * a);
 	result.t2 = (-b + sqrt(discriminant)) / (2 * a);
 	result.t_count = 2;
-	//result.closestt = 0.0;
 	closestt(memory_shuttle, result, SPHERE, sph_num);
 	return ;
 }
-
-/*
-	A REFAIRE ORIGINALE A EFFACER
-void	intersect_plan(t_pix *pix, int plan_num)
-{
-	if (fabs(pix->hits[2][plan_num]->r_dir->y) < EPSILON)
-	{
-		pix->hits[2][plan_num]->t_count = 0;
-		pix->hits[2][plan_num]->t1 = INT_MAX;
-		pix->hits[2][plan_num]->t2 = INT_MAX;
-		pix->hits[2][plan_num]->type = PLAN;
-		return ;
-	}
-	pix->hits[2][plan_num]->t1 = -(pix->hits[2][plan_num]->r_origin->y
-			/ pix->hits[2][plan_num]->r_dir->y);
-	pix->hits[2][plan_num]->t2 = INT_MAX;
-	pix->hits[2][plan_num]->t_count = 1;
-	pix->hits[2][plan_num]->type = PLAN;
-}*/
-
-/*
-	ORIGINALE A EFFACER
-void	intersect_sphere(t_pix *pix, int sph_num)
-{
-	float	discriminant;
-	float	a;
-	float	b;
-	float	c;
-
-	substraction_p_to_v_na(pix->obj[1][sph_num]->v_sph_camera,
-		pix->hits[1][sph_num]->r_origin, pix->cam->p_zero);
-	a = dot_product(pix->hits[1][sph_num]->r_dir, pix->hits[1][sph_num]->r_dir);
-	b = 2 * dot_product(pix->hits[1][sph_num]->r_dir,
-			pix->obj[1][sph_num]->v_sph_camera);
-	c = dot_product(pix->obj[1][sph_num]->v_sph_camera,
-			pix->obj[1][sph_num]->v_sph_camera) - 1;
-	discriminant = (b * b) - (4 * a * c);
-	if (discriminant < 1e-6)
-	{
-		pix->hits[1][sph_num]->t_count = 0;
-		pix->hits[1][sph_num]->t1 = INT_MAX;
-		pix->hits[1][sph_num]->t2 = INT_MAX;
-		return ;
-	}
-	pix->hits[1][sph_num]->t_count = 2;
-	pix->hits[1][sph_num]->t1 = (-b - sqrt(discriminant)) / (2 * a);
-	pix->hits[1][sph_num]->t2 = (-b + sqrt(discriminant)) / (2 * a);
-	pix->hits[1][sph_num]->type = SPHERE;
-	return ;
-}*/

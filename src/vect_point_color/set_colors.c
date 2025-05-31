@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 10:50:21 by syl               #+#    #+#             */
-/*   Updated: 2025/05/08 10:56:48 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 17:05:41 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ t_color	*create_color(int r, int g, int b)
 	c_newcolor = malloc(sizeof(t_color));
 	if (!c_newcolor)
 		return (NULL);
-	c_newcolor->r = int_to_float(r);
-	c_newcolor->g = int_to_float(g);
-	c_newcolor->b = int_to_float(b);
+	c_newcolor->r = r;
+	c_newcolor->g = g;
+	c_newcolor->b = b;
 	c_newcolor->rgb = 0;
 	return (c_newcolor);
 }

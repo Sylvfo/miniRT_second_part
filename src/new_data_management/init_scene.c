@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 16:31:29 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 17:08:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,13 +130,12 @@ bool init_each_obj(t_obj *obj)
 {
 	if (!obj)
 		return (obj);
-
 	init_each_obj_null(obj);
 	if (init_each_obj_coord(obj) == false)
 		return (false);
 	if (init_each_obj_matrix(obj) == false)
 		return (false);
-	obj->color = malloc(sizeof(t_color));
+	obj->color = create_color(0.0, 0.0, 0.0);
 	if (!obj->color)
 		return (false);
 	obj->color->r = 0.0;
@@ -144,6 +143,7 @@ bool init_each_obj(t_obj *obj)
 	obj->color->b = 0.0;
 	obj->color->rgb = 0;
 	obj->type = NONE;
+	//obj->difuse = 
 	return (true);
 }
 

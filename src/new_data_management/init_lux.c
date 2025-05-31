@@ -25,7 +25,7 @@ bool init_lux_cph(t_scene *scene)
 	scene->lux[0][0] = malloc(sizeof(t_light));
 	if (!scene->lux[0][0])
 		return (false);
-	scene->lux[0][0]->color = malloc(sizeof(t_color));
+	scene->lux[0][0]->color = create_color(0.0, 0.0, 0.0);
 	if (!scene->lux[0][0]->color)
 		return (false);
 	scene->lux[0][1] = NULL;
@@ -66,7 +66,6 @@ void free_each_lux(t_light *lux)
 	}
 }
 
-//ok
 bool init_each_lux(t_light *lux)
 {
 	if (!lux)
@@ -76,13 +75,12 @@ bool init_each_lux(t_light *lux)
 	lux->p_coord = create_point(0, 0, 0);
 	if (!lux->p_coord)
 		return (false);
-	lux->color = malloc(sizeof(t_color));
+	lux->color = create_color(1.0, 1.0, 1.0);
 	if (!lux->color)
 		return (false);
 	return (true);
 }
 
-// ok
 void	init_each_lux_null(t_light *lux)
 {
 	lux->p_coord = NULL;

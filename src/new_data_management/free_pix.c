@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 09:30:45 by syl               #+#    #+#             */
-/*   Updated: 2025/05/25 20:44:20 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 17:12:03 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//fait pas chat gpt... je sais pas si ca fonctionne bien,.
 void	*free_partial_pix(t_pix ***pix, int height, int width)
 {
 	int	i;

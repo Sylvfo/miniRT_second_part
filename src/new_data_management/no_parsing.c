@@ -6,13 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:12:48 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 16:02:15 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 17:13:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//A EFFACER
+//A EFFACER un fois qu on aura les donnees des fichiers .rt
 //POUR TESTS SYLVIE
 void	no_parsing(t_scene *scene)
 {
@@ -61,9 +61,9 @@ void	no_parsing(t_scene *scene)
 	scene->lux[1][0]->p_coord->y = 8;
 	scene->lux[1][0]->p_coord->z = 6;
 	
-	scene->obj[2][0]->p_coord->x = -4;
-	scene->obj[2][0]->p_coord->y = -2;
-	scene->obj[2][0]->p_coord->z = -4;
+	scene->obj[2][0]->p_coord->x = 0;
+	scene->obj[2][0]->p_coord->y = -5;
+	scene->obj[2][0]->p_coord->z = 0;
 	scene->obj[2][0]->v_axe->x = 0;
 	scene->obj[2][0]->v_axe->y = 1;
 	scene->obj[2][0]->v_axe->z = 0;

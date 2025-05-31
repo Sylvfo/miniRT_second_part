@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/31 15:54:05 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 17:14:13 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@
 # include "minirt_window.h"
 # include "new_memory.h"
 
-# define WND_WIDTH 1000
+# define WND_WIDTH 1200
 # define WND_HEIGHT 1000
 
 # define BAKGROUND_COLOR 711850
 # define EPSILON 0.00001
 # define PI 3.1415926535
 # define PIRAD 0.017453
-# define SHININESS 80.0
+# define SHININESS 100.0
 
 enum e_obj_type
 {
@@ -50,17 +50,6 @@ enum e_obj_type
 	PLAN,
 	CYLINDER,
 };
-
-/*
-// pas utisie
-enum e_axes
-{
-	axe_x,
-	axe_y,
-	axe_z,
-	left_h,
-	right_h,
-};*/
 
 int		main(int argc, char **argv);
 //void	error_exit(const char *msg, t_program_context *context);

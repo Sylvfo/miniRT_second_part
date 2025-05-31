@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:00:12 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 16:42:42 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:52:30 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,10 @@ void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle)
 	int b;
 	
 	a = 1;
-//	apply_transformation(pix, obj[1][0], memory_shuttle);
-//	intersect_sphere(pix, b, memory_shuttle);
-
-//	apply_transformation(pix, obj[2][0], memory_shuttle);
-//	intersect_plan(memory_shuttle, b);
-
-//	apply_transformation(pix, obj[3][0], memory_shuttle);
-//	intersect_sphere(pix, b, memory_shuttle);
-
 	while (a < 4)// A CHANGER AVEC NOUVEAU OBJETS. 
 	{
 		b = 0;
-		while (obj[a][b] != NULL) //PF ici bien s assurer que ca fonctionne avec le bon nombre d objets
+		while (b < 1) //obj[a][b] != NULL) //PF ici bien s assurer que ca fonctionne avec le bon nombre d objets
 		{
 			apply_transformation(pix, obj[a][b], memory_shuttle);
 			if (a == 1)

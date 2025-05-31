@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:57:11 by syl               #+#    #+#             */
-/*   Updated: 2025/05/29 11:18:15 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:41:29 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	init_viewport_x_y(t_pix *pix, t_camera *cam, int x, int y)
 		- ((x + 0.5) * cam->pixel_size);
 	pix->p_viewport->y = cam->half_height
 		- ((y + 0.5) * cam->pixel_size);
-	//pix->p_viewport->z toujours -1 parce dans methode le viewport est toujorus a 1 de la camera
 }
 
 void	init_viewport(t_pix ***pix, t_camera *cam)

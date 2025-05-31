@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 14:02:56 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:48:30 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	// PF Construit tout ce qui est commun. 
 	constructing_camera(scene);
 	init_viewport(pix, scene->cam);
-	printf("after viewport \n");
 	matrix_transformations(scene->obj);
-	printf("after transformation\n");
 	// PF ensuite fait les calculs pour chaque pixel 
 	x = 0;
 	while (x < WND_WIDTH)
@@ -59,8 +57,6 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	color.r = scene->obj[pix->obj_a][pix->obj_b]->color->r;
 	color.g = scene->obj[pix->obj_a][pix->obj_b]->color->g;
 	color.b = scene->obj[pix->obj_a][pix->obj_b]->color->b;
-	// PF Je crois que j ai regle le probleme
-	//printf("obj height %.3f \n", scene->obj[3][0]->height);
 	prepare_computation(pix, scene->obj, memory_shuttle);
 //	// PF le but serait que la fonction de lumiere retourne une couleur. Comme ca on pourra l utiliser dans 
 	// la recursivite pour les reflexion et eventuellement la transparence. 
@@ -94,7 +90,6 @@ void	clean_memory_shuttle(t_mem *memory_shuttle)
 	vector_fill(memory_shuttle->view_dir, 0, 0, 0);
 	init_matrix_zero(memory_shuttle->obj_inv);
 	init_matrix_zero(memory_shuttle->transp_inv);
-//	memory_shuttle->inside == false;
 }
 
 t_color background_color(t_obj *obj_zero, t_light *lux_zero)

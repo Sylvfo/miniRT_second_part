@@ -6,30 +6,26 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:34 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/29 16:22:56 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 16:46:47 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-/*
-bool	intersect_plan_shadow(t_pix *pix, int pln_num, int lux_num)
+bool	intersect_plan_shadow(t_mem *memory_shuttle, t_obj *plan)
 {
 	t_coord	p0_minus_p;
 	float	denom;
 	float	t;
-	t_obj	*plan;
 
-	(void)lux_num;
-	plan = pix->obj[PLAN][pln_num];
-	denom = dot_product(plan->v_axe, pix->comps->v_light_to_point);
-	if (fabs(denom) < EPSILON)//changer EPSILON par 0.001?
+	denom = dot_product(plan->v_axe, memory_shuttle->v_light_to_point);
+	if (fabs(denom) < 0.0001)
 		return (false);
-	p0_minus_p.x = plan->p_coord->x - pix->comps->p_touch->x;
-	p0_minus_p.y = plan->p_coord->y - pix->comps->p_touch->y;
-	p0_minus_p.z = plan->p_coord->z - pix->comps->p_touch->z;
+	p0_minus_p.x = plan->p_coord->x - memory_shuttle->p_touch->x;
+	p0_minus_p.y = plan->p_coord->y - memory_shuttle->p_touch->y;
+	p0_minus_p.z = plan->p_coord->z - memory_shuttle->p_touch->z;
 	t = dot_product(plan->v_axe, &p0_minus_p) / denom;
-	if (t > EPSILON && t < pix->comps->distance_light_p_touch)
+	if (t > EPSILON && t < memory_shuttle->distance_light_p_touch)
 		return (true);
 	return (false);
-}*/
+}
