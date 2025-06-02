@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 13:41:59 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:48:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ typedef struct s_mem
 	t_coord		*r_origin_m; //ray modifie par matrice a recalculer pour chaque objet
 	t_coord		*r_dir_m;
 	// POUR CALCULS INTERSECTIONS
-	int			t_count; // nombre d intersection. Pas vraiment utilise sauf pour le caps des cylindres
+	int			t_count; // nombre d intersections. Pas vraiment utilise sauf pour le caps des cylindres
 	float		closestt;//IMPORTANT
 	int			obj_a;//IMPORTANT
 	int			obj_b;// IMPORTANT
