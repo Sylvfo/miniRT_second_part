@@ -6,12 +6,37 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 14:00:25 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 21:14:36 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:40:01 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+void	prepare_computation(t_mem *mem_shuttle, t_obj ***obj)
+{
+	t_coord	term_for_p_local;//RENOMMER
+	t_coord	p_local_on_surface;//RENOMMER
+	t_coord v_eye;
+
+	scalar_mult_na(&term_for_p_local, mem_shuttle->r_dir_closest_obj, mem_shuttle->closestt);
+	term_for_p_local.t = 1;
+	addition_na(&p_local_on_surface, mem_shuttle->r_origin_closest_obj, &term_for_p_local);
+	matrix_point_multiplication_new(mem_shuttle->p_touch,
+		obj[mem_shuttle->obj_a][mem_shuttle->obj_b]->m_transf, &p_local_on_surface);
+	negat_na(&v_eye, mem_shuttle->r_base_dir); // PIX_R_DIR!!! A REVOIR POUR RECURSIVITE
+	if (mem_shuttle->obj_a == SPHERE)
+		normal_sphere(mem_shuttle);
+	if (mem_shuttle->obj_a == CYLINDER)
+	{
+		normal_cylinder(mem_shuttle, obj);
+	}
+	else if (mem_shuttle->obj_a == PLAN)
+		copy_coord(mem_shuttle->v_norm_parral, obj[2][mem_shuttle->obj_b]->v_axe);
+	if (dot_product(mem_shuttle->v_norm_parral, &v_eye) < 0)
+			negat_na(mem_shuttle->v_norm_parral, mem_shuttle->v_norm_parral);
+}
+
+/*ANCIEN AVANT ENLEVER PIX
 void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 {
 	t_coord	term_for_p_local;//RENOMMER
@@ -35,6 +60,7 @@ void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle)
 	if (dot_product(mem_shuttle->v_norm_parral, &v_eye) < 0)
 			negat_na(mem_shuttle->v_norm_parral, mem_shuttle->v_norm_parral);
 }
+*/
 
 void	normal_cylinder(t_mem *mem_shuttle, t_obj ***obj)
 {

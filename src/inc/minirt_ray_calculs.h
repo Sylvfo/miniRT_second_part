@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 11:11:50 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:41:39 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,22 +27,27 @@ void	pixel_size(t_scene *scene);
 void	constructing_camera(t_scene *scene);
 
 //02_viewport_construction.c
-void	init_camera_pix_ray(t_pix *pix, t_camera *cam);
-void	init_viewport_x_y(t_pix *pix, t_camera *cam, int x, int y);
-void	init_viewport(t_pix ***pix, t_camera *cam);
+//void	init_camera_pix_ray(t_pix *pix, t_camera *cam);
+//void	init_camera_pix_ray(t_pix *pix, t_mem *memory_shuttle, t_camera *cam);
+void	init_camera_pix_ray(t_mem *memory_shuttle, t_camera *cam);
+void	init_viewport_x_y(t_mem *memory_shuttle, t_camera *cam, int x, int y);
+//void	init_viewport_x_y(t_mem *memory_shuttle, t_camera *cam, int x, int y);
+//void	init_viewport_x_y(t_pix *pix, t_camera *cam, int x, int y);
+//void	init_viewport(t_pix ***pix, t_camera *cam);
+void	init_viewport(t_pix ***pix, t_mem *memory_shuttle, t_camera *cam);
 
 //03_m_transformations.c
-void	apply_transformation(t_pix *pix,t_obj *obj, t_mem *memory_shuttle);
+void	apply_transformation(t_obj *obj, t_mem *memory_shuttle);
 void	set_transformation_obj(t_obj *obj);
 void	matrix_transformations(t_obj ***obj);
 
 //04_intersect_main.c
-void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle);
+void	main_intersections(t_obj ***obj, t_mem *memory_shuttle);
 void 	closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);// A DEPL
 
 //05_intersect_sphere_plan.c
 void	intersect_plan(t_mem *memory_shuttle, int plan_num);
-void	intersect_sphere(t_pix *pix, int sph_num, t_mem *memory_shuttle);
+void	intersect_sphere(t_mem *memory_shuttle, int sph_num);
 
 //06_intersect_cylinder.c
 void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n);
@@ -56,7 +61,7 @@ void	closestt(t_mem *memory_shuttle, t_intertt result, int obj_type, int obj_num
 void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);
 
 //08_prepare_comps.c
-void	prepare_computation(t_pix *pix, t_obj ***obj, t_mem *mem_shuttle);
+void	prepare_computation(t_mem *mem_shuttle, t_obj ***obj);
 void	normal_sphere(t_mem *mem_shuttle);
 void	normal_cylinder(t_mem *mem_shuttle, t_obj ***obj);
 

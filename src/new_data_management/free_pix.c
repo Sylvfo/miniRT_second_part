@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 09:30:45 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:12:03 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:27:34 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	free_pix_struct(t_pix ***pix, int height, int width)
 		{
 			if (pix[i][j] != NULL)
 			{
-				if (pix[i][j]->p_viewport != NULL)
+			/*	if (pix[i][j]->p_viewport != NULL)
 				{
 					free(pix[i][j]->p_viewport);
 					pix[i][j]->p_viewport = NULL;
@@ -88,8 +88,8 @@ void	free_pix_struct(t_pix ***pix, int height, int width)
 				{
 					free(pix[i][j]->p_viewport_world);
 					pix[i][j]->p_viewport_world = NULL;
-				}
-				if (pix[i][j]->r_dir != NULL)
+				}*/
+			/*	if (pix[i][j]->r_dir != NULL)
 				{
 					free(pix[i][j]->r_dir);
 					pix[i][j]->r_dir = NULL;
@@ -98,7 +98,7 @@ void	free_pix_struct(t_pix ***pix, int height, int width)
 				{
 					free(pix[i][j]->r_origin);
 					pix[i][j]->r_origin = NULL;
-				}
+				}*/
 				if (pix[i][j]->color != NULL)
 				{
 					free(pix[i][j]->color);

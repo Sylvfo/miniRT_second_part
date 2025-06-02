@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:04:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 20:40:02 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:37:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	intersect_plan(t_mem *memory_shuttle, int plan_num)
 	closestt(memory_shuttle, result, PLAN, plan_num);
 }
 
-void	intersect_sphere(t_pix *pix, int sph_num, t_mem *memory_shuttle)
+void	intersect_sphere(t_mem *memory_shuttle, int sph_num)
 {
 	float	discriminant;
 	float	a;

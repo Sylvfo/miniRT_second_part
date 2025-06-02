@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:27 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 21:07:44 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:26:19 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ t_mem	*init_memory_shuttle(void)
 
 void	memory_shuttle_values_null(t_mem *memory_shuttle)
 {
+	memory_shuttle->r_base_origin = NULL;
+	memory_shuttle->r_base_dir = NULL;
+
+	memory_shuttle->p_viewport = NULL;
+	memory_shuttle->p_viewport_world = NULL;
 	memory_shuttle->r_origin_m = NULL;
 	memory_shuttle->r_dir_m = NULL;
 	memory_shuttle->v_sph_camera = NULL;
@@ -41,14 +46,11 @@ void	memory_shuttle_values_null(t_mem *memory_shuttle)
 	memory_shuttle->obj_a = NONE;
 	memory_shuttle->obj_b = 0;
 	memory_shuttle->origin_zero = NULL;
-	//memory_shuttle->object_normal = NULL;
 	memory_shuttle->p_space = NULL;
 	memory_shuttle->p_touch = NULL;
 	memory_shuttle->p_space = NULL;
-//	memory_shuttle->v_eye = NULL;
 	memory_shuttle->v_norm_parral = NULL;
 	memory_shuttle->v_light_to_point = NULL;
-//	memory_shuttle->v_sphere_to_point = NULL;
 	memory_shuttle->v_point_to_light = NULL; 
 	memory_shuttle->reflect_dir = NULL;
 	memory_shuttle->scalar = NULL;
@@ -76,6 +78,19 @@ bool init_shuttle_values(t_mem *memory_shuttle)
 		return (false);
 	memory_shuttle->origin_zero = create_point(0, 0, 0);
 	if (!memory_shuttle->origin_zero)
+		return (false);
+	memory_shuttle->p_viewport = create_point(0, 0, -1);
+	if (!memory_shuttle->p_viewport)
+		return (false);
+	memory_shuttle->p_viewport_world = create_point(0, 0, 0);
+	if (!memory_shuttle->p_viewport_world)
+		return (false);
+
+	memory_shuttle->r_base_origin = create_point(0, 0, 0);
+	if (!memory_shuttle->r_base_origin)
+		return (false);
+	memory_shuttle->r_base_dir = create_point(0, 0, 0);
+	if (!memory_shuttle->r_base_dir)
 		return (false);
 //	memory_shuttle->object_normal = create_vector(0, 0, 0);
 //	if (!memory_shuttle->object_normal)
@@ -150,6 +165,28 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 	{
 		free(memory_shuttle->origin_zero);
 		memory_shuttle->origin_zero = NULL;
+	}
+	//
+	if (memory_shuttle->p_viewport)
+	{
+		free(memory_shuttle->p_viewport);
+		memory_shuttle->p_viewport = NULL;
+	}
+	if (memory_shuttle->p_viewport_world)
+	{
+		free(memory_shuttle->p_viewport_world);
+		memory_shuttle->p_viewport_world = NULL;
+	}
+
+	if (memory_shuttle->r_base_origin)
+	{
+		free(memory_shuttle->r_base_origin);
+		memory_shuttle->r_base_origin = NULL;
+	}
+	if (memory_shuttle->r_base_dir)
+	{
+		free(memory_shuttle->r_base_dir);
+		memory_shuttle->r_base_dir = NULL;
 	}
 //	if (memory_shuttle->object_normal)
 //	{

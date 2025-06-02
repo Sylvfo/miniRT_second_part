@@ -6,14 +6,14 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:00:12 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:55:29 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:38:31 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 //	A REFAIRE AVEC TOUS LES OBJETS
-void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle)
+void	main_intersections(t_obj ***obj, t_mem *memory_shuttle)
 {
 	int a;
 	int b;
@@ -25,9 +25,9 @@ void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle)
 		b = 0;
 		while (b < 1) //obj[a][b] != NULL) //PF ici bien s assurer que ca fonctionne avec le bon nombre d objets
 		{
-			apply_transformation(pix, obj[a][b], memory_shuttle);
+			apply_transformation(obj[a][b], memory_shuttle);
 			if (a == 1)
-				intersect_sphere(pix, b, memory_shuttle);
+				intersect_sphere(memory_shuttle, b);
 			if (a == 2 && b == 0)
 				intersect_plan(memory_shuttle, b);
 			if (a == 3)

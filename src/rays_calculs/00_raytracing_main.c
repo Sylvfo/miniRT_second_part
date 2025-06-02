@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 11:11:52 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:42:00 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	int	x;
 	int	y;
 	
+//	clean_memory_shuttle(memory_shuttle);
 	// PF Construit tout ce qui est commun. 
 	constructing_camera(scene);
-	init_viewport(pix, scene->cam);
 	matrix_transformations(scene->obj);
+//	init_viewport(pix, memory_shuttle, scene->cam);
+	
 	// PF ensuite fait les calculs pour chaque pixel 
 	x = 0;
 	//BOUCLE PIX
@@ -30,6 +32,8 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 		while (y < WND_HEIGHT)
 		{
 			clean_memory_shuttle(memory_shuttle);
+			init_viewport_x_y(memory_shuttle, scene->cam, x, y);
+			init_camera_pix_ray(memory_shuttle, scene->cam);
 			*(pix[x][y]->color) = raytracer(pix[x][y], scene, memory_shuttle);
 			y++;
 		}
@@ -38,16 +42,12 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	return ;
 }
 
-t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
+t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle) //pas sure besoin pix...
 {
 	t_color	color;
-//	float	intensity;
 
-	// PF je pense que ca marche
-	//intensity = 1.0;
-	main_intersections(pix, scene->obj, memory_shuttle);
+	main_intersections(scene->obj, memory_shuttle);
 	copy_matrix_44(memory_shuttle->obj_inv, scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->m_inv);
-	//BONUS prendre obj shiness, transparence, texture,...
 	// PF pour garder en memoire l objet le plus proche de chaque pixel
 	closest_obj_in_pix(pix, memory_shuttle);
 	// PF dans le cas ou il crois aucun objet. 
@@ -56,11 +56,7 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 		color = background_color(scene->obj[0][0], scene->lux[0][0]);
 		return (color);
 	}
-	prepare_computation(pix, scene->obj, memory_shuttle);
-//	// PF le but serait que la fonction de lumiere retourne une couleur. Comme ca on pourra l utiliser dans 
-	// la recursivite pour les reflexion et eventuellement la transparence. 
-	// mais on avait fait une fonction de lumiere qui retourne juste un float d intensite. 
-// 	//	color = reflexion....
+	prepare_computation(memory_shuttle, scene->obj);
 	color = lighting(scene, memory_shuttle, *(scene->obj[pix->obj_a][pix->obj_b]->color));
 	return (color);
 }
@@ -137,6 +133,43 @@ t_color reflexion_color_rec(int a, t_scene *scene, t_mem *memory_shuttle)
 	 printf("after rec %d - %d\n", a, b);
     return (color);
 }*/
+
+/*
+//EN COURS
+t_color	reflexion(t_pix *pix, t_scene *scene, t_mem *memory_shuttle, int recurs_count)
+{
+	t_color	color;
+
+	main_intersections(pix, scene->obj, memory_shuttle); // pas pix...
+	copy_matrix_44(memory_shuttle->obj_inv, scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->m_inv);
+	// PF pour garder en memoire l objet le plus proche de chaque pixel
+	closest_obj_in_pix(pix, memory_shuttle);
+	// PF dans le cas ou il crois aucun objet. 
+	if (pix->obj_a == 0)
+	{
+		color = background_color(scene->obj[0][0], scene->lux[0][0]);
+		return (color);
+	}
+	prepare_computation(pix, scene->obj, memory_shuttle);
+	if (scene->obj[pix->obj_a][pix->obj_b]->mirror != 1.0 )
+		color = lighting(scene, memory_shuttle, *(scene->obj[pix->obj_a][pix->obj_b]->color));
+	//BONUS prendre obj shiness, transparence, texture,...
+	//ICI RECURSIVITE
+	if (scene->obj[pix->obj_a][pix->obj_b]->mirror == 0.0 || recurs_count == 4)
+		return (color);
+
+	
+	next ray =  
+	color = reflexion(t_pix *pix, scene, memory_shuttle, recurs_count + 1);
+	
+	multiplaction or additon??
+	color * scene->obj[pix->obj_a][pix->obj_b]->mirror 
+	}
+	return (color);
+}
+*/
+
+
 
 /*AVANT CHANGEMENT COULEURS
 t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)

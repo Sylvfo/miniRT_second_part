@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:27:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:13:25 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:26:36 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,10 @@ t_pix	***malloc_pix_array(int height, int width)
 
 void	pix_values_null(t_pix *pix)
 {
-	pix->p_viewport = NULL;
-	pix->p_viewport_world = NULL;
-	pix->r_dir = NULL;
-	pix->r_origin = NULL;
+//	pix->p_viewport = NULL;
+//	pix->p_viewport_world = NULL;
+//	pix->r_dir = NULL;
+//	pix->r_origin = NULL;
 	pix->color = NULL;
 	pix->obj_a = 0;// a deplacer
 	pix->obj_b = 0;// a deplacer
@@ -67,10 +67,10 @@ void	malloc_pix_struct(t_pix ***pix, int height, int width)
 		{
 			if (pix[i][j] != NULL)
 			{
-				pix[i][j]->p_viewport = create_point(0, 0, -1);//IMPORTANT
-				pix[i][j]->p_viewport_world = create_point(0, 0, 0);
-				pix[i][j]->r_dir = create_vector(0, 0, 0);
-				pix[i][j]->r_origin = create_vector(0, 0, 0);
+			//	pix[i][j]->p_viewport = create_point(0, 0, -1);//IMPORTANT
+			//	pix[i][j]->p_viewport_world = create_point(0, 0, 0);
+			//	pix[i][j]->r_dir = create_vector(0, 0, 0);
+			//	pix[i][j]->r_origin = create_vector(0, 0, 0);
 				pix[i][j]->color = create_color(0.0, 0.0, 0.0);
 				pix[i][j]->color->r = 0.0;
 				pix[i][j]->color->g = 0.0;

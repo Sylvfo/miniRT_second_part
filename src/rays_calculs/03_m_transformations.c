@@ -6,18 +6,18 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:01:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:56:05 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:36:42 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	apply_transformation(t_pix *pix,t_obj *obj, t_mem *memory_shuttle)
+void	apply_transformation(t_obj *obj, t_mem *memory_shuttle)
 {
 	matrix_point_multiplication_new(memory_shuttle->r_origin_m,
-		obj->m_inv, pix->r_origin);
+		obj->m_inv, memory_shuttle->r_base_origin);
 	matrix_point_multiplication_new(memory_shuttle->r_dir_m,
-				obj->m_inv, pix->r_dir);
+				obj->m_inv, memory_shuttle->r_base_dir);
 }
 
 void	set_transformation_obj(t_obj *obj)
