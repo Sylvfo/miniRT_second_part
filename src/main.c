@@ -21,65 +21,63 @@ void	error_exit(const char *msg, t_program_context *context)
 	exit(EXIT_FAILURE);
 }*/
 
+static int	check_args(int argc, char **argv)
+{
+	if (argc != 2)
+	{
+		printf("Usage: %s <scene_file.rt>\n", argv[0]);
+		return (0);
+	}
+	if (ft_strncmp(argv[1] + ft_strlen(argv[1]) - 3, ".rt", 3) != 0)
+	{
+		printf("Error: Invalid file extension. Expected .rt\n");
+		return (0);
+	}
+	return (1);
+}
+
 int	main(int argc, char **argv)
 {
-	t_pix ***pix;//ok
+	char *c;
+	c = ft_itoa(getpid());
 	t_scene *scene;
-	t_mem *memory_shuttle;//ok
+	t_pix ***pix;
+	t_mem *memory_shuttle;
 
-	pix = NULL;
-	scene = NULL;
-	memory_shuttle = NULL;
-	// PF ici je fais deja une alloc afin de pouvoir enregistrer
-	// combien il y a de spheres, plans et cylindre lors de 
-	// la premiere lecture
 	scene = init_first_scene_memory();
-	if (!scene)
-		return (1);
-	// PF A faire cette fonction est pour checker si le fichier .rt
-	// est conforme. Pense juste au fait que pour la partie
-	// obligatoire on est sense pouvoir entrer des lumieres sans
-	// couleurs
-/*	if (check_file(scene, argc, argv[1]) == false)
+	write(1, c, 7);
+	write(1, "\n", 1);
+	free(c);
+	if (!check_args(argc, argv))
+		return (EXIT_FAILURE);
+	if (!verification(argv[1], scene))
 	{
 		free(scene);
-		printf("problem with file in cph \n");
-		scene = NULL;
-		return (1);
-	}*/
-	//PF ici normalement ca devrait marcher...
-	// c est tous les mallocs pour les objets. 
-	// Mais pas tout a ete bien fait. 
-	// Si tu as le temps tu peux mettre de lordre
-	// le seul probleme c est les boucles while sur tous les objets
-	if (init_scene_memory(scene) == false)
-	{
-		free(scene);
-		scene = NULL;
-		printf("problem with scene memory allocation \n");
 		return (1);
 	}
-	//PF ici normalement ca devrait marcher...
-	// c est tous les mallocs pour pixels. 
-	// Pareil c est un peu le chaos. Mais je pourrais voir moi plus tard
+	if (!init_scene_memory(scene))
+	{
+		free_scene(scene);
+		return (1);
+	}
 	pix = init_memory_main();
 	memory_shuttle = init_memory_shuttle();
-	//PF ici il faut recreer une fonction qui relit le fichier
-	// et qui enregistre dans la structure scene
-	// prevoit deja qu on va surement ajouter d autres objets dans les bonus
-	// et eventuellement d autres petites choses comme la taille de la fenetre
-	// un mode preview, etcc... on verra plus tard. Mais il y aura des petits trucs 
-	// a rajouter
-	//save datas(scene, argv[1]);
-	//PF no_parsing a effacer une fois que le programme prendra le fichier.rt
-	no_parsing(scene);//pour les testes de Sylvie
-	//PF important! Il y a des donnees a modifier avant de lancer le programme
-	// Je pense il faut pas y toucher pour l instant...
-	base_data2(scene);
-	raytracing(pix, scene, memory_shuttle);
-	pix_to_window(pix, scene);
-	image_hooks(scene);
+	if (!save_data(argv[1], scene))
+	{
+		free_main(pix, scene, memory_shuttle);
+		return (1);
+	}
+	printf("\nratio %.2f %.2f", scene->lux[0][0]->ratio, scene->lux[1][0]->ratio);
+	printf("\ncamera: fov %.2f| coord %.2f %.2f %.2f",scene->cam->fov, scene->cam->p_coord->x,scene->cam->p_coord->y,scene->cam->p_coord->z);
+	printf("\n\nsphere: nb : %d | coord %.2f %.2f %.2f | diam %.2f | couleur %.0f %.0f %.0f",scene->nb_sphere,scene->obj[1][0]->p_coord->x,scene->obj[1][0]->p_coord->y,scene->obj[1][0]->p_coord->z,scene->obj[1][0]->diam ,scene->obj[1][0]->color->r,scene->obj[1][0]->color->g,scene->obj[1][0]->color->b);
+	printf("\nsphere: coord %.2f %.2f %.2f | diam %.2f | couleur %.0f %.0f %.0f",scene->obj[1][1]->p_coord->x,scene->obj[1][1]->p_coord->y,scene->obj[1][1]->p_coord->z,scene->obj[1][1]->diam ,scene->obj[1][1]->color->r,scene->obj[1][1]->color->g,scene->obj[1][1]->color->b);
+	printf("\n\nplan: nb : %d | coord %.2f %.2f %.2f | axe %.2f %.2f %2.f| couleur %.0f %.0f %.0f",scene->nb_plan,scene->obj[2][0]->p_coord->x,scene->obj[2][0]->p_coord->y,scene->obj[2][0]->p_coord->z,scene->obj[2][0]->v_axe->x,scene->obj[2][0]->v_axe->y,scene->obj[2][0]->v_axe->z ,scene->obj[2][0]->color->r,scene->obj[2][0]->color->g,scene->obj[2][0]->color->b);
+	printf("\nplan: coord %.2f %.2f %.2f | axe %.2f %.2f %2.f| couleur %.0f %.0f %.0f",scene->obj[2][1]->p_coord->x,scene->obj[2][1]->p_coord->y,scene->obj[2][1]->p_coord->z,scene->obj[2][1]->v_axe->x,scene->obj[2][1]->v_axe->y,scene->obj[2][1]->v_axe->z,scene->obj[2][1]->color->r,scene->obj[2][1]->color->g,scene->obj[2][1]->color->b);
+	printf("\n\ncyl: nb : %d | coord %.2f %.2f %.2f | diam %.2f | couleur %.0f %.0f %.0f",scene->nb_cylinder,scene->obj[3][0]->p_coord->x,scene->obj[3][0]->p_coord->y,scene->obj[3][0]->p_coord->z,scene->obj[3][0]->diam ,scene->obj[3][0]->color->r,scene->obj[3][0]->color->g,scene->obj[3][0]->color->b);
+	printf("\ncyl: coord %.2f %.2f %.2f | diam %.2f | couleur %.0f %.0f %.0f",scene->obj[3][1]->p_coord->x,scene->obj[3][1]->p_coord->y,scene->obj[3][1]->p_coord->z,scene->obj[3][1]->diam ,scene->obj[3][1]->color->r,scene->obj[3][1]->color->g,scene->obj[3][1]->color->b);
+	printf("\n\nlight: nb : %d | coord %.2f %.2f %.2f | ratio %.2f | couleur %.0f %.0f %.0f",scene->nb_lights,scene->lux[1][0]->p_coord->x,scene->lux[1][0]->p_coord->y,scene->lux[1][0]->p_coord->z,scene->lux[1][0]->ratio ,scene->lux[1][0]->color->r,scene->lux[1][0]->color->g,scene->lux[1][0]->color->b);
+	printf("\nlight: coord %.2f %.2f %.2f | ratio %.2f | couleur %.0f %.0f %.0f\n",scene->lux[1][1]->p_coord->x,scene->lux[1][1]->p_coord->y,scene->lux[1][1]->p_coord->z,scene->lux[1][1]->ratio ,scene->lux[1][1]->color->r,scene->lux[1][1]->color->g,scene->lux[1][1]->color->b);
+	
 	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
 }
-

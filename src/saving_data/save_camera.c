@@ -12,30 +12,43 @@
 
 #include "../inc/minirt.h"
 
-/*
-void	save_camera(char *line, t_program_context *context)
+int	save_coordonnee(char *str, t_coord *p)
+{
+	char	**coord;
+	int		i;
+
+	i = 0;
+	coord = ft_split(str, ',');
+	if (!coord)
+		return (0);
+	if (ft_size(coord) != NB_EL_AXE || !check_isvector(coord))
+		return (free_arg(coord));
+	p->x = number(coord[0]);
+	p->y = number(coord[1]);
+	p->z = number(coord[2]);
+	free_arg(coord);
+	return (1);
+}
+
+int	save_camera(char *str, t_camera *camera)
 {
 	t_coord		position;
 	t_coord		orientation;
 	t_camera	*cam;
 	float		fov;
 
-	line++;
-	skip_whitespace((const char **)&line);
-	parse_coordinates(&line, &position.x, &position.y, &position.z);
-	position.t = 1;
-	skip_whitespace((const char **)&line);
-	parse_coordinates(&line, &orientation.x, &orientation.y, &orientation.z);
-	orientation.t = 0;
-	skip_whitespace((const char **)&line);
-	fov = ft_strtod(line, &line);
-	cam = context->pix[0][0]->cam;
-	cam->p_coord->x = position.x;
-	cam->p_coord->y = position.y;
-	cam->p_coord->z = position.z;
-	cam->v_axe->x = orientation.x;
-	cam->v_axe->y = orientation.y;
-	cam->v_axe->z = orientation.z;
-	cam->fov = fov * 0.0174533;
+	char	**params;
+
+	params = ft_split(str, ' ');
+	if (!params)
+		return (error_system());
+	if (!save_coordonnee(params[1], camera->p_coord) ||	\
+		!save_coordonnee(params[2], camera->v_axe))
+	{
+		free_arg(params);
+		return (0);
+	}
+	camera->fov = number(params[3]);
+	free_arg(params);
+	return (1);
 }
-*/

@@ -33,6 +33,7 @@
 # include "minirt_vect_point_color.h"
 # include "minirt_window.h"
 # include "new_memory.h"
+# include "macro.h"
 
 # define WND_WIDTH 1200
 # define WND_HEIGHT 1000

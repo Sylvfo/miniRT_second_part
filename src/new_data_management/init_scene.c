@@ -24,10 +24,10 @@ t_scene *init_first_scene_memory(void)
 	scene->obj = NULL;
 	scene->lux = NULL;
 	// PF A ENLEVER APRES ENREGISTREMENT DES DONNEES
-	scene->nb_sphere = 2;
-	scene->nb_plan = 1;
-	scene->nb_cylinder = 1;
-	scene->nb_lights = 1;
+	scene->nb_sphere = 0;
+	scene->nb_plan = 0;
+	scene->nb_cylinder = 0;
+	scene->nb_lights = 0;
 	scene->wnd_height = WND_HEIGHT;
 	scene->wnd_width = WND_WIDTH;
 	return (scene);
@@ -47,71 +47,6 @@ bool	init_scene_memory(t_scene *scene)
 		return (false);
 	return (true);
 }
-
-bool init_obj_cph(t_scene *scene)
-{
-	int		a;
-	int		b;
-
-	scene->obj = NULL;
-	scene->obj = malloc(sizeof(t_obj **) * 5); // 5 pour nombre objet
-	if (!scene->obj)
-		return (false);
-	scene->obj[0] = malloc(sizeof(t_obj *) * 2);
-	scene->obj[0][0] = malloc(sizeof(t_obj));
-	if (!scene->obj[0][0])
-		return (false);
-	if (init_each_obj(scene->obj[0][0]) == false)
-			return (false);
-	scene->obj[0][1] = NULL;
-	// SPHERES
-	b = 0;
-	scene->obj[1] = NULL;
-	scene->obj[1] = malloc(sizeof(t_obj *) * (scene->nb_sphere));
-	if (!scene->obj[1])
-		return (false);
-	while (b < scene->nb_sphere)
-	{
-		scene->obj[1][b] = malloc(sizeof(t_obj));
-		if (!scene->obj[1][b])
-			return (false);
-		if (init_each_obj(scene->obj[1][b]) == false)
-			return (false);
-		scene->obj[1][b]->type = SPHERE;
-		b++;
-	}
-	// PLANS
-	b = 0;
-	scene->obj[2] = NULL;
-	scene->obj[2] = malloc(sizeof(t_obj *) * (scene->nb_plan));
-	while (b < scene->nb_plan)
-	{
-		scene->obj[2][b] = malloc(sizeof(t_obj));
-		if (!scene->obj[2][b])
-			return (false);
-		if (init_each_obj(scene->obj[2][b]) == false)
-			return (false);
-		scene->obj[2][b]->type = PLAN;
-		b++;
-	}
-	// CYLINDERS
-	b = 0;
-	scene->obj[3] = NULL;
-	scene->obj[3] = malloc(sizeof(t_obj *) * (scene->nb_cylinder));
-	while (b < scene->nb_cylinder)
-	{
-		scene->obj[3][b] = malloc(sizeof(t_obj));
-		if (!scene->obj[3][b])
-			return (false);
-		if (init_each_obj(scene->obj[3][b]) == false)
-			return (false);
-		b++;
-	}
-	// autres objets... 
-	//	scene->obj[5] = NULL;
-	return (true);
-}
-
 
 void free_each_obj(t_obj *obj)
 {
@@ -201,6 +136,7 @@ void	free_each_obj_matrix(t_obj *obj)
 
 bool init_each_obj_coord(t_obj *obj)
 {
+
 	obj->p_coord = create_point(0, 0, 0);
 	if (!obj->p_coord)
 		return (false);

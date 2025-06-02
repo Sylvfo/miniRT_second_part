@@ -12,61 +12,64 @@
 
 #include "../inc/minirt.h"
 
-/*
-// Modified signature to accept t_program_context
-void	save_line(char *line, t_program_context *context)
+static int check_line(char *str, t_scene *scene)
 {
-	if (line[0] == 'A' || line[0] == 'L')
-		save_light(line, context);
-	else if (line[0] == 'C')
-		save_camera(line, context);
-	else if (line[0] == 's' && line[1] == 'p')
-		save_sphere(line, context);
-	else if (line[0] == 'p' && line[1] == 'l')
-		save_plane(line, context);
-	else if (line[0] == 'c' && line[1] == 'y')
-		save_cylinder(line, context);
+	int i;
+
+	i = 0;
+	while (ft_isspace(str[i]))
+		i++;
+	if (str[i] == 'A')
+		return (save_ambient(str, scene->lux[0][0]));
+	else if (str[i] == 'L')
+		return (save_light(str, scene->lux[1]));
+	if (str[i] == 'C')
+		return (save_camera(str, scene->cam));
+	else if (str[i] == 's' && str[i + 1] == 'p')
+		return (save_sphere(str, scene->obj[1]));
+	else if (str[i] == 'p' && str[i + 1] == 'l')
+		return (save_plan(str, scene->obj[2]));	
+	else if (str[i] == 'c' && str[i + 1] == 'y')
+		return (save_cylinder(str, scene->obj[3]));	
+	return (1);
 }
 
-void	process_line(char *buf, t_program_context *context)
+static bool file_parcour(int fd, t_scene *scene)
 {
-	char	*line;
-	int		i;
+	char	*str;
+	bool	error;
 
-	line = buf;
-	while (*line)
+	error = false;
+	str = get_next_line(fd);
+	while (str)
 	{
-		i = 0;
-		while (line[i] && line[i] != '\n')
-			i++;
-		line[i] = '\0';
-		save_line(line, context);
-		line += i + 1;
+		if (!error)
+		{
+			replace_by_space(str);
+			if (!check_line(str, scene))
+				error = true;
+		}
+		free(str);
+		str = get_next_line(fd);
 	}
+	return (error);
 }
 
-// Modified signature to accept t_program_context
-void	save_scene_file(const char *filename, t_program_context *context)
+int	save_data(char *str, t_scene *scene)
 {
-	int		fd;
-	char	buf[5000];
-	int		ret;
+	int fd;
 
-	context->num_obj->sphere = 0;
-	context->num_obj->plan = 0;
-	context->num_obj->cylinder = 0;
-	context->num_obj->light = 0;
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-		error_exit("Failed to open file", context);
-	ret = read(fd, buf, sizeof(buf) - 1);
-	while (ret > 0)
+	fd = open(str, O_RDONLY);
+	if (fd == -1 )
 	{
-		buf[ret] = '\0';
-		process_line(buf, context);
-		ret = read(fd, buf, sizeof(buf) - 1);
+		perror(str);
+		return(0);
 	}
-	if (ret == -1)
-		error_exit("Failed to read file", context);
+	if (file_parcour(fd, scene))
+	{
+		close(fd);
+		return (0);
+	}
 	close(fd);
-}*/
+	return (1);
+}
