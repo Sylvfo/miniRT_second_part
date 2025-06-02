@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 11:20:54 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 15:03:54 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 // modifications a faire avec les donnes de base...
 // a faire apres que les donnees ont ete enregistrees. 
-void	base_data2(t_scene *scene)
+void	base_data2(t_scene *scene, t_pix ***pix)
 {
 	int i;
-
-	scene->bonus_mode = false; // A VOIR POUR CHANGER APRES
 	scene->cam->fov = scene->cam->fov * 0.0174533;
 	color_int_to_rgb(BAKGROUND_COLOR, scene->obj[0][0]->color);
 	scene->obj[0][0]->color->r = int_to_float(scene->obj[0][0]->color->r);
@@ -26,6 +24,8 @@ void	base_data2(t_scene *scene)
 	scene->obj[0][0]->color->b = int_to_float(scene->obj[0][0]->color->b);
 	scalar_mult_color(scene->lux[0][0]->color, scene->lux[0][0]->ratio);
 	
+
+
 	i = 0;
 /*	if (scene->bonus_mode == false)
 	{
@@ -62,18 +62,18 @@ void	base_data2(t_scene *scene)
 	{
 		scene->obj[1][b]->diam = scene->obj[1][b]->diam / 2;
 		scene->obj[1][b]->radius = scene->obj[1][b]->diam / 2;
-		scene->obj[1][b]->difuse = 0.7;
-		scene->obj[1][b]->specular = 0.8;
+		scene->obj[1][b]->difuse = 0.7;// a deplacer...
+		scene->obj[1][b]->specular = 0.8;// a deplacer...
+		scene->obj[1][b]->mirror = 0.0;// a deplacer...
 //		scene->obj[1][b]->radius /= 2;
 		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
 		b++;
 	}
 	while(b < 2)
 	{
-		scene->obj[2][b]->difuse = 0.9;
-		scene->obj[2][b]->specular = 0.9;
-//		scene->obj[1][b]->radius /= 2;
-		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
+		scene->obj[2][b]->difuse = 0.9;// a deplacer...
+		scene->obj[2][b]->specular = 0.9;// a deplacer...
+		scene->obj[2][b]->mirror = 0.0;// a deplacer...
 		b++;
 	}
 	// CYL
@@ -85,6 +85,23 @@ void	base_data2(t_scene *scene)
 		scene->obj[3][b]->height = scene->obj[3][b]->height / 2;
 		scene->obj[3][b]->difuse = 0.9;
 		scene->obj[3][b]->specular = 0.9;
+		scene->obj[3][b]->mirror = 1.0;// a deplacer...
 		b++;
 	}
+
+	int x = 0;
+	int y = 0;
+	//FOR BONUS
+	while (x < WND_WIDTH)
+	{
+		y = 0;
+		while (y < WND_HEIGHT)
+		{
+			pix[x][y]->bonus = true;
+			pix[x][y]->preview = false;
+			y++;
+		}
+		x++;
+	}
 }
+

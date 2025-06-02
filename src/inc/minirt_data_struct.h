@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 13:48:59 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 14:52:32 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,12 +162,16 @@ typedef struct s_mem
 	bool		is_avaible; //or mutex???
 } t_mem;
 
-//dans bonus regarder si objet modifie. 
 typedef struct s_pix
 {
 	t_color		*color; //  =)
 	int			obj_a;//rename type 
 	int			obj_b;//rename obj num
+	bool		bonus;
+	bool		preview;
+	//bonus mode
+	//si obj modifie?
+	//preview mode
 }	t_pix;
 
 #endif

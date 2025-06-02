@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:15:23 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 10:35:10 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 15:32:43 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ void	position_na(t_pix *pix, t_coord *r_dir, float t);
 void	scalar_mult_na(t_coord *result, t_coord *v_1, float scale);
 float	length_vector(t_coord *v_1);
 void	normalize_vector_na(t_coord *v_1);
+t_coord	scalar_mult_ret(t_coord *v_1, float scale);
 
 //math.c
 float	simple_sqrt(float x);
@@ -58,7 +59,6 @@ void	color_float_to_int(t_color *c_color);
 int		float_to_byte(float f);
 void	color_int_to_rgb(int int_color, t_color *rgb);
 t_color	scalar_mult_color2(t_color c_1, float scale);
-
 //set_colors.c
 t_color	*create_color(int r, int g, int b);
 void	change_color(t_color *c_color, int r, int g, int b);

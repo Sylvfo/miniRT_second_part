@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/02 10:49:42 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 16:35:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	error_exit(const char *msg, t_program_context *context)
 
 int	main(int argc, char **argv)
 {
-	t_pix ***pix;//ok
+	t_pix ***pix;
 	t_scene *scene;
-	t_mem *memory_shuttle;//ok
+	t_mem *memory_shuttle;
 
 	pix = NULL;
 	scene = NULL;
@@ -70,12 +70,12 @@ int	main(int argc, char **argv)
 	// et eventuellement d autres petites choses comme la taille de la fenetre
 	// un mode preview, etcc... on verra plus tard. Mais il y aura des petits trucs 
 	// a rajouter
-	//save datas(scene, argv[1]);
+//	save datas(scene, argv[1]);
 	//PF no_parsing a effacer une fois que le programme prendra le fichier.rt
 	no_parsing(scene);//pour les testes de Sylvie
 	//PF important! Il y a des donnees a modifier avant de lancer le programme
 	// Je pense il faut pas y toucher pour l instant...
-	base_data2(scene);
+	base_data2(scene, pix);
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
 	image_hooks(scene);

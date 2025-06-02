@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 13:42:00 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 15:13:28 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,9 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	int	x;
 	int	y;
 	
-//	clean_memory_shuttle(memory_shuttle);
 	// PF Construit tout ce qui est commun. 
 	constructing_camera(scene);
 	matrix_transformations(scene->obj);
-//	init_viewport(pix, memory_shuttle, scene->cam);
-	
 	// PF ensuite fait les calculs pour chaque pixel 
 	x = 0;
 	//BOUCLE PIX
@@ -32,9 +29,17 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 		while (y < WND_HEIGHT)
 		{
 			clean_memory_shuttle(memory_shuttle);
+			//simplifier ces deux la... et enlever les viewport de la datastructure
 			init_viewport_x_y(memory_shuttle, scene->cam, x, y);
 			init_camera_pix_ray(memory_shuttle, scene->cam);
-			*(pix[x][y]->color) = raytracer(pix[x][y], scene, memory_shuttle);
+			if (pix[x][y]->bonus == true)
+			{
+				*(pix[x][y]->color) = raytracer_bonus(pix[x][y], scene, memory_shuttle);
+			}
+			else if (pix[x][y]->bonus == false)
+			{
+				*(pix[x][y]->color) = raytracer(pix[x][y], scene, memory_shuttle);
+			}
 			y++;
 		}
 		x++;
@@ -51,7 +56,7 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle) //pas sure 
 	// PF pour garder en memoire l objet le plus proche de chaque pixel
 	closest_obj_in_pix(pix, memory_shuttle);
 	// PF dans le cas ou il crois aucun objet. 
-	if (pix->obj_a == 0)
+	if (memory_shuttle->obj_a == 0)
 	{
 		color = background_color(scene->obj[0][0], scene->lux[0][0]);
 		return (color);
@@ -61,16 +66,14 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle) //pas sure 
 	return (color);
 }
 
+//A REVOIR voir clean_memory_shuttle_refl(t_mem *memory_shuttle)
 void	clean_memory_shuttle(t_mem *memory_shuttle)
 {
-	//ICI CHANGER LES RAYONS POUR LE NEXT SI RECURSIVITE. 
 	memory_shuttle->closestt = INT_MAX;
 	memory_shuttle->obj_a = 0;
 	memory_shuttle->obj_b = 0;
 	memory_shuttle->t_count = 0;
 	memory_shuttle->distance_light_p_touch = 0.0;
-//	vector_fill(memory_shuttle->object_normal, 0, 0, 0);
-//	vector_fill(memory_shuttle->v_eye, 0, 0, 0);
 	memory_shuttle->p_space->x = 0.0;
 	memory_shuttle->p_space->y = 0.0;
 	memory_shuttle->p_space->z = 0.0;
@@ -134,40 +137,7 @@ t_color reflexion_color_rec(int a, t_scene *scene, t_mem *memory_shuttle)
     return (color);
 }*/
 
-/*
-//EN COURS
-t_color	reflexion(t_pix *pix, t_scene *scene, t_mem *memory_shuttle, int recurs_count)
-{
-	t_color	color;
 
-	main_intersections(pix, scene->obj, memory_shuttle); // pas pix...
-	copy_matrix_44(memory_shuttle->obj_inv, scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->m_inv);
-	// PF pour garder en memoire l objet le plus proche de chaque pixel
-	closest_obj_in_pix(pix, memory_shuttle);
-	// PF dans le cas ou il crois aucun objet. 
-	if (pix->obj_a == 0)
-	{
-		color = background_color(scene->obj[0][0], scene->lux[0][0]);
-		return (color);
-	}
-	prepare_computation(pix, scene->obj, memory_shuttle);
-	if (scene->obj[pix->obj_a][pix->obj_b]->mirror != 1.0 )
-		color = lighting(scene, memory_shuttle, *(scene->obj[pix->obj_a][pix->obj_b]->color));
-	//BONUS prendre obj shiness, transparence, texture,...
-	//ICI RECURSIVITE
-	if (scene->obj[pix->obj_a][pix->obj_b]->mirror == 0.0 || recurs_count == 4)
-		return (color);
-
-	
-	next ray =  
-	color = reflexion(t_pix *pix, scene, memory_shuttle, recurs_count + 1);
-	
-	multiplaction or additon??
-	color * scene->obj[pix->obj_a][pix->obj_b]->mirror 
-	}
-	return (color);
-}
-*/
 
 
 
