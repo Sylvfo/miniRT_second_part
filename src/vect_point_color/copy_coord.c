@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:09:12 by syl               #+#    #+#             */
-/*   Updated: 2025/05/08 10:38:19 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 10:16:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ void	copy_coord(t_coord *new, t_coord *origin)
 	new->t = origin->t;
 }
 
+/*
 void	copy_color(t_color *new, t_color *origin)
 {
 	new->r = origin->r;
 	new->g = origin->g;
 	new->b = origin->b;
 	new->rgb = origin->rgb;
-}
+}*/
 
 void	vector_fill(t_coord *vect, float x, float y, float z)
 {

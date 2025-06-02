@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 21:26:57 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 11:11:50 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,8 @@ void	normal_sphere(t_mem *mem_shuttle);
 void	normal_cylinder(t_mem *mem_shuttle, t_obj ***obj);
 
 //09_light_shadow_main.c
-float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle);
+//float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle);
+t_color	lighting(t_scene *scene, t_mem *memory_shuttle, t_color color);
 
 //10_shadows.c
 void	prepare_v_light(t_mem *memory_shuttle, t_coord *lux_p_coord);
@@ -73,7 +74,8 @@ bool	intersect_plan_shadow(t_mem *memory_shuttle, t_obj *plan);
 bool	intersect_cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder);
 
 //11_light.c
-float	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord);
-float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux);
-
+t_color	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord);
+//float	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord);
+//float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux);
+t_color	compute_pointlight(t_mem *memory_shuttle, t_light *lux);
 #endif

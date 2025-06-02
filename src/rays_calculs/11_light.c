@@ -12,12 +12,12 @@
 
 #include "../inc/minirt.h"
 
-//A REVOIR AVEC RETOUR EN COULEUR
-float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux)
+//OK =)
+t_color	compute_pointlight(t_mem *memory_shuttle, t_light *lux)
 {
 	float	n_dot_l;
 	float	intensity;
-	int counttest;
+	t_color	color_intensity;
 
 	intensity = 0.0f;
 	substraction_p_to_v_na(memory_shuttle->v_point_to_light, lux->p_coord,
@@ -27,10 +27,42 @@ float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux)
 			memory_shuttle->v_point_to_light);
 	if (n_dot_l > 0.0f)
 		intensity = lux->ratio * n_dot_l;
-	return (intensity);
+	color_intensity = scalar_mult_color2(*(lux->color), intensity);
+	return (color_intensity);
 }
 
-//A REVOIR AVEC RETOUR EN COULEUR
+//FONCTIONNE QUE SUR SPHERES...
+t_color	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord)
+{
+	float	specular_intensity;
+	float	reflect_dot_view;
+	float	dot_p;
+	float	power_term;
+	t_color	color_intensity;
+
+	specular_intensity = 0.0f;
+	dot_p = dot_product(memory_shuttle->v_norm_parral,
+			memory_shuttle->v_light_to_point);
+	scalar_mult_na(memory_shuttle->scalar, memory_shuttle->v_norm_parral, 2.0f * dot_p);
+	substraction_p_to_v_na(memory_shuttle->reflect_dir, memory_shuttle->scalar,
+		memory_shuttle->v_light_to_point);
+	normalize_vector_na(memory_shuttle->reflect_dir);
+	substraction_p_to_v_na(memory_shuttle->view_dir, cam_p_coord,
+		memory_shuttle->p_touch);
+	normalize_vector_na(memory_shuttle->view_dir);
+	reflect_dot_view = dot_product(memory_shuttle->reflect_dir,
+			memory_shuttle->view_dir);
+	if (reflect_dot_view > 0.0f)
+	{
+		power_term = powf(reflect_dot_view, SHININESS);
+		specular_intensity = lux->ratio * power_term * 0.5f;
+	}
+	color_intensity = scalar_mult_color2(*(lux->color), specular_intensity);
+	return (color_intensity);
+}
+
+/*
+//AVANT CHANGEMENT COULEURS
 float	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord)
 {
 	float	specular_intensity;
@@ -57,3 +89,23 @@ float	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord
 	}
 	return (specular_intensity);
 }
+*/
+
+/*
+//A REVOIR AVEC RETOUR EN COULEUR
+float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux)
+{
+	float	n_dot_l;
+	float	intensity;
+	int counttest;
+
+	intensity = 0.0f;
+	substraction_p_to_v_na(memory_shuttle->v_point_to_light, lux->p_coord,
+		memory_shuttle->p_touch);
+	normalize_vector_na(memory_shuttle->v_point_to_light);
+	n_dot_l = dot_product(memory_shuttle->v_norm_parral,
+			memory_shuttle->v_point_to_light);
+	if (n_dot_l > 0.0f)
+		intensity = lux->ratio * n_dot_l;
+	return (intensity);
+}*/

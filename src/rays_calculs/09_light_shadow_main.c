@@ -6,14 +6,44 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 10:44:59 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 21:25:58 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 11:32:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//A REVOIR AVEC RETOUR COULEUR
-//enter color
+//ICI YA DU BONUS. VOIR SI C EST OK...
+t_color	lighting(t_scene *scene, t_mem *memory_shuttle, t_color obj_color)
+{
+	int		i;
+	t_color light_color;
+	t_color specular_color;
+	t_color this_light_color;
+
+	i = 0;
+	light_color.r = 0.0;
+	light_color.g = 0.0;
+	light_color.b = 0.0;
+	while (i < 1)// (scene->lux[1][i] != NULL)
+	{
+		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord); 
+		if (intersect_objects_shadow(scene, memory_shuttle, i) == false)
+		{
+			this_light_color = compute_pointlight(memory_shuttle, scene->lux[1][i]);
+			// if obj shiny
+			specular_color = compute_specular(memory_shuttle, scene->lux[1][i], scene->cam->p_coord);
+			this_light_color = add_color(this_light_color, specular_color);// function add three color??
+			light_color = add_color(light_color, this_light_color);
+		}
+		i++;
+	}
+	light_color = add_color(light_color, *(scene->lux[0][0]->color));//ambiant
+	obj_color = multipling_color(obj_color, light_color);
+	return (obj_color); 
+}
+
+/*
+AVANT RETOUR COULEUR
 float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 {
 	float	intensity;
@@ -29,14 +59,18 @@ float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle)
 		if (intersect_objects_shadow(scene, memory_shuttle, i) == false)
 		{
 			intensity = intensity + compute_pointlight_old(memory_shuttle, scene->lux[1][i]);
-			// PF il faudrait remettre la nouvelle data structure dans cette fonction
-			// il faudrait aussi reflechir a comment 
+			// PF il faudrait remettre la nouvelle data structure dans cette fonction  il faudrait aussi reflechir a comment 
+			// if obj shiny
 			intensity = intensity + compute_specular(memory_shuttle, scene->lux[1][i], scene->cam->p_coord);
 		}
 		i++;
 	}
+	printf("intensity %.4f \n", intensity);
 	return (intensity); //return color??
 }
+*/
+
+
 //PAS BESOIN??
 /*
 void	new_light(t_pix ***pix)

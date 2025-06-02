@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:12:48 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 21:26:59 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 11:31:20 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	no_parsing(t_scene *scene)
 {
 	scene->cam->p_coord->x = 0;
 	scene->cam->p_coord->y = 0;
-	scene->cam->p_coord->z = 15;
+	scene->cam->p_coord->z = 17;
 	scene->cam->v_axe->x = 0;
 	scene->cam->v_axe->y = 0;
 	scene->cam->v_axe->z = -1;
@@ -27,9 +27,9 @@ void	no_parsing(t_scene *scene)
 	scene->obj[1][0]->p_coord->x = -1.0;
 	scene->obj[1][0]->p_coord->y = 0.0;
 	scene->obj[1][0]->p_coord->z = 0.0;
-	scene->obj[1][0]->diam = 2.0;
-	scene->obj[1][0]->color->r = 0.2;
-	scene->obj[1][0]->color->g = 0.2;
+	scene->obj[1][0]->diam = 4.0;
+	scene->obj[1][0]->color->r = 0.0;
+	scene->obj[1][0]->color->g = 0.0;
 	scene->obj[1][0]->color->b = 0.8;
 	scene->obj[1][0]->type = SPHERE; /// A reprendre
 
@@ -51,15 +51,18 @@ void	no_parsing(t_scene *scene)
 	scene->obj[1][1]->color->b = 0.8;
 	scene->obj[1][1]->type = SPHERE; /// A reprendre*/
 
-	scene->lux[0][0]->ratio = 0.4;
-	scene->lux[0][0]->color->r = 1.0;
-	scene->lux[0][0]->color->g = 1.0;
-	scene->lux[0][0]->color->b = 1.0;
+	scene->lux[0][0]->ratio = 0.2;
+	scene->lux[0][0]->color->r = 0.2;// 0.2;
+	scene->lux[0][0]->color->g = 0.2;//0.2;
+	scene->lux[0][0]->color->b = 0.2;
 
 	scene->lux[1][0]->ratio = 0.7;
-	scene->lux[1][0]->p_coord->x = 8;
-	scene->lux[1][0]->p_coord->y = 8;
-	scene->lux[1][0]->p_coord->z = 6;
+	scene->lux[1][0]->p_coord->x = 4;
+	scene->lux[1][0]->p_coord->y = 4;
+	scene->lux[1][0]->p_coord->z = 2;
+	scene->lux[1][0]->color->r = 0.9;// 0.2;
+	scene->lux[1][0]->color->g = 0.1;//0.2;
+	scene->lux[1][0]->color->b = 0.9;
 	
 	scene->obj[2][0]->p_coord->x = 0;
 	scene->obj[2][0]->p_coord->y = -5;
