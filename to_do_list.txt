@@ -1,0 +1,64 @@
+notion?
+
+-faire tourner le programme avec valgrind sur ordi ecole
+
+
+-boucles pix je pense c est ok
+-boucles obj
+-boucles lum 
+
+
+-verifier si on met que des cylindres, que des plan + cylindres etc...
+
+TRUCS REPETITIF:
+refaire tout le debut du programme
+
+refaire formules autre partenaire
+Makefile
+
+
+TRUCS INTERESSANTS
+retour couleurs
+
+optimisation
+
+calculs
+calculs des rayons de lumiere
+
+BONUS:
+Formes en plus:
+cone 
+Si possible
+Parralepide rectancle (cube)
+triangle
+
+Construire Makefile etc avec bonus
+
+attention livre suivre exactement
+
+isolate some objects?
+
+vector 0
+point 1
+
+boucle obj a b  
+boucle pix x y 
+
+init color a zero. 
+
+cph = copenhague. Donc des fonctions que j ai refais a copenhague. on pourra enlever
+
+pas envie de changer les matrices....
+
+init memoire:
+pointeur sur  NULL
+malloc avec check
+return false
+ini valeurs a zero ou pointeurs a null
+ok free si 1 return false?
+
+liberer memoire
+tester si exiter
+free
+pointeur sur null
+etc....

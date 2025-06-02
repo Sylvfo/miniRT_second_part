@@ -6,22 +6,20 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/16 14:01:13 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 11:35:28 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:36:42 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//normalement ok
-void	apply_transformation(t_pix *pix,t_obj *obj, t_mem *memory_shuttle)
+void	apply_transformation(t_obj *obj, t_mem *memory_shuttle)
 {
 	matrix_point_multiplication_new(memory_shuttle->r_origin_m,
-		obj->m_inv, pix->r_origin);
+		obj->m_inv, memory_shuttle->r_base_origin);
 	matrix_point_multiplication_new(memory_shuttle->r_dir_m,
-				obj->m_inv, pix->r_dir);
+				obj->m_inv, memory_shuttle->r_base_dir);
 }
 
-//ok =)
 void	set_transformation_obj(t_obj *obj)
 {
 	translation_matrix_coord(obj);
@@ -31,7 +29,7 @@ void	set_transformation_obj(t_obj *obj)
 		rotation_from_vector(obj);
 		matrix_mult_2(obj->m_transf, obj->m_rot);
 	}
-	if (obj->type == SPHERE) // || obj->type == CYLINDER)
+	if (obj->type == SPHERE || obj->type == CYLINDER)
 	{
 		scaling_matrix_coord(obj);
 		matrix_mult_2(obj->m_transf, obj->m_scale);
@@ -39,20 +37,20 @@ void	set_transformation_obj(t_obj *obj)
 	inverse_matrix_44(obj->m_inv, obj->m_transf);
 }
 
-// ok =)
+//PF ici ok avec les boucles d objets??? A verifier
 void	matrix_transformations(t_obj ***obj)
 {
 	int	a;
 	int	b;
 
-	a = 1;
-	while (a < 2) //(obj[a] != NULL)
+	a = 0;
+	//BOUCLE OBJ
+	while (a < 4) //(obj[a] != NULL)
 	{
 		b = 0;
-		while (b < 2)//(obj[a][b] != NULL)
+		while (b < 1)//(obj[a][b] != NULL)
 		{
 			set_transformation_obj(obj[a][b]);
-			//print_matrix_44(obj[a][b]->m_inv);
 			b++;
 		}
 		a++;

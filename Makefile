@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/05/26 11:00:08 by syl              ###   ########.fr        #
+#    Updated: 2025/06/02 09:48:46 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -126,6 +126,7 @@ SRCS = ./src/main.c \
 	./src/vect_point_color/set_colors.c \
 	./src/vect_point_color/vector_operations.c \
 	./src/vect_point_color/vector_operations_length.c \
+	./src/vect_point_color/color_operation2.c \
 	./src/window/event_hooks.c \
 	./src/window/event_hooks_function.c \
 	./src/window/image_to_window.c \
@@ -141,7 +142,6 @@ SRCS = ./src/main.c \
 	./src/new_data_management/init_memory_main.c \
 	./src/new_data_management/init_pix.c \
 	./src/new_data_management/free_main.c \
-	./src/new_data_management/init_hits.c \
 	./src/new_data_management/free_pix.c \
 	./src/new_data_management/check_main.c \
 	./src/new_data_management/init_scene.c \

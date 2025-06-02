@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 14:07:36 by syl              ###   ########.fr       */
+/*   Updated: 2025/05/31 20:54:30 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_scene *init_first_scene_memory(void)
 	scene->ima = NULL;
 	scene->obj = NULL;
 	scene->lux = NULL;
-	//A MODIFIER
+	// PF A ENLEVER APRES ENREGISTREMENT DES DONNEES
 	scene->nb_sphere = 2;
 	scene->nb_plan = 1;
 	scene->nb_cylinder = 1;
@@ -39,6 +39,7 @@ bool	init_scene_memory(t_scene *scene)
 		return (false);
 	if (init_cam_cph(scene) == false)
 		return (false);
+	scene->ima = NULL;
 	scene->ima = create_image();
 	if (init_obj_cph(scene) == false)
 		return (false);
@@ -63,7 +64,7 @@ bool init_obj_cph(t_scene *scene)
 	if (init_each_obj(scene->obj[0][0]) == false)
 			return (false);
 	scene->obj[0][1] = NULL;
-	// spheres
+	// SPHERES
 	b = 0;
 	scene->obj[1] = NULL;
 	scene->obj[1] = malloc(sizeof(t_obj *) * (scene->nb_sphere));
@@ -75,6 +76,34 @@ bool init_obj_cph(t_scene *scene)
 		if (!scene->obj[1][b])
 			return (false);
 		if (init_each_obj(scene->obj[1][b]) == false)
+			return (false);
+		scene->obj[1][b]->type = SPHERE;
+		b++;
+	}
+	// PLANS
+	b = 0;
+	scene->obj[2] = NULL;
+	scene->obj[2] = malloc(sizeof(t_obj *) * (scene->nb_plan));
+	while (b < scene->nb_plan)
+	{
+		scene->obj[2][b] = malloc(sizeof(t_obj));
+		if (!scene->obj[2][b])
+			return (false);
+		if (init_each_obj(scene->obj[2][b]) == false)
+			return (false);
+		scene->obj[2][b]->type = PLAN;
+		b++;
+	}
+	// CYLINDERS
+	b = 0;
+	scene->obj[3] = NULL;
+	scene->obj[3] = malloc(sizeof(t_obj *) * (scene->nb_cylinder));
+	while (b < scene->nb_cylinder)
+	{
+		scene->obj[3][b] = malloc(sizeof(t_obj));
+		if (!scene->obj[3][b])
+			return (false);
+		if (init_each_obj(scene->obj[3][b]) == false)
 			return (false);
 		b++;
 	}
@@ -102,13 +131,12 @@ bool init_each_obj(t_obj *obj)
 {
 	if (!obj)
 		return (obj);
-
 	init_each_obj_null(obj);
 	if (init_each_obj_coord(obj) == false)
 		return (false);
 	if (init_each_obj_matrix(obj) == false)
 		return (false);
-	obj->color = malloc(sizeof(t_color));
+	obj->color = create_color(0.0, 0.0, 0.0);
 	if (!obj->color)
 		return (false);
 	obj->color->r = 0.0;
@@ -116,6 +144,7 @@ bool init_each_obj(t_obj *obj)
 	obj->color->b = 0.0;
 	obj->color->rgb = 0;
 	obj->type = NONE;
+	//obj->difuse = 
 	return (true);
 }
 
@@ -138,6 +167,8 @@ bool	init_each_obj_matrix(t_obj *obj)
 		return (false);
 	return (true);
 }
+
+
 
 void	free_each_obj_matrix(t_obj *obj)
 {
@@ -179,7 +210,7 @@ bool init_each_obj_coord(t_obj *obj)
 	obj->v_axe_r = create_vector(0, 0, 0);
 	if (!obj->v_axe_r)
 		return (false);
-	obj->from = create_vector(0, 0, 0);
+	obj->from = create_vector(0, 1, 0);
 	if (!obj->from)
 		return (false);
 	obj->v_sph_camera = create_vector(0, 0, 0);
@@ -187,6 +218,7 @@ bool init_each_obj_coord(t_obj *obj)
 		return (false);
 	return (true);
 }
+
 
 void free_each_obj_coord(t_obj *obj)
 {
@@ -250,11 +282,30 @@ void free_obj_cph(t_scene *scene)
 	while (b < scene->nb_sphere)
 	{
 		free_each_obj(scene->obj[1][b]);
-		//free les coord...
 		free(scene->obj[1][b]);
 		scene->obj[1][b] = NULL;
 		b++;
 	}
 	free(scene->obj[1]);
 	scene->obj[1] = NULL;
+	b = 0;
+	while (b < scene->nb_plan)
+	{
+		free_each_obj(scene->obj[2][b]);
+		free(scene->obj[2][b]);
+		scene->obj[2][b] = NULL;
+		b++;
+	}
+	free(scene->obj[2]);
+	scene->obj[2] = NULL;
+	b = 0;
+	while (b < scene->nb_cylinder)
+	{
+		free_each_obj(scene->obj[3][b]);
+		free(scene->obj[3][b]);
+		scene->obj[3][b] = NULL;
+		b++;
+	}
+	free(scene->obj[3]);
+	scene->obj[3] = NULL;
 }

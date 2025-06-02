@@ -6,31 +6,32 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:00:12 by syl               #+#    #+#             */
-/*   Updated: 2025/05/28 11:39:12 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 13:38:31 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 //	A REFAIRE AVEC TOUS LES OBJETS
-void	main_intersections(t_pix *pix,t_obj ***obj, t_mem *memory_shuttle)
+void	main_intersections(t_obj ***obj, t_mem *memory_shuttle)
 {
 	int a;
 	int b;
 	
 	a = 1;
-	while (a < 2)// A CHANGER AVEC NOUVEAU OBJETS. 
+	//BOUCLE OBJ
+	while (a < 4)// A CHANGER AVEC NOUVEAU OBJETS. 
 	{
 		b = 0;
-		while (b < 2)// (obj[a][b] != NULL) //tous les objets...
+		while (b < 1) //obj[a][b] != NULL) //PF ici bien s assurer que ca fonctionne avec le bon nombre d objets
 		{
-			apply_transformation(pix, obj[1][b], memory_shuttle);
+			apply_transformation(obj[a][b], memory_shuttle);
 			if (a == 1)
-				intersect_sphere(pix, b, memory_shuttle);
-//			if (a == 2)
-//				intersect_plan(memory_shuttle, b);
-//			if (a == 3)
-//				intersect_cylinder(memory_shuttle, b);
+				intersect_sphere(memory_shuttle, b);
+			if (a == 2 && b == 0)
+				intersect_plan(memory_shuttle, b);
+			if (a == 3)
+				intersect_cylinder(memory_shuttle, b);
 			b++;
 		}
 		a++;

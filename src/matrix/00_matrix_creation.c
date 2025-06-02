@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_matrix_creation.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cmegret <cmegret@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/14 09:39:42 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/11 20:44:30 by cmegret          ###   ########.fr       */
+/*   Updated: 2025/05/31 20:57:26 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ float	*create_matrix(unsigned int row, unsigned int col)
 	return (m_matrix);
 }
 
+//OPTI
 void	init_matrix_zero(float *m_matrix)
 {
 	int	i;
