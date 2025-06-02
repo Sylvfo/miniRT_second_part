@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 15:13:28 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 19:47:10 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,6 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle) //pas sure 
 
 	main_intersections(scene->obj, memory_shuttle);
 	copy_matrix_44(memory_shuttle->obj_inv, scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->m_inv);
-	// PF pour garder en memoire l objet le plus proche de chaque pixel
 	closest_obj_in_pix(pix, memory_shuttle);
 	// PF dans le cas ou il crois aucun objet. 
 	if (memory_shuttle->obj_a == 0)

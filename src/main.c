@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/02 16:35:58 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 21:32:30 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,13 @@ int	main(int argc, char **argv)
 	pix = NULL;
 	scene = NULL;
 	memory_shuttle = NULL;
+
+	t_coord *normaltest = create_vector(0,1,0);
+	t_coord *test = create_vector(-0.7071,-0.7071,0);
+	t_coord *resulttest = create_vector(0,0,0);
+
+	vect_reflexion(resulttest, test, normaltest);
+	print_vector(resulttest);
 	// PF ici je fais deja une alloc afin de pouvoir enregistrer
 	// combien il y a de spheres, plans et cylindre lors de 
 	// la premiere lecture

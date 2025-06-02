@@ -15,8 +15,10 @@
 void next_ray_reflection(t_mem *memory_shuttle)
 {
 	// si vecteur reflexion vers camera???
-	copy_coord(memory_shuttle->r_base_origin, memory_shuttle->p_touch);
-	vect_reflexion(memory_shuttle->r_base_dir, memory_shuttle->r_base_dir, memory_shuttle->v_norm_parral);
+//	normalize_vector_na
+	
+	copy_coord(memory_shuttle->r_base_origin, memory_shuttle->p_touch);//p touch world
+	vect_reflexion(memory_shuttle->r_base_dir, memory_shuttle->r_dir_m, memory_shuttle->v_norm_parral);
 	clean_memory_shuttle_refl(memory_shuttle);
 }
 
@@ -48,14 +50,57 @@ void clean_memory_shuttle_refl(t_mem *memory_shuttle)
 	init_matrix_zero(memory_shuttle->transp_inv);
 }
 
+/*
+//gpt
 void vect_reflexion(t_coord *result, t_coord *v_previous, t_coord *v_normal)
 {
 	float dot;
 	t_coord v_scal;
+	t_coord add;
 
+	printf("v normal lenght %.3f \n", length_vector(v_normal));
+	printf("v previous lenght %.3f \n", length_vector(v_previous));
 	dot = dot_product(v_previous, v_normal);
 	v_scal = scalar_mult_ret(v_previous, (2 * dot));
 	substraction_p_to_v_na(result, v_normal, &v_scal);
+	printf("ray lenght result %.3f \n", length_vector(result));
+//	addition_na(&add, v_previous, result);
+//	dot = dot_product(&add, v_normal);
+//	printf("is zero  %.3f \n", dot);
+}*/
+
+void	addition_vect(t_coord *result, t_coord *p_v_1, t_coord *p_v_2)
+{
+	result->x = p_v_1->x + p_v_2->x;
+	result->y = p_v_1->y + p_v_2->y;
+	result->z = p_v_1->z + p_v_2->z;
+	result->t = 0;
+}
+
+//Babak
+void vect_reflexion(t_coord *result, t_coord *v_previous, t_coord *v_normal)
+{
+	float inner_product; //dot is the same
+	t_coord v_scal;
+	t_coord add;
+
+	v_scal.t = 0;
+//	normalize_vector_na(v_previous);
+//	printf("v normal lenght %.3f \n", length_vector(v_normal));
+//	printf("v previous lenght %.3f \n", length_vector(v_previous));
+	inner_product = dot_product(v_previous, v_normal);//=)
+	printf("inner_product %.5f \n", inner_product);
+	v_scal = scalar_mult_ret(v_normal, (-2 * inner_product));
+//	print_vector(&v_scal);
+	addition_vect(result, v_previous, &v_scal);
+	print_vector(result);
+	//substraction_p_to_v_na(result, v_previous, &v_scal);
+	//scalar_mult_na(result,result, -1);
+//	printf("ray lenght result %.3f \n", length_vector(result));
+	addition_na(&add, v_previous, result);
+	
+	inner_product = dot_product(&add, v_normal);
+	printf("is zero  %.3f \n", inner_product);
 }
 
 t_color blend_reflection(t_color local, t_color reflected, float refl_intensity)

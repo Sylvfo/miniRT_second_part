@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 21:36:44 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 16:14:22 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 21:29:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ t_coord	scalar_mult_ret(t_coord *v_1, float scale)
 	result.x = scale * v_1->x;
 	result.y = scale * v_1->y;
 	result.z = scale * v_1->z;
-//	result->t = 0;
+	result.t = 0;
+	return (result);
 }
 
 /**make

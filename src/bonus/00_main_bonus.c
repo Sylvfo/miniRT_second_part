@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:34:56 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 16:29:34 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/02 20:56:05 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 	prepare_computation(memory_shuttle, scene->obj);
 	if (scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->mirror > 0.0)
 	{
-		color_refl = reflexion(scene, memory_shuttle, 2);
-		//color = background_color(scene->obj[0][0], scene->lux[0][0]);
+		color_light = reflexion(scene, memory_shuttle, 2);
 	}
-	
 //		color = reflexion(scene, memory_shuttle, 2);// ici changer nombre de reflexions....
 	//reflexion....
+	else
+		color_light = lighting(scene, memory_shuttle, *(scene->obj[pix->obj_a][pix->obj_b]->color));
 	
-	color_light = lighting(scene, memory_shuttle, *(scene->obj[pix->obj_a][pix->obj_b]->color));
+//	color = 
 //	color =  blend_reflection(*(scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->color), color_refl, scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->mirror);
-	return (color);
+	return (color_light);
 }
 
 
