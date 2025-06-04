@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:27:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 14:41:06 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 22:43:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void	free_each_obj_matrix(t_obj *obj);
 
 t_image	*create_image(void);
 
+bool create_image_cmd(t_image *ima);
 //init_cam.c
 bool init_cam_cph(t_scene *scene);
 void cam_value_null(t_camera *cam);

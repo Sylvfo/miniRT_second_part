@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/06/04 17:59:56 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 22:33:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,8 @@ void clean_memory_shuttle_refl(t_mem *memory_shuttle);
 void vect_reflexion(t_coord *r_base_dir, t_coord *v_normal);
 //void vect_reflexion(t_coord *result, t_coord *v_previous, t_coord *v_normal);
 t_color blend_reflection(t_color local, t_color reflected, float refl_intensity);
+
+//mouse_hooks.c
+int mouse_click(int button, int x, int y, t_scene *scene);
 
 #endif

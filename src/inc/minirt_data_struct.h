@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/04 18:09:03 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 22:51:00 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,12 +93,26 @@ typedef struct s_image
 {
 	void	*img;
 	char	*addr;
+	void	*ima_cmd;
+	char	*addr_ima_cmd;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
 	void	*mlx_ptr;
 	void	*mlx_win;
 }	t_image;
+
+typedef struct s_pix
+{
+	t_color		*color; //  =)
+	int			obj_a;//rename type 
+	int			obj_b;//rename obj num
+	bool		bonus;
+	bool		preview;//a mettre dans scene???
+	//bonus mode
+	//si obj modifie?
+	//preview mode
+}	t_pix;
 
 //PARFAIT =)
 typedef struct s_scene
@@ -114,6 +128,10 @@ typedef struct s_scene
 	t_obj		***obj;
 	t_light		***lux;
 	bool	bonus_mode;
+	bool	preview;
+	int	x;
+	int y;
+	t_pix	***pix;
 } t_scene;
 
 //Nouvelle data structure
@@ -162,16 +180,6 @@ typedef struct s_mem
 	bool		is_avaible; //or mutex???
 } t_mem;
 
-typedef struct s_pix
-{
-	t_color		*color; //  =)
-	int			obj_a;//rename type 
-	int			obj_b;//rename obj num
-	bool		bonus;
-	bool		preview;
-	//bonus mode
-	//si obj modifie?
-	//preview mode
-}	t_pix;
+
 
 #endif

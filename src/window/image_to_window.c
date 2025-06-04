@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:21:36 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:53:31 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 23:12:00 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	pix_to_window(t_pix ***pix, t_scene *scene)
 		}
 		x++;
 	}
-	mlx_put_image_to_window(scene->ima->mlx_ptr,
-		scene->ima->mlx_win, scene->ima->img, 0, 0);
+//	mlx_put_image_to_window(scene->ima->mlx_ptr,
+//		scene->ima->mlx_win, scene->ima->img, 0, 0);
+	mlx_put_image_to_window(scene->ima->mlx_ptr, scene->ima->mlx_win, scene->ima->ima_cmd, 0, 0);
 }

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 16:25:39 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 23:15:00 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,13 @@ bool	init_scene_memory(t_scene *scene)
 		return (false);
 	scene->ima = NULL;
 	scene->ima = create_image();
+	if (!scene->ima)
+		return (false);
+//	if (scene->bonus_mode == true)
+//	{
+	if (create_image_cmd(scene->ima) == false)
+			return (false);
+//	}	
 	if (init_obj_cph(scene) == false)
 		return (false);
 	if (init_lux_cph(scene) == false)
