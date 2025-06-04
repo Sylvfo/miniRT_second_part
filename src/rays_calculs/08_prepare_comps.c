@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 14:00:25 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 14:41:26 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 17:39:53 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 void	prepare_computation(t_mem *mem_shuttle, t_obj ***obj)
 {
-	t_coord	term_for_p_local;//RENOMMER
-	t_coord	p_local_on_surface;//RENOMMER
+	t_coord	term_for_p_local;//RENOMMER distance de l objet dans espace objet.
+	t_coord	p_local_on_surface;//RENOMMER p touch objet?
 	t_coord v_eye;
 
+	// terme form p local c es t
 	scalar_mult_na(&term_for_p_local, mem_shuttle->r_dir_closest_obj, mem_shuttle->closestt);
 	term_for_p_local.t = 1;
 	addition_na(&p_local_on_surface, mem_shuttle->r_origin_closest_obj, &term_for_p_local);

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:15:23 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 15:32:43 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 17:57:27 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ float	simple_sqrt(float x);
 void	copy_coord(t_coord *new, t_coord *origin);
 //void	copy_color(t_color *new, t_color *origin);
 void	vector_fill(t_coord *vect, float x, float y, float z);
+void	point_fill(t_coord *point, float x, float y, float z);
 
 //color_operation.c
 void	scalar_mult_color(t_color *c_1, float scale);

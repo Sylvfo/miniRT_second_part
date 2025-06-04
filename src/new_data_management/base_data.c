@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 20:43:48 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 18:47:03 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,17 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 		scene->obj[1][b]->radius = scene->obj[1][b]->diam / 2;
 		scene->obj[1][b]->difuse = 0.7;// a deplacer...
 		scene->obj[1][b]->specular = 0.8;// a deplacer...
-		scene->obj[1][b]->mirror = 1.0;// a deplacer...
+		scene->obj[1][b]->mirror = 0.0;// a deplacer...
 //		scene->obj[1][b]->radius /= 2;
 		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
 		b++;
 	}
-	//b = 0;
-	while(b < 2)
+	b = 0;
+	while(b < 1)
 	{
 		scene->obj[2][b]->difuse = 0.9;// a deplacer...
 		scene->obj[2][b]->specular = 0.9;// a deplacer...
-		scene->obj[2][b]->mirror = 1.0;// a deplacer...
+		scene->obj[2][b]->mirror = 0.0;// a deplacer...
 		b++;
 	}
 	// CYL
@@ -86,7 +86,7 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 		scene->obj[3][b]->height = scene->obj[3][b]->height / 2;
 		scene->obj[3][b]->difuse = 0.9;
 		scene->obj[3][b]->specular = 0.9;
-		scene->obj[3][b]->mirror = 0.0;// a deplacer...
+		scene->obj[3][b]->mirror = 1.0;// a deplacer...
 		b++;
 	}
 

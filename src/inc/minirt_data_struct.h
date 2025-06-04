@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 14:52:32 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 18:09:03 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,7 +153,7 @@ typedef struct s_mem
 	float	*obj_inv; //MODIFIER??
 	t_coord	*v_light_to_point; //IMPORTANT
 	float	distance_light_p_touch; //IMPORTANT
-	t_coord	*v_point_to_light; // reuse for ray reflexion??
+	t_coord	*v_point_to_light; //LOCAL??
 	t_coord	*reflect_dir;//LOCAL
 	t_coord	*scalar; //LOCAL mais un peu complique a changer
 	t_coord	*view_dir;//LOCAL

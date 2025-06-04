@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 12:09:12 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 10:16:44 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/04 17:57:03 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,13 @@ void	vector_fill(t_coord *vect, float x, float y, float z)
 	vect->x = x;
 	vect->y = y;
 	vect->z = z;
+	vect->t = 0;
+}
+
+void	point_fill(t_coord *point, float x, float y, float z)
+{
+	point->x = x;
+	point->y = y;
+	point->z = z;
+	point->t = 1;
 }
