@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:29:55 by syl               #+#    #+#             */
-/*   Updated: 2025/06/04 22:31:13 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/05 14:26:35 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,30 @@ int mouse_click(int button, int x, int y, t_scene *scene)
 	}
 	else if (button == 1 && x >= WND_WIDTH)
 	{
-		if (y < 100)
-			printf("move \n");
+		if (y < 130)
+		{
+			scene->preview = true;
+			raytracing_main_bonus(scene->pix, scene, scene->mem_shuttle);
+			pix_to_window(scene->pix, scene);
+			printf("preview mode one \n");
+		}
+		if (y > 220 && y < 320)
+		{
+			scene->preview = true;
+			move_object(scene, scene->pix, scene->obj);
+			raytracing_main_bonus(scene->pix, scene, scene->mem_shuttle);
+			pix_to_window(scene->pix, scene);
+			printf("preview mode one + object move \n");
+		}
+		
+		if (y > 650 && y < 720)
+		{
+			scene->preview = false;
+			raytracing_main_bonus(scene->pix, scene, scene->mem_shuttle);
+			pix_to_window(scene->pix, scene);
+			printf("render mode one \n");
+		}
 	}
     return (0);
 }
+

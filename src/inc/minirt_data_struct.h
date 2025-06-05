@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/04 22:51:00 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/05 13:45:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,11 +93,14 @@ typedef struct s_image
 {
 	void	*img;
 	char	*addr;
-	void	*ima_cmd;
-	char	*addr_ima_cmd;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	void	*ima_cmd;
+	char	*addr_ima_cmd;
+	int		bits_per_pixel_cmd;
+	int		line_length_cmd;
+	int		endian_cmd;
 	void	*mlx_ptr;
 	void	*mlx_win;
 }	t_image;
@@ -114,25 +117,7 @@ typedef struct s_pix
 	//preview mode
 }	t_pix;
 
-//PARFAIT =)
-typedef struct s_scene
-{
-	int		nb_sphere;
-	int		nb_plan;
-	int		nb_cylinder;
-	int		nb_lights;
-	int		wnd_height;
-	int		wnd_width;
-	t_camera	*cam;
-	t_image		*ima;
-	t_obj		***obj;
-	t_light		***lux;
-	bool	bonus_mode;
-	bool	preview;
-	int	x;
-	int y;
-	t_pix	***pix;
-} t_scene;
+
 
 //Nouvelle data structure
 typedef struct s_intertt
@@ -180,6 +165,26 @@ typedef struct s_mem
 	bool		is_avaible; //or mutex???
 } t_mem;
 
-
+//PARFAIT =)
+typedef struct s_scene
+{
+	int		nb_sphere;
+	int		nb_plan;
+	int		nb_cylinder;
+	int		nb_lights;
+	int		wnd_height;
+	int		wnd_width;
+	t_camera	*cam;
+	t_image		*ima;
+	t_obj		***obj;
+	t_light		***lux;
+	t_mem		*mem_shuttle;
+	bool	bonus_mode;
+	bool	preview;
+	bool end_programm;
+	int	x;
+	int y;
+	t_pix	***pix;
+} t_scene;
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 19:47:10 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/05 13:42:08 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 			init_camera_pix_ray(memory_shuttle, scene->cam);
 			if (pix[x][y]->bonus == true)
 			{
+				pix[x][y]->preview = scene->preview;
+			//	printf("pix preview is : %s\n", pix[x][y]->preview ? "true" : "false");
 				*(pix[x][y]->color) = raytracer_bonus(pix[x][y], scene, memory_shuttle);
 			}
 			else if (pix[x][y]->bonus == false)

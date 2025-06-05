@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/04 23:12:21 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/05 13:37:39 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	scene->obj[0][0]->color->g = int_to_float(scene->obj[0][0]->color->g);
 	scene->obj[0][0]->color->b = int_to_float(scene->obj[0][0]->color->b);
 	scalar_mult_color(scene->lux[0][0]->color, scene->lux[0][0]->ratio);
-	scene->bonus_mode == true;
-
-
+	scene->bonus_mode = true;
+	scene->preview = false;
+	scene->end_programm = false;
 	i = 0;
 /*	if (scene->bonus_mode == false)
 	{

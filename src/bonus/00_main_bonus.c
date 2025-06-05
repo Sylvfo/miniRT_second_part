@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:34:56 by syl               #+#    #+#             */
-/*   Updated: 2025/06/04 18:58:48 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/05 14:00:11 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,35 @@ reflexion
 faire recursivite
 additionner avec la couleur de l objet pour mi-miroir
 sparkle sur les objets miroirs... ou alors lumière qu on voit?
+mettre le nombre de formes en plus max...
 */
+
+void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
+{
+	int	x;
+	int	y;
+	
+	// PF ensuite fait les calculs pour chaque pixel 
+	x = 0;
+	//BOUCLE PIX
+	while (x < WND_WIDTH)
+	{
+		y = 0;
+		while (y < WND_HEIGHT)
+		{
+			clean_memory_shuttle(memory_shuttle);
+			//simplifier ces deux la... et enlever les viewport de la datastructure
+			init_viewport_x_y(memory_shuttle, scene->cam, x, y);
+			init_camera_pix_ray(memory_shuttle, scene->cam);
+			pix[x][y]->preview = scene->preview;
+		//	printf("pix preview is : %s\n", pix[x][y]->preview ? "true" : "false");
+			*(pix[x][y]->color) = raytracer_bonus(pix[x][y], scene, memory_shuttle);
+			y++;
+		}
+		x++;
+	}
+	return ;
+}
 
 
 t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *memory_shuttle) 
@@ -35,13 +63,18 @@ t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
 		return (color);
 	}
 	if (pix->preview == true)
+	{
+	//	printf("previewin raytracer bonus \n");
 		return (*(scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->color));
+	}
+	
 	prepare_computation(memory_shuttle, scene->obj);
 	if (scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->mirror == 0.0)
 		color_light = lighting(scene, memory_shuttle, *(scene->obj[pix->obj_a][pix->obj_b]->color));
 	else if (scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->mirror > 0.0)
 	{
 		color_light = reflexion(scene, memory_shuttle, 4);
+		//les ajouter...
 	}
 	//else
 	

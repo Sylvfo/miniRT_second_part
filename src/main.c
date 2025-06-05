@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/04 22:11:55 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/05 13:56:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,10 @@ void link_scene_pix(t_scene *scene, t_pix ***pix)
 	scene->pix = pix;
 }
 
+void link_scene_mem(t_scene *scene, t_mem *memory_shuttle)
+{
+	scene->mem_shuttle = memory_shuttle;
+}
 
 int	main(int argc, char **argv)
 {
@@ -57,13 +61,25 @@ int	main(int argc, char **argv)
 	base_data2(scene, pix);
 
 	link_scene_pix(scene, pix);
-//	while (scene->end )
+	link_scene_mem(scene, memory_shuttle);
+	/*
+		while (scene->end_programm == false)
+	{
+		raytracing(pix, scene, memory_shuttle);
+		pix_to_window(pix, scene);
+		image_hooks(scene);
+		printf("back in main. objet selected is %i//%i \n", pix[scene->x][scene->y]->obj_a, pix[scene->x][scene->y]->obj_b);
+	}
+	*/
+
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
 	image_hooks(scene);
 	printf("back in main. objet selected is %i//%i \n", pix[scene->x][scene->y]->obj_a, pix[scene->x][scene->y]->obj_b);
-	
+
+	printf("end programme\n");
 	scene->pix = NULL;
+	scene->mem_shuttle = NULL;
 	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
 }
