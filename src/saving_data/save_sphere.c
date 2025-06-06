@@ -23,9 +23,7 @@ int	save_color(char *str, t_color *p)
 		return (0);
 	if (ft_size(coord) != NB_EL_AXE || !check_isvector(coord))
 		return (free_arg(coord));
-	p->r = number(coord[0]);
-	p->g = number(coord[1]);
-	p->b = number(coord[2]);
+	change_color(p, number(coord[0]), number(coord[1]), number(coord[2]));
 	free_arg(coord);
 	return (1);
 }
