@@ -21,5 +21,5 @@
 #define NB_EL_COLOR		3
 #define	NB_EL_AXE		3
 #define	NB_EL_VECTOR	3
-#define NB_OBJ			5
+#define NB_OBJ			4
 #endif

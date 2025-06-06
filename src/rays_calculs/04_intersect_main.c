@@ -20,15 +20,15 @@ void	main_intersections(t_obj ***obj, t_mem *memory_shuttle)
 	
 	a = 1;
 	//BOUCLE OBJ
-	while (a < 4)// A CHANGER AVEC NOUVEAU OBJETS. 
+	while (a < NB_OBJ)// A CHANGER AVEC NOUVEAU OBJETS. 
 	{
 		b = 0;
-		while (b < 1) //obj[a][b] != NULL) //PF ici bien s assurer que ca fonctionne avec le bon nombre d objets
+		while (obj[a] && b < obj[a][0]->number) //obj[a][b] != NULL) //PF ici bien s assurer que ca fonctionne avec le bon nombre d objets
 		{
 			apply_transformation(obj[a][b], memory_shuttle);
 			if (a == 1)
 				intersect_sphere(memory_shuttle, b);
-			if (a == 2 && b == 0)
+			if (a == 2)
 				intersect_plan(memory_shuttle, b);
 			if (a == 3)
 				intersect_cylinder(memory_shuttle, b);

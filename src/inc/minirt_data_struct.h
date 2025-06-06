@@ -66,6 +66,7 @@ typedef struct s_obj
 	float mirror;
 	float	difuse; // a voir pour bonus... mettre en local_
 	float	specular; // a boir pour bonus... mettre en local??
+	int		number;
 }	t_obj;
 
 //PARFAIT =)

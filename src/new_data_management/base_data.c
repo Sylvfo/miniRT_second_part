@@ -25,7 +25,7 @@ void	base_data2(t_scene *scene)
 	scene->obj[0][0]->color->g = int_to_float(scene->obj[0][0]->color->g);
 	scene->obj[0][0]->color->b = int_to_float(scene->obj[0][0]->color->b);
 	scalar_mult_color(scene->lux[0][0]->color, scene->lux[0][0]->ratio);
-	
+
 	i = 0;
 /*	if (scene->bonus_mode == false)
 	{
@@ -58,7 +58,7 @@ void	base_data2(t_scene *scene)
 	a = 1;
 	b = 0;
 	// SPHERES
-	while(b < 2)
+	while(b < scene->nb_sphere)
 	{
 		scene->obj[1][b]->diam = scene->obj[1][b]->diam / 2;
 		scene->obj[1][b]->radius = scene->obj[1][b]->diam / 2;
@@ -68,7 +68,8 @@ void	base_data2(t_scene *scene)
 		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
 		b++;
 	}
-	while(b < 2)
+	//PLANS
+	while(b < scene->nb_plan)
 	{
 		scene->obj[2][b]->difuse = 0.9;
 		scene->obj[2][b]->specular = 0.9;
@@ -78,7 +79,7 @@ void	base_data2(t_scene *scene)
 	}
 	// CYL
 	b = 0;
-	while(b < 1)
+	while(b < scene->nb_cylinder)
 	{
 		scene->obj[3][b]->diam = scene->obj[3][b]->diam / 2;
 		scene->obj[3][b]->radius = scene->obj[3][b]->diam / 2;
