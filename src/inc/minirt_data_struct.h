@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/05 13:45:55 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/07 16:10:22 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,9 +182,16 @@ typedef struct s_scene
 	bool	bonus_mode;
 	bool	preview;
 	bool end_programm;
+
+	t_pix	***pix;
+	//bonus
 	int	x;
 	int y;
-	t_pix	***pix;
+	int draw_mode;
+	int draw_type;
+	int axe_draw;
+	float size_modif;
+
 } t_scene;
 
 #endif

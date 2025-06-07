@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/05 13:37:39 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/07 16:31:45 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 		scene->obj[3][b]->height = scene->obj[3][b]->height / 2;
 		scene->obj[3][b]->difuse = 0.9;
 		scene->obj[3][b]->specular = 0.9;
-		scene->obj[3][b]->mirror = 1.0;// a deplacer...
+		scene->obj[3][b]->mirror = 0.0;// a deplacer...
 		b++;
 	}
 
@@ -104,5 +104,11 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 		}
 		x++;
 	}
+	scene->axe_draw = 0;
+	scene->draw_mode = 0;
+	scene->draw_type = 0;
+	scene->x = 0;
+	scene->y = 0;
+	scene->size_modif = 0.0;
 }
 

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 16:24:48 by syl               #+#    #+#             */
-/*   Updated: 2025/06/05 13:26:02 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/07 16:17:28 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	image_hooks(t_scene *scene)
 	mlx_hook(scene->ima->mlx_win, 17, 0, ft_exit, scene);
 	// mouse hooks for bonus...
 	mlx_mouse_hook(scene->ima->mlx_win, mouse_click, scene);
+	mlx_hook(scene->ima->mlx_win, 2, 1L << 0, ft_keys_bonus, scene);
 	mlx_loop(scene->ima->mlx_ptr);
 }
 

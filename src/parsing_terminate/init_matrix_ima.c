@@ -6,29 +6,11 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:31 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/05 13:02:25 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/07 14:25:19 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
-/*
-// QU EST CE QUI EST VRAIMENT UTILISE?
-typedef struct s_image
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	void	*ima_cmd;
-	char	*addr_ima_cmd;
-	int		bits_per_pixel_cmd;
-	int		line_length_cmd;
-	int		endian_cmd;
-	void	*mlx_ptr;
-	void	*mlx_win;
-}	t_image;*/
 
 t_image	*create_image(void)
 {
@@ -38,11 +20,8 @@ t_image	*create_image(void)
 	ima = malloc(sizeof(t_image));
 	if (!ima)
 		return (NULL);
-	
 	ima->addr = NULL;
 	ima->img = NULL;
-	ima->ima_cmd = NULL;
-	ima->addr_ima_cmd = NULL;
 	ima->mlx_ptr = NULL;
 	ima->mlx_win = NULL;
 	ima->mlx_ptr = mlx_init();
@@ -51,13 +30,14 @@ t_image	*create_image(void)
 		free(ima);
 		return (NULL);
 	}
-	ima->mlx_win = mlx_new_window(ima->mlx_ptr, (WND_WIDTH + 302), WND_HEIGHT, "Fen");
+	ima->mlx_win = mlx_new_window(ima->mlx_ptr, WND_WIDTH + 300, WND_HEIGHT, "Fen");
 	ima->img = mlx_new_image(ima->mlx_ptr, WND_WIDTH, WND_HEIGHT);
 	ima->addr = mlx_get_data_addr(ima->img, &ima->bits_per_pixel,
 			&ima->line_length, &ima->endian);
 	mlx_put_image_to_window(ima->mlx_ptr, ima->mlx_win, ima->img, 0, 0);
 	return (ima);
 }
+
 
 bool create_image_cmd(t_image *ima)
 {
@@ -78,25 +58,15 @@ bool create_image_cmd(t_image *ima)
 }
 
 /*
-void	pix_to_window(t_pix ***pix, t_scene *scene)
+bool	init_ima(t_program_context *context)
 {
-	int		x;
-	int		y;
+	t_image	*ima;
 
-	x = 0;
-	while (x < WND_WIDTH)
-	{
-		y = 0;
-		while (y < WND_HEIGHT)
-		{
-			color_float_to_int(pix[x][y]->color);
-			my_mlx_pixel_put(scene->ima, x, y, pix[x][y]->color->rgb);
-			y++;
-		}
-		x++;
-	}
-	mlx_put_image_to_window(scene->ima->mlx_ptr,
-		scene->ima->mlx_win, scene->ima->img, 0, 0);
-	mlx_put_image_to_window(scene->ima->mlx_ptr,
-		scene->ima->mlx_win, scene->ima->ima_cmd, WND_WIDTH + 2, 0);
+	ima = create_image();
+	if (!ima)
+		return (false);
+	context->ima = ima;
+	context->mlx_ptr = ima->mlx_ptr;
+	context->mlx_win = ima->mlx_win;
+	return (true);
 }*/
