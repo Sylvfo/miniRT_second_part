@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/05 13:56:58 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/05 15:13:49 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,19 +59,8 @@ int	main(int argc, char **argv)
 //	save datas(scene, argv[1]);
 	no_parsing(scene);//pour les testes de Sylvie
 	base_data2(scene, pix);
-
 	link_scene_pix(scene, pix);
 	link_scene_mem(scene, memory_shuttle);
-	/*
-		while (scene->end_programm == false)
-	{
-		raytracing(pix, scene, memory_shuttle);
-		pix_to_window(pix, scene);
-		image_hooks(scene);
-		printf("back in main. objet selected is %i//%i \n", pix[scene->x][scene->y]->obj_a, pix[scene->x][scene->y]->obj_b);
-	}
-	*/
-
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
 	image_hooks(scene);
