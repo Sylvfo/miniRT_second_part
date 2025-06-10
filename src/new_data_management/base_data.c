@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/07 16:31:45 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/10 18:35:54 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	scalar_mult_color(scene->lux[0][0]->color, scene->lux[0][0]->ratio);
 	scene->bonus_mode = true;
 	scene->preview = false;
-	scene->end_programm = false;
 	i = 0;
 /*	if (scene->bonus_mode == false)
 	{
@@ -110,5 +109,7 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	scene->x = 0;
 	scene->y = 0;
 	scene->size_modif = 0.0;
+	scene->after_virgule = 0.0;
+	scene->size_modif_neg = 1.0;
 }
 

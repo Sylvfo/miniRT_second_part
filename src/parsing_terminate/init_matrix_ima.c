@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:31 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/07 14:25:19 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/10 15:20:30 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ t_image	*create_image(void)
 bool create_image_cmd(t_image *ima)
 {
 	printf("enter in create img command\n");
-	ima->ima_cmd = mlx_xpm_file_to_image(ima->mlx_ptr, "test1.xpm",
+	ima->ima_cmd = mlx_xpm_file_to_image(ima->mlx_ptr, "dessin_commandes/Title3.xpm",
                                      &ima->line_length_cmd, &ima->endian_cmd);
 	if (!ima->ima_cmd)
 	{
@@ -53,9 +53,29 @@ bool create_image_cmd(t_image *ima)
                                       &ima->bits_per_pixel_cmd,
                                       &ima->line_length_cmd,
                                       &ima->endian_cmd);
+//	printf("youkeli\n");
+	return (true);
+}
+
+bool create_image_blk(t_image *ima)
+{
+	printf("enter in create img blk command\n");
+	ima->ima_blk = mlx_xpm_file_to_image(ima->mlx_ptr, "dessin_commandes/blackboard.xpm",
+                                     &ima->line_length_blk, &ima->endian_blk);
+	if (!ima->ima_blk)
+	{
+    	printf("Erreur : impossible de charger blackboard.xpm\n");
+    	return (false);
+	}
+	ima->addr_ima_cmd = mlx_get_data_addr(ima->ima_blk,
+                                      &ima->bits_per_pixel_blk,
+                                      &ima->line_length_blk,
+                                      &ima->endian_blk);
 	printf("youkeli\n");
 	return (true);
 }
+
+
 
 /*
 bool	init_ima(t_program_context *context)

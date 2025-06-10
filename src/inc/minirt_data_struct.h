@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/07 16:10:22 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/10 18:34:27 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,11 @@ typedef struct s_image
 	int		bits_per_pixel_cmd;
 	int		line_length_cmd;
 	int		endian_cmd;
+	void	*ima_blk;
+	char	*addr_ima_blk;
+	int		bits_per_pixel_blk;
+	int		line_length_blk;
+	int		endian_blk;
 	void	*mlx_ptr;
 	void	*mlx_win;
 }	t_image;
@@ -181,7 +186,7 @@ typedef struct s_scene
 	t_mem		*mem_shuttle;
 	bool	bonus_mode;
 	bool	preview;
-	bool end_programm;
+//	bool end_programm;
 
 	t_pix	***pix;
 	//bonus
@@ -191,6 +196,10 @@ typedef struct s_scene
 	int draw_type;
 	int axe_draw;
 	float size_modif;
+	float size_modif_neg;
+//	float	size_modif_virg;
+	float after_virgule;
+
 
 } t_scene;
 

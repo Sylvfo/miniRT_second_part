@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/06/07 15:59:45 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/10 17:42:46 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,33 @@
 # define MINIRT_BONUS_H
 
 # include "minirt_data_struct.h"
+
+enum e_transf_type
+{
+	NO_MOVE,
+	MOVE,
+	ROTATE,
+	SCALE,
+	COPY,
+};
+
+enum e_transf_mode
+{
+	RENDER,
+	PREVIEW,//PREVIEW?
+	CHOOSE_OBJ,
+	CHOOSE_AXE,
+	CHOOSE_DIM,
+};
+
+enum e_transf_axe
+{
+	NO_AXE,
+	X_AXE,//PREVIEW?
+	Y_AXE,
+	Z_AXE,
+	U_UNITY,
+};
 
 //00_main_bonus.c
 t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *memory_shuttle);
@@ -35,4 +62,31 @@ void apply_drawing_changes(t_scene *scene);
 void	clear_modif(t_scene *scene);
 //transf_obj.c
 void move_object(t_obj *obj);
+
+//render_mode.c
+void drawing_mode(t_scene *scene);
+void	render_mode(t_scene *scene);
+void print_selected_object(t_scene *scene);
+void is_transformation_possible(t_scene *scene, int x, int y);
+
+//select_transformation.c
+void select_transformation(t_scene *scene, int x, int y);
+void select_translation(t_scene *scene);
+void select_rotation(t_scene *scene);
+void select_scale(t_scene *scene);
+void select_copy(t_scene *scene);
+
+//select_obj_dim.c 
+void select_object(t_scene *scene, int x, int y);
+void take_distance_move(int keycode, t_scene *scene);
+void take_axe(int keycode, t_scene *scene);
+void take_dimensions(int keycode, t_scene *scene);
+
+//apply_modifications.c
+void apply_transformations(t_scene *scene);
+void apply_move_changes(t_scene *scene);
+void apply_rotate_changes(t_scene *scene);
+void apply_scale_changes(t_scene *scene);
+void apply_copy_changes(t_scene *scene);
+
 #endif
