@@ -33,24 +33,6 @@ void	no_parsing(t_scene *scene)
 	scene->obj[1][0]->color->b = 0.8;
 	scene->obj[1][0]->type = SPHERE; /// A reprendre
 
-/*	scene->obj[1][1]->p_coord->x = 2;
-	scene->obj[1][1]->p_coord->y = 1;
-	scene->obj[1][1]->p_coord->z = 3;
-	scene->obj[1][1]->diam = 1.2;
-	scene->obj[1][1]->color->r = 0.7;
-	scene->obj[1][1]->color->g = 0.9;
-	scene->obj[1][1]->color->b = 0.8;
-	scene->obj[1][1]->type = SPHERE; /// A reprendre*/
-
-/*	scene->obj[1][1]->p_coord->x = 2;
-	scene->obj[1][1]->p_coord->y = 1;
-	scene->obj[1][1]->p_coord->z = 3;
-	scene->obj[1][1]->diam = 1.2;
-	scene->obj[1][1]->color->r = 0.7;
-	scene->obj[1][1]->color->g = 0.9;
-	scene->obj[1][1]->color->b = 0.8;
-	scene->obj[1][1]->type = SPHERE; /// A reprendre*/
-
 	scene->lux[0][0]->ratio = 0.3;
 	scene->lux[0][0]->color->r = 0.2;// 0.2;
 	scene->lux[0][0]->color->g = 0.2;//0.2;
@@ -79,18 +61,6 @@ void	no_parsing(t_scene *scene)
 	scene->obj[3][0]->p_coord->x = -4.5;
 	scene->obj[3][0]->p_coord->y = 0;
 	scene->obj[3][0]->p_coord->z = 0;
-	/*
-		scene->obj[3][0]->v_axe->x = -0.2;
-	scene->obj[3][0]->v_axe->y = -0.3;
-	scene->obj[3][0]->v_axe->z = -1;
-	*/
-/*
-	scene->obj[3][0]->v_axe->x = 0.5;
-	scene->obj[3][0]->v_axe->y = 0.8660;
-	scene->obj[3][0]->v_axe->z = 0;*/
-/*	scene->obj[3][0]->v_axe->x = -0.2;
-	scene->obj[3][0]->v_axe->y = -0.3;
-	scene->obj[3][0]->v_axe->z = -1;*/
 	
 	scene->obj[3][0]->v_axe->x = 0;
 	scene->obj[3][0]->v_axe->y = 1;

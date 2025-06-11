@@ -23,7 +23,7 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	scene->obj[0][0]->color->g = int_to_float(scene->obj[0][0]->color->g);
 	scene->obj[0][0]->color->b = int_to_float(scene->obj[0][0]->color->b);
 	scalar_mult_color(scene->lux[0][0]->color, scene->lux[0][0]->ratio);
-	scene->bonus_mode = true;
+	scene->bonus_mode = false;
 	scene->preview = false;
 	i = 0;
 /*	if (scene->bonus_mode == false)
@@ -60,12 +60,10 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	while(b < scene->nb_sphere)
 	{
 		scene->obj[1][b]->diam = scene->obj[1][b]->diam / 2;
-		scene->obj[1][b]->radius = scene->obj[1][b]->diam / 2;
+		scene->obj[1][b]->radius = scene->obj[1][b]->diam;
 		scene->obj[1][b]->difuse = 0.7;// a deplacer...
 		scene->obj[1][b]->specular = 0.8;// a deplacer...
 		scene->obj[1][b]->mirror = 0.0;// a deplacer...
-//		scene->obj[1][b]->radius /= 2;
-		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
 		b++;
 	}
 	b = 0;
@@ -81,7 +79,7 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	while(b < scene->nb_cylinder)
 	{
 		scene->obj[3][b]->diam = scene->obj[3][b]->diam / 2;
-		scene->obj[3][b]->radius = scene->obj[3][b]->diam / 2;
+		scene->obj[3][b]->radius = scene->obj[3][b]->diam;
 		scene->obj[3][b]->height = scene->obj[3][b]->height / 2;
 		scene->obj[3][b]->difuse = 0.9;
 		scene->obj[3][b]->specular = 0.9;

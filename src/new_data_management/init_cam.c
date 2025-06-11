@@ -30,7 +30,6 @@ void cam_value_null(t_camera *cam)
 {
 	cam->p_coord = NULL;
 	cam->v_axe = NULL;
-//	cam->p_zero = NULL;
 	cam->v_up = NULL;
 	cam->v_left = NULL;
 	cam->v_true_up = NULL;

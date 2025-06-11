@@ -12,6 +12,38 @@
 
 #include "../inc/minirt.h"
 
+/*
+t_color lighting(t_scene *scene, t_mem *memory_shuttle, t_color obj_color)
+{
+	int		i = 0;
+//	t_color light_color = {0.0, 0.0, 0.0};
+	t_color ambient_color;
+	t_color this_light_color, specular_color;
+
+	// Ambient
+	obj_color = scalar_mult_color2(obj_color, scene->lux[0][0]->ratio);
+//	obj_color = add_color(obj_color)
+//	ambient_color = scalar_mult_color2(*(scene->lux[0][0]->color), scene->lux[0][0]->ratio);
+//	obj_color = add_color(obj_color, ambient_color);
+//	obj_color = multipling_color(obj_color, ambient_color);
+	// Point lights
+	while (i < 1)// scene->lux[1][i] != NULL)
+	{
+		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord); 
+		if (!intersect_objects_shadow(scene, memory_shuttle, i))
+		{
+			this_light_color = compute_pointlight(memory_shuttle, scene->lux[1][i]);
+			specular_color = compute_specular(memory_shuttle, scene->lux[1][i], scene->cam->p_coord);
+			this_light_color = add_color(this_light_color, specular_color);
+			//this_light_color = multipling_color(this_light_color, specular_color);
+			obj_color = add_color(obj_color, this_light_color);
+			//obj_color = multipling_color(obj_color, this_light_color);
+		}
+		i++;
+	}
+	return (obj_color);
+}*/
+
 //ICI YA DU BONUS. VOIR SI C EST OK...
 t_color	lighting(t_scene *scene, t_mem *memory_shuttle, t_color obj_color)
 {

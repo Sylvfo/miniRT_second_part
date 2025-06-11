@@ -51,7 +51,7 @@ int	float_to_byte(float f)
 {
 	if (f <= 0.0f)
 		return (0);
-	if (f >= 255)
+	if (f >= 1.0)
 		return (255);
 	return ((int)(f * 255));
 }

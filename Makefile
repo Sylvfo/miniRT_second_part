@@ -12,9 +12,6 @@
 
 HEADER1 = "redo header"                                              
                                               
-# Délai d'affichage du logo
-DELAY = 0.1
-
 # Redirection des erreurs
 REDIRECT = > /dev/null 2>&1
 
@@ -34,7 +31,7 @@ NAME = minirt
 CC = cc
 
 # Flags de compilation -Wall -Wextra -Werror
-CFLAGS = #-Wall -Wextra -Werror #-Iincludes
+CFLAGS = -Wall -Wextra -Werror #-Iincludes
 LIBFLAGS = -Llib/libft -lft
 
 # Fichiers sources
@@ -47,29 +44,6 @@ UTILS = $(SRC_DIR)/utils/
 INIT = $(SRC_DIR)/new_data_management/
 
 SRCS = ./src/main.c \
-	./src/initialization/init_camera.c \
-	./src/initialization/init_data.c \
-	./src/initialization/init_hits_alloc.c \
-	./src/initialization/init_hits_background.c \
-	./src/initialization/init_hits.c \
-	./src/initialization/init_hits_cylinders.c \
-	./src/initialization/init_hits_init.c \
-	./src/initialization/init_hits_plans.c \
-	./src/initialization/init_hits_spheres.c \
-	./src/initialization/init_light_alloc.c \
-	./src/initialization/init_light.c \
-	./src/initialization/init_light_init.c \
-	./src/initialization/init_object_alloc.c \
-	./src/initialization/init_object.c \
-	./src/initialization/init_object_free.c \
-	./src/initialization/init_object_free_utils.c \
-	./src/initialization/init_object_init.c \
-	./src/initialization/init_scene.c \
-	./src/initialization/init_scene_camera.c \
-	./src/initialization/init_scene_comps.c \
-	./src/initialization/init_scene_hits.c \
-	./src/initialization/init_scene_obj.c \
-	./src/initialization/init_scene_viewport.c \
 	./src/matrix/00_matrix_check.c \
 	./src/matrix/00_matrix_creation.c \
 	./src/matrix/00_matrix_multiplication.c \
@@ -81,16 +55,6 @@ SRCS = ./src/main.c \
 	./src/matrix/matrix_inverse.c \
 	./src/matrix/matrix_minor_det.c \
 	./src/matrix/matrix_submatrix.c \
-	./src/parsing/parse_camera.c \
-	./src/parsing/parse_checks.c \
-	./src/parsing/parse_color.c \
-	./src/parsing/parse_light.c \
-	./src/parsing/parse_plane.c \
-	./src/parsing/parse_sphere_cylinder.c \
-	./src/parsing/parse_utils.c \
-	./src/parsing/scene_parsing.c \
-	./src/parsing_terminate/init_matrix_ima.c \
-	./src/parsing_terminate/s_create_point_vector.c \
 	./src/rays_calculs/00_raytracing_main.c \
 	./src/rays_calculs/01_camera_construction.c \
 	./src/rays_calculs/02_viewport_construction.c \
@@ -122,18 +86,11 @@ SRCS = ./src/main.c \
 	./src/vect_point_color/vector_operations.c \
 	./src/vect_point_color/vector_operations_length.c \
 	./src/vect_point_color/color_operation2.c \
+	./src/vect_point_color/s_create_point_vector.c \
 	./src/window/event_hooks.c \
 	./src/window/event_hooks_function.c \
 	./src/window/image_to_window.c \
 	./src/window/pixel_put.c \
-	./src/free/free_all.c \
-	./src/free/free_basics.c \
-	./src/free/free_components.c \
-	./src/free/free_comps.c \
-	./src/free/free_hits.c \
-	./src/free/free_lights.c \
-	./src/free/free_pixels.c \
-	./src/free/free_pixels2.c \
 	./src/new_data_management/init_memory_main.c \
 	./src/new_data_management/init_pix.c \
 	./src/new_data_management/free_main.c \
@@ -146,6 +103,7 @@ SRCS = ./src/main.c \
 	./src/new_data_management/base_data.c \
 	./src/new_data_management/init_cam.c \
 	./src/new_data_management/init_lux.c \
+	./src/new_data_management/create_image.c \
 	./src/bonus/00_main_bonus.c \
 	./src/bonus/01_reflection.c \
 	./src/bonus/20_mouse_hooks.c \
@@ -163,7 +121,7 @@ SRCS = ./src/main.c \
 	$(UTILS)utils.c $(UTILS)utils2.c\
 	 
 # Détection de l'OS pour choisir la bonne version de la MLX
-UNAME_S := $(shell uname -s)
+#UNAME_S := $(shell uname -s)
 #ifeq ($(UNAME_S),Darwin)
 #	MLX_DIR := lib/minilibx_opengl
 #	MLX_INC := -I$(MLX_DIR)
@@ -181,37 +139,8 @@ LIBFT = lib/libft/libft.a
 OBJ_DIR = objs
 OBJ = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-# Fichiers de test
-TEST_SRCS = tests/run_test.c tests/test_validate_ambient.c tests/test_validate_light.c tests/test_validate_camera.c $(filter-out srcs/main/main.c, $(SRCS))
-TEST_OBJS = $(TEST_SRCS:.c=.o)
-TEST_NAME = test_fonction
-
 # all: start norm $(MLX_DIR)/libmlx.a $(NAME)
 all: start norm $(MLX_DIR)/libmlx.a $(NAME)
-
-# Règle pour afficher le logo au démarrage
-start:
-	clear
-	@echo $(HEADER1)
-	@sleep $(DELAY)
-	@echo $(HEADER2)
-	@sleep $(DELAY)
-	@echo $(HEADER3)
-	@sleep $(DELAY)
-	@echo $(HEADER4)
-	@sleep $(DELAY)
-	@echo $(HEADER5)
-	@sleep $(DELAY)
-	@echo $(HEADER6)
-	@sleep $(DELAY)
-	@echo $(HEADER7)
-	@sleep $(DELAY)
-	@echo $(HEADER8)
-	@sleep $(DELAY)
-	@echo $(HEADER9)
-	@sleep $(DELAY)
-	@echo $(HEADER10)
-	@sleep $(DELAY)
 
 # Règle pour compiler MinilibX
 $(MLX_DIR)/libmlx.a:

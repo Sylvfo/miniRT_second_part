@@ -120,14 +120,11 @@ typedef struct s_image
 
 typedef struct s_pix
 {
-	t_color		*color; //  =)
+	t_color		*color;
 	int			obj_a;//rename type 
 	int			obj_b;//rename obj num
 	bool		bonus;
-	bool		preview;//a mettre dans scene???
-	//bonus mode
-	//si obj modifie?
-	//preview mode
+	bool		preview;
 }	t_pix;
 
 
@@ -178,7 +175,6 @@ typedef struct s_mem
 	bool		is_avaible; //or mutex???
 } t_mem;
 
-//PARFAIT =)
 typedef struct s_scene
 {
 	int		nb_sphere;
@@ -192,12 +188,9 @@ typedef struct s_scene
 	t_obj		***obj;
 	t_light		***lux;
 	t_mem		*mem_shuttle;
+	t_pix	***pix;
 	bool	bonus_mode;
 	bool	preview;
-//	bool end_programm;
-
-	t_pix	***pix;
-	//bonus
 	int	x;
 	int y;
 	int draw_mode;
@@ -205,10 +198,7 @@ typedef struct s_scene
 	int axe_draw;
 	float size_modif;
 	float size_modif_neg;
-//	float	size_modif_virg;
 	float after_virgule;
-
-
 } t_scene;
 
 #endif

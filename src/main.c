@@ -48,16 +48,16 @@ void link_scene_mem(t_scene *scene, t_mem *memory_shuttle)
 
 int	main(int argc, char **argv)
 {
-//	char *c;
-//	c = ft_itoa(getpid());
+	char *c;
+	c = ft_itoa(getpid());
 	t_scene *scene;
 	t_pix ***pix;
 	t_mem *memory_shuttle;
 
 	scene = init_first_scene_memory();
-//	write(1, c, 7);
-//	write(1, "\n", 1);
-//	free(c);
+	write(1, c, 7);
+	write(1, "\n", 1);
+	free(c);
 	if (!check_args(argc, argv))
 		return (EXIT_FAILURE);
 	if (!verification(argv[1], scene))
@@ -92,8 +92,6 @@ int	main(int argc, char **argv)
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
 	image_hooks(scene);
-	printf("back in main. objet selected is %i//%i \n", pix[scene->x][scene->y]->obj_a, pix[scene->x][scene->y]->obj_b);
-
 	printf("end programme\n");
 	scene->pix = NULL;
 	scene->mem_shuttle = NULL;

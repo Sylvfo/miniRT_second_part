@@ -36,7 +36,7 @@
 # include "macro.h"
 # include "minirt_bonus.h"
 
-# define WND_WIDTH 1200
+# define WND_WIDTH 1400
 # define WND_HEIGHT 1000
 
 # define BAKGROUND_COLOR 711850

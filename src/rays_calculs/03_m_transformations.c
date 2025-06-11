@@ -37,19 +37,17 @@ void	set_transformation_obj(t_obj *obj)
 	inverse_matrix_44(obj->m_inv, obj->m_transf);
 }
 
-//PF ici ok avec les boucles d objets??? A verifier
 void	matrix_transformations(t_obj ***obj)
 {
 	int	a;
 	int	b;
 
 	a = 1;
-	//BOUCLE OBJ
 	set_transformation_obj(obj[0][0]);
-	while (a < NB_OBJ) //(obj[a] != NULL)
+	while (a < NB_OBJ)
 	{
 		b = 0;
-		while (obj[a] && b < obj[a][0]->number)//(obj[a][b] != NULL)
+		while (obj[a] && b < obj[a][0]->number)
 		{
 			set_transformation_obj(obj[a][b]);
 			b++;

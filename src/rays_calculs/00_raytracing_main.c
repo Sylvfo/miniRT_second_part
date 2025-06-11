@@ -17,19 +17,15 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	int	x;
 	int	y;
 	
-	// PF Construit tout ce qui est commun. 
 	constructing_camera(scene);
 	matrix_transformations(scene->obj);
-	// PF ensuite fait les calculs pour chaque pixel 
 	x = 0;
-	//BOUCLE PIX
 	while (x < WND_WIDTH)
 	{
 		y = 0;
 		while (y < WND_HEIGHT)
 		{
 			clean_memory_shuttle(memory_shuttle);
-			//simplifier ces deux la... et enlever les viewport de la datastructure
 			init_viewport_x_y(memory_shuttle, scene->cam, x, y);
 			init_camera_pix_ray(memory_shuttle, scene->cam);
 			if (pix[x][y]->bonus == true)
