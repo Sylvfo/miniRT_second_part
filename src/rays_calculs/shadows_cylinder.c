@@ -71,7 +71,7 @@ static bool	intersect_cyl_body_shadow_calc(t_coord *s_o_l, t_coord *s_d_l,
 }
 
 static bool	intersect_cyl_caps_shadow_calc(t_coord *s_o_l, t_coord *s_d_l,
-	float max_d, t_obj *cyl)
+	float max_d)
 {
 	float	t;
 
@@ -111,7 +111,7 @@ bool	intersect_cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder)
 			memory_shuttle->distance_light_p_touch, cylinder))
 		return (true);
 	if (intersect_cyl_caps_shadow_calc(&s_o_local, &s_d_local,
-			memory_shuttle->distance_light_p_touch, cylinder))
+			memory_shuttle->distance_light_p_touch))
 		return (true);
 	return (false);
 }

@@ -16,7 +16,7 @@
 // a faire apres que les donnees ont ete enregistrees. 
 void	base_data2(t_scene *scene, t_pix ***pix)
 {
-	int i;
+
 	scene->cam->fov = scene->cam->fov * 0.0174533;
 	color_int_to_rgb(BAKGROUND_COLOR, scene->obj[0][0]->color);
 	scene->obj[0][0]->color->r = int_to_float(scene->obj[0][0]->color->r);
@@ -25,7 +25,6 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	scalar_mult_color(scene->lux[0][0]->color, scene->lux[0][0]->ratio);
 	scene->bonus_mode = false;
 	scene->preview = false;
-	i = 0;
 /*	if (scene->bonus_mode == false)
 	{
 		while (i < scene->nb_lights)
@@ -51,10 +50,8 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 			i++;
 		}
 	}*/
-	int a;
 	int b;
 
-	a = 1;
 	b = 0;
 	// SPHERES
 	while(b < scene->nb_sphere)

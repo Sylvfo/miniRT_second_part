@@ -72,6 +72,7 @@ void apply_scale_changes(t_scene *scene)
 	printf("matrix inverse is done\n");
 }
 
+/*
 void apply_copy_changes(t_scene *scene)
 {
 	int obj_type;
@@ -85,4 +86,4 @@ void apply_copy_changes(t_scene *scene)
 	// copy coord // copy matrix ... =)
 	// !!! si cet objet a deja été transformé...
 	// transformations pareil
-}
+}*/

@@ -14,7 +14,6 @@
 
 bool init_lux_cph(t_scene *scene)
 {
-	int		a;
 	int		b;
 
 	scene->lux = NULL;

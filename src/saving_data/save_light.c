@@ -15,9 +15,7 @@
 int	save_ambient(char *str, t_light *lux)
 {
 	char	**params;
-	int		i;
 
-	i = 0;
 	params = ft_split(str, ' ');
 	if (!params)
 		return (error_system());

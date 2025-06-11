@@ -15,9 +15,7 @@
 int	save_coordonnee(char *str, t_coord *p)
 {
 	char	**coord;
-	int		i;
 
-	i = 0;
 	coord = ft_split(str, ',');
 	if (!coord)
 		return (0);
@@ -32,10 +30,10 @@ int	save_coordonnee(char *str, t_coord *p)
 
 int	save_camera(char *str, t_camera *camera)
 {
-	t_coord		position;
-	t_coord		orientation;
-	t_camera	*cam;
-	float		fov;
+//	t_coord		position;
+//	t_coord		orientation;
+//	t_camera	*cam;
+//	float		fov;
 
 	char	**params;
 

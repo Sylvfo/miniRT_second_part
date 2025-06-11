@@ -18,7 +18,7 @@ void select_object(t_scene *scene, int x, int y)
 	scene->y = y;
 	print_selected_object(scene);
 	print_on_screen(scene,"OBJECT SELECTED", 0, 255);
-	is_transformation_possible(scene, x, y);
+	is_transformation_possible(scene);
 	if (scene->draw_type == SCALE)
 		print_on_screen(scene,"CHOOSE AXE x y z or U (unity)", 1, 255);
 	else

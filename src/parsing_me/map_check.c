@@ -14,11 +14,8 @@ int map_ratio(char *str)
 
 int map_diameter(char *str)
 {
-	float test;
-
 	if (!check_isdigit(str))
 		return (0);
-	test = 	number(str);
 	return (1);
 }
 

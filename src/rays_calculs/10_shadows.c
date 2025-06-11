@@ -37,7 +37,7 @@ void	prepare_v_light(t_mem *memory_shuttle, t_coord *lux_p_coord)
 }
 
 //A REVOIR AVEC NOUVELLE DATA STRUCTURE
-bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle, int lux_num)
+bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle)
 {
 	int		a;
 	int		b;

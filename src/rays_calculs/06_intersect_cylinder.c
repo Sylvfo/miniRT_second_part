@@ -24,7 +24,7 @@ bool	check_cap(t_mem *memory_shuttle, float t)
 	return (false);
 }
 
-t_intertt	handle_cap(t_mem *memory_shuttle, t_intertt result, int cyl_n, float y_pos, int cap_type)
+t_intertt	handle_cap(t_mem *memory_shuttle, t_intertt result, float y_pos)
 {
 	float	t;
 
@@ -46,16 +46,13 @@ t_intertt	handle_cap(t_mem *memory_shuttle, t_intertt result, int cyl_n, float y
 	return (result);
 }
 
-t_intertt	intersect_caps(t_mem *memory_shuttle, t_intertt result, int cyl_n)
+t_intertt	intersect_caps(t_mem *memory_shuttle, t_intertt result)
 {
-	float t1;
-	float t2;
-
 	if (fabs(memory_shuttle->r_dir_m->y) < 1.17549435e-38f)
 		return (result);
 	// ici voir si les cylindres sont fermes dans les bonus....
-	result = handle_cap(memory_shuttle, result, cyl_n, -1, 8);
-	result = handle_cap(memory_shuttle, result, cyl_n, 1, 9);
+	result = handle_cap(memory_shuttle, result, -1);
+	result = handle_cap(memory_shuttle, result, 1);
 	return (result);
 }
 
@@ -81,13 +78,13 @@ void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n)
 	{
 		return ;
 	}
-	result = cut_cylinder(memory_shuttle, cyl_n, (-b - sqrt(discriminant)) / (2 * a),
+	result = cut_cylinder(memory_shuttle, (-b - sqrt(discriminant)) / (2 * a),
 		(-b + sqrt(discriminant)) / (2 * a));
-	result = intersect_caps(memory_shuttle, result, cyl_n);
+	result = intersect_caps(memory_shuttle, result);
 	closestt(memory_shuttle, result, 3, cyl_n);
 }
 
-t_intertt	cut_cylinder(t_mem *memory_shuttle, int cyl_n, float t1, float t2)
+t_intertt	cut_cylinder(t_mem *memory_shuttle, float t1, float t2)
 {
 	float	y1;
 	float	y2;

@@ -59,7 +59,7 @@ t_color	lighting(t_scene *scene, t_mem *memory_shuttle, t_color obj_color)
 	while (i < 1)// (scene->lux[1][i] != NULL)
 	{
 		prepare_v_light(memory_shuttle, scene->lux[1][i]->p_coord); 
-		if (intersect_objects_shadow(scene, memory_shuttle, i) == false)
+		if (intersect_objects_shadow(scene, memory_shuttle) == false)
 		{
 			this_light_color = compute_pointlight(memory_shuttle, scene->lux[1][i]);
 			// if obj shiny

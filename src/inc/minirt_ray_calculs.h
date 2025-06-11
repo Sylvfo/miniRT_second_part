@@ -27,13 +27,8 @@ void	pixel_size(t_scene *scene);
 void	constructing_camera(t_scene *scene);
 
 //02_viewport_construction.c
-//void	init_camera_pix_ray(t_pix *pix, t_camera *cam);
-//void	init_camera_pix_ray(t_pix *pix, t_mem *memory_shuttle, t_camera *cam);
 void	init_camera_pix_ray(t_mem *memory_shuttle, t_camera *cam);
 void	init_viewport_x_y(t_mem *memory_shuttle, t_camera *cam, int x, int y);
-//void	init_viewport_x_y(t_mem *memory_shuttle, t_camera *cam, int x, int y);
-//void	init_viewport_x_y(t_pix *pix, t_camera *cam, int x, int y);
-//void	init_viewport(t_pix ***pix, t_camera *cam);
 void	init_viewport(t_pix ***pix, t_mem *memory_shuttle, t_camera *cam);
 
 //03_m_transformations.c
@@ -51,12 +46,10 @@ void	intersect_sphere(t_mem *memory_shuttle, int sph_num);
 
 //06_intersect_cylinder.c
 void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n);
-t_intertt	cut_cylinder(t_mem *memory_shuttle, int cyl_n, float t1, float t2);
-t_intertt	intersect_caps(t_mem *memory_shuttle, t_intertt result, int cyl_n);
+t_intertt	cut_cylinder(t_mem *memory_shuttle, float t1, float t2);
+t_intertt	intersect_caps(t_mem *memory_shuttle, t_intertt result);
 bool	check_cap(t_mem *memory_shuttle, float t);
-t_intertt	handle_cap(t_mem *memory_shuttle, t_intertt result, int cyl_n, float y_pos, int cap_type);
-
-//07_closest_obj.c 
+t_intertt	handle_cap(t_mem *memory_shuttle, t_intertt result, float y_pos);//07_closest_obj.c 
 void	closestt(t_mem *memory_shuttle, t_intertt result, int obj_type, int obj_num);
 void closest_obj_in_pix(t_pix *pix, t_mem *memory_shuttle);
 
@@ -66,12 +59,11 @@ void	normal_sphere(t_mem *mem_shuttle);
 void	normal_cylinder(t_mem *mem_shuttle, t_obj ***obj);
 
 //09_light_shadow_main.c
-//float	light_intensity_cph(t_scene *scene, t_mem *memory_shuttle);
 t_color	lighting(t_scene *scene, t_mem *memory_shuttle, t_color color);
 
 //10_shadows.c
 void	prepare_v_light(t_mem *memory_shuttle, t_coord *lux_p_coord);
-bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle, int lux_num);
+bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle);
 
 //shadows_sphere.c
 bool	intersect_sphere_shadow(t_obj *sphere, t_mem *memory_shuttle);
@@ -80,7 +72,5 @@ bool	intersect_cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder);
 
 //11_light.c
 t_color	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord);
-//float	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord);
-//float	compute_pointlight_old(t_mem *memory_shuttle, t_light *lux);
 t_color	compute_pointlight(t_mem *memory_shuttle, t_light *lux);
 #endif

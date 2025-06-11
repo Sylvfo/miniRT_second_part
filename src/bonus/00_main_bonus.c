@@ -51,7 +51,7 @@ void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *memory_shuttle) 
 {
 	t_color	color;
-	t_color	color_refl;
+//	t_color	color_refl;
 	t_color	color_light;
 
 	main_intersections(scene->obj, memory_shuttle);
@@ -92,6 +92,7 @@ t_color	reflexion(t_scene *scene, t_mem *memory_shuttle, int recurs_count)
 {
 	t_color	color;
 
+	(void) recurs_count;
 	//printf("enter reflexion\n");
 	next_ray_reflection(memory_shuttle);
 	main_intersections(scene->obj, memory_shuttle);

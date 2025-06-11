@@ -95,7 +95,6 @@ SRCS = ./src/main.c \
 	./src/new_data_management/init_pix.c \
 	./src/new_data_management/free_main.c \
 	./src/new_data_management/free_pix.c \
-	./src/new_data_management/check_main.c \
 	./src/new_data_management/init_scene.c \
 	./src/new_data_management/free_scene.c \
 	./src/new_data_management/no_parsing.c \

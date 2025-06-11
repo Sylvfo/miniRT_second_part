@@ -21,7 +21,7 @@ int mouse_click(int button, int x, int y, t_scene *scene)
 		if (y <= 67 && scene->draw_mode == PREVIEW)
 			render_mode(scene);
 		if (scene->draw_mode == PREVIEW)
-			select_transformation(scene, x, y);
+			select_transformation(scene, y);
 	}
 	if (scene->draw_mode == CHOOSE_OBJ && button == 1 && x < WND_WIDTH)
 		select_object(scene, x, y);
@@ -48,7 +48,7 @@ void	clear_modif(t_scene *scene)
 {
 	scene->axe_draw = NO_AXE;
 	scene->draw_mode = PREVIEW;
-	scene->draw_type = NO_MOVE;
+	scene->draw_type = NO_MOVE;                        
 	scene->y = 0;
 	scene->x = 0;
 	scene->size_modif = 0.0;

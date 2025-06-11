@@ -44,7 +44,7 @@ void vect_reflexion(t_coord *r_base_dir, t_coord *v_normal)
 {
 	float inner_product; //dot is the same
 	t_coord v_scal;
-	t_coord add;
+//	t_coord add;
 	t_coord result;
 
 	v_scal.t = 0;

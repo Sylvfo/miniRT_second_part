@@ -67,10 +67,10 @@ void re_identity_matrix(float *m_identity);
 //render_mode.c
 void drawing_mode(t_scene *scene);
 void	render_mode(t_scene *scene);
-void is_transformation_possible(t_scene *scene, int x, int y);
+void is_transformation_possible(t_scene *scene);
 
 //select_transformation.c
-void select_transformation(t_scene *scene, int x, int y);
+void select_transformation(t_scene *scene, int y);
 void select_translation(t_scene *scene);
 void select_rotation(t_scene *scene);
 void select_scale(t_scene *scene);

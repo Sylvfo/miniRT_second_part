@@ -12,7 +12,7 @@
 
 #include "../inc/minirt.h"
 
-void select_transformation(t_scene *scene, int x, int y)
+void select_transformation(t_scene *scene, int y)
 {
 	if (y >= 142 && y < 183) //move
 		select_translation(scene);

@@ -15,9 +15,7 @@
 int	save_color(char *str, t_color *p)
 {
 	char	**coord;
-	int		i;
 
-	i = 0;
 	coord = ft_split(str, ',');
 	if (!coord)
 		return (0);

@@ -32,7 +32,7 @@ void	render_mode(t_scene *scene)
 	print_on_screen(scene, "RENDER MODE ON", 0, 7050681);
 }
 
-void	is_transformation_possible(t_scene *scene, int x, int y)
+void	is_transformation_possible(t_scene *scene)
 {
 	if (scene->pix[scene->x][scene->y]->obj_a == PLAN
 		&& scene->draw_type == SCALE)
