@@ -12,6 +12,13 @@
 
 #include "../inc/minirt.h"
 
+void	constructing_camera(t_scene *scene)
+{
+	view_camera(scene->cam);
+	inverse_matrix_44(scene->cam->m_inverse, scene->cam->m_transf);
+	pixel_size(scene);
+}
+
 void	view_camera(t_camera *cam)
 {
 	if (cam->v_axe->x == 0 && fabs(cam->v_axe->y) == 1 && cam->v_axe->z == 0)
@@ -62,9 +69,4 @@ void	pixel_size(t_scene *scene)
 	return ;
 }
 
-void	constructing_camera(t_scene *scene)
-{
-	view_camera(scene->cam);
-	inverse_matrix_44(scene->cam->m_inverse, scene->cam->m_transf);
-	pixel_size(scene);
-}
+

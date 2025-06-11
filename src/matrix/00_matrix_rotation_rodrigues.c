@@ -24,14 +24,7 @@ void	rotation_from_vector(t_obj *obj)
 		fprintf(stderr, "Error: Null pointer in rotation_from_vector\n");
 		return ;
 	}
-	//from ok
 	cross_product_na(obj->v_axe_r, obj->from, obj->v_axe);//ok
-//	printf("cross p \n");
-//	print_vector(obj->v_axe_r);
-//	printf("from \n");
-//	print_vector(obj->from);
-//	printf("obj->v_axe \n");
-//	print_vector(obj->v_axe);
 	dot = dot_product(obj->from, obj->v_axe);//to???
 	dot = fmaxf(-1.0f, fminf(1.0f, dot));// c est quoi ca?
 	angle = acos(dot); //acosf(dot);
@@ -42,8 +35,6 @@ void	rotation_from_vector(t_obj *obj)
 	s = sin(angle);//ok
 	matrix_rotation_rodrigues(obj, c, s);
 }
-
-
 
 void	matrix_rotation_rodrigues(t_obj *obj, float c, float s)
 {

@@ -42,16 +42,16 @@ typedef struct s_obj
 	t_color	*color;
 	float	diam;
 	float	height;
-	t_coord	*v_axe;
+	t_coord	*v_axe;//axe normalise
 	int		type;
 	float	*m_transl; // matrice de translation
 	float	*m_rot; // matrice rotation
 	float	*m_scale; // matrice scaling
 	float	*m_transf; // matrice transformation
 	float	*m_inv; // matrice inverse
-	t_coord	*v_axe_r;
-	t_coord	*from;
-	t_coord	*v_sph_camera;
+	t_coord	*v_axe_r;//local
+	t_coord	*from;//local
+	t_coord	*v_sph_camera;//local
 	float	radius; //UTILISER DIAM?
 	//	bool	closed_up; // pour cylindres si fermes ou pas bonus
 //	bool	closed_down; // pareil
