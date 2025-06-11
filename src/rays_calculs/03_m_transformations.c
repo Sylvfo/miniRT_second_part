@@ -35,6 +35,7 @@ void	set_transformation_obj(t_obj *obj)
 		matrix_mult_2(obj->m_transf, obj->m_scale);
 	}
 	inverse_matrix_44(obj->m_inv, obj->m_transf);
+	print_matrix_44(obj->m_inv);
 }
 
 void	matrix_transformations(t_obj ***obj)

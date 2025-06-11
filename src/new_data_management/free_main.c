@@ -26,3 +26,19 @@ void free_main(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 	free(memory_shuttle);
 	memory_shuttle = NULL;
 }
+
+int	free_arg(char **str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	return (0);
+}

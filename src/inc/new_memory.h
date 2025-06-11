@@ -33,6 +33,7 @@ t_pix ***init_memory_main(void);
 
 // new_free.c
 void free_main(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle);
+int	free_arg(char **str);
 
 //free_pix.c
 void	*free_partial_pix(t_pix ***pix, int height, int width);

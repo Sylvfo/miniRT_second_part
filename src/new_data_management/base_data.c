@@ -64,7 +64,7 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 		b++;
 	}
 	b = 0;
-	while(b < 1)
+	while(b < scene->nb_plan)
 	{
 		scene->obj[2][b]->difuse = 0.9;// a deplacer...
 		scene->obj[2][b]->specular = 0.9;// a deplacer...
