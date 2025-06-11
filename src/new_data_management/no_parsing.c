@@ -101,4 +101,5 @@ void	no_parsing(t_scene *scene)
 	scene->obj[3][0]->color->g = 0.28;
 	scene->obj[3][0]->color->b = 0.56;
 	scene->obj[3][0]->type = CYLINDER; /// A reprendre
+
 }

@@ -35,6 +35,7 @@ void	free_scene(t_scene *scene)
 		scene->lux = NULL;		
 	}
 	free_cam_cph(scene);
+	free(scene);
 }
 
 void	free_ima(t_scene *scene)

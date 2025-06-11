@@ -38,3 +38,19 @@ void	free_all(t_program_context *context)
 		free(context->num_obj);
 	free(context);
 }*/
+
+int	free_arg(char **str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	return (0);
+}

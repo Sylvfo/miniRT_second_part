@@ -12,54 +12,43 @@
 
 #include "../inc/minirt.h"
 
-/*
-static void	set_sphere_color(t_obj *sphere, t_color *color)
+int	save_color(char *str, t_color *p)
 {
-	sphere->color->r = color->r;
-	sphere->color->g = color->g;
-	sphere->color->b = color->b;
+	char	**coord;
+	int		i;
+
+	i = 0;
+	coord = ft_split(str, ',');
+	if (!coord)
+		return (0);
+	if (ft_size(coord) != NB_EL_AXE || !check_isvector(coord))
+		return (free_arg(coord));
+	change_color(p, number(coord[0]), number(coord[1]), number(coord[2]));
+	free_arg(coord);
+	return (1);
 }
 
-static void	set_sphere_coord(t_obj *sphere, t_coord *coord)
+int	save_sphere(char *str, t_obj **obj)
 {
-	sphere->p_coord->x = coord->x;
-	sphere->p_coord->y = coord->y;
-	sphere->p_coord->z = coord->z;
-	sphere->p_coord->t = 1;
+	char	**params;
+	int		i;
+
+	i = 0;
+	params = ft_split(str, ' ');
+	if (!params)
+		return (error_system());
+	while (obj[i]->type == SPHERE)
+	{
+		i++;
+	}
+	obj[i]->type = SPHERE;
+	if (!save_coordonnee(params[1], obj[i]->p_coord) || \
+		!save_color(params[3], obj[i]->color))
+	{
+		free_arg(params);
+		return (0);
+	}
+	obj[i]->diam = number(params[2]);
+	free_arg(params);
+	return (1);
 }
-
-static void	set_sphere_defaults(t_obj *sphere, float diameter)
-{
-	sphere->diam = diameter / 2.0f;
-	sphere->radius = diameter / 2.0f;
-	sphere->difuse = 0.7;
-	sphere->specular = 0.2;
-	sphere->type = SPHERE;
-}
-
-void	save_sphere(char *line, t_program_context *context)
-{
-	t_coord	coord;
-	t_color	color;
-	float	diameter;
-	t_obj	*sphere;
-
-	line += 2;
-	skip_whitespace((const char **)&line);
-	parse_coordinates(&line, &coord.x, &coord.y, &coord.z);
-	coord.t = 1;
-	skip_whitespace((const char **)&line);
-	parse_float(&line, &diameter);
-	skip_whitespace((const char **)&line);
-	parse_color(&line, &color.r, &color.g, &color.b);
-	color.r = int_to_float(color.r);
-	color.g = int_to_float(color.g);
-	color.b = int_to_float(color.b);
-	sphere = context->pix[0][0]->obj[1][context->num_obj->sphere];
-	if (!sphere)
-		return ;
-	set_sphere_coord(sphere, &coord);
-	set_sphere_color(sphere, &color);
-	set_sphere_defaults(sphere, diameter);
-	context->num_obj->sphere++;
-}*/

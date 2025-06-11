@@ -57,7 +57,7 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	a = 1;
 	b = 0;
 	// SPHERES
-	while(b < 2)
+	while(b < scene->nb_sphere)
 	{
 		scene->obj[1][b]->diam = scene->obj[1][b]->diam / 2;
 		scene->obj[1][b]->radius = scene->obj[1][b]->diam / 2;
@@ -78,7 +78,7 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	}
 	// CYL
 	b = 0;
-	while(b < 1)
+	while(b < scene->nb_cylinder)
 	{
 		scene->obj[3][b]->diam = scene->obj[3][b]->diam / 2;
 		scene->obj[3][b]->radius = scene->obj[3][b]->diam / 2;

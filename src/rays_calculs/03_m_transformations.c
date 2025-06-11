@@ -43,12 +43,13 @@ void	matrix_transformations(t_obj ***obj)
 	int	a;
 	int	b;
 
-	a = 0;
+	a = 1;
 	//BOUCLE OBJ
-	while (a < 4) //(obj[a] != NULL)
+	set_transformation_obj(obj[0][0]);
+	while (a < NB_OBJ) //(obj[a] != NULL)
 	{
 		b = 0;
-		while (b < 1)//(obj[a][b] != NULL)
+		while (obj[a] && b < obj[a][0]->number)//(obj[a][b] != NULL)
 		{
 			set_transformation_obj(obj[a][b]);
 			b++;

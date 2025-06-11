@@ -13,6 +13,13 @@
 #ifndef MINIRT_DATA_STRUCT_H
 # define MINIRT_DATA_STRUCT_H
 
+// pour savoir s' il ya des doublons de camera et de ambient light
+typedef struct s_doublons
+{
+	int		ambient;
+	int		camera;
+}	t_doublons;
+
 //coordonnes pour vecteurs et points
 typedef struct s_coord
 {
@@ -59,6 +66,7 @@ typedef struct s_obj
 	float mirror;
 	float	difuse; // a voir pour bonus... mettre en local_
 	float	specular; // a boir pour bonus... mettre en local??
+	int		number;
 }	t_obj;
 
 //PARFAIT =)

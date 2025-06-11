@@ -66,4 +66,10 @@ void		init_hits_plans(t_hits ***hits, t_num_obj *num_obj);
 void		init_hits_cylinders(t_hits ***hits, t_num_obj *num_obj);
 void		init_hits_background(t_hits ***hits);*/
 
+
+
+
+
+
+
 #endif

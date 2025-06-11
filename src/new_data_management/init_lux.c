@@ -70,8 +70,8 @@ bool init_each_lux(t_light *lux)
 {
 	if (!lux)
 		return (lux);
-
 	init_each_lux_null(lux);
+	lux->ratio = -1;
 	lux->p_coord = create_point(0, 0, 0);
 	if (!lux->p_coord)
 		return (false);

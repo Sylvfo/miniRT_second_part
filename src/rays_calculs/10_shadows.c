@@ -46,10 +46,10 @@ bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle, int lux_num
 	in_shadow = false;
 	a = 1;
 	//BOUCLE OBJ
-	while (a < 4)//  (scene->obj[a] != NULL)
+	while (a < NB_OBJ)//  (scene->obj[a] != NULL)
 	{
 		b = 0;
-		while (b < 1)//(scene->obj[a][b] != NULL)
+		while (scene->obj[a] && b < scene->obj[a][0]->number)//(scene->obj[a][b] != NULL)
 		{
 			if (a == SPHERE)
 				in_shadow = intersect_sphere_shadow(scene->obj[a][b], memory_shuttle);

@@ -36,4 +36,13 @@ void	save_sphere(char *line, t_program_context *context);
 void	save_plane(char *line, t_program_context *context);
 void	save_cylinder(char *line, t_program_context *context);*/
 
+int	save_color(char *str, t_color *p);
+int	save_coordonnee(char *str, t_coord *p);
+int	save_camera(char *str, t_camera *camera);
+int	save_sphere(char *str, t_obj **obj);
+int	save_cylinder(char *str, t_obj **obj);
+int	save_plan(char *str, t_obj **obj);
+int	save_light(char *str, t_light **lux);
+int	save_ambient(char *str, t_light *lux);
+int	save_data(char *str, t_scene *scene);
 #endif

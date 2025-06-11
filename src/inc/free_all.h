@@ -32,6 +32,11 @@ void	free_pix_viewport(t_pix *pix);
 void	free_pix_components(t_pix *pix);
 void	free_pix_content(t_pix *pix);
 void	free_pix(t_pix ***pix, int rows, int cols);*/
+int		free_arg(char **str);
 
+int		error_line(char **params, int line, int col);
+int		number_param_error(char **params, int ligne);
+int		error_system(void);
+bool	error_missing(t_doublons num, int nb_light);
 
 #endif

@@ -12,60 +12,27 @@
 
 #include "../inc/minirt.h"
 
-/*
-static void	parse_plane_coordinates(char **line, t_coord *coord)
+int	save_plan(char *str, t_obj **obj)
 {
-	skip_whitespace((const char **)line);
-	parse_coordinates(line, &coord->x, &coord->y, &coord->z);
-	coord->t = 1;
+	char	**params;
+	int		i;
+
+	i = 0;
+	params = ft_split(str, ' ');
+	if (!params)
+		return (error_system());
+	while (obj[i]->type == PLAN)
+	{
+		i++;
+	}
+	obj[i]->type = PLAN;
+	if (!save_coordonnee(params[1], obj[i]->p_coord) ||	\
+		!save_coordonnee(params[2], obj[i]->v_axe) || \
+		!save_color(params[3], obj[i]->color))
+	{
+		free_arg(params);
+		return (0);
+	}
+	free_arg(params);
+	return (1);
 }
-
-static void	parse_plane_orientation(char **line, t_coord *orientation)
-{
-	skip_whitespace((const char **)line);
-	parse_coordinates(line, &orientation->x, &orientation->y, &orientation->z);
-	orientation->t = 0;
-}
-
-static void	parse_plane_color(char **line, t_color *color)
-{
-	skip_whitespace((const char **)line);
-	parse_color(line, &color->r, &color->g, &color->b);
-}
-
-static void	update_plane_properties(t_obj *plane, t_coord *coord,
-		t_coord *orientation, t_color *color)
-{
-	plane->p_coord->x = coord->x;
-	plane->p_coord->y = coord->y;
-	plane->p_coord->z = coord->z;
-	plane->p_coord->t = 1;
-	plane->color->r = color->r;
-	plane->color->g = color->g;
-	plane->color->b = color->b;
-	plane->v_axe->x = orientation->x;
-	plane->v_axe->y = orientation->y;
-	plane->v_axe->z = orientation->z;
-	plane->type = 2;
-}
-
-void	save_plane(char *line, t_program_context *context)
-{
-	t_coord		coord;
-	t_coord		orientation;
-	t_color		color;
-	t_obj		*plane;
-
-	line += 2;
-	parse_plane_coordinates(&line, &coord);
-	parse_plane_orientation(&line, &orientation);
-	parse_plane_color(&line, &color);
-	color.r = int_to_float(color.r);
-	color.g = int_to_float(color.g);
-	color.b = int_to_float(color.b);
-	plane = context->pix[0][0]->obj[2][context->num_obj->plan];
-	if (!plane)
-		return ;
-	update_plane_properties(plane, &coord, &orientation, &color);
-	context->num_obj->plan++;
-}*/

@@ -51,6 +51,11 @@ LIBFLAGS = -Llib/libft -lft
 SRC_DIR = ./src
 #SRCS = ${shell find ${SRC_DIR} -type f -name '*.c'}\
 
+DEBUG = $(SRC_DIR)/debug/
+PARSING = $(SRC_DIR)/parsing_me/
+UTILS = $(SRC_DIR)/utils/
+INIT = $(SRC_DIR)/new_data_management/
+
 SRCS = ./src/main.c \
 	./src/initialization/init_camera.c \
 	./src/initialization/init_data.c \
@@ -162,6 +167,11 @@ SRCS = ./src/main.c \
 	./src/bonus/matrix_rotation.c \
 	./src/bonus/print_action.c \
 	
+	$(INIT)init_object.c\
+	$(PARSING)map_check.c $(PARSING)map_check2.c\
+	$(PARSING)map_struct.c $(PARSING)verification.c\
+	$(DEBUG)error.c\
+	$(UTILS)utils.c $(UTILS)utils2.c\
 	 
 # Détection de l'OS pour choisir la bonne version de la MLX
 UNAME_S := $(shell uname -s)

@@ -16,7 +16,6 @@ void free_main(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 {
 	if (scene)
 		free_scene(scene);
-	free(scene);
 	scene = NULL;
 	free_pix_struct(pix, WND_WIDTH, WND_HEIGHT);
 	//free_pix_struct(pix, WND_HEIGHT, WND_WIDTH);
