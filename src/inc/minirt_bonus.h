@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/06/10 17:42:46 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/11 11:49:29 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ void apply_drawing_changes(t_scene *scene);
 void	clear_modif(t_scene *scene);
 //transf_obj.c
 void move_object(t_obj *obj);
+void re_identity_matrix(float *m_identity);
 
 //render_mode.c
 void drawing_mode(t_scene *scene);
 void	render_mode(t_scene *scene);
-void print_selected_object(t_scene *scene);
 void is_transformation_possible(t_scene *scene, int x, int y);
 
 //select_transformation.c
@@ -88,5 +88,24 @@ void apply_move_changes(t_scene *scene);
 void apply_rotate_changes(t_scene *scene);
 void apply_scale_changes(t_scene *scene);
 void apply_copy_changes(t_scene *scene);
+
+//transf_obj.c
+void scaling_matrix(t_scene *scene, t_obj *obj);
+void moving_matrix(t_scene *scene, t_obj *obj);
+void rotating_matrix(t_scene *scene, t_obj *obj);
+
+//matrix_rotation.c
+void	rotation_x_matrix(t_scene *scene,t_obj *obj);
+void	rotation_y_matrix(t_scene *scene,t_obj *obj);
+void	rotation_z_matrix(t_scene *scene,t_obj *obj);
+
+//print_action.c
+void	print_modif(t_scene *scene);
+void print_action(t_scene *scene);
+void print_object(t_scene *scene);
+void print_value(t_scene *scene);
+void print_axe(t_scene *scene);
+void print_selected_object(t_scene *scene);
+void print_on_screen(t_scene *scene, char *msg, int place, int color);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:15:23 by syl               #+#    #+#             */
-/*   Updated: 2025/06/04 17:57:27 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/11 10:48:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ t_coord	scalar_mult_ret(t_coord *v_1, float scale);
 
 //math.c
 float	simple_sqrt(float x);
+float	degree_to_radian(float degree);
 
 //copy_coord.c
 void	copy_coord(t_coord *new, t_coord *origin);

@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/06/05 14:02:32 by syl              ###   ########.fr        #
+#    Updated: 2025/06/11 12:03:46 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -153,8 +153,15 @@ SRCS = ./src/main.c \
 	./src/new_data_management/init_lux.c \
 	./src/bonus/00_main_bonus.c \
 	./src/bonus/01_reflection.c \
-	./src/bonus/mouse_hooks.c \
+	./src/bonus/20_mouse_hooks.c \
 	./src/bonus/transf_obj.c \
+	./src/bonus/21_render_mode.c \
+	./src/bonus/22_select_transformation.c \
+	./src/bonus/23_select_obj_dim.c \
+	./src/bonus/apply_modifications.c \
+	./src/bonus/matrix_rotation.c \
+	./src/bonus/print_action.c \
+	
 	 
 # Détection de l'OS pour choisir la bonne version de la MLX
 UNAME_S := $(shell uname -s)
