@@ -48,16 +48,16 @@ void link_scene_mem(t_scene *scene, t_mem *memory_shuttle)
 
 int	main(int argc, char **argv)
 {
-	char *c;
-	c = ft_itoa(getpid());
+//	char *c;
+//	c = ft_itoa(getpid());
 	t_scene *scene;
 	t_pix ***pix;
 	t_mem *memory_shuttle;
 
 	scene = init_first_scene_memory();
-	write(1, c, 7);
-	write(1, "\n", 1);
-	free(c);
+//	write(1, c, 7);
+//	write(1, "\n", 1);
+//	free(c);
 	if (!check_args(argc, argv))
 		return (EXIT_FAILURE);
 	if (!verification(argv[1], scene))
@@ -88,7 +88,7 @@ int	main(int argc, char **argv)
 	printf("\n\nlight: nb : %d | coord %.2f %.2f %.2f | ratio %.2f | couleur %.0f %.0f %.0f",scene->nb_lights,scene->lux[1][0]->p_coord->x,scene->lux[1][0]->p_coord->y,scene->lux[1][0]->p_coord->z,scene->lux[1][0]->ratio ,scene->lux[1][0]->color->r,scene->lux[1][0]->color->g,scene->lux[1][0]->color->b);
 	printf("\nlight: coord %.2f %.2f %.2f | ratio %.2f | couleur %.0f %.0f %.0f\n",scene->lux[1][1]->p_coord->x,scene->lux[1][1]->p_coord->y,scene->lux[1][1]->p_coord->z,scene->lux[1][1]->ratio ,scene->lux[1][1]->color->r,scene->lux[1][1]->color->g,scene->lux[1][1]->color->b);
 	*/
-	base_data2(scene);
+	base_data2(scene, pix);
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
 	image_hooks(scene);

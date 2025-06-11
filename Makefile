@@ -10,18 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-# https://patorjk.com/software/taag/
-HEADER1 =                                               
-HEADER2 =                                               
-HEADER3 = "███╗   ███╗██╗███╗   ██╗██╗██████╗ ████████╗"
-HEADER4 = "████╗ ████║██║████╗  ██║██║██╔══██╗╚══██╔══╝"
-HEADER5 = "██╔████╔██║██║██╔██╗ ██║██║██████╔╝   ██║   "
-HEADER6 = "██║╚██╔╝██║██║██║╚██╗██║██║██╔══██╗   ██║   "
-HEADER7 = "██║ ╚═╝ ██║██║██║ ╚████║██║██║  ██║   ██║   "
-HEADER8 = "╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝   ╚═╝   "
-HEADER9 =                                               
-HEADER10 =                                              
-
+HEADER1 = "redo header"                                              
+                                              
 # Délai d'affichage du logo
 DELAY = 0.1
 
@@ -166,7 +156,6 @@ SRCS = ./src/main.c \
 	./src/bonus/apply_modifications.c \
 	./src/bonus/matrix_rotation.c \
 	./src/bonus/print_action.c \
-	
 	$(INIT)init_object.c\
 	$(PARSING)map_check.c $(PARSING)map_check2.c\
 	$(PARSING)map_struct.c $(PARSING)verification.c\
@@ -175,15 +164,15 @@ SRCS = ./src/main.c \
 	 
 # Détection de l'OS pour choisir la bonne version de la MLX
 UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Darwin)
-	MLX_DIR := lib/minilibx_opengl
-	MLX_INC := -I$(MLX_DIR)
-	MLX_LNK := -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-else
+#ifeq ($(UNAME_S),Darwin)
+#	MLX_DIR := lib/minilibx_opengl
+#	MLX_INC := -I$(MLX_DIR)
+#	MLX_LNK := -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+#else
 	MLX_DIR := lib/minilibx-linux
 	MLX_INC := -I$(MLX_DIR)
 	MLX_LNK := -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
-endif
+#endif
 
 # Bibliothèques
 LIBFT = lib/libft/libft.a
