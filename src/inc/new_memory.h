@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:27:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 10:32:49 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:58:34 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define NEW_MEMORY_H
 
 # include "minirt_data_struct.h"
+
+//revoir ou c set	
+int		free_arg(char **str);
 
 //memory init
 

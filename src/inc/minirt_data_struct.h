@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 14:13:35 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:57:41 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ typedef struct s_camera
 	float		pixel_size; //taille des pixels pour calculer les points sur le viewport et les rays
 }	t_camera;
 
-// QU EST CE QUI EST VRAIMENT UTILISE?
+
 typedef struct s_image
 {
 	void	*img;
@@ -121,13 +121,11 @@ typedef struct s_image
 typedef struct s_pix
 {
 	t_color		*color;
-	int			obj_a;//rename type 
-	int			obj_b;//rename obj num
-//	bool		bonus;
-//	bool		preview;
+	int			obj_a;
+	int			obj_b;
 }	t_pix;
 
-//Nouvelle data structure
+
 typedef struct s_intertt
 {
 	float	t1;

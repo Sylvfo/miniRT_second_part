@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/12 14:16:11 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:56:50 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include "minirt_matrix.h"
 # include "free_all.h"
 # include "parsing.h"
-# include "initialization.h"
 # include "saving.h"
 # include "minirt_vect_point_color.h"
 # include "minirt_ray_calculs.h"
