@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:27:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/10 15:17:24 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 09:58:57 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,6 @@ void	*free_partial_pix(t_pix ***pix, int height, int width);
 void	free_pix_array(t_pix ***pix, int height, int width);
 void	free_pix_struct(t_pix ***pix, int height, int width);
 
-//check_main.c
-bool	check_file(t_scene *scene,int argc, char *filename);
-
 //init_scene.c
 t_scene *init_first_scene_memory(void);
 bool	init_scene_memory(t_scene *scene);
@@ -56,7 +53,7 @@ void free_each_obj_coord(t_obj *obj);
 bool	init_each_obj_matrix(t_obj *obj);
 void	free_each_obj_matrix(t_obj *obj);
 
-t_image	*create_image(void);
+t_image	*create_image(t_scene *scene);
 bool create_image_blk(t_image *ima);
 bool create_image_cmd(t_image *ima);
 //init_cam.c

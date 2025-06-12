@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/06/11 12:03:46 by syl              ###   ########.fr        #
+#    Updated: 2025/06/12 09:24:25 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ CYAN = \033[0;36m
 RESET = \033[0m
 
 # Nom de l'exécutable
-NAME = minirt
+NAME = miniRT
 
 # Compilateur
 CC = cc

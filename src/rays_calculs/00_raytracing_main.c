@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/05 13:42:08 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 09:41:38 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,10 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 			if (pix[x][y]->bonus == true)
 			{
 				pix[x][y]->preview = scene->preview;
-			//	printf("pix preview is : %s\n", pix[x][y]->preview ? "true" : "false");
 				*(pix[x][y]->color) = raytracer_bonus(pix[x][y], scene, memory_shuttle);
 			}
 			else if (pix[x][y]->bonus == false)
-			{
 				*(pix[x][y]->color) = raytracer(pix[x][y], scene, memory_shuttle);
-			}
 			y++;
 		}
 		x++;
@@ -52,7 +49,6 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle) //pas sure 
 	main_intersections(scene->obj, memory_shuttle);
 	copy_matrix_44(memory_shuttle->obj_inv, scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->m_inv);
 	closest_obj_in_pix(pix, memory_shuttle);
-	// PF dans le cas ou il crois aucun objet. 
 	if (memory_shuttle->obj_a == 0)
 	{
 		color = background_color(scene->obj[0][0], scene->lux[0][0]);
@@ -133,42 +129,3 @@ t_color reflexion_color_rec(int a, t_scene *scene, t_mem *memory_shuttle)
 	 printf("after rec %d - %d\n", a, b);
     return (color);
 }*/
-
-
-
-
-
-/*AVANT CHANGEMENT COULEURS
-t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle)
-{
-	t_color	color;
-	float	intensity;
-
-	// PF je pense que ca marche
-	intensity = 1.0;
-	main_intersections(pix, scene->obj, memory_shuttle);
-	copy_matrix_44(memory_shuttle->obj_inv, scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->m_inv);
-	//BONUS prendre obj shiness, transparence, texture,...
-	// PF pour garder en memoire l objet le plus proche de chaque pixel
-	closest_obj_in_pix(pix, memory_shuttle);
-	// PF dans le cas ou il crois aucun objet. 
-	if (pix->obj_a == 0)
-	{
-		color = background_color(scene->obj[0][0], scene->lux[0][0]);
-		return (color);
-	}
-	color.r = scene->obj[pix->obj_a][pix->obj_b]->color->r;
-	color.g = scene->obj[pix->obj_a][pix->obj_b]->color->g;
-	color.b = scene->obj[pix->obj_a][pix->obj_b]->color->b;
-	prepare_computation(pix, scene->obj, memory_shuttle);
-//	// PF le but serait que la fonction de lumiere retourne une couleur. Comme ca on pourra l utiliser dans 
-	// la recursivite pour les reflexion et eventuellement la transparence. 
-	// mais on avait fait une fonction de lumiere qui retourne juste un float d intensite. 
-// 	//	color = reflexion....
-	intensity = light_intensity_cph(scene, memory_shuttle);
-	//color = new_light(scene, memory_shuttle, color);
-	scalar_mult_color(&color, intensity);
-
-	return (color);
-}
-*/

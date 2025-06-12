@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/05 15:13:49 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 10:09:28 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,11 @@ void link_scene_mem(t_scene *scene, t_mem *memory_shuttle)
 
 int	main(int argc, char **argv)
 {
-	char *c;
-	c = ft_itoa(getpid());
 	t_scene *scene;
 	t_pix ***pix;
 	t_mem *memory_shuttle;
 
 	scene = init_first_scene_memory();
-	write(1, c, 7);
-	write(1, "\n", 1);
-	free(c);
 	if (!check_args(argc, argv))
 		return (EXIT_FAILURE);
 	if (!verification(argv[1], scene))
@@ -77,6 +72,8 @@ int	main(int argc, char **argv)
 		free_main(pix, scene, memory_shuttle);
 		return (1);
 	}
+	printf("\ncamera: fov %.2f| coord %.2f %.2f %.2f",scene->cam->fov, scene->cam->p_coord->x,scene->cam->p_coord->y,scene->cam->p_coord->z);
+
 	/*printf("\nratio %.2f %.2f", scene->lux[0][0]->ratio, scene->lux[1][0]->ratio);
 	printf("\ncamera: fov %.2f| coord %.2f %.2f %.2f",scene->cam->fov, scene->cam->p_coord->x,scene->cam->p_coord->y,scene->cam->p_coord->z);
 	printf("\n\nsphere: nb : %d | coord %.2f %.2f %.2f | diam %.2f | couleur %.0f %.0f %.0f",scene->nb_sphere,scene->obj[1][0]->p_coord->x,scene->obj[1][0]->p_coord->y,scene->obj[1][0]->p_coord->z,scene->obj[1][0]->diam ,scene->obj[1][0]->color->r,scene->obj[1][0]->color->g,scene->obj[1][0]->color->b);
@@ -91,7 +88,10 @@ int	main(int argc, char **argv)
 	base_data2(scene, pix);
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
-	image_hooks(scene);
+	if (scene->bonus_mode == false)
+		image_hooks(scene);
+	if (scene->bonus_mode == true)
+		image_hooks_bonus(scene);
 	printf("end programme\n");
 	scene->pix = NULL;
 	scene->mem_shuttle = NULL;

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/10 16:22:13 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 09:37:42 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@
 # include "macro.h"
 # include "minirt_bonus.h"
 
-# define WND_WIDTH 1400
-# define WND_HEIGHT 1000
+# define WND_WIDTH 1000
+# define WND_HEIGHT 800
 
 # define BAKGROUND_COLOR 711850
 # define EPSILON 0.00001

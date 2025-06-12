@@ -6,13 +6,12 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:57:11 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 13:34:35 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 10:02:09 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//void	init_camera_pix_ray(t_pix *pix, t_camera *cam)
 void	init_camera_pix_ray(t_mem *memory_shuttle, t_camera *cam)
 {
 	t_coord p_zero;

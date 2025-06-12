@@ -24,7 +24,7 @@ bool init_lux_cph(t_scene *scene)
 	scene->lux[0][0] = malloc(sizeof(t_light));
 	if (!scene->lux[0][0])
 		return (false);
-	scene->lux[0][0]->color = create_color(0.0, 0.0, 0.0);
+	scene->lux[0][0]->color = create_color(1.0, 1.0, 1.0);
 	if (!scene->lux[0][0]->color)
 		return (false);
 	scene->lux[0][1] = NULL;

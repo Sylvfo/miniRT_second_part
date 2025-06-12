@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:00:12 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 13:38:31 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 09:41:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	main_intersections(t_obj ***obj, t_mem *memory_shuttle)
 	int b;
 	
 	a = 1;
-	//BOUCLE OBJ
 	while (a < NB_OBJ)// A CHANGER AVEC NOUVEAU OBJETS. 
 	{
 		b = 0;

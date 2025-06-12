@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_matrix_ima.c                                  :+:      :+:    :+:   */
+/*   create_image.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:31 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/11 11:45:01 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 09:57:39 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-t_image	*create_image(void)
+t_image	*create_image(t_scene *scene)
 {
 	t_image	*ima;
 
@@ -30,7 +30,10 @@ t_image	*create_image(void)
 		free(ima);
 		return (NULL);
 	}
-	ima->mlx_win = mlx_new_window(ima->mlx_ptr, WND_WIDTH + 300, WND_HEIGHT, "Fen");
+	if (scene->bonus_mode == false)
+		ima->mlx_win = mlx_new_window(ima->mlx_ptr, WND_WIDTH, WND_HEIGHT, "MiniRT");
+	if (scene->bonus_mode == true)
+		ima->mlx_win = mlx_new_window(ima->mlx_ptr, WND_WIDTH + 300, WND_HEIGHT, "MiniRT_bonus");	
 	ima->img = mlx_new_image(ima->mlx_ptr, WND_WIDTH, WND_HEIGHT);
 	ima->addr = mlx_get_data_addr(ima->img, &ima->bits_per_pixel,
 			&ima->line_length, &ima->endian);

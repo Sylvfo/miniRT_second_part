@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/06/10 15:18:27 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 09:56:39 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ t_scene *init_first_scene_memory(void)
 	scene->ima = NULL;
 	scene->obj = NULL;
 	scene->lux = NULL;
-	// PF A ENLEVER APRES ENREGISTREMENT DES DONNEES
 	scene->nb_sphere = 0;
 	scene->nb_plan = 0;
 	scene->nb_cylinder = 0;
@@ -40,16 +39,16 @@ bool	init_scene_memory(t_scene *scene)
 	if (init_cam_cph(scene) == false)
 		return (false);
 	scene->ima = NULL;
-	scene->ima = create_image();
+	scene->ima = create_image(scene);
 	if (!scene->ima)
 		return (false);
-//	if (scene->bonus_mode == true)
-//	{
-	if (create_image_cmd(scene->ima) == false)
+	if (scene->bonus_mode == true)
+	{
+		if (create_image_cmd(scene->ima) == false)
 			return (false);
-	if ( create_image_blk(scene->ima) == false)
+		if ( create_image_blk(scene->ima) == false)
 			return (false);
-//	}	
+	}	
 	if (init_obj_cph(scene) == false)
 		return (false);
 	if (init_lux_cph(scene) == false)

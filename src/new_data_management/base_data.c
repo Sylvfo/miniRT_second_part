@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/10 18:35:54 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 09:39:46 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,17 +25,6 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 	scalar_mult_color(scene->lux[0][0]->color, scene->lux[0][0]->ratio);
 	scene->bonus_mode = false;
 	scene->preview = false;
-/*	if (scene->bonus_mode == false)
-	{
-		while (i < scene->nb_lights)
-		{
-			scene->lux[1][i]->color->r = 1.0;
-			scene->lux[1][i]->color->g = 1.0;
-			scene->lux[1][i]->color->b = 1.0;
-			scene->lux[1][i]->color->rgb = 0; //??
-			i++;
-		}
-	}*/
 /*	if (scene->bonus_mode == true)
 	{
 		while (i < scene->nb_lights)// mettres les lum a 1
