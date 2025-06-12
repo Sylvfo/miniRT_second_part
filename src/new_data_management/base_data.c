@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 09:39:46 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 12:11:35 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 // a faire apres que les donnees ont ete enregistrees. 
 void	base_data2(t_scene *scene, t_pix ***pix)
 {
-
+	scene->wnd_height = (float)WND_HEIGHT;
+	scene->wnd_width = (float)WND_WIDTH;
 	scene->cam->fov = scene->cam->fov * 0.0174533;
 	color_int_to_rgb(BAKGROUND_COLOR, scene->obj[0][0]->color);
 	scene->obj[0][0]->color->r = int_to_float(scene->obj[0][0]->color->r);
 	scene->obj[0][0]->color->g = int_to_float(scene->obj[0][0]->color->g);
 	scene->obj[0][0]->color->b = int_to_float(scene->obj[0][0]->color->b);
 	scalar_mult_color(scene->lux[0][0]->color, scene->lux[0][0]->ratio);
-	scene->bonus_mode = false;
 	scene->preview = false;
 /*	if (scene->bonus_mode == true)
 	{

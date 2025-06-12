@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:27:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 09:58:57 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 10:32:49 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	no_parsing(t_scene *scene);
 void	base_data2(t_scene *scene, t_pix ***pix);
 
 //init_pix.c
-t_pix	***malloc_pix_array(int height, int width);
+t_pix	***malloc_pix_array(int width, int height);
+//t_pix	***malloc_pix_array(int height, int width);
 void	malloc_pix_struct(t_pix ***pix, int height, int width);
 void	pix_values_null(t_pix *pix);
 

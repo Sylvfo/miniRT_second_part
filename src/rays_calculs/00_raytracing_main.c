@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 09:41:38 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 12:16:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 			clean_memory_shuttle(memory_shuttle);
 			init_viewport_x_y(memory_shuttle, scene->cam, x, y);
 			init_camera_pix_ray(memory_shuttle, scene->cam);
-			if (pix[x][y]->bonus == true)
+			if (scene->bonus_mode == true)
 			{
 				pix[x][y]->preview = scene->preview;
 				*(pix[x][y]->color) = raytracer_bonus(pix[x][y], scene, memory_shuttle);
 			}
-			else if (pix[x][y]->bonus == false)
+			else if (scene->bonus_mode == false)
 				*(pix[x][y]->color) = raytracer(pix[x][y], scene, memory_shuttle);
 			y++;
 		}
@@ -54,14 +54,19 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *memory_shuttle) //pas sure 
 		color = background_color(scene->obj[0][0], scene->lux[0][0]);
 		return (color);
 	}
-	prepare_computation(memory_shuttle, scene->obj);
-	color = lighting(scene, memory_shuttle, *(scene->obj[pix->obj_a][pix->obj_b]->color));
+	color = copy_color(*scene->obj[memory_shuttle->obj_a][memory_shuttle->obj_b]->color);
+/*	prepare_computation(memory_shuttle, scene->obj);
+	color = lighting(scene, memory_shuttle, *(scene->obj[pix->obj_a][pix->obj_b]->color));*/
 	return (color);
 }
 
 //A REVOIR voir clean_memory_shuttle_refl(t_mem *memory_shuttle)
 void	clean_memory_shuttle(t_mem *memory_shuttle)
 {
+	vector_fill(memory_shuttle->r_base_dir, 0, 0, 0);
+	vector_fill(memory_shuttle->r_dir_m, 0, 0, 0);
+	point_fill(memory_shuttle->r_base_origin, 0, 0, 0);
+	point_fill(memory_shuttle->r_origin_m, 0, 0, 0);
 	memory_shuttle->closestt = INT_MAX;
 	memory_shuttle->obj_a = 0;
 	memory_shuttle->obj_b = 0;
@@ -80,6 +85,7 @@ void	clean_memory_shuttle(t_mem *memory_shuttle)
 	vector_fill(memory_shuttle->view_dir, 0, 0, 0);
 	init_matrix_zero(memory_shuttle->obj_inv);
 	init_matrix_zero(memory_shuttle->transp_inv);
+
 }
 
 t_color background_color(t_obj *obj_zero, t_light *lux_zero)

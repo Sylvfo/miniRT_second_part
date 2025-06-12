@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   no_parsing.c                                       :+:      :+:    :+:   */
+/*   XX_no_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:12:48 by syl               #+#    #+#             */
-/*   Updated: 2025/06/07 16:30:15 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 10:16:22 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 //A EFFACER un fois qu on aura les donnees des fichiers .rt
 //POUR TESTS SYLVIE
 void	no_parsing(t_scene *scene)
@@ -72,4 +73,4 @@ void	no_parsing(t_scene *scene)
 	scene->obj[3][0]->color->b = 0.56;
 	scene->obj[3][0]->type = CYLINDER; /// A reprendre
 
-}
+}*/

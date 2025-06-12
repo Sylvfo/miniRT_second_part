@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 09:56:39 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 10:58:29 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ t_scene *init_first_scene_memory(void)
 	scene->nb_lights = 0;
 	scene->wnd_height = WND_HEIGHT;
 	scene->wnd_width = WND_WIDTH;
+	scene->bonus_mode = false;
 	return (scene);
 }
 

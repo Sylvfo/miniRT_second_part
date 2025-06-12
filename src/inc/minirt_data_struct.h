@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/10 18:34:27 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 12:11:16 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,8 +127,6 @@ typedef struct s_pix
 	bool		preview;
 }	t_pix;
 
-
-
 //Nouvelle data structure
 typedef struct s_intertt
 {
@@ -181,8 +179,8 @@ typedef struct s_scene
 	int		nb_plan;
 	int		nb_cylinder;
 	int		nb_lights;
-	int		wnd_height;
-	int		wnd_width;
+	float		wnd_height;
+	float		wnd_width;
 	t_camera	*cam;
 	t_image		*ima;
 	t_obj		***obj;

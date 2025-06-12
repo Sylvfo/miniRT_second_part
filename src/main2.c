@@ -1,7 +1,7 @@
 
 
 
-
+/*
 int	main(int argc, char **argv)
 {
 	char *c;
@@ -27,13 +27,13 @@ int	main(int argc, char **argv)
 	// est conforme. Pense juste au fait que pour la partie
 	// obligatoire on est sense pouvoir entrer des lumieres sans
 	// couleurs
-/*	if (check_file(scene, argc, argv[1]) == false)
-	{
-		free(scene);
-		printf("problem with file in cph \n");
-		scene = NULL;
-		return (1);
-	}*/
+//	if (check_file(scene, argc, argv[1]) == false)
+//	{
+//		free(scene);
+//		printf("problem with file in cph \n");
+//		scene = NULL;
+//		return (1);
+//	}
 	//PF ici normalement ca devrait marcher...
 	// c est tous les mallocs pour les objets. 
 	// Mais pas tout a ete bien fait. 
@@ -68,4 +68,4 @@ int	main(int argc, char **argv)
 	image_hooks(scene);
 	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
-}
+}*/

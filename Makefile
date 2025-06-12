@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/06/12 09:24:25 by syl              ###   ########.fr        #
+#    Updated: 2025/06/12 10:17:38 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,7 +97,6 @@ SRCS = ./src/main.c \
 	./src/new_data_management/free_pix.c \
 	./src/new_data_management/init_scene.c \
 	./src/new_data_management/free_scene.c \
-	./src/new_data_management/no_parsing.c \
 	./src/new_data_management/init_memory_shuttle.c \
 	./src/new_data_management/base_data.c \
 	./src/new_data_management/init_cam.c \
