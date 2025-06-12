@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 09:20:52 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 14:47:38 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 18:49:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	prepare_v_light(t_mem *mem_shuttle, t_coord *lux_p_coord)
 	tmp.y = 0.0;
 	tmp.z = 0.0;
 	tmp.t = 0;
-	scalar_mult_na(&tmp, mem_shuttle->v_norm_parral, 0.00001 * 10.0f);
+	scalar_mult_na(&tmp, mem_shuttle->v_norm_parral, 0.001 * 10.0f);
 	addition_na(&offset_point, mem_shuttle->p_touch, &tmp);
 	substraction_p_to_v_na(mem_shuttle->v_light_to_point,
 		lux_p_coord, &offset_point);

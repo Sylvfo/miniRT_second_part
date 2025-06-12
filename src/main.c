@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/12 16:59:17 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 18:25:01 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	main(int argc, char **argv)
 		free(scene);
 		return (1);
 	}
-	
 	if (!init_scene_memory(scene))
 	{
 		free_scene(scene);
@@ -70,7 +69,6 @@ int	main(int argc, char **argv)
 	}
 	pix = init_memory_main();
 	memory_shuttle = init_memory_shuttle();
-	
 	if (!save_data(argv[1], scene))
 	{
 		free_main(pix, scene, memory_shuttle);
