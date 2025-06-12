@@ -27,7 +27,6 @@ int error_system(void)
 
 bool	error_missing(t_doublons num, int nb_light)
 {
-	printf("ambient %d camera %d light %d",num.ambient,num.camera,nb_light);
 	if (num.camera != 1)
 	{
 		if (num.camera < 1)

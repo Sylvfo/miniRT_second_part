@@ -18,7 +18,6 @@ void	rotation_from_vector(t_obj *obj)
 	float	angle;
 	float	c;
 	float	s;
-
 	if (!obj || !obj->from || !obj->v_axe || !obj->v_axe_r || !obj->m_rot)
 	{
 		fprintf(stderr, "Error: Null pointer in rotation_from_vector\n");

@@ -43,7 +43,6 @@ void	matrix_transformations(t_obj ***obj)
 	int	b;
 
 	a = 1;
-	set_transformation_obj(obj[0][0]);
 	while (a < NB_OBJ)
 	{
 		b = 0;

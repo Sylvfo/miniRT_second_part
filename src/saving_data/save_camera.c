@@ -47,6 +47,7 @@ int	save_camera(char *str, t_camera *camera)
 		return (0);
 	}
 	camera->fov = number(params[3]);
+	normalize_vector_na(camera->v_axe);
 	free_arg(params);
 	return (1);
 }

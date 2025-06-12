@@ -38,6 +38,7 @@ int	save_cylinder(char *str, t_obj **obj)
 	obj[i]->diam = number(params[3]);
 	obj[i]->radius = obj[i]->diam/2;
 	obj[i]->height = number(params[4]);
+	normalize_vector_na(obj[i]->v_axe);
 	free_arg(params);
 	return (1);
 }

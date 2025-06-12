@@ -33,6 +33,7 @@ int	save_plan(char *str, t_obj **obj)
 		free_arg(params);
 		return (0);
 	}
+	normalize_vector_na(obj[i]->v_axe);
 	free_arg(params);
 	return (1);
 }
