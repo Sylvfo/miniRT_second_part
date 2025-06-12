@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   map_check.c                                         :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: fatsaa-m <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2025/06/12 21:12:52 by fatsaa-m       #+#    #+#                */
+/*   Updated: 2025/06/12 21:12:56 by fatsaa-m       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/minirt.h"
 
-static int check_line(char *str, int ligne, t_scene *scene, t_doublons *db)
+static int	check_line(char *str, int ligne, t_scene *scene, t_doublons *db)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (ft_isspace(str[i]))
@@ -16,21 +28,21 @@ static int check_line(char *str, int ligne, t_scene *scene, t_doublons *db)
 	else if (str[i] == 's' && str[i + 1] == 'p')
 		return (map_sphere(str, ligne, &scene->nb_sphere));
 	else if (str[i] == 'p' && str[i + 1] == 'l')
-		return (map_plan(str, ligne, &scene->nb_plan));	
+		return (map_plan(str, ligne, &scene->nb_plan));
 	else if (str[i] == 'c' && str[i + 1] == 'y')
-		return (map_cylinder(str, ligne, &scene->nb_cylinder));	
+		return (map_cylinder(str, ligne, &scene->nb_cylinder));
 	return (1);
 }
 
-static bool file_error(int fd, t_scene *scene)
+static bool	file_error(int fd, t_scene *scene)
 {
-	char	*str;
-	int		i;
-	bool	error;
-	t_doublons db;
+	char		*str;
+	int			i;
+	bool		error;
+	t_doublons	db;
 
 	i = 1;
-	db = (t_doublons){0,0};
+	db = (t_doublons){0, 0};
 	error = false;
 	str = get_next_line(fd);
 	while (str)
@@ -50,9 +62,9 @@ static bool file_error(int fd, t_scene *scene)
 	return (error);
 }
 
-int verification(char *str, t_scene *scene)
+int	verification(char *str, t_scene *scene)
 {
-	int fd;
+	int	fd;
 
 	fd = open(str, O_RDONLY);
 	if (fd == -1)

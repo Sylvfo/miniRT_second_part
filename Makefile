@@ -26,7 +26,7 @@ RESET = \033[0m
 
 # Nom de l'exécutable
 NAME = miniRT
-
+NAME2 = miniRT_bonus
 # Compilateur
 CC = cc
 
@@ -42,9 +42,8 @@ DEBUG = $(SRC_DIR)/debug/
 PARSING = $(SRC_DIR)/parsing_me/
 UTILS = $(SRC_DIR)/utils/
 INIT = $(SRC_DIR)/new_data_management/
-
-SRCS = ./src/main.c \
-	./src/matrix/00_matrix_check.c \
+BONUS = $(SRC_DIR)/bonus/
+SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/matrix/00_matrix_creation.c \
 	./src/matrix/00_matrix_multiplication.c \
 	./src/matrix/00_matrix_operations.c \
@@ -115,10 +114,17 @@ SRCS = ./src/main.c \
 	./src/bonus/print_on_screen.c \
 	$(INIT)init_object.c\
 	$(PARSING)map_check.c $(PARSING)map_check2.c\
-	$(PARSING)map_struct.c $(PARSING)verification.c\
+	$(PARSING)map_struct.c $(PARSING)map_struct2.c\
+	$(PARSING)verification.c\
 	$(DEBUG)error.c\
 	$(UTILS)utils.c $(UTILS)utils2.c\
-	 
+
+SRCS = $(SOURCES)\
+		./src/main.c 
+
+SRCS_BONUS = $(SOURCES)\
+		$(BONUS)main.c 
+
 # Détection de l'OS pour choisir la bonne version de la MLX
 #UNAME_S := $(shell uname -s)
 #ifeq ($(UNAME_S),Darwin)
@@ -136,11 +142,20 @@ LIBFT = lib/libft/libft.a
 
 # Fichiers objets
 OBJ_DIR = objs
+
 OBJ = $(SRCS:%.c=$(OBJ_DIR)/%.o)
+
+OBJ_BONUS = $(SRCS_BONUS:%.c=$(OBJ_DIR)/%.o)
 
 # all: start norm $(MLX_DIR)/libmlx.a $(NAME)
 all: start norm $(MLX_DIR)/libmlx.a $(NAME)
 
+bonus:start norm $(MLX_DIR)/libmlx.a $(NAME2)
+
+$(NAME2): $(LIBFT) $(OBJ_BONUS)
+	@echo "$(BLUE)Linking: $@$(RESET)"
+	@$(CC) $(CFLAGS) -o $(NAME2) $(OBJ_BONUS) $(LIBFLAGS) $(MLX_LNK)
+	@echo "$(GREEN)\nCompilation successful!\n$(RESET)"
 # Règle pour compiler MinilibX
 $(MLX_DIR)/libmlx.a:
 	@echo "$(BLUE)Compiling MinilibX...$(RESET)"
@@ -208,6 +223,7 @@ clean:
 fclean: clean
 	@echo "$(RED)Cleaning executable(s)...$(RESET)"
 	@rm -f $(NAME)
+	@rm -f $(NAME2)
 	@rm -f $(TEST_NAME)
 	@$(MAKE) -C lib/libft/ fclean $(REDIRECT)
 	@sleep 1

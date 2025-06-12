@@ -42,8 +42,12 @@ int	save_light(char *str, t_light **lux)
 	{
 		i++;
 	}
-	if (!save_coordonnee(params[1], lux[i]->p_coord) || \
-		!save_color(params[3], lux[i]->color))
+	if (!save_coordonnee(params[1], lux[i]->p_coord))
+	{
+		free_arg(params);
+		return (0);
+	}
+	if (ft_size(params) == NB_EL_LIGHT && !save_color(params[3], lux[i]->color))
 	{
 		free_arg(params);
 		return (0);

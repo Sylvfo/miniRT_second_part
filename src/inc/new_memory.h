@@ -39,7 +39,7 @@ void	free_pix_array(t_pix ***pix, int height, int width);
 void	free_pix_struct(t_pix ***pix, int height, int width);
 
 //init_scene.c
-t_scene	*init_first_scene_memory(void);
+t_scene *init_first_scene_memory(bool bonus_mode);
 bool	init_scene_memory(t_scene *scene);
 bool	init_obj_cph(t_scene *scene);
 void	free_obj_cph(t_scene *scene);

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                         ::::::::           */
+/*   map_check.c                                         :+:    :+:           */
+/*                                                      +:+                   */
+/*   By: fatsaa-m <marvin@42.fr>                       +#+                    */
+/*                                                    +#+                     */
+/*   Created: 2025/06/12 21:12:52 by fatsaa-m       #+#    #+#                */
+/*   Updated: 2025/06/12 21:12:56 by fatsaa-m       ########   odam.nl        */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/minirt.h"
 
 void	replace_by_space(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -17,10 +29,10 @@ void	replace_by_space(char *str)
 
 float	number(char *str)
 {
-	int	i;
-	int point;
-	int	num;
-	float number;
+	int		i;
+	int		point;
+	int		num;
+	float	number;
 
 	i = 0;
 	point = 0;
@@ -36,6 +48,6 @@ float	number(char *str)
 	}
 	if (str[0] == '-')
 		point = point * -1;
-	number = (num * pow(10, (double)i) + point)/pow(10, (double)i);
+	number = (num * pow(10, (double)i) + point) / pow(10, (double)i);
 	return (number);
 }

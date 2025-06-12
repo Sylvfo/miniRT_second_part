@@ -26,7 +26,7 @@ int	save_plan(char *str, t_obj **obj)
 		i++;
 	}
 	obj[i]->type = PLAN;
-	if (!save_coordonnee(params[1], obj[i]->p_coord) ||	\
+	if (!save_coordonnee(params[1], obj[i]->p_coord) || \
 		!save_coordonnee(params[2], obj[i]->v_axe) || \
 		!save_color(params[3], obj[i]->color))
 	{

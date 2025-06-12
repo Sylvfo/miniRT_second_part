@@ -12,9 +12,9 @@
 
 #include "../inc/minirt.h"
 
-t_scene *init_first_scene_memory(void)
+t_scene	*init_first_scene_memory(bool bonus_mode)
 {
-	t_scene *scene;
+	t_scene	*scene;
 
 	scene = malloc(sizeof(t_scene));
 	if (!scene)
@@ -29,7 +29,7 @@ t_scene *init_first_scene_memory(void)
 	scene->nb_lights = 0;
 	scene->wnd_height = (float)WND_HEIGHT;
 	scene->wnd_width = (float)WND_WIDTH;
-	scene->bonus_mode = false;
+	scene->bonus_mode = bonus_mode;
 	scene->axe_draw = 0;
 	scene->draw_mode = 0;
 	scene->draw_type = 0;
@@ -56,7 +56,7 @@ bool	init_scene_memory(t_scene *scene)
 	{
 		if (create_image_cmd(scene->ima) == false)
 			return (false);
-		if ( create_image_blk(scene->ima) == false)
+		if (create_image_blk(scene->ima) == false)
 			return (false);
 	}	
 	if (init_obj_cph(scene) == false)
@@ -66,13 +66,12 @@ bool	init_scene_memory(t_scene *scene)
 	return (true);
 }
 
-void free_each_obj(t_obj *obj)
+void	free_each_obj(t_obj *obj)
 {
 	if (!obj)
 		return ;
 	free_each_obj_coord(obj);
 	free_each_obj_matrix(obj);
-
 	if (obj->color)
 	{
 		free(obj->color);
@@ -80,7 +79,7 @@ void free_each_obj(t_obj *obj)
 	}
 }
 
-bool init_each_obj(t_obj *obj)
+bool	init_each_obj(t_obj *obj)
 {
 	if (!obj)
 		return (obj);
@@ -152,9 +151,8 @@ void	free_each_obj_matrix(t_obj *obj)
 	}
 }
 
-bool init_each_obj_coord(t_obj *obj)
+bool	init_each_obj_coord(t_obj *obj)
 {
-
 	obj->p_coord = create_point(0, 0, 0);
 	if (!obj->p_coord)
 		return (false);
@@ -173,7 +171,7 @@ bool init_each_obj_coord(t_obj *obj)
 	return (true);
 }
 
-void free_each_obj_coord(t_obj *obj)
+void	free_each_obj_coord(t_obj *obj)
 {
 	if (obj->p_coord)
 	{
@@ -188,17 +186,17 @@ void free_each_obj_coord(t_obj *obj)
 	if (obj->v_axe_r)
 	{
 		free(obj->v_axe_r);
-		obj->v_axe_r= NULL;
+		obj->v_axe_r = NULL;
 	}
 	if (obj->from)
 	{
 		free(obj->from);
-		obj->from= NULL;
+		obj->from = NULL;
 	}
 	if (obj->v_sph_camera)
 	{
 		free(obj->v_sph_camera);
-		obj->v_sph_camera= NULL;
+		obj->v_sph_camera = NULL;
 	}
 }
 
@@ -206,21 +204,35 @@ void	init_each_obj_null(t_obj *obj)
 {
 	obj->p_coord = NULL;
 	obj->color = NULL;
-	obj->v_axe = NULL; 
-	obj->m_transl = NULL; 
-	obj->m_rot = NULL; 
+	obj->v_axe = NULL;
+	obj->m_transl = NULL;
+	obj->m_rot = NULL;
 	obj->m_scale = NULL;
 	obj->m_transf = NULL;
-	obj->m_inv = NULL; 
+	obj->m_inv = NULL;
 	obj->v_axe_r = NULL;
 	obj->from = NULL;
 	obj->v_sph_camera = NULL;
 }
 
-void free_obj_cph(t_scene *scene)
+void	free_obj(t_obj ***obj, int a, int nb)
 {
-	int b;
+	int	b;
 
+	b = 0;
+	while (b < nb)
+	{
+		free_each_obj(obj[a][b]);
+		free(obj[a][b]);
+		obj[a][b] = NULL;
+		b++;
+	}
+	free(obj[a]);
+	obj[a] = NULL;
+}
+
+void	free_obj_cph(t_scene *scene)
+{
 	if (!scene->obj)
 		return ;
 	if (scene->obj[0][0])
@@ -231,34 +243,7 @@ void free_obj_cph(t_scene *scene)
 	}
 	free(scene->obj[0]);
 	scene->obj[0] = NULL;
-	b = 0;
-	while (b < scene->nb_sphere)
-	{
-		free_each_obj(scene->obj[1][b]);
-		free(scene->obj[1][b]);
-		scene->obj[1][b] = NULL;
-		b++;
-	}
-	free(scene->obj[1]);
-	scene->obj[1] = NULL;
-	b = 0;
-	while (b < scene->nb_plan)
-	{
-		free_each_obj(scene->obj[2][b]);
-		free(scene->obj[2][b]);
-		scene->obj[2][b] = NULL;
-		b++;
-	}
-	free(scene->obj[2]);
-	scene->obj[2] = NULL;
-	b = 0;
-	while (b < scene->nb_cylinder)
-	{
-		free_each_obj(scene->obj[3][b]);
-		free(scene->obj[3][b]);
-		scene->obj[3][b] = NULL;
-		b++;
-	}
-	free(scene->obj[3]);
-	scene->obj[3] = NULL;
+	free_obj(scene->obj, 1, scene->nb_sphere);
+	free_obj(scene->obj, 2, scene->nb_plan);
+	free_obj(scene->obj, 3, scene->nb_cylinder);
 }

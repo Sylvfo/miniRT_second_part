@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./inc/minirt.h"
+#include "../inc/minirt.h"
 
 static int	check_args(int argc, char **argv)
 {
@@ -27,7 +27,6 @@ static int	check_args(int argc, char **argv)
 	return (1);
 }
 
-//	A quoi servent ces deux fonctions?
 void	link_scene_pix(t_scene *scene, t_pix ***pix)
 {
 	scene->pix = pix;
@@ -55,11 +54,11 @@ int	init(t_scene *scene, t_pix ***pix, t_mem *memory_shuttle, char *str)
 
 int	main(int argc, char **argv)
 {
-	t_scene	*scene;
-	t_pix	***pix;
-	t_mem	*memory_shuttle;
+	t_scene		*scene;
+	t_pix		***pix;
+	t_mem		*memory_shuttle;
 
-	scene = init_first_scene_memory(false);
+	scene = init_first_scene_memory(true);
 	if (!scene)
 		return (1);
 	if (!check_args(argc, argv) || !verification(argv[1], scene))
@@ -74,7 +73,7 @@ int	main(int argc, char **argv)
 	base_data(scene);
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
-	image_hooks(scene);
+	image_hooks_bonus(scene);
 	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
 }

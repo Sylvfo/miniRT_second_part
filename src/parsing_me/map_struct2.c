@@ -12,53 +12,26 @@
 
 #include "../inc/minirt.h"
 
-int	ft_size(char **argv)
+int	map_cylinder(char *str, int ligne, int *num)
 {
-	int	i;
+	char	**params;
 
-	i = 0;
-	while (argv[i])
-		i++;
-	return (i);
-}
-
-int	check_isdigit(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '-' && !ft_isdigit(str[i + 1]))
-		return (0);
-	if (str[i] == '-')
-		i = 1;
-	while (str[i] && str[i] != '.')
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	if (!str[i])
-		return (1);
-	i++;
-	while (str[i])
-	{
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
-}
-
-int	check_isvector(char **str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!check_isdigit(str[i]))
-			return (0);
-		i++;
-	}
+	params = ft_split(str, ' ');
+	if (!params)
+		return (error_system());
+	if (ft_size(params) != NB_EL_CYLINDER)
+		return (number_param_error(params, ligne));
+	if (!map_coordonnee(params[1]))
+		return (error_line(params, ligne, 2));
+	if (!map_vector(params[2]))
+		return (error_line(params, ligne, 3));
+	if (!map_diameter(params[3]))
+		return (error_line(params, ligne, 4));
+	if (!map_height(params[4]))
+		return (error_line(params, ligne, 5));
+	if (!map_color(params[5]))
+		return (error_line(params, ligne, 6));
+	free_arg(params);
+	(*num)++;
 	return (1);
 }

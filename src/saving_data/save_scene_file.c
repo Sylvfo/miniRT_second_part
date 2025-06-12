@@ -12,9 +12,9 @@
 
 #include "../inc/minirt.h"
 
-static int check_line(char *str, t_scene *scene)
+static int	check_line(char *str, t_scene *scene)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (ft_isspace(str[i]))
@@ -28,13 +28,13 @@ static int check_line(char *str, t_scene *scene)
 	else if (str[i] == 's' && str[i + 1] == 'p')
 		return (save_sphere(str, scene->obj[1]));
 	else if (str[i] == 'p' && str[i + 1] == 'l')
-		return (save_plan(str, scene->obj[2]));	
+		return (save_plan(str, scene->obj[2]));
 	else if (str[i] == 'c' && str[i + 1] == 'y')
-		return (save_cylinder(str, scene->obj[3]));	
+		return (save_cylinder(str, scene->obj[3]));
 	return (1);
 }
 
-static bool file_parcour(int fd, t_scene *scene)
+static bool	file_parcour(int fd, t_scene *scene)
 {
 	char	*str;
 	bool	error;
@@ -57,13 +57,13 @@ static bool file_parcour(int fd, t_scene *scene)
 
 int	save_data(char *str, t_scene *scene)
 {
-	int fd;
+	int	fd;
 
 	fd = open(str, O_RDONLY);
-	if (fd == -1 )
+	if (fd == -1)
 	{
 		perror(str);
-		return(0);
+		return (0);
 	}
 	if (file_parcour(fd, scene))
 	{

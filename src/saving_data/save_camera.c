@@ -30,17 +30,12 @@ int	save_coordonnee(char *str, t_coord *p)
 
 int	save_camera(char *str, t_camera *camera)
 {
-//	t_coord		position;
-//	t_coord		orientation;
-//	t_camera	*cam;
-//	float		fov;
-
 	char	**params;
 
 	params = ft_split(str, ' ');
 	if (!params)
 		return (error_system());
-	if (!save_coordonnee(params[1], camera->p_coord) ||	\
+	if (!save_coordonnee(params[1], camera->p_coord) || \
 		!save_coordonnee(params[2], camera->v_axe))
 	{
 		free_arg(params);

@@ -20,7 +20,6 @@ int	ft_exit(t_scene *scene)
 
 int	ft_keys(int keycode, t_scene *scene)
 {
-	printf("keycode: %d\n", keycode);
 	if (keycode == 65307)
 	{
 		printf("ESC pressed.\nWindow closed\n");
