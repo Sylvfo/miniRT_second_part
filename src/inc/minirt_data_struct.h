@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 12:11:16 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:13:35 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,8 @@ typedef struct s_pix
 	t_color		*color;
 	int			obj_a;//rename type 
 	int			obj_b;//rename obj num
-	bool		bonus;
-	bool		preview;
+//	bool		bonus;
+//	bool		preview;
 }	t_pix;
 
 //Nouvelle data structure

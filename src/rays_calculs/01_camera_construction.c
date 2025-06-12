@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 13:51:52 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 12:16:59 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:22:54 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,5 +68,3 @@ void	pixel_size(t_scene *scene)
 	scene->cam->pixel_size = (scene->cam->half_width * 2) / scene->wnd_width;
 	return ;
 }
-
-

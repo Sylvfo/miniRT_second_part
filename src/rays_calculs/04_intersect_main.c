@@ -6,23 +6,22 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 15:00:12 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 09:41:58 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:26:25 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//	A REFAIRE AVEC TOUS LES OBJETS
 void	main_intersections(t_obj ***obj, t_mem *memory_shuttle)
 {
-	int a;
-	int b;
-	
+	int	a;
+	int	b;
+
 	a = 1;
-	while (a < NB_OBJ)// A CHANGER AVEC NOUVEAU OBJETS. 
+	while (a < NB_OBJ)
 	{
 		b = 0;
-		while (obj[a] && b < obj[a][0]->number) //obj[a][b] != NULL) //PF ici bien s assurer que ca fonctionne avec le bon nombre d objets
+		while (obj[a] && b < obj[a][0]->number)
 		{
 			apply_transformation(obj[a][b], memory_shuttle);
 			if (a == 1)
@@ -36,4 +35,3 @@ void	main_intersections(t_obj ***obj, t_mem *memory_shuttle)
 		a++;
 	}
 }
-

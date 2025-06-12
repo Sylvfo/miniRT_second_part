@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 12:11:35 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:15:05 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 // a faire apres que les donnees ont ete enregistrees. 
 void	base_data2(t_scene *scene, t_pix ***pix)
 {
+	(void) pix;
 	scene->wnd_height = (float)WND_HEIGHT;
 	scene->wnd_width = (float)WND_WIDTH;
 	scene->cam->fov = scene->cam->fov * 0.0174533;
@@ -73,20 +74,7 @@ void	base_data2(t_scene *scene, t_pix ***pix)
 		b++;
 	}
 
-	int x = 0;
-	int y = 0;
 	//FOR BONUS
-	while (x < WND_WIDTH)
-	{
-		y = 0;
-		while (y < WND_HEIGHT)
-		{
-			pix[x][y]->bonus =  true;
-			pix[x][y]->preview = false;
-			y++;
-		}
-		x++;
-	}
 	scene->axe_draw = 0;
 	scene->draw_mode = 0;
 	scene->draw_type = 0;

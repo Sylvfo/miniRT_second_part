@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:04:59 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 13:37:55 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:27:25 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	intersect_plan(t_mem *memory_shuttle, int plan_num)
 {
-	t_intertt result;
+	t_intertt	result;
 
 	if (fabs(memory_shuttle->r_dir_m->y) < EPSILON)
 		return ;
@@ -26,11 +26,11 @@ void	intersect_plan(t_mem *memory_shuttle, int plan_num)
 
 void	intersect_sphere(t_mem *memory_shuttle, int sph_num)
 {
-	float	discriminant;
-	float	a;
-	float	b;
-	float	c;
-	t_intertt result;
+	float		discriminant;
+	float		a;
+	float		b;
+	float		c;
+	t_intertt	result;
 
 	substraction_p_to_v_na(memory_shuttle->v_sph_camera,
 		memory_shuttle->r_origin_m, memory_shuttle->origin_zero);
@@ -41,12 +41,9 @@ void	intersect_sphere(t_mem *memory_shuttle, int sph_num)
 			memory_shuttle->v_sph_camera) - 1;
 	discriminant = (b * b) - (4 * a * c);
 	if (discriminant < 1e-6)
-	{
 		return ;
-	}	
-	//SIMPLE SQRT!!!!!!!!!!!!
-	result.t1 = (-b - sqrt(discriminant)) / (2 * a);
-	result.t2 = (-b + sqrt(discriminant)) / (2 * a);
+	result.t1 = (-b - simple_sqrt(discriminant)) / (2 * a);
+	result.t2 = (-b + simple_sqrt(discriminant)) / (2 * a);
 	result.t_count = 2;
 	closestt(memory_shuttle, result, SPHERE, sph_num);
 	return ;

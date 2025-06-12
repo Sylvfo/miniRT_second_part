@@ -6,13 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:34 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/31 16:46:47 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:47:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-bool	intersect_plan_shadow(t_mem *memory_shuttle, t_obj *plan)
+bool	plan_shadow(t_mem *memory_shuttle, t_obj *plan)
 {
 	t_coord	p0_minus_p;
 	float	denom;

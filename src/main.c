@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/12 10:09:28 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:00:21 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ int	main(int argc, char **argv)
 	printf("\n\nlight: nb : %d | coord %.2f %.2f %.2f | ratio %.2f | couleur %.0f %.0f %.0f",scene->nb_lights,scene->lux[1][0]->p_coord->x,scene->lux[1][0]->p_coord->y,scene->lux[1][0]->p_coord->z,scene->lux[1][0]->ratio ,scene->lux[1][0]->color->r,scene->lux[1][0]->color->g,scene->lux[1][0]->color->b);
 	printf("\nlight: coord %.2f %.2f %.2f | ratio %.2f | couleur %.0f %.0f %.0f\n",scene->lux[1][1]->p_coord->x,scene->lux[1][1]->p_coord->y,scene->lux[1][1]->p_coord->z,scene->lux[1][1]->ratio ,scene->lux[1][1]->color->r,scene->lux[1][1]->color->g,scene->lux[1][1]->color->b);
 	*/
+	printf("nb cyl %d\n", scene->obj[3][0]->number);
 	base_data2(scene, pix);
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);

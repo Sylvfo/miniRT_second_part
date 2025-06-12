@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:50:25 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 10:33:27 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 12:24:02 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_pix ***init_memory_main(void)
 	t_pix	***pix;
 
 	pix = NULL;
-	pix = malloc_pix_array(WND_HEIGHT,WND_WIDTH);
+	pix = malloc_pix_array(WND_WIDTH,WND_HEIGHT);
 	if (!pix)
 	{
 		printf("Failing at allocating pix memory \n");

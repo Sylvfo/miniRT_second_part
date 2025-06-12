@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 11:12:41 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:48:19 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ void	prepare_v_light(t_mem *memory_shuttle, t_coord *lux_p_coord);
 bool	intersect_objects_shadow(t_scene *scene, t_mem *memory_shuttle);
 
 //shadows_sphere.c
-bool	intersect_sphere_shadow(t_obj *sphere, t_mem *memory_shuttle);
-bool	intersect_plan_shadow(t_mem *memory_shuttle, t_obj *plan);
-bool	intersect_cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder);
+bool	sphere_shadow(t_obj *sphere, t_mem *memory_shuttle);
+bool	plan_shadow(t_mem *memory_shuttle, t_obj *plan);
+bool	cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder);
 
 //11_light.c
 t_color	compute_specular(t_mem *memory_shuttle, t_light *lux, t_coord *cam_p_coord);

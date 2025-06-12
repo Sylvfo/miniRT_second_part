@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 09:27:35 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 10:32:20 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 12:24:17 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+/*
 t_pix	***malloc_pix_array(int width, int height)
 {
 	t_pix	***pix;
@@ -71,10 +72,10 @@ void	malloc_pix_struct(t_pix ***pix, int width2, int height)
 		}
 		i++;
 	}
-}
+}*/
 
-/*
-ANCIENS FONCTIONNENT MAIS height width2 MELANGÉS
+
+//ANCIENS FONCTIONNENT MAIS height width2 MELANGÉS
 t_pix	***malloc_pix_array(int width2, int height)
 {
 	t_pix	***pix;
@@ -135,5 +136,3 @@ void	malloc_pix_struct(t_pix ***pix, int width2, int height)
 		i++;
 	}
 }
-
-*/

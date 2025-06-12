@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/14 13:29:35 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 20:45:21 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:33:02 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ t_intertt	handle_cap(t_mem *memory_shuttle, t_intertt result, float y_pos)
 
 	t = (y_pos - memory_shuttle->r_origin_m->y)
 		/ memory_shuttle->r_dir_m->y;
-	if (check_cap(memory_shuttle, t) == true && t < result.t1 && t < result.t2)// && t > 0)
+	if (check_cap(memory_shuttle, t) == true
+		&& t < result.t1 && t < result.t2 && t > 0)
 	{
 		if (y_pos == -1)
 		{
@@ -46,11 +47,11 @@ t_intertt	handle_cap(t_mem *memory_shuttle, t_intertt result, float y_pos)
 	return (result);
 }
 
+// ici voir si les cylindres sont fermes dans les bonus....
 t_intertt	intersect_caps(t_mem *memory_shuttle, t_intertt result)
 {
 	if (fabs(memory_shuttle->r_dir_m->y) < 1.17549435e-38f)
 		return (result);
-	// ici voir si les cylindres sont fermes dans les bonus....
 	result = handle_cap(memory_shuttle, result, -1);
 	result = handle_cap(memory_shuttle, result, 1);
 	return (result);
@@ -58,11 +59,11 @@ t_intertt	intersect_caps(t_mem *memory_shuttle, t_intertt result)
 
 void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n)
 {
-	float	a;
-	float	b;
-	float	c;
-	float	discriminant;
-	t_intertt result;
+	float		a;
+	float		b;
+	float		c;
+	float		discriminant;
+	t_intertt	result;
 
 	a = memory_shuttle->r_dir_m->x * memory_shuttle->r_dir_m->x
 		+ memory_shuttle->r_dir_m->z * memory_shuttle->r_dir_m->z;
@@ -79,21 +80,19 @@ void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n)
 		return ;
 	}
 	result = cut_cylinder(memory_shuttle, (-b - sqrt(discriminant)) / (2 * a),
-		(-b + sqrt(discriminant)) / (2 * a));
+			(-b + sqrt(discriminant)) / (2 * a));
 	result = intersect_caps(memory_shuttle, result);
 	closestt(memory_shuttle, result, 3, cyl_n);
 }
 
 t_intertt	cut_cylinder(t_mem *memory_shuttle, float t1, float t2)
 {
-	float	y1;
-	float	y2;
-	float	tmp;
-	t_intertt result;
+	float		y1;
+	float		y2;
+	float		tmp;
+	t_intertt	result;
 
-	result.t1 = INT_MAX;
-	result.t2 = INT_MAX;
-	result.t_count = 0;
+	result = init_intertt();
 	if (t1 > t2)
 	{
 		tmp = t1;
@@ -114,5 +113,3 @@ t_intertt	cut_cylinder(t_mem *memory_shuttle, float t1, float t2)
 	}
 	return (result);
 }
-
-
