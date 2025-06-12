@@ -6,36 +6,31 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 14:57:41 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 16:40:48 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_DATA_STRUCT_H
 # define MINIRT_DATA_STRUCT_H
 
-// pour savoir s' il ya des doublons de camera et de ambient light
-typedef struct s_doublons
-{
-	int		ambient;
-	int		camera;
-}	t_doublons;
-
 //coordonnes pour vecteurs et points
+// 0 si c est un vecteur, 1 si c est un point
 typedef struct s_coord
 {
-	float	x;
-	float	y;
-	float	z;
-	int		t; // 0 si c est un vecteur, 1 si c est un point
+	float		x;
+	float		y;
+	float		z;
+	int			t;
 }	t_coord;
 
-//couleurs
+//couleurs valeurs entre 0 et 1
+//rgb en int
 typedef struct s_color
 {
-	float	r; //valeurs entre 0 et 1
-	float	g; //valeurs entre 0 et 1
-	float	b; //valeurs entre 0 et 1
-	int		rgb; //valeur une seule int pour afficher sur l image. Calcule a la fin. 
+	float		r;
+	float		g;
+	float		b;
+	int			rgb;
 }	t_color;
 
 ////////// SCENE //////////
@@ -45,31 +40,27 @@ typedef struct s_color
 // object[3][0] cylinder
 typedef struct s_obj
 {
-	t_coord	*p_coord; 
-	t_color	*color;
-	float	diam;
-	float	height;
-	t_coord	*v_axe;//axe normalise
-	int		type;
-	float	*m_transl; // matrice de translation
-	float	*m_rot; // matrice rotation
-	float	*m_scale; // matrice scaling
-	float	*m_transf; // matrice transformation
-	float	*m_inv; // matrice inverse
-	t_coord	*v_axe_r;//local
-	t_coord	*from;//local
-	t_coord	*v_sph_camera;//local
-	float	radius; //UTILISER DIAM?
-	//	bool	closed_up; // pour cylindres si fermes ou pas bonus
-//	bool	closed_down; // pareil
-	//BONUS
-	float mirror;
-	float	difuse; // a voir pour bonus... mettre en local_
-	float	specular; // a boir pour bonus... mettre en local??
-	int		number;
+	t_coord		*p_coord;
+	t_color		*color;
+	float		diam;
+	float		height;
+	t_coord		*v_axe;
+	int			type;
+	float		*m_transl;
+	float		*m_rot;
+	float		*m_scale;
+	float		*m_transf;
+	float		*m_inv;
+	t_coord		*v_axe_r;
+	t_coord		*from;
+	t_coord		*v_sph_camera;
+	float		radius;
+	float		mirror;
+	float		difuse;
+	float		specular;
+	int			number;
 }	t_obj;
 
-//PARFAIT =)
 typedef struct s_light
 {
 	t_coord		*p_coord;
@@ -77,45 +68,42 @@ typedef struct s_light
 	t_color		*color;
 }	t_light;
 
-//PARFAIT =)
-// Pourrait etre simplifie mais c est complique pour pas grand chose. Et problemes de norme. 
 typedef struct s_camera
 {
 	t_coord		*p_coord;
 	t_coord		*v_axe;
 	float		fov;
-	t_coord		*v_up; // vecteurs pour calculer l orientation de la cam
-	t_coord		*v_left; // vecteurs pour calculer l orientation de la cam
-	t_coord		*v_true_up; // vecteurs pour calculer l orientation de la cam
-	float		*m_orient; // matrice orientation. Important si on veut pouvoir bouger la camera
-	float		*m_transl; // matrice translation pour deplacer
-	float		*m_transf; // matrice transformation
-	float		*m_inverse; // matrice inverse a utiliser pour les calculs des rays de chaque pixel . 
-	float		half_height; /// utilise dans init viewport xy
-	float		half_width; // utilise dans init viewport xy
-	float		pixel_size; //taille des pixels pour calculer les points sur le viewport et les rays
+	t_coord		*v_up;
+	t_coord		*v_left;
+	t_coord		*v_true_up;
+	float		*m_orient;
+	float		*m_transl;
+	float		*m_transf;
+	float		*m_inverse;
+	float		half_height;
+	float		half_width;
+	float		pixel_size;
 }	t_camera;
-
 
 typedef struct s_image
 {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-	void	*ima_cmd;
-	char	*addr_ima_cmd;
-	int		bits_per_pixel_cmd;
-	int		line_length_cmd;
-	int		endian_cmd;
-	void	*ima_blk;
-	char	*addr_ima_blk;
-	int		bits_per_pixel_blk;
-	int		line_length_blk;
-	int		endian_blk;
-	void	*mlx_ptr;
-	void	*mlx_win;
+	void		*img;
+	char		*addr;
+	int			bits_per_pixel;
+	int			line_length;
+	int			endian;
+	void		*ima_cmd;
+	char		*addr_ima_cmd;
+	int			bits_per_pixel_cmd;
+	int			line_length_cmd;
+	int			endian_cmd;
+	void		*ima_blk;
+	char		*addr_ima_blk;
+	int			bits_per_pixel_blk;
+	int			line_length_blk;
+	int			endian_blk;
+	void		*mlx_ptr;
+	void		*mlx_win;
 }	t_image;
 
 typedef struct s_pix
@@ -125,58 +113,50 @@ typedef struct s_pix
 	int			obj_b;
 }	t_pix;
 
-
 typedef struct s_intertt
 {
-	float	t1;
-	float	t2;
-	int		t_count;
-	float	closestt;
-} t_intertt;
+	float		t1;
+	float		t2;
+	int			t_count;
+	float		closestt;
+}	t_intertt;
 
-//POUR NOUVELLE DATA STRUCT
 typedef struct s_mem
 {
-	t_coord		*r_base_origin; // ce sera p touch apres dans recursivite. 
+	t_coord		*r_base_origin;
 	t_coord		*r_base_dir;
-	t_coord		*r_origin_m; //ray modifie par matrice a recalculer pour chaque objet
+	t_coord		*r_origin_m;
 	t_coord		*r_dir_m;
-	// POUR CALCULS INTERSECTIONS
-	int			t_count; // nombre d intersections. Pas vraiment utilise sauf pour le caps des cylindres
-	float		closestt;//IMPORTANT
-	int			obj_a;//IMPORTANT
-	int			obj_b;// IMPORTANT
-	t_coord		*r_dir_closest_obj; //IMPORTANT
-	t_coord		*r_origin_closest_obj; //IMPORTANT
-	//POUR CALCUL PIXLES
-	t_coord		*p_viewport;// A mettre en local PAS OUBLIER z = -1!!!
-	t_coord		*p_viewport_world; //pareil
-	/////////////
-	t_coord		*v_sph_camera;// a supprimer? a cause norminette
-	t_coord		*origin_zero;//a supprimer? a cause norminette
-	/////// POUR CALCULS OMBRES / LUMIERES
-	t_coord	*p_touch;// IMPORTANT
-	t_coord	*v_norm_parral;// IMPORTANT
-	float	*transp_inv; // local mais difficile a faire en local
-	t_coord	*p_space; // LOCAL
-	float	*obj_inv; //MODIFIER??
-	t_coord	*v_light_to_point; //IMPORTANT
-	float	distance_light_p_touch; //IMPORTANT
-	t_coord	*v_point_to_light; //LOCAL??
-	t_coord	*reflect_dir;//LOCAL
-	t_coord	*scalar; //LOCAL mais un peu complique a changer
-	t_coord	*view_dir;//LOCAL
-	//bonus
-	//QQCH SI RECURSIVITE OU NOMBRE RECURSIVITE
-	bool		is_avaible; //or mutex???
-} t_mem;
+	int			t_count;
+	float		closestt;
+	int			obj_a;
+	int			obj_b;
+	t_coord		*r_dir_closest_obj;
+	t_coord		*r_origin_closest_obj;
+	t_coord		*p_viewport;
+	t_coord		*p_viewport_world;
+	t_coord		*v_sph_camera;
+	t_coord		*origin_zero;
+	t_coord		*p_touch;
+	t_coord		*v_norm_parral;
+	float		*transp_inv;
+	t_coord		*p_space;
+	float		*obj_inv;
+	t_coord		*v_light_to_point;
+	float		distance_light_p_touch;
+	t_coord		*v_point_to_light;
+	t_coord		*reflect_dir;
+	t_coord		*scalar;
+	t_coord		*view_dir;
+	bool		is_avaible;
+}	t_mem;
 
 typedef struct s_scene
 {
-	int		nb_sphere;
-	int		nb_plan;
-	int		nb_cylinder;
-	int		nb_lights;
+	int			nb_sphere;
+	int			nb_plan;
+	int			nb_cylinder;
+	int			nb_lights;
 	float		wnd_height;
 	float		wnd_width;
 	t_camera	*cam;
@@ -184,17 +164,24 @@ typedef struct s_scene
 	t_obj		***obj;
 	t_light		***lux;
 	t_mem		*mem_shuttle;
-	t_pix	***pix;
-	bool	bonus_mode;
-	bool	preview;
-	int	x;
-	int y;
-	int draw_mode;
-	int draw_type;
-	int axe_draw;
-	float size_modif;
-	float size_modif_neg;
-	float after_virgule;
-} t_scene;
+	t_pix		***pix;
+	bool		bonus_mode;
+	bool		preview;
+	int			x;
+	int			y;
+	int			draw_mode;
+	int			draw_type;
+	int			axe_draw;
+	float		size_modif;
+	float		size_modif_neg;
+	float		after_virgule;
+}	t_scene;
+
+// pour savoir s' il ya des doublons de camera et de ambient light
+typedef struct s_doublons
+{
+	int			ambient;
+	int			camera;
+}	t_doublons;
 
 #endif

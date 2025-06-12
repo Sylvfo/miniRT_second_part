@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 16:26:47 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 09:49:56 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 15:22:40 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,8 @@
 
 # include "minirt_data_struct.h"
 
-
-
-int	ft_exit(t_scene *scene);
-int	ft_keys(int keycode, t_scene *scene);
-
+int		ft_exit(t_scene *scene);
+int		ft_keys(int keycode, t_scene *scene);
 void	my_mlx_pixel_put(t_image *ima, int x, int y, int color);
 void	pix_to_window(t_pix ***pix, t_scene *scene);
 

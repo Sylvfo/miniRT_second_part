@@ -19,7 +19,6 @@ bool init_sphere(t_scene *scene)
 		if (init_each_obj(scene->obj[1][i]) == false)
 			return (false);
 		scene->obj[1][i]->number = scene->nb_sphere;
-		//scene->obj[1][i]->type = SPHERE;
 		i++;
 	}
 	return (true);
@@ -42,7 +41,6 @@ bool	init_plan(t_scene *scene)
 		if (init_each_obj(scene->obj[2][i]) == false)
 			return (false);
 		scene->obj[2][i]->number = scene->nb_plan;
-		//scene->obj[2][i]->type = PLAN;
 		i++;
 	}
 	return (true);
@@ -73,7 +71,7 @@ bool	init_cylinder(t_scene *scene)
 bool init_obj_cph(t_scene *scene)
 {
 	scene->obj = NULL;
-	scene->obj = malloc(sizeof(t_obj **) * NB_OBJ); // 4 pour nombre objets
+	scene->obj = malloc(sizeof(t_obj **) * NB_OBJ);
 	if (!scene->obj)
 		return (false);
 	scene->obj[0] = malloc(sizeof(t_obj *) * 2);
@@ -89,8 +87,5 @@ bool init_obj_cph(t_scene *scene)
 		return (false);
 	if (!init_cylinder(scene))
 		return (false);
-
-	// autres objets... 
-	//	scene->obj[5] = NULL;
 	return (true);
 }

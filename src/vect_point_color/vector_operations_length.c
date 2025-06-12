@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 21:36:44 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 21:29:55 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 15:31:10 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,15 @@
 
 void	scalar_mult_na(t_coord *result, t_coord *v_1, float scale)
 {
-	if (is_vector(v_1) == false)
-		return ;
 	result->x = scale * v_1->x;
 	result->y = scale * v_1->y;
 	result->z = scale * v_1->z;
-//	result->t = 0;
 }
 
 t_coord	scalar_mult_ret(t_coord *v_1, float scale)
 {
-	t_coord result;
-//	if (is_vector(v_1) == false)
-//		return ;
+	t_coord	result;
+
 	result.x = scale * v_1->x;
 	result.y = scale * v_1->y;
 	result.z = scale * v_1->z;

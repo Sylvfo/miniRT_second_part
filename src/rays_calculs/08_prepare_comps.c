@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/17 14:00:25 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 14:40:54 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 17:59:16 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	normal_cylinder(t_mem *mem_shuttle, t_obj ***obj)
 	normalize_vector_na(&local_normal_vec);
 	transpose_matrix(mem_shuttle->transp_inv,
 		obj[3][mem_shuttle->obj_b]->m_inv);
-	matrix_point_multiplication_new_2(mem_shuttle->v_norm_parral,
+	matrix_point_multiplication_2(mem_shuttle->v_norm_parral,
 		mem_shuttle->transp_inv, &local_normal_vec);
 	normalize_vector_na(mem_shuttle->v_norm_parral);
 }
@@ -74,7 +74,36 @@ void	normal_sphere(t_mem *mem_shuttle)
 		mem_shuttle->p_space, mem_shuttle->origin_zero);
 	normalize_vector_na(&object_normal);
 	transpose_matrix(mem_shuttle->transp_inv, mem_shuttle->obj_inv);
-	matrix_point_multiplication_new_2(mem_shuttle->v_norm_parral,
+	matrix_point_multiplication_2(mem_shuttle->v_norm_parral,
 		mem_shuttle->transp_inv, &object_normal);
 	normalize_vector_na(mem_shuttle->v_norm_parral);
 }
+
+/*
+void	normal_cylinder(t_mem *mem_shuttle, t_obj ***obj)
+{
+	t_coord	local_normal_vec;
+
+	init_matrix_zero(mem_shuttle->transp_inv);
+	matrix_point_multiplication_new(mem_shuttle->p_space,
+		obj[3][mem_shuttle->obj_b]->m_inv,
+		mem_shuttle->p_touch);
+	if (mem_shuttle->t_count == 8)
+		vector_fill(&local_normal_vec, 0, -1, 0);
+	else if (mem_shuttle->t_count == 9)
+		vector_fill(&local_normal_vec, 0, 1, 0);
+	else
+	{
+		local_normal_vec.x = mem_shuttle->p_space->x;
+		local_normal_vec.y = 0;
+		local_normal_vec.z = mem_shuttle->p_space->z;
+	}
+	local_normal_vec.t = 0;
+	normalize_vector_na(&local_normal_vec);
+	transpose_matrix(mem_shuttle->transp_inv,
+		obj[3][mem_shuttle->obj_b]->m_inv);
+	matrix_point_multiplication_2(mem_shuttle->v_norm_parral,
+		mem_shuttle->transp_inv, &local_normal_vec);
+	normalize_vector_na(mem_shuttle->v_norm_parral);
+}
+*/

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 14:24:47 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 16:25:39 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,5 +92,6 @@ t_color	background_color(t_obj *obj_zero, t_light *lux_zero)
 	background_color.r = obj_zero->color->r * lux_zero->ratio;
 	background_color.g = obj_zero->color->g * lux_zero->ratio;
 	background_color.b = obj_zero->color->b * lux_zero->ratio;
+	background_color = multipling_color(background_color, *(lux_zero->color));
 	return (background_color);
 }

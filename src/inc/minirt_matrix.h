@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 08:38:36 by syl               #+#    #+#             */
-/*   Updated: 2025/05/26 14:39:16 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 15:15:53 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,7 @@ void	matrix_rotation_rodrigues(t_obj *obj, float c, float s);
 void	matrix_point_multiplication_new(t_coord *result, float *m, t_coord *p);
 void	matrix_mult_2(float *ma, float *mb);
 void	matrix_mult_3(float *res, float *ma, float *mb);
-void	matrix_point_multiplication_new_2(t_coord *result, float *m, t_coord *p);
-
+void	matrix_point_multiplication_2(t_coord *result, float *m, t_coord *p);
 
 //matrix_inverse.c
 void	inverse_matrix_44(float *m_inverted, float *m_matrix);

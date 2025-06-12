@@ -6,13 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:29:55 by syl               #+#    #+#             */
-/*   Updated: 2025/06/11 12:01:07 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 16:04:39 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int mouse_click(int button, int x, int y, t_scene *scene)
+int	mouse_click(int button, int x, int y, t_scene *scene)
 {
 	if (button == 1 && x >= WND_WIDTH)
 	{
@@ -25,12 +25,11 @@ int mouse_click(int button, int x, int y, t_scene *scene)
 	}
 	if (scene->draw_mode == CHOOSE_OBJ && button == 1 && x < WND_WIDTH)
 		select_object(scene, x, y);
-    return (0);
+	return (0);
 }
 
 int	ft_keys_bonus(int keycode, t_scene *scene)
 {
-//	printf("keycode %i \n", keycode);
 	if (keycode == 65307)
 	{
 		printf("ESC pressed.\nWindow closed\n");
@@ -48,7 +47,7 @@ void	clear_modif(t_scene *scene)
 {
 	scene->axe_draw = NO_AXE;
 	scene->draw_mode = PREVIEW;
-	scene->draw_type = NO_MOVE;                        
+	scene->draw_type = NO_MOVE;
 	scene->y = 0;
 	scene->x = 0;
 	scene->size_modif = 0.0;
@@ -56,5 +55,3 @@ void	clear_modif(t_scene *scene)
 	scene->size_modif_neg = 1.0;
 	printf("select action\n");
 }
-
-

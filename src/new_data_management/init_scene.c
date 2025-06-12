@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 10:58:29 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 16:54:36 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,18 @@ t_scene *init_first_scene_memory(void)
 	scene->nb_plan = 0;
 	scene->nb_cylinder = 0;
 	scene->nb_lights = 0;
-	scene->wnd_height = WND_HEIGHT;
-	scene->wnd_width = WND_WIDTH;
+	scene->wnd_height = (float)WND_HEIGHT;
+	scene->wnd_width = (float)WND_WIDTH;
 	scene->bonus_mode = false;
+	scene->axe_draw = 0;
+	scene->draw_mode = 0;
+	scene->draw_type = 0;
+	scene->x = 0;
+	scene->y = 0;
+	scene->size_modif = 0.0;
+	scene->after_virgule = 0.0;
+	scene->size_modif_neg = 1.0;
+	scene->preview = false;
 	return (scene);
 }
 
@@ -88,7 +97,9 @@ bool init_each_obj(t_obj *obj)
 	obj->color->b = 0.0;
 	obj->color->rgb = 0;
 	obj->type = NONE;
-	//obj->difuse = 
+	obj->difuse = 0.9;
+	obj->specular = 0.8;
+	obj->mirror = 0.0;
 	return (true);
 }
 
@@ -111,8 +122,6 @@ bool	init_each_obj_matrix(t_obj *obj)
 		return (false);
 	return (true);
 }
-
-
 
 void	free_each_obj_matrix(t_obj *obj)
 {
@@ -163,7 +172,6 @@ bool init_each_obj_coord(t_obj *obj)
 		return (false);
 	return (true);
 }
-
 
 void free_each_obj_coord(t_obj *obj)
 {

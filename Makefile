@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/06/12 10:17:38 by syl              ###   ########.fr        #
+#    Updated: 2025/06/12 16:16:12 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -112,6 +112,7 @@ SRCS = ./src/main.c \
 	./src/bonus/apply_modifications.c \
 	./src/bonus/matrix_rotation.c \
 	./src/bonus/print_action.c \
+	./src/bonus/print_on_screen.c \
 	$(INIT)init_object.c\
 	$(PARSING)map_check.c $(PARSING)map_check2.c\
 	$(PARSING)map_struct.c $(PARSING)verification.c\

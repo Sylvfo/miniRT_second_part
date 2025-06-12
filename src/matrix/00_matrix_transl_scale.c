@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/19 10:51:07 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 10:06:00 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 15:25:54 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	translation_matrix_coord(t_obj *obj)
 	matrix_fill(obj->m_transl, 0, 3, obj->p_coord->x);
 	matrix_fill(obj->m_transl, 1, 3, obj->p_coord->y);
 	matrix_fill(obj->m_transl, 2, 3, obj->p_coord->z);
-//	matrix_fill(obj->m_transl, 3, 3, 1);//inutile?
 }
 
 void	fill_translation_matrix(float *m_transl, float x, float y, float z)
@@ -29,7 +28,6 @@ void	fill_translation_matrix(float *m_transl, float x, float y, float z)
 	matrix_fill(m_transl, 0, 3, x);
 	matrix_fill(m_transl, 1, 3, y);
 	matrix_fill(m_transl, 2, 3, z);
-//	matrix_fill(m_transl, 3, 3, 1);
 }
 
 void	scaling_matrix_coord(t_obj *obj)
@@ -46,5 +44,4 @@ void	scaling_matrix_coord(t_obj *obj)
 		matrix_fill(obj->m_scale, 1, 1, obj->diam);
 		matrix_fill(obj->m_scale, 2, 2, obj->diam);
 	}
-//	matrix_fill(obj->m_scale, 3, 3, 1);//inutile?
 }

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/12 14:56:50 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 15:01:23 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 
 # include "minirt_data_struct.h"
 # include "minirt_matrix.h"
-# include "free_all.h"
 # include "parsing.h"
 # include "saving.h"
 # include "minirt_vect_point_color.h"
@@ -52,8 +51,6 @@ enum e_obj_type
 	CYLINDER,
 };
 
-
 int		main(int argc, char **argv);
-//void	error_exit(const char *msg, t_program_context *context);
 
 #endif

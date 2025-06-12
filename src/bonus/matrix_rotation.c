@@ -6,13 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 10:32:24 by syl               #+#    #+#             */
-/*   Updated: 2025/06/11 10:59:44 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 16:13:06 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	rotation_x_matrix(t_scene *scene,t_obj *obj)
+void	rotation_x_matrix(t_scene *scene, t_obj *obj)
 {
 	float	sinr;
 	float	cosr;
@@ -28,7 +28,7 @@ void	rotation_x_matrix(t_scene *scene,t_obj *obj)
 	matrix_fill(obj->m_rot, 3, 3, 1);
 }
 
-void	rotation_y_matrix(t_scene *scene,t_obj *obj)
+void	rotation_y_matrix(t_scene *scene, t_obj *obj)
 {
 	float	sinr;
 	float	cosr;
@@ -44,7 +44,7 @@ void	rotation_y_matrix(t_scene *scene,t_obj *obj)
 	matrix_fill(obj->m_rot, 3, 3, 1);
 }
 
-void	rotation_z_matrix(t_scene *scene,t_obj *obj)
+void	rotation_z_matrix(t_scene *scene, t_obj *obj)
 {
 	float	sinr;
 	float	cosr;

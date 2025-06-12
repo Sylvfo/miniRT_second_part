@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:15:23 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 14:43:15 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 15:22:16 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ float	degree_to_radian(float degree);
 void	copy_coord(t_coord *new, t_coord *origin);
 void	vector_fill(t_coord *vect, float x, float y, float z);
 void	point_fill(t_coord *point, float x, float y, float z);
-t_intertt	init_intertt(void);
 t_color	init_color(void);
 
 //color_operation.c
@@ -68,7 +67,7 @@ void	change_color(t_color *c_color, int r, int g, int b);
 
 //color_operation.c
 t_color	multipling_color(t_color c_1, t_color c_2);
-t_color copy_color(t_color src);
+t_color	copy_color(t_color src);
 t_color	add_color(t_color c_1, t_color c_2);
 
 #endif

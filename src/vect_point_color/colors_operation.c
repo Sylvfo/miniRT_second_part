@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:57:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 10:49:33 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 16:46:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,33 +124,3 @@ void	scalar_mult_color(t_color *c_1, float scale)
 	if (c_1->b > 1)
 		c_1->b = 1;
 }
-
-t_color	scalar_mult_color2(t_color c_1, float scale)
-{
-	t_color new;
-
-	if (scale < 0)
-	{
-		printf("negative scale \n");
-	//	return ();
-	}
-	new.r =  c_1.r * scale;
-	new.g =  c_1.g * scale;
-	new.b =  c_1.b * scale;
-	new.rgb = 0;
-	return (new);
-}
-
-/*
-void	multipling_color(t_color *c_1, t_color *c_2)
-{
-	if (!c_1 || !c_2)
-	{
-		printf("miss a colour \n");
-		return ;
-	}
-	c_1->r *= c_2->r;
-	c_1->g *= c_2->g;
-	c_1->b *= c_2->b;
-	color_float_to_int(c_1);
-}*/
