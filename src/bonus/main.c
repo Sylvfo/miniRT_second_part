@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/12 18:25:01 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 23:46:31 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int	main(int argc, char **argv)
 	memory_shuttle = init_memory_shuttle();
 	if (!init(scene, pix, memory_shuttle, argv[1]))
 		return (1);
+	scene->bonus_mode = true;
 	base_data(scene);
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);

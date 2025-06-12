@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:31 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/12 09:57:39 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 22:31:50 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ t_image	*create_image(t_scene *scene)
 		free(ima);
 		return (NULL);
 	}
-	if (scene->bonus_mode == false)
-		ima->mlx_win = mlx_new_window(ima->mlx_ptr, WND_WIDTH, WND_HEIGHT, "MiniRT");
-	if (scene->bonus_mode == true)
-		ima->mlx_win = mlx_new_window(ima->mlx_ptr, WND_WIDTH + 300, WND_HEIGHT, "MiniRT_bonus");	
+	create_window(ima, scene);
 	ima->img = mlx_new_image(ima->mlx_ptr, WND_WIDTH, WND_HEIGHT);
 	ima->addr = mlx_get_data_addr(ima->img, &ima->bits_per_pixel,
 			&ima->line_length, &ima->endian);
@@ -41,51 +38,46 @@ t_image	*create_image(t_scene *scene)
 	return (ima);
 }
 
-
-bool create_image_cmd(t_image *ima)
+void	create_window(t_image *ima, t_scene *scene)
 {
-	ima->ima_cmd = mlx_xpm_file_to_image(ima->mlx_ptr, "dessin_commandes/Title3.xpm",
-                                     &ima->line_length_cmd, &ima->endian_cmd);
+	if (scene->bonus_mode == false)
+		ima->mlx_win = mlx_new_window(ima->mlx_ptr,
+				WND_WIDTH, WND_HEIGHT, "MiniRT");
+	if (scene->bonus_mode == true)
+		ima->mlx_win = mlx_new_window(ima->mlx_ptr,
+				WND_WIDTH + 300, WND_HEIGHT, "MiniRT_bonus");
+}
+
+bool	create_image_cmd(t_image *ima)
+{
+	ima->ima_cmd = mlx_xpm_file_to_image(ima->mlx_ptr,
+			"dessin_commandes/Title3.xpm",
+			&ima->line_length_cmd, &ima->endian_cmd);
 	if (!ima->ima_cmd)
 	{
-    	printf("Erreur : impossible de charger testimage.xpm\n");
-    	return (false);
+		printf("Erreur : impossible de charger testimage.xpm\n");
+		return (false);
 	}
 	ima->addr_ima_cmd = mlx_get_data_addr(ima->ima_cmd,
-                                      &ima->bits_per_pixel_cmd,
-                                      &ima->line_length_cmd,
-                                      &ima->endian_cmd);
+			&ima->bits_per_pixel_cmd,
+			&ima->line_length_cmd,
+			&ima->endian_cmd);
 	return (true);
 }
 
-bool create_image_blk(t_image *ima)
+bool	create_image_blk(t_image *ima)
 {
-	ima->ima_blk = mlx_xpm_file_to_image(ima->mlx_ptr, "dessin_commandes/blackboard.xpm",
-                                     &ima->line_length_blk, &ima->endian_blk);
+	ima->ima_blk = mlx_xpm_file_to_image(ima->mlx_ptr,
+			"dessin_commandes/blackboard.xpm",
+			&ima->line_length_blk, &ima->endian_blk);
 	if (!ima->ima_blk)
 	{
-    	printf("Erreur : impossible de charger blackboard.xpm\n");
-    	return (false);
+		printf("Erreur : impossible de charger blackboard.xpm\n");
+		return (false);
 	}
 	ima->addr_ima_cmd = mlx_get_data_addr(ima->ima_blk,
-                                      &ima->bits_per_pixel_blk,
-                                      &ima->line_length_blk,
-                                      &ima->endian_blk);
+			&ima->bits_per_pixel_blk,
+			&ima->line_length_blk,
+			&ima->endian_blk);
 	return (true);
 }
-
-
-
-/*
-bool	init_ima(t_program_context *context)
-{
-	t_image	*ima;
-
-	ima = create_image();
-	if (!ima)
-		return (false);
-	context->ima = ima;
-	context->mlx_ptr = ima->mlx_ptr;
-	context->mlx_win = ima->mlx_win;
-	return (true);
-}*/

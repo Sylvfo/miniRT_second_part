@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 17:00:20 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 22:23:15 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,19 @@
 
 void	base_data(t_scene *scene)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	background_base_color(scene);
 	scene->cam->fov = scene->cam->fov * 0.0174533;
-	while(i < scene->nb_sphere)
+	while (i < scene->nb_sphere)
 	{
 		scene->obj[1][i]->diam = scene->obj[1][i]->diam / 2;
 		scene->obj[1][i]->radius = scene->obj[1][i]->diam;
 		i++;
 	}
 	i = 0;
-	while(i < scene->nb_cylinder)
+	while (i < scene->nb_cylinder)
 	{
 		scene->obj[3][i]->diam = scene->obj[3][i]->diam / 2;
 		scene->obj[3][i]->radius = scene->obj[3][i]->diam;

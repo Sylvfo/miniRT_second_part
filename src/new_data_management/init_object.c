@@ -1,12 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init_object.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/12 23:01:38 by syl               #+#    #+#             */
+/*   Updated: 2025/06/12 23:02:31 by syl              ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../inc/minirt.h"
 
-bool init_sphere(t_scene *scene)
+bool	init_sphere(t_scene *scene)
 {
-	int i;
+	int	i;
 
 	scene->obj[1] = NULL;
 	if (scene->nb_sphere == 0)
-		return (true);	
+		return (true);
 	i = 0;
 	scene->obj[1] = malloc(sizeof(t_obj *) * (scene->nb_sphere));
 	if (!scene->obj[1])
@@ -49,7 +61,7 @@ bool	init_plan(t_scene *scene)
 bool	init_cylinder(t_scene *scene)
 {
 	int	i;
-	
+
 	scene->obj[3] = NULL;
 	if (scene->nb_cylinder == 0)
 		return (true);
@@ -68,7 +80,7 @@ bool	init_cylinder(t_scene *scene)
 	return (true);
 }
 
-bool init_obj_cph(t_scene *scene)
+bool	init_obj_cph(t_scene *scene)
 {
 	scene->obj = NULL;
 	scene->obj = malloc(sizeof(t_obj **) * NB_OBJ);
@@ -79,7 +91,7 @@ bool init_obj_cph(t_scene *scene)
 	if (!scene->obj[0][0])
 		return (false);
 	if (init_each_obj(scene->obj[0][0]) == false)
-			return (false);
+		return (false);
 	scene->obj[0][1] = NULL;
 	if (!init_sphere(scene))
 		return (false);

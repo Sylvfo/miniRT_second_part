@@ -6,13 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:41:40 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 16:50:38 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 22:32:12 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void free_main(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
+void	free_main(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 {
 	if (scene)
 	{

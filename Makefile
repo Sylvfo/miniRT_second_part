@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/06/12 16:16:12 by syl              ###   ########.fr        #
+#    Updated: 2025/06/12 23:30:59 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -97,10 +97,15 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/new_data_management/init_scene.c \
 	./src/new_data_management/free_scene.c \
 	./src/new_data_management/init_memory_shuttle.c \
+	./src/new_data_management/free_memory_shuttle.c \
 	./src/new_data_management/base_data.c \
 	./src/new_data_management/init_cam.c \
 	./src/new_data_management/init_lux.c \
 	./src/new_data_management/create_image.c \
+	./src/new_data_management/free_cam.c \
+	./src/new_data_management/free_obj.c \
+	./src/new_data_management/init_each_obj.c \
+	./src/new_data_management/free_lux.c \
 	./src/bonus/00_main_bonus.c \
 	./src/bonus/01_reflection.c \
 	./src/bonus/20_mouse_hooks.c \

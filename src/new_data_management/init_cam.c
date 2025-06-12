@@ -6,13 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 09:17:48 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 18:06:04 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 22:37:42 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-bool init_cam_cph(t_scene *scene)
+bool	init_cam_cph(t_scene *scene)
 {
 	scene->cam = NULL;
 	scene->cam = malloc(sizeof(t_camera));
@@ -26,7 +26,7 @@ bool init_cam_cph(t_scene *scene)
 	return (true);
 }
 
-void cam_value_null(t_camera *cam)
+void	cam_value_null(t_camera *cam)
 {
 	cam->p_coord = NULL;
 	cam->v_axe = NULL;
@@ -40,7 +40,7 @@ void cam_value_null(t_camera *cam)
 	cam->pixel_size = 0.0;
 }
 
-bool init_cam_coord(t_camera *cam)
+bool	init_cam_coord(t_camera *cam)
 {
 	if (!cam)
 		return (false);
@@ -50,7 +50,7 @@ bool init_cam_coord(t_camera *cam)
 	cam->v_axe = create_vector(0, 0, 0);
 	if (!cam->v_axe)
 		return (false);
-	cam->v_up =  create_vector(0, 1, 0);
+	cam->v_up = create_vector(0, 1, 0);
 	if (!cam->v_up)
 		return (false);
 	cam->v_left = create_vector(0, 0, 0);
@@ -62,7 +62,7 @@ bool init_cam_coord(t_camera *cam)
 	return (true);
 }
 
-bool init_cam_matrix(t_camera *cam)
+bool	init_cam_matrix(t_camera *cam)
 {
 	if (!cam)
 		return (false);
@@ -79,71 +79,4 @@ bool init_cam_matrix(t_camera *cam)
 	if (!cam->m_inverse)
 		return (false);
 	return (true);
-}
-
-void free_cam_cph(t_scene *scene)
-{
-	if (!scene->cam)
-		return ;
-	free_cam_coord(scene->cam);
-	free_cam_matrix(scene->cam);
-	free(scene->cam);
-	scene->cam = NULL;
-}
-
-void free_cam_coord(t_camera *cam)
-{
-	if (!cam)
-		return ;
-	if (cam->p_coord)
-	{
-		free(cam->p_coord);
-		cam->p_coord = NULL;
-	}
-	if (cam->v_axe)
-	{
-		free(cam->v_axe);
-		cam->v_axe = NULL;
-	}
-	if (cam->v_up)
-	{
-		free(cam->v_up);
-		cam->v_up = NULL;
-	}
-	if (cam->v_left)
-	{
-		free(cam->v_left);
-		cam->v_left = NULL;
-	}
-	if (cam->v_true_up)
-	{
-		free(cam->v_true_up);
-		cam->v_true_up = NULL;
-	}
-}
-
-void free_cam_matrix(t_camera *cam)
-{
-	if (!cam)
-		return ;
-	if (cam->m_orient)
-	{
-		free(cam->m_orient);
-		cam->m_orient = NULL;
-	}
-	if (cam->m_transl)
-	{
-		free(cam->m_transl);
-		cam->m_transl = NULL;
-	}
-	if (cam->m_transf)
-	{
-		free(cam->m_transf);
-		cam->m_transf = NULL;
-	}
-	if (cam->m_inverse)
-	{
-		free(cam->m_inverse);
-		cam->m_inverse = NULL;
-	}
 }
