@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:29:55 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 16:04:39 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 11:21:24 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ int	mouse_click(int button, int x, int y, t_scene *scene)
 {
 	if (button == 1 && x >= WND_WIDTH)
 	{
-		if (y > 67 && y < 112 && scene->draw_mode == RENDER)
+		if (y > 50 && y < 100 && scene->draw_mode == RENDER)
 			drawing_mode(scene);
-		if (y <= 67 && scene->draw_mode == PREVIEW)
+		if (y <= 50 && scene->draw_mode == PREVIEW)
 			render_mode(scene);
 		if (scene->draw_mode == PREVIEW)
 			select_transformation(scene, y);

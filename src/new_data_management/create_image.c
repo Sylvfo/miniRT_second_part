@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/03 15:21:31 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/12 22:31:50 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 11:14:05 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	create_window(t_image *ima, t_scene *scene)
 bool	create_image_cmd(t_image *ima)
 {
 	ima->ima_cmd = mlx_xpm_file_to_image(ima->mlx_ptr,
-			"dessin_commandes/Title3.xpm",
+			"dessin_commandes/cmd.xpm",
 			&ima->line_length_cmd, &ima->endian_cmd);
 	if (!ima->ima_cmd)
 	{

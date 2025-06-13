@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 23:27:45 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 23:42:05 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 09:09:25 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,44 @@ void	free_each_lux(t_light *lux)
 
 void	free_lux_cph(t_scene *scene)
 {
-	int b;
+	int	b;
+
+	if (!scene->lux)
+		return ;
+	if (scene->lux[0][0])
+		free_lux_0(scene);
+	free(scene->lux[0]);
+	scene->lux[0] = NULL;
+	b = 0;
+	while (b < scene->nb_lights)
+	{
+		if (scene->lux[1][b])
+		{
+			free_each_lux(scene->lux[1][b]);
+			free(scene->lux[1][b]);
+			scene->lux[1][b] = NULL;
+		}
+		b++;
+	}
+	free(scene->lux[1]);
+	scene->lux[1] = NULL;
+}
+
+void	free_lux_0(t_scene *scene)
+{
+	if (scene->lux[0][0]->color)
+	{
+		free(scene->lux[0][0]->color);
+		scene->lux[0][0]->color = NULL;
+	}
+	free(scene->lux[0][0]);
+	scene->lux[0][0] = NULL;
+}
+
+/*
+void	free_lux_cph(t_scene *scene)
+{
+	int	b;
 
 	if (!scene->lux)
 		return ;
@@ -54,9 +91,10 @@ void	free_lux_cph(t_scene *scene)
 			free_each_lux(scene->lux[1][b]);
 			free(scene->lux[1][b]);
 			scene->lux[1][b] = NULL;
-		}	
+		}
 		b++;
 	}
 	free(scene->lux[1]);
 	scene->lux[1] = NULL;
 }
+*/

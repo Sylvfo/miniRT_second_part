@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:27:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 23:44:22 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 09:36:07 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int		free_arg(char **str);
 //base_data.c
 void	base_data(t_scene *scene);
 void	background_base_color(t_scene *scene);
+void	set_reflection(t_scene *scene);
+
 //init_pix.c
 t_pix	***malloc_pix_array(int width, int height);
 void	malloc_pix_struct(t_pix ***pix, int height, int width);
@@ -100,9 +102,11 @@ void	free_ima(t_scene *scene);
 bool	init_lux_cph(t_scene *scene);
 bool	init_each_lux(t_light *lux);
 void	init_each_lux_null(t_light *lux);
+bool	init_lux0(t_scene *scene);
 
 //free_lux.c
 void	free_lux_cph(t_scene *scene);
 void	free_each_lux(t_light *lux);
+void	free_lux_0(t_scene *scene);
 
 #endif

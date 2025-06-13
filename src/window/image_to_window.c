@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 11:21:36 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 15:35:01 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 11:17:37 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,11 @@ void	pix_to_window(t_pix ***pix, t_scene *scene)
 	}
 	mlx_put_image_to_window(scene->ima->mlx_ptr,
 		scene->ima->mlx_win, scene->ima->img, 0, 0);
-	if (scene->bonus_mode == true)
+	if (scene->bonus_mode == true && WND_HEIGHT > 400)
 	{
 		mlx_put_image_to_window(scene->ima->mlx_ptr,
 			scene->ima->mlx_win, scene->ima->ima_cmd, WND_WIDTH + 2, 0);
 		mlx_put_image_to_window(scene->ima->mlx_ptr,
-			scene->ima->mlx_win, scene->ima->ima_blk, WND_WIDTH + 2, 850);
+			scene->ima->mlx_win, scene->ima->ima_blk, WND_WIDTH + 2, 100);
 	}
 }

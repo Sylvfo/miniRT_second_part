@@ -12,13 +12,38 @@
 
 #include "../inc/minirt.h"
 
-// a deplacer
-void	addition_vect(t_coord *result, t_coord *p_v_1, t_coord *p_v_2)
+t_color	base_reflection(t_scene *scene, t_mem *mem_shtle, t_color color_light)
 {
-	result->x = p_v_1->x + p_v_2->x;
-	result->y = p_v_1->y + p_v_2->y;
-	result->z = p_v_1->z + p_v_2->z;
-	result->t = 0;
+	t_color	color_reflexion;
+	float	mirror;
+
+	mirror = scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->mirror;
+	color_reflexion = reflexion(scene, mem_shtle);
+	if (mirror == 1.0)
+		return (color_reflexion);
+	color_reflexion = scalar_mult_color2(color_reflexion, mirror);
+	color_light = scalar_mult_color2(color_light, (1.0f - mirror));
+	color_light = add_color(color_light, color_reflexion);
+	return (color_light);
+}
+
+t_color	reflexion(t_scene *scene, t_mem *mem_shtle)
+{
+	t_color	color;
+
+	next_ray_reflection(mem_shtle);
+	main_intersections(scene->obj, mem_shtle);
+	copy_matrix_44(mem_shtle->obj_inv,
+		scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->m_inv);
+	if (mem_shtle->obj_a == 0)
+	{
+		color = background_color(scene->obj[0][0], scene->lux[0][0]);
+		return (color);
+	}
+	prepare_computation(mem_shtle, scene->obj);
+	color = lighting(scene, mem_shtle,
+			*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
+	return (color);
 }
 
 void	next_ray_reflection(t_mem *mem_shuttle)
@@ -45,77 +70,3 @@ void	vect_reflexion(t_coord *r_base_dir, t_coord *v_normal)
 	normalize_vector_na(&result);
 	copy_coord(r_base_dir, &result);
 }
-
-void	clean_memory_shuttle_refl(t_mem *mem_shuttle)
-{
-	vector_fill(mem_shuttle->r_dir_m, 0, 0, 0);
-	point_fill(mem_shuttle->r_origin_m, 0, 0, 0);
-	vector_fill(mem_shuttle->r_dir_closest_obj, 0, 0, 0);
-	point_fill(mem_shuttle->r_origin_closest_obj, 0, 0, 0);
-	vector_fill(mem_shuttle->v_sph_camera, 0, 0, 0);
-	point_fill(mem_shuttle->p_touch, 0, 0, 0);
-	vector_fill(mem_shuttle->v_norm_parral, 0, 0, 0);
-	point_fill(mem_shuttle->p_space, 0, 0, 0);
-	vector_fill(mem_shuttle->v_light_to_point, 0, 0, 0);
-	vector_fill(mem_shuttle->v_point_to_light, 0, 0, 0);
-	vector_fill(mem_shuttle->reflect_dir, 0, 0, 0);
-	vector_fill(mem_shuttle->scalar, 0, 0, 0);
-	vector_fill(mem_shuttle->view_dir, 0, 0, 0);
-	mem_shuttle->t_count = 0;
-	mem_shuttle->closestt = INT_MAX;
-	mem_shuttle->obj_a = 0;
-	mem_shuttle->obj_b = 0;
-	init_matrix_zero(mem_shuttle->obj_inv);
-	init_matrix_zero(mem_shuttle->transp_inv);
-}
-
-/*
-//a effacer.. truc chat gpt
-t_color blend_reflection(t_color local, t_color reflected, float refl_intensity)
-{
-    t_color result;
-
-    result.r = (1 - refl_intensity) * local.r + refl_intensity * reflected.r;
-    result.g = (1 - refl_intensity) * local.g + refl_intensity * reflected.g;
-    result.b = (1 - refl_intensity) * local.b + refl_intensity * reflected.b;
-    result.rgb = 0; // à recalculer si nécessaire
-
-    return result;
-}*/
-
-/*
-avant modif hamburg
-void vect_reflexion(t_coord *result, t_coord *v_previous, t_coord *v_normal)
-{
-	float inner_product; //dot is the same
-	t_coord v_scal;
-	t_coord add;
-
-	v_scal.t = 0;
-	inner_product = dot_product(v_previous, v_normal);//=)
-	v_scal = scalar_mult_ret(v_normal, (-2 * inner_product));
-	addition_vect(result, v_previous, &v_scal);
-//	addition_na(&add, v_previous, result);
-//	inner_product = dot_product(&add, v_normal);
-//	printf("is zero  %.3f \n", inner_product);
-}
-*/
-
-/*
-//gpt
-void vect_reflexion(t_coord *result, t_coord *v_previous, t_coord *v_normal)
-{
-	float dot;
-	t_coord v_scal;
-	t_coord add;
-
-	printf("v normal lenght %.3f \n", length_vector(v_normal));
-	printf("v previous lenght %.3f \n", length_vector(v_previous));
-	dot = dot_product(v_previous, v_normal);
-	v_scal = scalar_mult_ret(v_previous, (2 * dot));
-	substraction_p_to_v_na(result, v_normal, &v_scal);
-	printf("ray lenght result %.3f \n", length_vector(result));
-//	addition_na(&add, v_previous, result);
-//	dot = dot_product(&add, v_normal);
-//	printf("is zero  %.3f \n", dot);
-}*/

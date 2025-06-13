@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:37:18 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 16:10:33 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 11:29:08 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,6 @@ void	take_axe(int keycode, t_scene *scene)
 			print_on_screen(scene, "CHOOSE DIMENSION SCALAR", 1, 255);
 		else if (scene->draw_type == ROTATE)
 			print_on_screen(scene, "ROTATION ANGLE", 1, 255);
-		print_on_screen(scene, "MAX 360, MIN 0.001", 1, 255);
+		print_on_screen(scene, "MAX 360, MIN 0.001", 2, 255);
 	}
 }

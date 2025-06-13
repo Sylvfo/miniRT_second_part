@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:15:23 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 15:22:16 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 09:23:43 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 void	substraction_p_to_v_na(t_coord *v_result, t_coord *p_v_1,
 			t_coord *p_v_2);
 void	addition_na(t_coord *result, t_coord *p_v_1, t_coord *p_v_2);
+void	addition_vect(t_coord *result, t_coord *p_v_1, t_coord *p_v_2);
 
 // check_type_coord.c
 bool	is_vector(t_coord *v_vector);

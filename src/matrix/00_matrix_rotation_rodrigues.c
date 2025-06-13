@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/07 11:01:11 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 23:45:00 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 09:18:36 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,21 @@ void	rotation_from_vector(t_obj *obj)
 	float	angle;
 	float	c;
 	float	s;
+
 	if (!obj || !obj->from || !obj->v_axe || !obj->v_axe_r || !obj->m_rot)
 	{
 		fprintf(stderr, "Error: Null pointer in rotation_from_vector\n");
 		return ;
 	}
-	cross_product_na(obj->v_axe_r, obj->from, obj->v_axe);//ok
-	dot = dot_product(obj->from, obj->v_axe);//to???
-	dot = fmaxf(-1.0f, fminf(1.0f, dot));// c est quoi ca?
-	angle = acos(dot); //acosf(dot);
+	cross_product_na(obj->v_axe_r, obj->from, obj->v_axe);
+	dot = dot_product(obj->from, obj->v_axe);
+	dot = fmaxf(-1.0f, fminf(1.0f, dot));
+	angle = acos(dot);
 	if (fabs(angle) < EPSILON)
 		return ;
 	normalize_vector_na(obj->v_axe_r);
-	c = cos(angle);//ok
-	s = sin(angle);//ok
+	c = cos(angle);
+	s = sin(angle);
 	matrix_rotation_rodrigues(obj, c, s);
 }
 

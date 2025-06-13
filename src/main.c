@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/12 18:25:01 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 11:06:39 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ static int	check_args(int argc, char **argv)
 	return (1);
 }
 
-//	A quoi servent ces deux fonctions?
 void	link_scene_pix(t_scene *scene, t_pix ***pix)
 {
 	scene->pix = pix;
@@ -74,7 +73,7 @@ int	main(int argc, char **argv)
 	base_data(scene);
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
-	image_hooks(scene);
+	image_hooks_bonus(scene);
 	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
 }
