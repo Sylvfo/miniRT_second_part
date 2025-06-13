@@ -25,6 +25,8 @@ t_image	*create_image(t_scene *scene)
 	ima->mlx_ptr = NULL;
 	ima->mlx_win = NULL;
 	ima->mlx_ptr = mlx_init();
+	ima->ima_cmd = NULL;
+	ima->ima_blk = NULL;
 	if (!ima->mlx_ptr)
 	{
 		free(ima);
