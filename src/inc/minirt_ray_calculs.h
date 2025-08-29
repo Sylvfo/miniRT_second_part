@@ -52,10 +52,19 @@ bool		check_cap(t_mem *memory_shuttle, float t);
 t_intertt	handle_cap(t_mem *mem_shuttle, t_intertt result, float y_pos);
 void		closestt(t_mem *mem_sh, t_intertt res, int obj_ty, int obj_nu);
 
+//07_intersect_cone.c
+void		intersect_cone(t_mem *memory_shuttle, int cone_n);
+
+//08_intersect_triangle.c
+void		intersect_triangle(t_mem *memory_shuttle, t_obj ***obj, \
+int triangle_n);
+
 //08_prepare_comps.c
 void		prepare_computation(t_mem *mem_shuttle, t_obj ***obj);
 void		normal_sphere(t_mem *mem_shuttle);
 void		normal_cylinder(t_mem *mem_shuttle, t_obj ***obj);
+
+void		normal_cone(t_mem *mem_shuttle, t_obj ***obj); // normal cone
 
 //09_light_shadow_main.c
 t_color		lighting(t_scene *scene, t_mem *memory_shuttle, t_color color);
@@ -73,4 +82,8 @@ bool		cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder);
 t_color		compute_specular(t_mem *mem_sht, t_light *lux, t_coord *cam_coord);
 t_color		compute_pointlight(t_mem *memory_shuttle, t_light *lux);
 t_intertt	init_intertt(void);
+
+//texture.c
+t_color		texture_shape(t_scene *scene, t_mem *mem, t_coord hitpoint);
+
 #endif

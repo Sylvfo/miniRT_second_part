@@ -38,28 +38,11 @@ typedef struct s_color
 // object[1][0] spheres
 // object[2][0] plans
 // object[3][0] cylinder
-typedef struct s_obj
+typedef struct s_pattern
 {
-	t_coord		*p_coord;
-	t_color		*color;
-	float		diam;
-	float		height;
-	t_coord		*v_axe;
-	int			type;
-	float		*m_transl;
-	float		*m_rot;
-	float		*m_scale;
-	float		*m_transf;
-	float		*m_inv;
-	t_coord		*v_axe_r;
-	t_coord		*from;
-	t_coord		*v_sph_camera;
-	float		radius;
-	float		mirror;
-	float		difuse;
-	float		specular;
-	int			number;
-}	t_obj;
+	float	scale;
+	int		type;
+}	t_pattern;
 
 typedef struct s_light
 {
@@ -104,7 +87,44 @@ typedef struct s_image
 	int			endian_blk;
 	void		*mlx_ptr;
 	void		*mlx_win;
+	int			w;
+	int			h;
 }	t_image;
+
+typedef struct s_obj
+{
+	t_coord		*p_coord;
+	t_color		*color;
+	t_color		color2;
+	float		diam;
+	float		height;
+	t_coord		*v_axe;
+	int			type;
+	float		*m_transl;
+	float		*m_rot;
+	float		*m_scale;
+	float		*m_transf;
+	float		*m_inv;
+	t_coord		*v_axe_r;
+	t_coord		*from;
+	t_coord		*v_sph_camera;
+	float		radius;
+	float		mirror;
+	float		difuse;
+	float		specular;
+	float		transparence;
+	float		indice_refract;
+	int			number;
+	t_coord		*tr_p1;
+	t_coord		*tr_p2;
+	t_coord		*tr_p3;
+	t_coord		*tr_e1;
+	t_coord		*tr_e2;
+	t_coord		*normal;
+	t_pattern	pattern;
+	t_image		bump;
+	bool		hastexture;
+}	t_obj;
 
 typedef struct s_pix
 {
@@ -156,6 +176,8 @@ typedef struct s_scene
 	int			nb_sphere;
 	int			nb_plan;
 	int			nb_cylinder;
+	int			nb_cone;	//rajouter cone
+	int			nb_triangle; //rajouter triangle
 	int			nb_lights;
 	float		wnd_height;
 	float		wnd_width;

@@ -54,8 +54,8 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *mem_shuttle)
 		return (color);
 	}
 	prepare_computation(mem_shuttle, scene->obj);
-	color = lighting(scene, mem_shuttle,
-			*(scene->obj[pix->obj_a][pix->obj_b]->color));
+	color = lighting(scene, mem_shuttle, \
+*(scene->obj[pix->obj_a][pix->obj_b]->color));
 	return (color);
 }
 

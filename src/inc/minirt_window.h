@@ -23,4 +23,6 @@ void	pix_to_window(t_pix ***pix, t_scene *scene);
 //event_hooks.c
 void	image_hooks(t_scene *scene);
 void	image_hooks_bonus(t_scene *scene);
+
+void	handle_img(t_scene *scene, t_obj *obj, char *path);
 #endif

@@ -12,7 +12,7 @@
 
 #include "../inc/minirt.h"
 
-int	save_color(char *str, t_color *p)
+int	save_color2(char *str, t_color *p)
 {
 	char	**coord;
 
@@ -26,7 +26,31 @@ int	save_color(char *str, t_color *p)
 	return (1);
 }
 
-int	save_sphere(char *str, t_obj **obj)
+int	save_color(char *str, t_color *p, t_color *p2)
+{
+	char	**params;
+
+	params = ft_split(str, ';');
+	if (!params)
+		return (0);
+	if (!save_color2(params[0], p))
+	{
+		free_arg(params);
+		return (0);
+	}
+	if (ft_size(params) == 2)
+	{
+		if (!save_color2(params[1], p2))
+		{
+			free_arg(params);
+			return (0);
+		}
+	}
+	free_arg(params);
+	return (1);
+}
+
+int	save_sphere(char *str, t_obj **obj, int *pos)
 {
 	char	**params;
 	int		i;
@@ -41,12 +65,13 @@ int	save_sphere(char *str, t_obj **obj)
 	}
 	obj[i]->type = SPHERE;
 	if (!save_coordonnee(params[1], obj[i]->p_coord) || \
-		!save_color(params[3], obj[i]->color))
+!save_color(params[3], obj[i]->color, &obj[i]->color2))
 	{
 		free_arg(params);
 		return (0);
 	}
 	obj[i]->diam = number(params[2]);
 	free_arg(params);
+	*pos = i;
 	return (1);
 }

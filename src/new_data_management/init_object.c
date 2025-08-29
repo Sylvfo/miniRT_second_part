@@ -99,5 +99,9 @@ bool	init_obj_cph(t_scene *scene)
 		return (false);
 	if (!init_cylinder(scene))
 		return (false);
+	if (!init_cone(scene))
+		return (false);
+	if (!init_triangle(scene))
+		return (false);
 	return (true);
 }

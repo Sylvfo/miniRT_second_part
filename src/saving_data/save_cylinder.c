@@ -12,7 +12,7 @@
 
 #include "../inc/minirt.h"
 
-int	save_cylinder(char *str, t_obj **obj)
+int	save_cylinder(char *str, t_obj **obj, int *pos)
 {
 	char	**params;
 	int		i;
@@ -25,8 +25,8 @@ int	save_cylinder(char *str, t_obj **obj)
 		i++;
 	obj[i]->type = CYLINDER;
 	if (!save_coordonnee(params[1], obj[i]->p_coord) || \
-		!save_coordonnee(params[2], obj[i]->v_axe) || \
-		!save_color(params[5], obj[i]->color))
+!save_coordonnee(params[2], obj[i]->v_axe) || \
+!save_color(params[5], obj[i]->color, &obj[i]->color2))
 	{
 		free_arg(params);
 		return (0);
@@ -38,5 +38,37 @@ int	save_cylinder(char *str, t_obj **obj)
 	obj[i]->height = number(params[4]);
 	normalize_vector_na(obj[i]->v_axe);
 	free_arg(params);
+	*pos = i;
+	return (1);
+}
+
+//	save cone
+int	save_cone(char *str, t_obj **obj, int *pos)
+{
+	char	**params;
+	int		i;
+
+	i = 0;
+	params = ft_split(str, ' ');
+	if (!params)
+		return (error_system());
+	while (obj[i]->type == CONE)
+		i++;
+	obj[i]->type = CONE;
+	if (!save_coordonnee(params[1], obj[i]->p_coord) || \
+!save_coordonnee(params[2], obj[i]->v_axe) || \
+!save_color(params[5], obj[i]->color, &obj[i]->color2))
+	{
+		free_arg(params);
+		return (0);
+	}
+	obj[i]->p_coord->t = 1;
+	obj[i]->v_axe->t = 0;
+	obj[i]->diam = number(params[3]);
+	obj[i]->radius = obj[i]->diam / 2;
+	obj[i]->height = number(params[4]);
+	normalize_vector_na(obj[i]->v_axe);
+	free_arg(params);
+	*pos = i;
 	return (1);
 }

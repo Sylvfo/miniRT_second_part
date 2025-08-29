@@ -12,6 +12,15 @@
 
 #include "../inc/minirt.h"
 
+static int	vector_zero(t_coord *p)
+{
+	if (p->x == 0 && p->y == 0 && p->z == 0)
+	{
+		return (1);
+	}
+	return (0);
+}
+
 void	rotation_from_vector(t_obj *obj)
 {
 	float	dot;
@@ -28,7 +37,7 @@ void	rotation_from_vector(t_obj *obj)
 	dot = dot_product(obj->from, obj->v_axe);
 	dot = fmaxf(-1.0f, fminf(1.0f, dot));
 	angle = acos(dot);
-	if (fabs(angle) < EPSILON)
+	if (fabs(angle) < EPSILON || vector_zero(obj->v_axe_r))
 		return ;
 	normalize_vector_na(obj->v_axe_r);
 	c = cos(angle);

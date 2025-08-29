@@ -12,7 +12,7 @@
 
 #include "../inc/minirt.h"
 
-static int	check_line(char *str, t_scene *scene)
+static int	check_line(char *str, t_scene *scene, int *pos)
 {
 	int	i;
 
@@ -26,11 +26,15 @@ static int	check_line(char *str, t_scene *scene)
 	if (str[i] == 'C')
 		return (save_camera(str, scene->cam));
 	else if (str[i] == 's' && str[i + 1] == 'p')
-		return (save_sphere(str, scene->obj[1]));
+		return (save_sphere(str, scene->obj[1], pos));
 	else if (str[i] == 'p' && str[i + 1] == 'l')
-		return (save_plan(str, scene->obj[2]));
+		return (save_plan(str, scene->obj[2], pos));
 	else if (str[i] == 'c' && str[i + 1] == 'y')
-		return (save_cylinder(str, scene->obj[3]));
+		return (save_cylinder(str, scene->obj[3], pos));
+	else if (str[i] == 'c' && str[i + 1] == 'o')
+		return (save_cone(str, scene->obj[4], pos));
+	else if (str[i] == 't' && str[i + 1] == 'r')
+		return (save_triangle(str, scene->obj[5], pos));
 	return (1);
 }
 
@@ -38,7 +42,9 @@ static bool	file_parcour(int fd, t_scene *scene)
 {
 	char	*str;
 	bool	error;
+	int		pos;
 
+	pos = 0;
 	error = false;
 	str = get_next_line(fd);
 	while (str)
@@ -46,7 +52,9 @@ static bool	file_parcour(int fd, t_scene *scene)
 		if (!error)
 		{
 			replace_by_space(str);
-			if (!check_line(str, scene))
+			if (!check_line(str, scene, &pos))
+				error = true;
+			else if (!save_parameter(str, scene, &pos))
 				error = true;
 		}
 		free(str);

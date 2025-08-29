@@ -35,6 +35,8 @@ void	scene_value_null(t_scene *scene)
 	scene->nb_sphere = 0;
 	scene->nb_plan = 0;
 	scene->nb_cylinder = 0;
+	scene->nb_cone = 0;
+	scene->nb_triangle = 0;
 	scene->nb_lights = 0;
 	scene->wnd_height = (float)WND_HEIGHT;
 	scene->wnd_width = (float)WND_WIDTH;

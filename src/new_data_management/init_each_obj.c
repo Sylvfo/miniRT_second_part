@@ -32,6 +32,10 @@ bool	init_each_obj(t_obj *obj)
 	obj->difuse = 0.9;
 	obj->specular = 0.8;
 	obj->mirror = 0.0;
+	obj->pattern.scale = 0;
+	obj->pattern.type = -1;
+	obj->color2 = (t_color){0, 1, 1, 0};
+	obj->hastexture = false;
 	return (true);
 }
 
@@ -55,14 +59,8 @@ bool	init_each_obj_matrix(t_obj *obj)
 	return (true);
 }
 
-bool	init_each_obj_coord(t_obj *obj)
+bool	init_each_obj_suite(t_obj *obj)
 {
-	obj->p_coord = create_point(0, 0, 0);
-	if (!obj->p_coord)
-		return (false);
-	obj->v_axe = create_vector(0, 0, 0);
-	if (!obj->v_axe)
-		return (false);
 	obj->v_axe_r = create_vector(0, 0, 0);
 	if (!obj->v_axe_r)
 		return (false);
@@ -75,9 +73,44 @@ bool	init_each_obj_coord(t_obj *obj)
 	return (true);
 }
 
+bool	init_each_obj_coord(t_obj *obj)
+{
+	obj->p_coord = create_point(0, 0, 0);
+	if (!obj->p_coord)
+		return (false);
+	obj->normal = create_vector(0, 0, 0);
+	if (!obj->normal)
+		return (false);
+	obj->tr_e1 = create_vector(0, 0, 0);
+	if (!obj->tr_e1)
+		return (false);
+	obj->tr_e2 = create_vector(0, 0, 0);
+	if (!obj->tr_e2)
+		return (false);
+	obj->tr_p1 = create_point(0, 0, 0);
+	if (!obj->tr_p1)
+		return (false);
+	obj->tr_p2 = create_point(0, 0, 0);
+	if (!obj->tr_p2)
+		return (false);
+	obj->tr_p3 = create_point(0, 0, 0);
+	if (!obj->tr_p3)
+		return (false);
+	obj->v_axe = create_vector(0, 0, 0);
+	if (!obj->v_axe)
+		return (false);
+	return (init_each_obj_suite(obj));
+}
+
 void	init_each_obj_null(t_obj *obj)
 {
 	obj->p_coord = NULL;
+	obj->normal = NULL;
+	obj->tr_p1 = NULL;
+	obj->tr_p2 = NULL;
+	obj->tr_p3 = NULL;
+	obj->tr_e1 = NULL;
+	obj->tr_e2 = NULL;
 	obj->color = NULL;
 	obj->v_axe = NULL;
 	obj->m_transl = NULL;
@@ -88,4 +121,5 @@ void	init_each_obj_null(t_obj *obj)
 	obj->v_axe_r = NULL;
 	obj->from = NULL;
 	obj->v_sph_camera = NULL;
+	obj->bump.img = NULL;
 }

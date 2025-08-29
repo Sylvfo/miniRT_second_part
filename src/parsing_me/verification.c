@@ -31,6 +31,10 @@ static int	check_line(char *str, int ligne, t_scene *scene, t_doublons *db)
 		return (map_plan(str, ligne, &scene->nb_plan));
 	else if (str[i] == 'c' && str[i + 1] == 'y')
 		return (map_cylinder(str, ligne, &scene->nb_cylinder));
+	else if (str[i] == 'c' && str[i + 1] == 'o')
+		return (map_cone(str, ligne, &scene->nb_cone));
+	else if (str[i] == 't' && str[i + 1] == 'r')
+		return (map_triangle(str, ligne, &scene->nb_triangle));
 	return (1);
 }
 
@@ -50,7 +54,7 @@ static bool	file_error(int fd, t_scene *scene)
 		if (!error)
 		{
 			replace_by_space(str);
-			if (!check_line(str, i, scene, &db))
+			if (!check_line(str, i, scene, &db) || !check_parameter(str, i))
 				error = true;
 		}
 		free(str);

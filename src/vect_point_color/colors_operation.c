@@ -88,9 +88,9 @@ void	color_float_to_int(t_color *c_color)
 
 void	color_int_to_rgb(int int_color, t_color *rgb)
 {
-	rgb->r = (int_color >> 16) & 0xFF;
-	rgb->g = (int_color >> 8) & 0xFF;
-	rgb->b = int_color & 0xFF;
+	rgb->r = (int_color >> 16) & 0xFF / 255;
+	rgb->g = (int_color >> 8) & 0xFF / 255;
+	rgb->b = int_color & 0xFF / 255;
 	rgb->rgb = int_color;
 	return ;
 }

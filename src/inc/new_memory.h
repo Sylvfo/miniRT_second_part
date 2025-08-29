@@ -109,4 +109,8 @@ void	free_lux_cph(t_scene *scene);
 void	free_each_lux(t_light *lux);
 void	free_lux_0(t_scene *scene);
 
+//init_object2.c
+bool	init_cone(t_scene *scene);
+bool	init_triangle(t_scene *scene);
+
 #endif

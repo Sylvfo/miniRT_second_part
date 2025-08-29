@@ -12,7 +12,7 @@
 
 #include "../inc/minirt.h"
 
-int	map_color(char *str)
+int	map_color2(char *str)
 {
 	char	**color;
 	int		i;
@@ -30,6 +30,28 @@ int	map_color(char *str)
 		i++;
 	}
 	free_arg(color);
+	return (1);
+}
+
+int	map_color(char *str)
+{
+	char	**params;
+	int		size;
+
+	params = ft_split(str, ';');
+	size = ft_size(params);
+	if (!params)
+		return (error_system());
+	if (size > 2 || size < 0)
+		return (free_arg(params));
+	if (!map_color2(params[0]))
+		return (free_arg(params));
+	if (size == 2)
+	{
+		if (!map_color2(params[1]))
+			return (free_arg(params));
+	}
+	free_arg(params);
 	return (1);
 }
 

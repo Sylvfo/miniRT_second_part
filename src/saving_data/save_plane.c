@@ -12,7 +12,7 @@
 
 #include "../inc/minirt.h"
 
-int	save_plan(char *str, t_obj **obj)
+int	save_plan(char *str, t_obj **obj, int *pos)
 {
 	char	**params;
 	int		i;
@@ -27,13 +27,14 @@ int	save_plan(char *str, t_obj **obj)
 	}
 	obj[i]->type = PLAN;
 	if (!save_coordonnee(params[1], obj[i]->p_coord) || \
-		!save_coordonnee(params[2], obj[i]->v_axe) || \
-		!save_color(params[3], obj[i]->color))
+!save_coordonnee(params[2], obj[i]->v_axe) || \
+!save_color(params[3], obj[i]->color, &obj[i]->color2))
 	{
 		free_arg(params);
 		return (0);
 	}
 	normalize_vector_na(obj[i]->v_axe);
 	free_arg(params);
+	*pos = i;
 	return (1);
 }

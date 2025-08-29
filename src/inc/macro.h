@@ -20,6 +20,7 @@
 # define NB_EL_PLAN		4
 # define NB_EL_SPHERE	4
 # define NB_EL_CYLINDER	6
+# define NB_EL_TRIANGLE	5
 
 # define RGB_MIN			0
 # define RGB_MAX			255
@@ -33,6 +34,6 @@
 # define NB_EL_COLOR		3
 # define NB_EL_AXE		3
 # define NB_EL_VECTOR	3
-# define NB_OBJ			4
-
+# define NB_OBJ			6 //rajoute le cone et le triangle
+# define NUM_PATTERN	5
 #endif

@@ -43,6 +43,7 @@ t_color	reflexion(t_scene *scene, t_mem *mem_shtle)
 	prepare_computation(mem_shtle, scene->obj);
 	color = lighting(scene, mem_shtle,
 			*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
+	//recursion reflexion//
 	return (color);
 }
 

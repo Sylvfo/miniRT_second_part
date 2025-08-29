@@ -36,7 +36,7 @@ int	save_camera(char *str, t_camera *camera)
 	if (!params)
 		return (error_system());
 	if (!save_coordonnee(params[1], camera->p_coord) || \
-		!save_coordonnee(params[2], camera->v_axe))
+!save_coordonnee(params[2], camera->v_axe))
 	{
 		free_arg(params);
 		return (0);

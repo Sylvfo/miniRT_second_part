@@ -38,6 +38,7 @@ void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle)
 t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
 {
 	t_color	color_light;
+	t_color	color;
 
 	main_intersections(scene->obj, mem_shtle);
 	copy_matrix_44(mem_shtle->obj_inv,
@@ -51,8 +52,8 @@ t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
 	if (scene->preview == true)
 		return (*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
 	prepare_computation(mem_shtle, scene->obj);
-	color_light = lighting(scene, mem_shtle,
-			*(scene->obj[pix->obj_a][pix->obj_b]->color));
+	color = pattern(mem_shtle, scene);
+	color_light = lighting(scene, mem_shtle, color);
 	if (scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->mirror > 0.0)
 	{
 		color_light = base_reflection(scene, mem_shtle, color_light);

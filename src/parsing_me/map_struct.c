@@ -80,7 +80,7 @@ int	map_sphere(char *str, int ligne, int *num)
 	params = ft_split(str, ' ');
 	if (!params)
 		return (error_system());
-	if (ft_size(params) != NB_EL_SPHERE)
+	if (ft_size(params) < NB_EL_SPHERE)
 		return (number_param_error(params, ligne));
 	if (!map_coordonnee(params[1]))
 		return (error_line(params, ligne, 2));
@@ -100,7 +100,7 @@ int	map_plan(char *str, int ligne, int *num)
 	params = ft_split(str, ' ');
 	if (!params)
 		return (error_system());
-	if (ft_size(params) != NB_EL_PLAN)
+	if (ft_size(params) < NB_EL_PLAN)
 		return (number_param_error(params, ligne));
 	if (!map_coordonnee(params[1]))
 		return (error_line(params, ligne, 2));

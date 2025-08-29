@@ -32,7 +32,7 @@ void	fill_translation_matrix(float *m_transl, float x, float y, float z)
 
 void	scaling_matrix_coord(t_obj *obj)
 {
-	if (obj->type == CYLINDER)
+	if (obj->type == CYLINDER || obj->type == CONE)
 	{
 		matrix_fill(obj->m_scale, 0, 0, obj->diam);
 		matrix_fill(obj->m_scale, 1, 1, obj->height);

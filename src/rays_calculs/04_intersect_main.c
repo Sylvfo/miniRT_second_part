@@ -30,6 +30,10 @@ void	main_intersections(t_obj ***obj, t_mem *memory_shuttle)
 				intersect_plan(memory_shuttle, b);
 			if (a == 3)
 				intersect_cylinder(memory_shuttle, b);
+			if (a == 4)
+				intersect_cone(memory_shuttle, b);
+			if (a == 5)
+				intersect_triangle(memory_shuttle, obj, b);
 			b++;
 		}
 		a++;

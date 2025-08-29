@@ -29,11 +29,15 @@ int		map_sphere(char *str, int ligne, int *num);
 int		map_light(char *str, int ligne, int *num);
 int		map_plan(char *str, int ligne, int *num);
 int		map_cylinder(char *str, int ligne, int *num);
+int		map_cone(char *str, int ligne, int *num);		//rajoute cone
+int		map_triangle(char *str, int ligne, int *num); //rajiute triangle
+int		check_parameter(char *str, int ligne);
 int		verification(char *str, t_scene *num);
 void	replace_by_space(char *str);
 float	number(char *str);
 int		check_isvector(char **str);
 int		check_isdigit(char *str);
 int		ft_size(char **argv);
+int		value_ref(char *str, float min, float max);
 
 #endif

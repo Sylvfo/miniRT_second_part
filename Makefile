@@ -31,7 +31,7 @@ NAME2 = miniRT_bonus
 CC = cc
 
 # Flags de compilation -Wall -Wextra -Werror
-CFLAGS = -Wall -Wextra -Werror #-Iincludes
+CFLAGS = -Wall -Wextra #-Werror #-Iincludes
 LIBFLAGS = -Llib/libft -lft
 
 # Fichiers sources
@@ -40,9 +40,11 @@ SRC_DIR = ./src
 
 DEBUG = $(SRC_DIR)/debug/
 PARSING = $(SRC_DIR)/parsing_me/
+SAVING = $(SRC_DIR)/saving_data/
 UTILS = $(SRC_DIR)/utils/
 INIT = $(SRC_DIR)/new_data_management/
 BONUS = $(SRC_DIR)/bonus/
+RAY_CALCUL = $(SRC_DIR)/rays_calculs/
 SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/matrix/00_matrix_creation.c \
 	./src/matrix/00_matrix_multiplication.c \
@@ -104,6 +106,7 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/new_data_management/create_image.c \
 	./src/new_data_management/free_cam.c \
 	./src/new_data_management/free_obj.c \
+	./src/new_data_management/free_obj2.c \
 	./src/new_data_management/init_each_obj.c \
 	./src/new_data_management/free_lux.c \
 	./src/bonus/00_main_bonus.c \
@@ -118,11 +121,20 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/bonus/print_action.c \
 	./src/bonus/print_on_screen.c \
 	$(INIT)init_object.c\
+	$(INIT)init_object2.c\
 	$(PARSING)map_check.c $(PARSING)map_check2.c\
 	$(PARSING)map_struct.c $(PARSING)map_struct2.c\
-	$(PARSING)verification.c\
+	$(PARSING)verification.c $(PARSING)check_parameter.c\
+	$(SAVING)save_triangle.c\
+	$(SAVING)save_parameter.c\
 	$(DEBUG)error.c\
 	$(UTILS)utils.c $(UTILS)utils2.c\
+	$(RAY_CALCUL)07_intersect_cone.c\
+	$(RAY_CALCUL)08_intersect_triangle.c\
+	$(RAY_CALCUL)pattern.c\
+	$(RAY_CALCUL)pattern_form.c\
+	$(RAY_CALCUL)pattern_perlin.c\
+	$(RAY_CALCUL)texture.c\
 
 SRCS = $(SOURCES)\
 		./src/main.c 

@@ -109,3 +109,5 @@ bool	cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder)
 		return (true);
 	return (false);
 }
+
+// rajouter l'ombre pour le cone

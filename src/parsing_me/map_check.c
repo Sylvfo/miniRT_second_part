@@ -24,6 +24,18 @@ int	map_ratio(char *str)
 	return (1);
 }
 
+int	value_ref(char *str, float min, float max)
+{
+	float	test;
+
+	if (!check_isdigit(str))
+		return (0);
+	test = number(str);
+	if (test < min || test > max)
+		return (0);
+	return (1);
+}
+
 int	map_diameter(char *str)
 {
 	if (!check_isdigit(str))

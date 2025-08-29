@@ -82,7 +82,7 @@ void	intersect_cylinder(t_mem *memory_shuttle, int cyl_n)
 	result = cut_cylinder(memory_shuttle, (-b - sqrt(discriminant)) / (2 * a),
 			(-b + sqrt(discriminant)) / (2 * a));
 	result = intersect_caps(memory_shuttle, result);
-	closestt(memory_shuttle, result, 3, cyl_n);
+	closestt(memory_shuttle, result, CYLINDER, cyl_n);
 }
 
 t_intertt	cut_cylinder(t_mem *memory_shuttle, float t1, float t2)

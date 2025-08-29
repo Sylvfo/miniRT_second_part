@@ -30,10 +30,10 @@
 # include "minirt_ray_calculs.h"
 # include "minirt_vect_point_color.h"
 # include "minirt_window.h"
+# include "pattern_color.h"
 # include "new_memory.h"
 # include "macro.h"
 # include "minirt_bonus.h"
-
 # define WND_WIDTH 1200
 # define WND_HEIGHT 900
 
@@ -49,8 +49,19 @@ enum e_obj_type
 	SPHERE,
 	PLAN,
 	CYLINDER,
+	CONE,
+	TRIANGLE,
 };
 
+enum e_type_pattern
+{
+	ZERO,
+	CHECKBOARD,
+	STRIPES,
+	GRADIENT,
+	RINGS,
+	PERLIN,
+};
 int		main(int argc, char **argv);
 
 #endif

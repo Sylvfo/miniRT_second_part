@@ -24,17 +24,30 @@ void	set_transformation_obj(t_obj *obj)
 {
 	translation_matrix_coord(obj);
 	matrix_mult_2(obj->m_transf, obj->m_transl);
-	if (obj->type == PLAN || obj->type == CYLINDER)
+	if (obj->type == PLAN || obj->type == CYLINDER || obj->type == CONE)
 	{
 		rotation_from_vector(obj);
 		matrix_mult_2(obj->m_transf, obj->m_rot);
 	}
-	if (obj->type == SPHERE || obj->type == CYLINDER)
+	if (obj->type == SPHERE || obj->type == CYLINDER || obj->type == CONE)
 	{
 		scaling_matrix_coord(obj);
 		matrix_mult_2(obj->m_transf, obj->m_scale);
 	}
 	inverse_matrix_44(obj->m_inv, obj->m_transf);
+}
+
+void	handle_img(t_scene *scene, t_obj *obj, char *path)
+{
+	obj->bump.img = mlx_xpm_file_to_image(scene->ima->mlx_ptr, path, \
+&obj->bump.w, &obj->bump.h);
+	if (!obj->bump.img)
+	{
+		exit(1);
+	}
+	obj->bump.addr = mlx_get_data_addr(obj->bump.img, \
+&obj->bump.bits_per_pixel, &obj->bump.line_length, \
+&obj->bump.endian);
 }
 
 void	matrix_transformations(t_obj ***obj)
