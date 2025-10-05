@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/13 11:07:00 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/05 16:07:19 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,10 @@ int	main(int argc, char **argv)
 {
 	t_scene		*scene;
 	t_pix		***pix;
-	t_mem		*memory_shuttle;
+//	t_mem		*memory_shuttle;
+	t_mem		**multi_memory_shuttle;
 
+	printf("Enter main bonus \n");
 	scene = init_first_scene_memory(true);
 	if (!scene)
 		return (1);
@@ -67,16 +69,19 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	pix = init_memory_main();
-	memory_shuttle = init_memory_shuttle();
-	if (!init(scene, pix, memory_shuttle, argv[1]))
+	multi_memory_shuttle = init_multi_memory_shuttle();
+	if (!init(scene, pix, multi_memory_shuttle, argv[1]))
 		return (1);
 	scene->bonus_mode = true;
 	link_scene_pix(scene, pix);
-	link_scene_mem(scene, memory_shuttle);
+	link_scene_mem(scene, multi_memory_shuttle);
 	base_data(scene);
-	raytracing(pix, scene, memory_shuttle);
+	raytracing_main_bonus(pix, scene, multi_memory_shuttle);
+
 	pix_to_window(pix, scene);
+	printf("Image calculated \n");
 	image_hooks_bonus(scene);
-	free_main(pix, scene, memory_shuttle);
+	//modifier...
+	free_main(pix, scene, multi_memory_shuttle);
 	return (EXIT_SUCCESS);
 }

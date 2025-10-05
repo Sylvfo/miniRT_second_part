@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 23:45:21 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/05 15:30:57 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,13 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle)
 			clean_memory_shuttle(mem_shuttle);
 			init_viewport_x_y(mem_shuttle, scene->cam, x, y);
 			init_camera_pix_ray(mem_shuttle, scene->cam);
-			if (scene->bonus_mode == true)
+	/*		if (scene->bonus_mode == true)
 				*(pix[x][y]->color) = raytracer_bonus(pix[x][y],
 						scene, mem_shuttle);
 			else if (scene->bonus_mode == false)
 				*(pix[x][y]->color) = raytracer(pix[x][y],
+						scene, mem_shuttle);*/
+			*(pix[x][y]->color) = raytracer(pix[x][y],
 						scene, mem_shuttle);
 			y++;
 		}

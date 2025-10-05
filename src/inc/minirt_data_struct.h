@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 16:40:48 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/05 18:12:26 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,9 @@ typedef struct s_intertt
 	float		closestt;
 }	t_intertt;
 
+
+
+//memory_shuttle
 typedef struct s_mem
 {
 	t_coord		*r_base_origin;
@@ -169,6 +172,12 @@ typedef struct s_mem
 	t_coord		*scalar;
 	t_coord		*view_dir;
 	bool		is_avaible;
+
+	//pour multi threading
+	int			pix_x;
+	int			pix_y;
+	
+	//pointerur sur pix et scene??
 }	t_mem;
 
 typedef struct s_scene
@@ -186,6 +195,7 @@ typedef struct s_scene
 	t_obj		***obj;
 	t_light		***lux;
 	t_mem		*mem_shuttle;
+	//multi mem shuttle???
 	t_pix		***pix;
 	bool		bonus_mode;
 	bool		preview;
@@ -197,6 +207,12 @@ typedef struct s_scene
 	float		size_modif;
 	float		size_modif_neg;
 	float		after_virgule;
+
+	//pour threads
+	int			x_thread;
+	int			y_thread;
+	pthread_mutex_t *mutex_x;
+	pthread_mutex_t *mutex_y;
 }	t_scene;
 
 // pour savoir s' il ya des doublons de camera et de ambient light
@@ -205,5 +221,13 @@ typedef struct s_doublons
 	int			ambient;
 	int			camera;
 }	t_doublons;
+
+//rename
+typedef struct s_glob
+{
+	t_pix		***pix;
+	t_scene		*scene;
+	t_mem		*mem_shuttle;
+}	t_glob;
 
 #endif

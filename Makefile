@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/06/13 11:30:39 by syl              ###   ########.fr        #
+#    Updated: 2025/10/05 15:56:32 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,7 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/new_data_management/free_obj2.c \
 	./src/new_data_management/init_each_obj.c \
 	./src/new_data_management/free_lux.c \
-	./src/bonus/00_main_bonus.c \
+	./src/bonus/00_raytracing_main_bonus.c \
 	./src/bonus/01_reflection.c \
 	./src/bonus/20_mouse_hooks.c \
 	./src/bonus/transf_obj.c \
@@ -120,6 +120,7 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/bonus/matrix_rotation.c \
 	./src/bonus/print_action.c \
 	./src/bonus/print_on_screen.c \
+	./src/bonus/30_clean_mem_shuttle.c \
 	$(INIT)init_object.c\
 	$(INIT)init_object2.c\
 	$(PARSING)map_check.c $(PARSING)map_check2.c\
@@ -140,7 +141,7 @@ SRCS = $(SOURCES)\
 		./src/main.c 
 
 SRCS_BONUS = $(SOURCES)\
-		$(BONUS)main.c 
+		$(BONUS)main_bonus.c 
 
 # Détection de l'OS pour choisir la bonne version de la MLX
 #UNAME_S := $(shell uname -s)

@@ -6,13 +6,14 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/06/13 10:33:33 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/05 16:38:09 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_BONUS_H
 # define MINIRT_BONUS_H
 
+# include <pthread.h>
 # include "minirt_data_struct.h"
 
 enum e_transf_type
@@ -43,10 +44,9 @@ enum e_transf_axe
 };
 
 //00_main_bonus.c
+void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle);
 t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *memory_shuttle);
-void	paint_it_black(t_color *color);
-void	clean_memory_shuttle_refl(t_mem *memory_shuttle);
-void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle);
+void	raytracing_recalculate_bonus(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle);
 
 //01_reflection.c
 void	next_ray_reflection(t_mem *memory_shuttle);
@@ -54,6 +54,10 @@ t_color	reflexion(t_scene *scene, t_mem *memory_shuttle);
 t_color	base_reflection(t_scene *scene, t_mem *mem_shtle, t_color color_light);
 void	vect_reflexion(t_coord *r_base_dir, t_coord *v_normal);
 
+//30_clean_mem_shuttle.c
+t_mem	**init_multi_memory_shuttle(void);
+void	clean_memory_shuttle_refl(t_mem *memory_shuttle);
+void	paint_it_black(t_color *color);
 //mouse_hooks.c
 int		mouse_click(int button, int x, int y, t_scene *scene);
 int		ft_keys_bonus(int keycode, t_scene *scene);

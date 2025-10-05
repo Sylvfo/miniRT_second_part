@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/13 11:06:39 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/05 15:13:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 	base_data(scene);
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
-	image_hooks_bonus(scene);
+	image_hooks_bonus(scene);//??
 	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
 }

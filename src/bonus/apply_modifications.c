@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 17:19:21 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 16:12:30 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/05 15:37:40 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	apply_transformations(t_scene *scene)
 	else if (scene->draw_type == SCALE)
 		apply_scale_changes(scene);
 	print_modif(scene);
-	raytracing_main_bonus(scene->pix, scene, scene->mem_shuttle);
+	raytracing_recalculate_bonus(scene->pix, scene, scene->mem_shuttle);
 	pix_to_window(scene->pix, scene);
 }
 
