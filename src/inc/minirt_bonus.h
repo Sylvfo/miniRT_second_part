@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/10/05 16:38:09 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/06 18:14:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,16 +43,32 @@ enum e_transf_axe
 	U_UNITY,
 };
 
+# define NB_THREADS 12
+# define MAX_RECURSIVITY 5
+
 //00_main_bonus.c
 void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle);
+void	raytracing_main_bonus_before(t_pix ***pix, t_scene *scene, t_mem *m_mem_shuttle);
 t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *memory_shuttle);
 void	raytracing_recalculate_bonus(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle);
+
+//00_init_bonus.c
+int	init_bonus(t_scene *scene, t_pix ***pix, t_mem **memory_shuttle, char *str);
+
+//00_time.c
+void	get_timestamp(struct timeval start);
 
 //01_reflection.c
 void	next_ray_reflection(t_mem *memory_shuttle);
 t_color	reflexion(t_scene *scene, t_mem *memory_shuttle);
 t_color	base_reflection(t_scene *scene, t_mem *mem_shtle, t_color color_light);
 void	vect_reflexion(t_coord *r_base_dir, t_coord *v_normal);
+//01_transparence.c 
+t_color	transparence(t_scene *scene, t_mem *mem_shtle);
+void	next_ray_transp(t_mem *mem_shuttle);
+
+//00_base_recursion.c
+t_color next_ray(t_scene *scene, t_mem *mem_shtle, t_color color_light);
 
 //30_clean_mem_shuttle.c
 t_mem	**init_multi_memory_shuttle(void);
@@ -63,6 +79,8 @@ int		mouse_click(int button, int x, int y, t_scene *scene);
 int		ft_keys_bonus(int keycode, t_scene *scene);
 void	take_axe(int keycode, t_scene *scene);
 void	clear_modif(t_scene *scene);
+
+//00_base_recursion.c
 
 //transf_obj.c
 //void move_object(t_obj *obj);

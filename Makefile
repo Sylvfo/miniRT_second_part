@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/10/05 15:56:32 by syl              ###   ########.fr        #
+#    Updated: 2025/10/06 18:13:49 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ RESET = \033[0m
 NAME = miniRT
 NAME2 = miniRT_bonus
 # Compilateur
-CC = cc
+CC = cc -O3
 
 # Flags de compilation -Wall -Wextra -Werror
 CFLAGS = -Wall -Wextra #-Werror #-Iincludes
@@ -121,6 +121,10 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/bonus/print_action.c \
 	./src/bonus/print_on_screen.c \
 	./src/bonus/30_clean_mem_shuttle.c \
+	./src/bonus/00_init_bonus.c\
+	./src/bonus/00_time.c\
+	./src/bonus/00_base_recursion.c\
+	./src/bonus/01_transparence.c\
 	$(INIT)init_object.c\
 	$(INIT)init_object2.c\
 	$(PARSING)map_check.c $(PARSING)map_check2.c\

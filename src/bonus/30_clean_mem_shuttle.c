@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:54:54 by syl               #+#    #+#             */
-/*   Updated: 2025/10/05 17:20:16 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/06 15:41:25 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,11 @@ t_mem	**init_multi_memory_shuttle(void)
 	int i;
 
 	multi_mem_shuttle = NULL;
-	multi_mem_shuttle = malloc(24 * sizeof(t_mem));
+	multi_mem_shuttle = malloc(NB_THREADS * sizeof(t_mem));
 	if (!multi_mem_shuttle)
 		return (NULL);
 	i = 0;
-	while(i < 24)
+	while(i < NB_THREADS)
 	{
 		multi_mem_shuttle[i] = init_memory_shuttle();
 		if (!multi_mem_shuttle[i])

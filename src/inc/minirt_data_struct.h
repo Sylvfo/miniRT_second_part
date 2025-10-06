@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/10/05 18:12:26 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/06 17:13:06 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ typedef struct s_mem
 	//pour multi threading
 	int			pix_x;
 	int			pix_y;
-	
+	int			recursivity_level;
 	//pointerur sur pix et scene??
 }	t_mem;
 
@@ -211,8 +211,8 @@ typedef struct s_scene
 	//pour threads
 	int			x_thread;
 	int			y_thread;
-	pthread_mutex_t *mutex_x;
-	pthread_mutex_t *mutex_y;
+	pthread_mutex_t mutex_x;
+	pthread_mutex_t mutex_y;
 }	t_scene;
 
 // pour savoir s' il ya des doublons de camera et de ambient light
@@ -228,6 +228,7 @@ typedef struct s_glob
 	t_pix		***pix;
 	t_scene		*scene;
 	t_mem		*mem_shuttle;
+	int			id;
 }	t_glob;
 
 #endif

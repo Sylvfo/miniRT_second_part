@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:03:17 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/12 18:50:40 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/06 17:09:35 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <stdlib.h>
 # include <limits.h>
 # include <stdbool.h>
+# include <sys/time.h>
 
 # include "minirt_data_struct.h"
 # include "minirt_matrix.h"
@@ -36,6 +37,7 @@
 # include "minirt_bonus.h"
 # define WND_WIDTH 1200
 # define WND_HEIGHT 900
+
 
 # define BAKGROUND_COLOR 711850
 # define EPSILON 0.0001
