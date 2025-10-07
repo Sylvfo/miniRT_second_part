@@ -21,9 +21,9 @@ t_color	reflexion(t_scene *scene, t_mem *mem_shtle, t_color prev_color)
 	next_ray_reflection(mem_shtle);
 	next_color = raytracer_bonus(NULL, scene, mem_shtle);
 	if (mem_shtle->recursivity_level < MAX_RECURSIVITY)
-		next_color = next_ray(scene, mem_shtle,  next_color);
+		next_color = next_ray(scene, mem_shtle, next_color);
 	if (mirror == 1.0)
-			return (next_color);
+		return (next_color);
 	next_color = scalar_mult_color2(next_color, mirror);
 	prev_color = scalar_mult_color2(prev_color, (1.0f - mirror));
 	prev_color = add_color(prev_color, next_color);

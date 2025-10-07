@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:07:46 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 20:35:48 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 21:15:35 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ void	render_mode(t_glob **datas)
 {
 	datas[0]->scene->draw_mode = 0;
 	datas[0]->scene->preview = false;
-	print_on_screen(datas[0]->scene, "RENDER MODE ON. WAIT FOR CALCULATION", 0, 7050681);
+	print_on_screen(datas[0]->scene,
+		"RENDER MODE ON. WAIT FOR CALCULATION", 0, 7050681);
 	raytracer_threads(datas);
 	pix_to_window(datas[0]->pix, datas[0]->scene);
 	print_on_screen(datas[0]->scene, "RENDER MODE ON", 0, 7050681);

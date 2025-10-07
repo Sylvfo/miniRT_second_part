@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 09:45:48 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 16:32:53 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 21:02:49 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	init_bonus(t_scene *scene, t_pix ***pix, t_mem **memory_shuttle, char *str)
 {
-	(void) pix;
-	(void) memory_shuttle;
 	if (!init_scene_memory(scene))
 	{
 		free_scene(scene);
@@ -23,7 +21,6 @@ int	init_bonus(t_scene *scene, t_pix ***pix, t_mem **memory_shuttle, char *str)
 	}
 	if (!save_data(str, scene))
 	{
-		//a modifier
 		free_main_bonus(pix, scene, memory_shuttle);
 		return (0);
 	}
@@ -32,29 +29,23 @@ int	init_bonus(t_scene *scene, t_pix ***pix, t_mem **memory_shuttle, char *str)
 	return (1);
 }
 
-t_glob **init_data(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle)
+t_glob	**init_data(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle)
 {
-	t_glob **data;
-	int i;
+	t_glob	**data;
+	int		i;
 
 	data = NULL;
-	data = malloc(NB_THREADS * sizeof(t_glob*));
+	data = malloc(NB_THREADS * sizeof(t_glob *));
 	if (!data)
-		return NULL;
+		return (NULL);
 	i = 0;
 	while (i < NB_THREADS)
 	{
 		data[i] = malloc(NB_THREADS * sizeof(t_glob));
 		if (!data[i])
 		{
-			i--;
-			while(i > 0)
-			{
-				free(data[i]);
-				data[i] = NULL;
-				i--;
-			}
-			return NULL;
+			clear_data(data, i);
+			return (NULL);
 		}
 		data[i]->mem_shuttle = m_mem_shuttle[i];
 		data[i]->scene = scene;
@@ -62,4 +53,15 @@ t_glob **init_data(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle)
 		i++;
 	}
 	return (data);
+}
+
+void	clear_data(t_glob	**data, int i)
+{
+	i--;
+	while (i > 0)
+	{
+		free(data[i]);
+		data[i] = NULL;
+		i--;
+	}
 }

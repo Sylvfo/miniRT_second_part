@@ -6,13 +6,12 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:29:55 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 20:34:14 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 20:39:02 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//modif
 int	mouse_click(int button, int x, int y, t_glob **data)
 {
 	if (button == 1 && x >= WND_WIDTH)
