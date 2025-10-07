@@ -6,38 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:34:56 by syl               #+#    #+#             */
-/*   Updated: 2025/10/06 17:41:09 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 19:29:09 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//methode sans mutex
-void* routine(void *arg)
-{
-	int x;
-	int y;
 
-	t_glob *g = (t_glob *)arg;
-	x = g->mem_shuttle->pix_x;
-	printf("pix x %i  \n", x);
-
-	while (x < WND_WIDTH)
-	{
-		y = 0;
-		while (y < WND_HEIGHT)
-		{
-			clean_memory_shuttle(g->mem_shuttle);
-			g->mem_shuttle->recursivity_level = 0;
-			init_viewport_x_y(g->mem_shuttle, g->scene->cam, x, y);
-			init_camera_pix_ray(g->mem_shuttle, g->scene->cam);
-			*g->pix[x][y]->color = raytracer_bonus(g->pix[x][y], g->scene, g->mem_shuttle);
-			y++;
-		}
-		x += NB_THREADS;
-	}
-	return (0);
-}
 
 /*
 //methode avec mutex. fonctionne. A voir si plus efficace avec transparence etc...
@@ -71,65 +46,138 @@ void* routine(void *arg)
 	return (0);
 }*/
 
+//raytracer....
+void* routine(void *arg)
+{
+	int x;
+	int y;
+	t_glob *datas;
+
+	datas = (t_glob *)arg;
+	x = datas->mem_shuttle->pix_x;
+	while (x < WND_WIDTH)
+	{
+		y = 0;
+		while (y < WND_HEIGHT)
+		{
+			clean_memory_shuttle(datas->mem_shuttle);
+			datas->mem_shuttle->recursivity_level = 0;
+			init_viewport_x_y(datas->mem_shuttle, datas->scene->cam, x, y);
+			init_camera_pix_ray(datas->mem_shuttle, datas->scene->cam);
+			*datas->pix[x][y]->color = raytracer_bonus(datas->pix[x][y], datas->scene, datas->mem_shuttle);
+			y++;
+		}
+		x += NB_THREADS;
+	}
+	return (0);
+}
 
 //raytracing_main_bonus
-void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle)
+void	raytracing_main_bonus(t_glob **datas)
+{
+//	struct timeval chrono;
+//	gettimeofday(&chrono, NULL);
+	constructing_camera(datas[0]->scene);
+	matrix_transformations(datas[0]->scene->obj);
+	raytracer_threads(datas);
+//	get_timestamp(chrono);
+}
+
+void raytracer_threads(t_glob **datas)
 {
 	int i;
-	pthread_t	th[NB_THREADS];
-	t_glob	**args_multithreading;
-	struct timeval chrono;
-	gettimeofday(&chrono, NULL);
+	pthread_t	threads[NB_THREADS];
 
-	(void) pix;
-	(void) scene;
-	printf("first hiere A \n");
-	if (NB_THREADS > WND_HEIGHT)
-	{
-		printf("first hiere A \n");
-		return;
-	}
-	args_multithreading = malloc(NB_THREADS * sizeof(t_glob*));
+	reset_recursivity_level(datas);
+	
 	i = 0;
 	while (i < NB_THREADS)
 	{
-		args_multithreading[i] = malloc(NB_THREADS * sizeof(t_glob));
-		args_multithreading[i]->mem_shuttle = m_mem_shuttle[i];
-		args_multithreading[i]->scene = scene;
-		args_multithreading[i]->pix = pix;
-		i++;
-	}
-	scene->x_thread = 23;
-	scene->y_thread = 0;
-	pthread_mutex_init(&scene->mutex_x, NULL);
-	pthread_mutex_init(&scene->mutex_y, NULL);
-
-	//mettre un truc recalculate??
-	constructing_camera(scene);
-	matrix_transformations(scene->obj);
-	i = 0;
-	while (i < NB_THREADS)
-	{
-		if (pthread_create(&th[i], NULL, &routine, args_multithreading[i]) != 0)
-		{
-			perror("Failed to create thread\n");
+		if (pthread_create(&threads[i], NULL, &routine, datas[i]) != 0)
 			return;
-		}
 		i++;
 	}
-	//pthread join
 	i = 0;
 	while (i < NB_THREADS)
 	{
-		if (pthread_join(th[i], NULL) != 0)
+		if (pthread_join(threads[i], NULL) != 0)
 			return ;
 		i++;
 	}
-	pthread_mutex_destroy(&scene->mutex_x);
-	pthread_mutex_destroy(&scene->mutex_y);
-	get_timestamp(chrono);
+}	
+
+//fonction très importante =)
+//t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
+t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
+{
+	t_color	color_light;
+	t_color	color;
+
+	////////////////////////////// RAYTRACER
+	main_intersections(scene->obj, mem_shtle);
+	copy_matrix_44(mem_shtle->obj_inv,
+		scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->m_inv);
+	if (mem_shtle->recursivity_level == 0)
+		closest_obj_in_pix(pix, mem_shtle);
+	if (mem_shtle->obj_a == 0)
+	{
+		color_light = background_color(scene->obj[0][0], scene->lux[0][0]);
+		return (color_light);
+	}
+	if (scene->preview == true)
+		return (*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
+	prepare_computation(mem_shtle, scene->obj);
+	color = pattern(mem_shtle, scene);
+	color_light = lighting(scene, mem_shtle, color);
+	//////////////////////////////
+	//ici voir pour récursion, réfléxion, réfraction, transparence...
+	mem_shtle->recursivity_level++;
+	if (mem_shtle->recursivity_level < MAX_RECURSIVITY)
+		color_light = next_ray(scene, mem_shtle, color_light);
+	return (color_light);
 }
 
+//a remplacer par raytracer_threads
+void	raytracing_recalculate_bonus(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	//ici multi threadings
+	while (x < WND_WIDTH)
+	{
+		y = 0;
+		while (y < WND_HEIGHT)
+		{
+			clean_memory_shuttle(mem_shuttle);
+		//	mem_shuttle->recursivity_level = 0;
+			init_viewport_x_y(mem_shuttle, scene->cam, x, y);
+			init_camera_pix_ray(mem_shuttle, scene->cam);
+			//ici?
+			*(pix[x][y]->color) = raytracer_bonus(pix[x][y],
+					scene, mem_shuttle);
+			y++;
+		}
+		x++;
+	}
+	return ;
+}
+
+void reset_recursivity_level(t_glob **datas)
+{
+	int i;
+
+	i = 0;
+	while (i < NB_THREADS)
+	{
+		datas[i]->mem_shuttle->recursivity_level = 0;
+		datas[i]->mem_shuttle->prev_refraction = 1;
+		i++;
+	}
+}
+
+/*
 void	raytracing_main_bonus_before(t_pix ***pix, t_scene *scene, t_mem *m_mem_shuttle)
 {
 	int	x;
@@ -162,62 +210,7 @@ void	raytracing_main_bonus_before(t_pix ***pix, t_scene *scene, t_mem *m_mem_shu
 	get_timestamp(chrono);
 }
 
-
-void	raytracing_recalculate_bonus(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle)
-{
-	int	x;
-	int	y;
-
-	x = 0;
-	//ici multi threadings
-	while (x < WND_WIDTH)
-	{
-		y = 0;
-		while (y < WND_HEIGHT)
-		{
-			clean_memory_shuttle(mem_shuttle);
-			mem_shuttle->recursivity_level = 0;
-			init_viewport_x_y(mem_shuttle, scene->cam, x, y);
-			init_camera_pix_ray(mem_shuttle, scene->cam);
-			//ici?
-			*(pix[x][y]->color) = raytracer_bonus(pix[x][y],
-					scene, mem_shuttle);
-			y++;
-		}
-		x++;
-	}
-	return ;
-}
-
-//fonction très importante =)
-t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
-{
-	t_color	color_light;
-	t_color	color;
-
-	////////////////////////////// RAYTRACER
-	main_intersections(scene->obj, mem_shtle);
-	copy_matrix_44(mem_shtle->obj_inv,
-		scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->m_inv);
-	closest_obj_in_pix(pix, mem_shtle);
-	if (mem_shtle->obj_a == 0)
-	{
-		color_light = background_color(scene->obj[0][0], scene->lux[0][0]);
-		return (color_light);
-	}
-	if (scene->preview == true)
-		return (*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
-	prepare_computation(mem_shtle, scene->obj);
-	color = pattern(mem_shtle, scene);
-	color_light = lighting(scene, mem_shtle, color);
-	//////////////////////////////
-	//ici voir pour récursion, réfléxion, réfraction, transparence...
-	color_light = next_ray(scene, mem_shtle, color_light);
-	return (color_light);
-}
-
-
-
+*/
 /*
 void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle)
 {

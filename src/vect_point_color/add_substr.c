@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 13:45:30 by sforster          #+#    #+#             */
-/*   Updated: 2025/06/13 09:22:07 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 12:25:45 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//point???
 void	addition_na(t_coord *result, t_coord *p_v_1, t_coord *p_v_2)
 {
 	result->x = p_v_1->x + p_v_2->x;

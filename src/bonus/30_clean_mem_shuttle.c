@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:54:54 by syl               #+#    #+#             */
-/*   Updated: 2025/10/06 15:41:25 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 15:28:04 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,22 @@ t_mem	**init_multi_memory_shuttle(void)
 	return (multi_mem_shuttle);
 }
 
+void memory_shuttle_bonus_values_null(t_mem *mem_shuttle)
+{
+	mem_shuttle->pix_x = 0;
+	mem_shuttle->pix_y = 0;
+	mem_shuttle->recursivity_level = 0;
+	mem_shuttle->prev_refraction = 0;
+}
+//ça clean pas 
+//mem_shuttle->r_base_origin
+//mem_shuttle->r_base_dir
+//
+//mais ça clean
+//mem_shuttle->r_dir_closest_obj
+//mem_shuttle->r_origin_closest_obj
+//mem_shuttle->v_sph_camera
+//mem_shuttle->v_norm_parral
 void	clean_memory_shuttle_refl(t_mem *mem_shuttle)
 {
 	vector_fill(mem_shuttle->r_dir_m, 0, 0, 0);
@@ -68,6 +84,11 @@ void	clean_memory_shuttle_refl(t_mem *mem_shuttle)
 	mem_shuttle->obj_b = 0;
 	init_matrix_zero(mem_shuttle->obj_inv);
 	init_matrix_zero(mem_shuttle->transp_inv);
+
+	//
+	mem_shuttle->p_touch->x = 0.0;
+	mem_shuttle->p_touch->y = 0.0;
+	mem_shuttle->p_touch->z = 0.0;
 }
 
 void	paint_it_black(t_color *color)

@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/10/06 17:32:02 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 18:55:11 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	check_args(int argc, char **argv)
 {
+	if (NB_THREADS > WND_HEIGHT)
+		return (1);
 	if (argc != 2)
 	{
 		printf("Usage: %s <scene_file.rt>\n", argv[0]);
@@ -32,35 +34,15 @@ void	link_scene_pix(t_scene *scene, t_pix ***pix)
 	scene->pix = pix;
 }
 
-void	link_scene_mem(t_scene *scene, t_mem *memory_shuttle)
-{
-	scene->mem_shuttle = memory_shuttle;
-}
-
-
-int	init(t_scene *scene, t_pix ***pix, t_mem *memory_shuttle, char *str)
-{
-	if (!init_scene_memory(scene))
-	{
-		free_scene(scene);
-		return (0);
-	}
-	if (!save_data(str, scene))
-	{
-		free_main(pix, scene, memory_shuttle);
-		return (0);
-	}
-	return (1);
-}
 
 int	main(int argc, char **argv)
 {
 	t_scene		*scene;
 	t_pix		***pix;
 	t_mem		**multi_memory_shuttle;
-	t_mem		*memory_shuttle;// a effacer
+	t_glob		**datas;
+	//pthread_t	threads[NB_THREADS];
 
-	printf("Enter main bonus \n");
 	scene = init_first_scene_memory(true);
 	if (!scene)
 		return (1);
@@ -73,23 +55,19 @@ int	main(int argc, char **argv)
 	multi_memory_shuttle = init_multi_memory_shuttle();
 	if (!init_bonus(scene, pix, multi_memory_shuttle, argv[1]))
 		return (1);
-
-	memory_shuttle = init_memory_shuttle();
-	if (!init(scene, pix, memory_shuttle, argv[1]))
-		return (1);
-
-	scene->bonus_mode = true;
 	link_scene_pix(scene, pix);
-
-
-	link_scene_mem(scene, memory_shuttle);
 	base_data(scene);
-	raytracing_main_bonus(pix, scene, multi_memory_shuttle);
-//	raytracing_main_bonus_before(pix, scene, memory_shuttle);//a effacer
+	datas = init_data(pix, scene, multi_memory_shuttle);
+	if (!datas)
+	{
+		free_main_bonus(pix, scene, multi_memory_shuttle);
+		return (1);
+	}
+	raytracing_main_bonus(datas);
 	pix_to_window(pix, scene);
 	printf("Image calculated \n");
 	image_hooks_bonus(scene);
-	//modifier...
-	//free_main(pix, scene, multi_memory_shuttle);
+	free_main_bonus(pix, scene, multi_memory_shuttle);
+	free_data(datas);
 	return (EXIT_SUCCESS);
 }

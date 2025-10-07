@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/10/06 17:13:06 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 16:04:26 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,6 +177,7 @@ typedef struct s_mem
 	int			pix_x;
 	int			pix_y;
 	int			recursivity_level;
+	float		prev_refraction;
 	//pointerur sur pix et scene??
 }	t_mem;
 
@@ -209,8 +210,8 @@ typedef struct s_scene
 	float		after_virgule;
 
 	//pour threads
-	int			x_thread;
-	int			y_thread;
+//	int			x_thread;//utile??
+//	int			y_thread;
 	pthread_mutex_t mutex_x;
 	pthread_mutex_t mutex_y;
 }	t_scene;

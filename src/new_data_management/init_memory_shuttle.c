@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:27 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 23:24:37 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 15:26:34 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ t_mem	*init_memory_shuttle(void)
 	if (!mem_shuttle)
 		return (NULL);
 	memory_shuttle_values_null(mem_shuttle);
+	memory_shuttle_bonus_values_null(mem_shuttle);
 	if (init_shuttle_values(mem_shuttle) == false)
 	{
 		printf("problem with memory shuttle \n");

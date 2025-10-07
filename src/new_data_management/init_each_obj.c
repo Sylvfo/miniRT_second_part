@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 23:18:53 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 23:21:41 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 15:36:21 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ bool	init_each_obj(t_obj *obj)
 	obj->color->b = 0.0;
 	obj->color->rgb = 0;
 	obj->type = NONE;
+	obj->indice_refract = 1.0;
+	obj->transparence = 1.0;
 	obj->difuse = 0.9;
 	obj->specular = 0.8;
 	obj->mirror = 0.0;

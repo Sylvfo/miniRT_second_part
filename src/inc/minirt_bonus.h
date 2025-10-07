@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/10/06 18:14:55 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 19:25:09 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,17 @@ enum e_transf_axe
 # define MAX_RECURSIVITY 5
 
 //00_main_bonus.c
-void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle);
-void	raytracing_main_bonus_before(t_pix ***pix, t_scene *scene, t_mem *m_mem_shuttle);
+void	raytracing_main_bonus(t_glob **datas);
+//void	raytracing_main_bonus(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle);
+//void	raytracing_main_bonus_before(t_pix ***pix, t_scene *scene, t_mem *m_mem_shuttle);
 t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *memory_shuttle);
 void	raytracing_recalculate_bonus(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle);
+void raytracer_threads(t_glob **datas);
+void reset_recursivity_level(t_glob **datas);
 
 //00_init_bonus.c
 int	init_bonus(t_scene *scene, t_pix ***pix, t_mem **memory_shuttle, char *str);
+t_glob **init_data(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle);
 
 //00_time.c
 void	get_timestamp(struct timeval start);
@@ -67,12 +71,24 @@ void	vect_reflexion(t_coord *r_base_dir, t_coord *v_normal);
 t_color	transparence(t_scene *scene, t_mem *mem_shtle);
 void	next_ray_transp(t_mem *mem_shuttle);
 
+//01_refraction.c
+t_color	refraction(t_scene *scene, t_mem *mem_shtle);
+void	next_ray_refraction(t_scene *scene, t_mem *mem_shuttle);
+void	vect_refraction(t_coord *r_base_dir, t_coord *v_normal, float indice_refraction);
+
 //00_base_recursion.c
 t_color next_ray(t_scene *scene, t_mem *mem_shtle, t_color color_light);
 
+//free_bonus.c 
+void	free_main_bonus(t_pix ***pix, t_scene *scene, t_mem **multi_mem_shuttle);
+void free_multi_memory_shuttle(t_mem **multi_mem_shuttle);
+void free_data(t_glob **datas);
+
 //30_clean_mem_shuttle.c
 t_mem	**init_multi_memory_shuttle(void);
+void memory_shuttle_bonus_values_null(t_mem *mem_shuttle);
 void	clean_memory_shuttle_refl(t_mem *memory_shuttle);
+
 void	paint_it_black(t_color *color);
 //mouse_hooks.c
 int		mouse_click(int button, int x, int y, t_scene *scene);

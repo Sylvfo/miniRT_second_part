@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/10/05 15:30:57 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 09:05:41 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,11 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *mem_shuttle)
 *(scene->obj[pix->obj_a][pix->obj_b]->color));
 	return (color);
 }
-
+//pourquoi ça clean pas??
+//mem_shuttle->r_dir_closest_obj
+//mem_shuttle->r_origin_closest_obj
+//mem_shuttle->v_sph_camera
+//mem_shuttle->v_norm_parral
 void	clean_memory_shuttle(t_mem *mem_shuttle)
 {
 	vector_fill(mem_shuttle->r_base_dir, 0, 0, 0);
