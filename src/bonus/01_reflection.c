@@ -12,59 +12,28 @@
 
 #include "../inc/minirt.h"
 
-/*
-//plus besoin
-t_color	base_reflection(t_scene *scene, t_mem *mem_shtle, t_color color_light)
+t_color	reflexion(t_scene *scene, t_mem *mem_shtle, t_color prev_color)
 {
-	t_color	color_reflexion;
+	t_color	next_color;
 	float	mirror;
 
 	mirror = scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->mirror;
-	color_reflexion = reflexion(scene, mem_shtle);
-	if (mirror == 1.0)
-		return (color_reflexion);
-	color_reflexion = scalar_mult_color2(color_reflexion, mirror);
-	color_light = scalar_mult_color2(color_light, (1.0f - mirror));
-	color_light = add_color(color_light, color_reflexion);
-	return (color_light);
-}*/
-
-t_color	reflexion(t_scene *scene, t_mem *mem_shtle)
-{
-	t_color	color;
-
-	/////////////////////////
 	next_ray_reflection(mem_shtle);
-	////////////////////////////// RAYTRACER
-/*	main_intersections(scene->obj, mem_shtle);
-	copy_matrix_44(mem_shtle->obj_inv,
-		scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->m_inv);
-	if (mem_shtle->obj_a == 0)
-	{
-		color = background_color(scene->obj[0][0], scene->lux[0][0]);
-		return (color);
-	}
-	prepare_computation(mem_shtle, scene->obj);
-	color = pattern(mem_shtle, scene);///???
-	color = lighting(scene, mem_shtle,
-			*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
-	//////////////////////////////*/
-	color = raytracer_bonus(NULL, scene, mem_shtle);
-
-	//mem_shtle->recursivity_level++;
-	//recursion reflexion//
-///	if (mem_shtle->recursivity_level < MAX_RECURSIVITY)
-//		color = next_ray(scene, mem_shtle,  color);	
-	return (color);
+	next_color = raytracer_bonus(NULL, scene, mem_shtle);
+	if (mem_shtle->recursivity_level < MAX_RECURSIVITY)
+		next_color = next_ray(scene, mem_shtle,  next_color);
+	if (mirror == 1.0)
+			return (next_color);
+	next_color = scalar_mult_color2(next_color, mirror);
+	prev_color = scalar_mult_color2(prev_color, (1.0f - mirror));
+	prev_color = add_color(prev_color, next_color);
+	return (prev_color);
 }
-//calcul next_ray_reflection il faut trouver
-//mem_shuttle->r_base_origin
-//mem_shuttle->r_base_dir
+
 void	next_ray_reflection(t_mem *mem_shuttle)
 {
 	t_coord	offset;
 
-	//print_vector(mem_shuttle->v_norm_parral);
 	offset = scalar_mult_ret(mem_shuttle->v_norm_parral, 0.001f);
 	addition_na(mem_shuttle->r_base_origin, mem_shuttle->p_touch, &offset);
 	vect_reflexion(mem_shuttle->r_base_dir, mem_shuttle->v_norm_parral);
@@ -85,27 +54,3 @@ void	vect_reflexion(t_coord *r_base_dir, t_coord *v_normal)
 	normalize_vector_na(&result);
 	copy_coord(r_base_dir, &result);
 }
-
-
-/*
-t_color	reflexion(t_scene *scene, t_mem *mem_shtle)
-{
-	t_color	color;
-
-	next_ray_reflection(mem_shtle);
-	main_intersections(scene->obj, mem_shtle);
-	copy_matrix_44(mem_shtle->obj_inv,
-		scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->m_inv);
-	if (mem_shtle->obj_a == 0)
-	{
-		color = background_color(scene->obj[0][0], scene->lux[0][0]);
-		return (color);
-	}
-	prepare_computation(mem_shtle, scene->obj);
-	color = lighting(scene, mem_shtle,
-			*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
-	//recursion reflexion//
-
-	return (color);
-}
-*/

@@ -6,13 +6,11 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:34:56 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 19:29:09 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 20:36:21 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
-
 
 /*
 //methode avec mutex. fonctionne. A voir si plus efficace avec transparence etc...
@@ -106,17 +104,18 @@ void raytracer_threads(t_glob **datas)
 	}
 }	
 
+////////////////////////////// RAYTRACER
 //fonction très importante =)
-//t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
 t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
 {
 	t_color	color_light;
 	t_color	color;
 
-	////////////////////////////// RAYTRACER
 	main_intersections(scene->obj, mem_shtle);
 	copy_matrix_44(mem_shtle->obj_inv,
 		scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->m_inv);
+	if (mem_shtle->recursivity_level != 0)
+		mem_shtle->prev_refraction = scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->indice_refract;
 	if (mem_shtle->recursivity_level == 0)
 		closest_obj_in_pix(pix, mem_shtle);
 	if (mem_shtle->obj_a == 0)
@@ -129,14 +128,13 @@ t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
 	prepare_computation(mem_shtle, scene->obj);
 	color = pattern(mem_shtle, scene);
 	color_light = lighting(scene, mem_shtle, color);
-	//////////////////////////////
-	//ici voir pour récursion, réfléxion, réfraction, transparence...
 	mem_shtle->recursivity_level++;
 	if (mem_shtle->recursivity_level < MAX_RECURSIVITY)
 		color_light = next_ray(scene, mem_shtle, color_light);
 	return (color_light);
 }
 
+/*
 //a remplacer par raytracer_threads
 void	raytracing_recalculate_bonus(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle)
 {
@@ -162,7 +160,7 @@ void	raytracing_recalculate_bonus(t_pix ***pix, t_scene *scene, t_mem *mem_shutt
 		x++;
 	}
 	return ;
-}
+}*/
 
 void reset_recursivity_level(t_glob **datas)
 {

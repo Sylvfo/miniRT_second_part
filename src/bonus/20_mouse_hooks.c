@@ -6,40 +6,47 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:29:55 by syl               #+#    #+#             */
-/*   Updated: 2025/06/13 11:21:24 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 20:34:14 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-int	mouse_click(int button, int x, int y, t_scene *scene)
+//modif
+int	mouse_click(int button, int x, int y, t_glob **data)
 {
 	if (button == 1 && x >= WND_WIDTH)
 	{
-		if (y > 50 && y < 100 && scene->draw_mode == RENDER)
-			drawing_mode(scene);
-		if (y <= 50 && scene->draw_mode == PREVIEW)
-			render_mode(scene);
-		if (scene->draw_mode == PREVIEW)
-			select_transformation(scene, y);
+		if (y > 50 && y < 100 && data[0]->scene->draw_mode == RENDER)
+			drawing_mode(data);
+		if (y <= 50 && data[0]->scene->draw_mode == PREVIEW)
+			render_mode(data);
+		if (data[0]->scene->draw_mode == PREVIEW)
+			select_transformation(data[0]->scene, y);
 	}
-	if (scene->draw_mode == CHOOSE_OBJ && button == 1 && x < WND_WIDTH)
-		select_object(scene, x, y);
+	if (data[0]->scene->draw_mode == CHOOSE_OBJ && button == 1 && x < WND_WIDTH)
+		select_object(data[0]->scene, x, y);
 	return (0);
 }
 
-int	ft_keys_bonus(int keycode, t_scene *scene)
+int	ft_keys_bonus(int keycode, t_glob **datas)
 {
 	if (keycode == 65307)
 	{
 		printf("ESC pressed.\nWindow closed\n");
-		mlx_loop_end(scene->ima->mlx_ptr);
+		mlx_loop_end(datas[0]->scene->ima->mlx_ptr);
 		return (0);
 	}
-	if (scene->draw_mode == CHOOSE_AXE)
-		take_axe(keycode, scene);
-	if (scene->draw_mode == CHOOSE_DIM)
-		take_dimensions(keycode, scene);
+	printf("A\n");
+	if (datas[0]->scene->draw_mode == CHOOSE_AXE)
+	{
+		printf("D\n");
+		take_axe(keycode, datas[0]->scene);
+	}
+		
+	printf("B\n");
+	if (datas[0]->scene->draw_mode == CHOOSE_DIM)
+		take_dimensions(keycode, datas);
 	return (0);
 }
 

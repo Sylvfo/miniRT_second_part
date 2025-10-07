@@ -6,74 +6,28 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 10:14:49 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 19:04:24 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 20:01:45 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-/*
-//radian
-float angle_between_vectors(t_coord *v1, t_coord *v2)
-{
-	float dot;
-	float len;
-	float cos_angle;
-
-	dot = dot_product(v1, v2);
-	len = length_vector(v1) * length_vector(v2);
-	if (len == 0)
-		return 1.0;// vecteurs nuls => angle nul arbitrairement
-	cos_angle = dot / len;
-	if (cos_angle > 1.0)
-		cos_angle = 1.0;
-	else if (cos_angle < -1.0)
-		cos_angle = -1.0;
-	return (cos_angle);
-}*/
-
 t_color	refraction(t_scene *scene, t_mem *mem_shtle)
 {
 	t_color	color;
 
-	/////////////////////////
 	next_ray_refraction(scene, mem_shtle);
-	////////////////////////////// RAYTRACER
-	main_intersections(scene->obj, mem_shtle);
-	copy_matrix_44(mem_shtle->obj_inv,
-		scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->m_inv);
-	mem_shtle->prev_refraction = scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->indice_refract;
-	if (mem_shtle->obj_a == 0)
-	{
-		color = background_color(scene->obj[0][0], scene->lux[0][0]);
-		return (color);
-	}
-	prepare_computation(mem_shtle, scene->obj);
-	color = pattern(mem_shtle, scene);///???
-	color = lighting(scene, mem_shtle,
-			*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
-	//////////////////////////////
-	mem_shtle->recursivity_level++;
-	//recursion reflexion//
-	if (mem_shtle->recursivity_level < MAX_RECURSIVITY)
-		color = next_ray(scene, mem_shtle,  color);
+	color = raytracer_bonus(NULL, scene, mem_shtle);
 	return (color);
 }
 
-//calcul next_ray_reflection il faut trouver
-//mem_shuttle->r_base_origin
-//mem_shuttle->r_base_dir
 void	next_ray_refraction(t_scene *scene, t_mem *mem_shuttle)
 {
 	t_coord	offset;
 
-	//pour déplacer l origine du vecteur sur p touch
 	offset = scalar_mult_ret(mem_shuttle->r_base_dir, 0.02f);
 	addition_na(mem_shuttle->r_base_origin, mem_shuttle->p_touch, &offset);
-
-	// modifier le ray
 	vect_refraction(mem_shuttle->r_base_dir, mem_shuttle->v_norm_parral, mem_shuttle->prev_refraction / scene->obj[mem_shuttle->obj_a][mem_shuttle->obj_b]->indice_refract);
-	//clean
 	clean_memory_shuttle_refl(mem_shuttle);
 }
 

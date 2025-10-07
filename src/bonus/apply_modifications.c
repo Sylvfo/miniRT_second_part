@@ -6,23 +6,23 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 17:19:21 by syl               #+#    #+#             */
-/*   Updated: 2025/10/05 15:37:40 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 20:35:51 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void	apply_transformations(t_scene *scene)
+void	apply_transformations(t_glob **datas)
 {
-	if (scene->draw_type == MOVE)
-		apply_move_changes(scene);
-	else if (scene->draw_type == ROTATE)
-		apply_rotate_changes(scene);
-	else if (scene->draw_type == SCALE)
-		apply_scale_changes(scene);
-	print_modif(scene);
-	raytracing_recalculate_bonus(scene->pix, scene, scene->mem_shuttle);
-	pix_to_window(scene->pix, scene);
+	if (datas[0]->scene->draw_type == MOVE)
+		apply_move_changes(datas[0]->scene);
+	else if (datas[0]->scene->draw_type == ROTATE)
+		apply_rotate_changes(datas[0]->scene);
+	else if (datas[0]->scene->draw_type == SCALE)
+		apply_scale_changes(datas[0]->scene);
+	print_modif(datas[0]->scene);
+	raytracer_threads(datas);
+	pix_to_window(datas[0]->scene->pix, datas[0]->scene);
 }
 
 void	apply_move_changes(t_scene *scene)

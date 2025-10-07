@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:37:18 by syl               #+#    #+#             */
-/*   Updated: 2025/06/13 11:29:08 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/07 20:19:30 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,33 +26,33 @@ void	select_object(t_scene *scene, int x, int y)
 	scene->draw_mode = CHOOSE_AXE;
 }
 
-void	take_dimensions(int keycode, t_scene *scene)
+void	take_dimensions(int keycode, t_glob **datas)
 {
 	int	digit;
 
-	if (scene->size_modif == 0.0 && keycode == 45
-		&& scene->size_modif_neg == 1.0)
-		scene->size_modif_neg *= -1.0;
+	if (datas[0]->scene->size_modif == 0.0 && keycode == 45
+		&& datas[0]->scene->size_modif_neg == 1.0)
+		datas[0]->scene->size_modif_neg *= -1.0;
 	if (keycode == 65293)
 	{
-		scene->size_modif *= scene->size_modif_neg;
-		if (scene->size_modif != 0.0)
-			apply_transformations(scene);
-		clear_modif(scene);
+		datas[0]->scene->size_modif *= datas[0]->scene->size_modif_neg;
+		if (datas[0]->scene->size_modif != 0.0)
+			apply_transformations(datas);
+		clear_modif(datas[0]->scene);
 	}
 	if (keycode >= 48 && keycode <= 57)
 	{
 		digit = keycode - 48;
-		if (scene->after_virgule == 0.0)
-			scene->size_modif = (scene->size_modif * 10.0) + digit;
-		else if (scene->after_virgule < 1000.0)
+		if (datas[0]->scene->after_virgule == 0.0)
+			datas[0]->scene->size_modif = (datas[0]->scene->size_modif * 10.0) + digit;
+		else if (datas[0]->scene->after_virgule < 1000.0)
 		{
-			scene->after_virgule *= 10.0;
-			scene->size_modif += digit / scene->after_virgule;
+			datas[0]->scene->after_virgule *= 10.0;
+			datas[0]->scene->size_modif += digit / datas[0]->scene->after_virgule;
 		}
 	}
-	if (keycode == 46 && scene->after_virgule == 0.0)
-		scene->after_virgule = 1.0;
+	if (keycode == 46 && datas[0]->scene->after_virgule == 0.0)
+		datas[0]->scene->after_virgule = 1.0;
 }
 
 void	take_axe(int keycode, t_scene *scene)
