@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:34:56 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 20:50:54 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 11:42:07 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	raytracing_main_bonus(t_glob **datas)
 
 	gettimeofday(&chrono, NULL);
 	constructing_camera(datas[0]->scene);
-	matrix_transformations(datas[0]->scene->obj);
+	matrix_transformations(datas[0]->scene->obj);// pas dans threads....
 	raytracer_threads(datas);
 	get_timestamp(chrono);
 }
@@ -95,7 +95,8 @@ t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
 		return (*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
 	prepare_computation(mem_shtle, scene->obj);
 	color = pattern(mem_shtle, scene);
-	color_light = lighting(scene, mem_shtle, color);
+	//color_light = lighting(scene, mem_shtle, color);
+	color_light =	lighting_bonus(scene, mem_shtle, color);
 	mem_shtle->recursivity_level++;
 	if (mem_shtle->recursivity_level < MAX_RECURSIVITY)
 		color_light = next_ray(scene, mem_shtle, color_light);

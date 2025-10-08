@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 21:29:55 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 20:39:02 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 16:27:24 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,22 +30,27 @@ int	mouse_click(int button, int x, int y, t_glob **data)
 
 int	ft_keys_bonus(int keycode, t_glob **datas)
 {
+	char msg[120];
+
 	if (keycode == 65307)
 	{
 		printf("ESC pressed.\nWindow closed\n");
 		mlx_loop_end(datas[0]->scene->ima->mlx_ptr);
 		return (0);
 	}
-	printf("A\n");
+	//printf("A\n");
 	if (datas[0]->scene->draw_mode == CHOOSE_AXE)
 	{
-		printf("D\n");
 		take_axe(keycode, datas[0]->scene);
+		if (datas[0]->scene->size_modif != 0 && gcvt(datas[0]->scene->size_modif, 6, msg))
+			print_on_screen(datas[0]->scene, msg , 3, 255);
 	}
-		
-	printf("B\n");
 	if (datas[0]->scene->draw_mode == CHOOSE_DIM)
+	{
 		take_dimensions(keycode, datas);
+		if (datas[0]->scene->size_modif != 0 && gcvt(datas[0]->scene->size_modif, 6, msg))
+			print_on_screen(datas[0]->scene, msg , 3, 255);
+	}
 	return (0);
 }
 

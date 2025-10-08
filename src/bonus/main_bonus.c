@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/10/07 20:11:51 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 17:36:07 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int	main(int argc, char **argv)
 	pix_to_window(pix, scene);
 	printf("Image calculated \n");
 	image_hooks_bonus(datas);
+	export_bmp(pix, "file2");
 	free_main_bonus(pix, scene, multi_memory_shuttle);
 	free_data(datas);
 	return (EXIT_SUCCESS);

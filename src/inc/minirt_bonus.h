@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 21:14:56 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 17:42:38 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,6 @@ t_color	refraction(t_scene *scene, t_mem *mem_shtle);
 void	next_ray_refraction(t_scene *scene, t_mem *mem_shuttle);
 void	vect_refraction(t_coord *r_base_dir, t_coord *v_normal, float indice_refraction);
 
-
-
 //free_bonus.c 
 void	free_main_bonus(t_pix ***pix, t_scene *scene, t_mem **multi_mem_shuttle);
 void 	free_multi_memory_shuttle(t_mem **multi_mem_shuttle);
@@ -100,8 +98,21 @@ int	ft_keys_bonus(int keycode, t_glob **datas);
 void	take_axe(int keycode, t_scene *scene);
 void	clear_modif(t_scene *scene);
 
-//00_base_recursion.c
+//01_lighting_bonus.c
+t_color	lighting_bonus(t_scene *scene, t_mem *memory_shuttle, t_color obj_color);
+void light_intersections_shadow(t_obj ***obj, t_mem *memory_shuttle);
+void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj);
+void raytracer_shadow_bonus(t_scene *scene, t_mem *mem_shtle, int num_light);
+void	next_ray_light(t_mem *mem_shuttle, t_coord *lux_p_coord);
 
+
+//01_shadow_intersect.c
+void	intersect_plan_shadow_bonus(t_mem *memory_shuttle, t_obj *obj);
+void	intersect_sphere_shadow_bonus(t_mem *memory_shuttle, t_obj *obj);
+void	intersect_cylinder_bonus(t_mem *memory_shuttle, t_obj *obj);
+void	apply_transformation_bonus(t_obj *obj, t_mem *memory_shuttle);
+//00_base_recursion.c
+void	clean_memory_shuttle_light(t_mem *mem_shuttle);
 //transf_obj.c
 //void move_object(t_obj *obj);
 void	re_identity_matrix(float *m_identity);
@@ -151,5 +162,8 @@ void	print_value(t_scene *scene);
 void	print_axe(t_scene *scene);
 void	print_selected_object(t_scene *scene);
 void	print_on_screen(t_scene *scene, char *msg, int place, int color);
+
+//export_jpg.c
+void	export_bmp(t_pix ***pix, const char *filename);
 
 #endif

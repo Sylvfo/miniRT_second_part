@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 20:14:52 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 11:14:08 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -166,6 +166,7 @@ typedef struct s_mem
 	t_coord		*p_space;
 	float		*obj_inv;
 	t_coord		*v_light_to_point;
+	t_coord		*p_light_to_point;// a init et free
 	float		distance_light_p_touch;
 	t_coord		*v_point_to_light;
 	t_coord		*reflect_dir;
@@ -178,7 +179,13 @@ typedef struct s_mem
 	int			pix_y;
 	int			recursivity_level;
 	float		prev_refraction;
-	//pointerur sur pix et scene??
+
+	float		percent_shadow;
+	t_color		*color_shadow;
+	float		percent_new_shadow;
+	t_color		*new_color_shadow;
+	//bool		in_shadow;
+	//pointerur sur pix et scene??d
 }	t_mem;
 
 typedef struct s_scene

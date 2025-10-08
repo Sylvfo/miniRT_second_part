@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 11:19:38 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 16:17:12 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 16:43:36 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	print_object(t_scene *scene)
 void	print_value(t_scene *scene)
 {
 	if (scene->draw_type == ROTATE)
-		printf("%.3f degrees ", scene->size_modif);
+		printf("%.3f radians ", scene->size_modif);
 	else
 		printf("%.3f units ", scene->size_modif);
 }

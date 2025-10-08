@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:15:23 by syl               #+#    #+#             */
-/*   Updated: 2025/06/13 09:23:43 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 17:03:37 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ t_color	scalar_mult_color2(t_color c_1, float scale);
 //set_colors.c
 t_color	*create_color(int r, int g, int b);
 void	change_color(t_color *c_color, int r, int g, int b);
+void	clean_color(t_color *c_color);
 
 //color_operation.c
 t_color	multipling_color(t_color c_1, t_color c_2);

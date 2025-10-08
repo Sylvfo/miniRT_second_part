@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/08 10:50:21 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:05:41 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 17:03:16 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,13 @@ void	change_color(t_color *c_color, int r, int g, int b)
 	c_color->r = int_to_float(r);
 	c_color->g = int_to_float(g);
 	c_color->b = int_to_float(b);
+	c_color->rgb = 0;
+}
+
+void	clean_color(t_color *c_color)
+{
+	c_color->r = 0;
+	c_color->g = 0;
+	c_color->b = 0;
 	c_color->rgb = 0;
 }
