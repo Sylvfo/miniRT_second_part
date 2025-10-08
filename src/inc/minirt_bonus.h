@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/10/08 17:42:38 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 19:44:07 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,6 +111,9 @@ void	intersect_plan_shadow_bonus(t_mem *memory_shuttle, t_obj *obj);
 void	intersect_sphere_shadow_bonus(t_mem *memory_shuttle, t_obj *obj);
 void	intersect_cylinder_bonus(t_mem *memory_shuttle, t_obj *obj);
 void	apply_transformation_bonus(t_obj *obj, t_mem *memory_shuttle);
+void	intersect_triangle_bonus(t_mem *memory_shuttle, t_obj ***obj, int n);
+void	cal_intersect_bonus(t_mem *mem, t_obj ***obj, int n, t_intertt result);
+void	intersect_cone_bonus(t_mem *memory_shuttle,  t_obj *obj);
 //00_base_recursion.c
 void	clean_memory_shuttle_light(t_mem *mem_shuttle);
 //transf_obj.c

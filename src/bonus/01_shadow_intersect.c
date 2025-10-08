@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:02:36 by syl               #+#    #+#             */
-/*   Updated: 2025/10/08 17:49:57 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 19:46:20 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,8 @@ void	apply_transformation_bonus(t_obj *obj, t_mem *memory_shuttle)
 		obj->m_inv, memory_shuttle->v_light_to_point);
 }
 
-void	intersect_cone(t_mem *memory_shuttle, int cone_n)
+
+void	intersect_cone_bonus(t_mem *memory_shuttle,  t_obj *obj)
 {
 	float		a;
 	float		b;
@@ -116,13 +117,13 @@ pow(memory_shuttle->r_origin_m->y, 2) + pow(memory_shuttle->r_origin_m->z, 2);
 		result = cut_cone(memory_shuttle, -c / (2 * b), -c / (2 * b));
 	else
 		result = cut_cone(memory_shuttle, (-b - sqrt(discriminant)) / (2 * a), \
-(-b + sqrt(discriminant)) / (2 * a));
+	(-b + sqrt(discriminant)) / (2 * a));
 	result = intersect_caps(memory_shuttle, result);
-	closestt(memory_shuttle, result, CONE, cone_n);
+	take_shadow_color(memory_shuttle, result, obj);
 }
 
 
-void	cal_intersect(t_mem *mem, t_obj ***obj, int n, t_intertt result)
+void	cal_intersect_bonus(t_mem *mem, t_obj ***obj, int n, t_intertt result)
 {
 	t_coord	cross_e;
 	float	det;
@@ -148,15 +149,16 @@ void	cal_intersect(t_mem *mem, t_obj ***obj, int n, t_intertt result)
 	result.t_count = 1;
 	if (result.t1 < EPSILON)
 		return ;
-	closestt(mem, result, TRIANGLE, n);
+	take_shadow_color(mem, result, obj[TRIANGLE][n]);
+	//closestt(mem, result, TRIANGLE, n);
 }
 
-void	intersect_triangle(t_mem *memory_shuttle, t_obj ***obj, int n)
+void	intersect_triangle_bonus(t_mem *memory_shuttle, t_obj ***obj, int n)
 {
 	t_intertt	result;
 
 	result.t_count = 0;
-	cal_intersect(memory_shuttle, obj, n, result);
+	cal_intersect_bonus(memory_shuttle, obj, n, result);
 }
 /*
 //inutlie?

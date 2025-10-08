@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 21:18:04 by syl               #+#    #+#             */
-/*   Updated: 2025/10/08 17:46:36 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 19:49:30 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,23 +76,16 @@ void light_intersections_shadow(t_obj ***obj, t_mem *memory_shuttle)
 			apply_transformation_bonus(obj[a][b], memory_shuttle);
 			if (a == 1)
 				intersect_sphere_shadow_bonus(memory_shuttle, obj[a][b]);
-			//if (a == 2)
+			if (a == 2)
 				intersect_plan_shadow_bonus(memory_shuttle, obj[a][b]);
-			//	intersect_plan(memory_shuttle, b);
 			if (a == 3)
 				intersect_cylinder_bonus(memory_shuttle, obj[a][b]);
-		/*	if (a == 4)
-				intersect_cone(memory_shuttle, b);
+			if (a == 4)
+				intersect_cone_bonus(memory_shuttle, obj[a][b]);
 			if (a == 5)
-				intersect_triangle(memory_shuttle, obj, b);*/
-			//////
-			if (memory_shuttle->percent_shadow >= 1.0 || memory_shuttle->percent_new_shadow >= 1.0)
+				intersect_triangle_bonus(memory_shuttle, obj, b);
+			if (memory_shuttle->percent_shadow >= 1.0)// || memory_shuttle->percent_new_shadow >= 1.0)
 				return ;
-	/*		if (memory_shuttle->percent_shadow > 0.0 && memory_shuttle->percent_shadow < 1.0)
-			{
-				*memory_shuttle->color_shadow = scalar_mult_color2(*memory_shuttle->color_shadow, (1.0f - memory_shuttle->percent_new_shadow));
-				*memory_shuttle->color_shadow = add_color(*memory_shuttle->color_shadow, *memory_shuttle->new_color_shadow);
-			}*/
 			b++;
 		}
 		a++;
@@ -126,12 +119,12 @@ void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj)
 	}
 }*/
 
+/*
 void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj)
 {
 	if ((result.t1 < INT_MAX && result.t1 > 0.0)
 		|| (result.t2 < INT_MAX && result.t2 > 0.0))
 	{
-		printf("a");
 		double	t;
 
 		t = obj->transparence; // 0 = opaque, 1 = transparent
@@ -150,10 +143,10 @@ void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj)
 		// on additionne les deux (équivaut à un mix : obj*(1-t) + old*t)
 		*mem_shuttle->color_shadow = add_color(obj_part, old_part);
 	}
-}
+}*/
 
 // ici on additionne
-/*void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj)// amcien closestt
+void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj)// amcien closestt
 {
 	if ((result.t1 < INT_MAX && result.t1 > 0.0) || (result.t2 < INT_MAX && result.t2 > 0))
 	{
@@ -171,7 +164,7 @@ void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj)
 		
 		return;
 	}
-}*/
+}
 
 ////////////////////////////// RAYTRACER
 //fonction très importante =)

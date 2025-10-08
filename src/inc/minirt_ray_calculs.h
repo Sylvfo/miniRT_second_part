@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 17:12:16 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 15:22:25 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/08 19:42:55 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void		closestt(t_mem *mem_sh, t_intertt res, int obj_ty, int obj_nu);
 
 //07_intersect_cone.c
 void		intersect_cone(t_mem *memory_shuttle, int cone_n);
-
+t_intertt	cut_cone(t_mem *memory_shuttle, float t1, float t2);
 //08_intersect_triangle.c
 void		intersect_triangle(t_mem *memory_shuttle, t_obj ***obj, \
 int triangle_n);
