@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/12 22:47:48 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 16:40:01 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/09 14:40:42 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,16 @@ void	free_memory_shuttle(t_mem *memory_shuttle)
 	free_mem_shuttle_part_2(memory_shuttle);
 	free_mem_shuttle_part_3(memory_shuttle);
 	free_mem_shuttle_part_4(memory_shuttle);
+	if (memory_shuttle->p_light_to_point)
+	{
+		free(memory_shuttle->p_light_to_point);
+		memory_shuttle->p_light_to_point = NULL;
+	}
+	if (memory_shuttle->color_shadow)
+	{
+		free(memory_shuttle->color_shadow);
+		memory_shuttle->color_shadow = NULL;
+	}
 }
 
 void	free_mem_shuttle_part_1(t_mem *memory_shuttle)

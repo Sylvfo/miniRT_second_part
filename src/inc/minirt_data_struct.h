@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/10/08 11:14:08 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/09 16:16:23 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ typedef struct s_mem
 	float		percent_shadow;
 	t_color		*color_shadow;
 	float		percent_new_shadow;
-	t_color		*new_color_shadow;
+	//t_color		*new_color_shadow;
 	//bool		in_shadow;
 	//pointerur sur pix et scene??d
 }	t_mem;

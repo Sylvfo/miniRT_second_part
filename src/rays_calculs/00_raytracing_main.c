@@ -6,11 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 09:05:41 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/09 16:16:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
+
+
 
 void	raytracing(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle)
 {
@@ -28,12 +30,6 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle)
 			clean_memory_shuttle(mem_shuttle);
 			init_viewport_x_y(mem_shuttle, scene->cam, x, y);
 			init_camera_pix_ray(mem_shuttle, scene->cam);
-	/*		if (scene->bonus_mode == true)
-				*(pix[x][y]->color) = raytracer_bonus(pix[x][y],
-						scene, mem_shuttle);
-			else if (scene->bonus_mode == false)
-				*(pix[x][y]->color) = raytracer(pix[x][y],
-						scene, mem_shuttle);*/
 			*(pix[x][y]->color) = raytracer(pix[x][y],
 						scene, mem_shuttle);
 			y++;
@@ -60,11 +56,7 @@ t_color	raytracer(t_pix *pix, t_scene *scene, t_mem *mem_shuttle)
 *(scene->obj[pix->obj_a][pix->obj_b]->color));
 	return (color);
 }
-//pourquoi ça clean pas??
-//mem_shuttle->r_dir_closest_obj
-//mem_shuttle->r_origin_closest_obj
-//mem_shuttle->v_sph_camera
-//mem_shuttle->v_norm_parral
+
 void	clean_memory_shuttle(t_mem *mem_shuttle)
 {
 	vector_fill(mem_shuttle->r_base_dir, 0, 0, 0);
@@ -76,12 +68,8 @@ void	clean_memory_shuttle(t_mem *mem_shuttle)
 	mem_shuttle->obj_b = 0;
 	mem_shuttle->t_count = 0;
 	mem_shuttle->distance_light_p_touch = 0.0;
-	mem_shuttle->p_space->x = 0.0;
-	mem_shuttle->p_space->y = 0.0;
-	mem_shuttle->p_space->z = 0.0;
-	mem_shuttle->p_touch->x = 0.0;
-	mem_shuttle->p_touch->y = 0.0;
-	mem_shuttle->p_touch->z = 0.0;
+	point_fill(mem_shuttle->p_space, 0, 0, 0);
+	point_fill(mem_shuttle->p_touch, 0, 0, 0);
 	vector_fill(mem_shuttle->v_light_to_point, 0, 0, 0);
 	vector_fill(mem_shuttle->v_point_to_light, 0, 0, 0);
 	vector_fill(mem_shuttle->reflect_dir, 0, 0, 0);

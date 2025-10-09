@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/10/08 19:44:07 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/09 16:19:17 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -169,4 +169,6 @@ void	print_on_screen(t_scene *scene, char *msg, int place, int color);
 //export_jpg.c
 void	export_bmp(t_pix ***pix, const char *filename);
 
+//04_save_rt_main.c
+int	save_scene_to_file(t_scene *scene, const char *filename);
 #endif

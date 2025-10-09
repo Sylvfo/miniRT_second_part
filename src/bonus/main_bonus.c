@@ -6,12 +6,13 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/10/08 17:36:07 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/09 16:21:34 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
+//valgrind --tool=helgrind ./miniRT_bonus image/bonus.rt/bubble.rt
 static int	check_args(int argc, char **argv)
 {
 	if (NB_THREADS > WND_HEIGHT)
@@ -68,6 +69,7 @@ int	main(int argc, char **argv)
 	printf("Image calculated \n");
 	image_hooks_bonus(datas);
 	export_bmp(pix, "file2");
+	save_scene_to_file(scene, "testesave.rt");
 	free_main_bonus(pix, scene, multi_memory_shuttle);
 	free_data(datas);
 	return (EXIT_SUCCESS);

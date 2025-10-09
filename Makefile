@@ -6,7 +6,7 @@
 #    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/10/08 17:38:47 by syl              ###   ########.fr        #
+#    Updated: 2025/10/09 16:15:06 by syl              ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,6 +129,7 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/bonus/01_lighting_bonus.c\
 	./src/bonus/01_shadow_intersect.c\
 	./src/bonus/export_jpg.c\
+	./src/bonus/04_save_rt_main.c\
 	$(INIT)init_object.c\
 	$(INIT)init_object2.c\
 	$(PARSING)map_check.c $(PARSING)map_check2.c\

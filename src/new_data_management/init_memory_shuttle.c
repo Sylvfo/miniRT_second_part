@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/25 19:38:27 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 15:26:34 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/09 14:40:36 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void	memory_shuttle_values_null(t_mem *memory_shuttle)
 	memory_shuttle->view_dir = NULL;
 	memory_shuttle->obj_inv = NULL;
 	memory_shuttle->transp_inv = NULL;
+	memory_shuttle->color_shadow = NULL;
+	memory_shuttle->p_light_to_point = NULL;
 }
 
 bool	init_shuttle_values(t_mem *memory_shuttle)
@@ -109,6 +111,9 @@ bool	init_shuttle_values2(t_mem *memory_shuttle)
 	memory_shuttle->v_norm_parral = create_vector(0, 0, 0);
 	if (!memory_shuttle->v_norm_parral)
 		return (false);
+	memory_shuttle->p_light_to_point = create_point(0,0,0);
+	if (!memory_shuttle->p_light_to_point)
+		return (false);
 	return (true);
 }
 
@@ -134,6 +139,9 @@ bool	init_shuttle_values3(t_mem *memory_shuttle)
 		return (false);
 	memory_shuttle->transp_inv = create_indentity_matrix_44();
 	if (!memory_shuttle->transp_inv)
+		return (false);
+	memory_shuttle->color_shadow = create_color(0,0,0);
+	if (!memory_shuttle->color_shadow)
 		return (false);
 	return (true);
 }

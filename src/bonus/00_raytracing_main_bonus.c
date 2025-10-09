@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:34:56 by syl               #+#    #+#             */
-/*   Updated: 2025/10/09 11:24:08 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/09 14:32:21 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	raytracing_main_bonus(t_glob **datas)
 
 	gettimeofday(&chrono, NULL);
 	constructing_camera(datas[0]->scene);
-	matrix_transformations(datas[0]->scene->obj);// pas dans threads....
+	matrix_transformations(datas[0]->scene->obj);
 	raytracer_threads(datas);
 	get_timestamp(chrono);
 }
