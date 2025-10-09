@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:34:56 by syl               #+#    #+#             */
-/*   Updated: 2025/10/08 11:42:07 by syl              ###   ########.fr       */
+/*   Updated: 2025/10/09 11:24:08 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,6 @@ t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
 		return (*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
 	prepare_computation(mem_shtle, scene->obj);
 	color = pattern(mem_shtle, scene);
-	//color_light = lighting(scene, mem_shtle, color);
 	color_light =	lighting_bonus(scene, mem_shtle, color);
 	mem_shtle->recursivity_level++;
 	if (mem_shtle->recursivity_level < MAX_RECURSIVITY)
