@@ -49,7 +49,7 @@ void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj)// amcie
 	t_color	new_color_shadow;
 
 	new_color_shadow = init_color();
-	if ((result.t1 < INT_MAX && result.t1 > 0.0) || (result.t2 < INT_MAX && result.t2 > 0))
+	if ((result.t1 < (float)INT_MAX && result.t1 > 0.0) || (result.t2 < (float)INT_MAX && result.t2 > 0))
 	{
  		if (obj->transparence == 1.0)
 		{

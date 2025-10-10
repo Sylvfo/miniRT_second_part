@@ -35,8 +35,8 @@
 # include "new_memory.h"
 # include "macro.h"
 # include "minirt_bonus.h"
-# define WND_WIDTH 1200
-# define WND_HEIGHT 900
+# define WND_WIDTH 2000
+# define WND_HEIGHT 1200
 
 
 # define BAKGROUND_COLOR 711850

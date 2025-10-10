@@ -48,7 +48,7 @@ void	take_dimensions(int keycode, t_glob **datas)
 	int digit;
 	if (datas[0]->scene->size_modif == 0.0 && keycode == 45
 		&& datas[0]->scene->size_modif_neg == 1.0)
-		datas[0]->scene->size_modif_neg *= -1.0;*/
+		datas[0]->scene->size_modif_neg *= -1.0;
 	if (keycode == 65293)
 	{
 		datas[0]->scene->size_modif *= datas[0]->scene->size_modif_neg;

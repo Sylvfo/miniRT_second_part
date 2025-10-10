@@ -42,7 +42,7 @@ void	memory_shuttle_values_null(t_mem *memory_shuttle)
 	memory_shuttle->r_dir_m = NULL;
 	memory_shuttle->v_sph_camera = NULL;
 	memory_shuttle->t_count = 0.0;
-	memory_shuttle->closestt = INT_MAX;
+	memory_shuttle->closestt = (float)INT_MAX;
 	memory_shuttle->obj_a = NONE;
 	memory_shuttle->obj_b = 0;
 	memory_shuttle->origin_zero = NULL;

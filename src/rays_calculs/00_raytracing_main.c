@@ -63,7 +63,7 @@ void	clean_memory_shuttle(t_mem *mem_shuttle)
 	vector_fill(mem_shuttle->r_dir_m, 0, 0, 0);
 	point_fill(mem_shuttle->r_base_origin, 0, 0, 0);
 	point_fill(mem_shuttle->r_origin_m, 0, 0, 0);
-	mem_shuttle->closestt = INT_MAX;
+	mem_shuttle->closestt = (float)INT_MAX;
 	mem_shuttle->obj_a = 0;
 	mem_shuttle->obj_b = 0;
 	mem_shuttle->t_count = 0;

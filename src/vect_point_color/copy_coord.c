@@ -40,8 +40,8 @@ t_intertt	init_intertt(void)
 {
 	t_intertt	result;
 
-	result.t1 = INT_MAX;
-	result.t2 = INT_MAX;
+	result.t1 = (float)INT_MAX;
+	result.t2 = (float)INT_MAX;
 	result.t_count = 0;
 	return (result);
 }
