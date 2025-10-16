@@ -142,7 +142,6 @@ typedef struct s_intertt
 }	t_intertt;
 
 
-
 //memory_shuttle
 typedef struct s_mem
 {
