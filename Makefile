@@ -145,6 +145,9 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	$(RAY_CALCUL)pattern_form.c\
 	$(RAY_CALCUL)pattern_perlin.c\
 	$(RAY_CALCUL)texture.c\
+	$(BONUS)coord_modified.c\
+	$(BONUS)04_save_suite_rt.c\
+	$(BONUS)04_write_file_rt.c\
 
 SRCS = $(SOURCES)\
 		./src/main.c 

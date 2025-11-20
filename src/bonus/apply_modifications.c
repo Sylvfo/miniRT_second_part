@@ -38,13 +38,18 @@ void	apply_move_changes(t_scene *scene)
 	re_identity_matrix(scene->obj[obj_type][obj_num]->m_inv);
 	inverse_matrix_44(scene->obj[obj_type][obj_num]->m_inv,
 		scene->obj[obj_type][obj_num]->m_transf);
+	change_coord_modified(scene->obj[obj_type][obj_num], obj_type);
 }
 
 void	apply_rotate_changes(t_scene *scene)
 {
-	int	obj_type;
-	int	obj_num;
+	int		obj_type;
+	int		obj_num;
+	float	*tab;
+	float	*identity;
 
+	tab = create_indentity_matrix_44();
+	identity = create_indentity_matrix_44();
 	obj_type = scene->pix[scene->x][scene->y]->obj_a;
 	obj_num = scene->pix[scene->x][scene->y]->obj_b;
 	rotating_matrix(scene, scene->obj[obj_type][obj_num]);
@@ -53,6 +58,7 @@ void	apply_rotate_changes(t_scene *scene)
 	re_identity_matrix(scene->obj[obj_type][obj_num]->m_inv);
 	inverse_matrix_44(scene->obj[obj_type][obj_num]->m_inv,
 		scene->obj[obj_type][obj_num]->m_transf);
+	change_axe_modified(scene->obj[obj_type][obj_num], obj_type);
 }
 
 void	apply_scale_changes(t_scene *scene)

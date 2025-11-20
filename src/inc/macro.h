@@ -36,4 +36,5 @@
 # define NB_EL_VECTOR	3
 # define NB_OBJ			6 //rajoute le cone et le triangle
 # define NUM_PATTERN	5
+# define ANGLE_FOV		0.0174533
 #endif

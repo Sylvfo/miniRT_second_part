@@ -14,6 +14,16 @@
 
 int	mouse_click(int button, int x, int y, t_glob **data)
 {
+	if (x > 2016 && x < 2132)
+	{
+		if (y > 407 && y < 464)
+			export_bmp(data[0]->pix, "file2");
+	}
+	if (x > 2160 && x < 2277)
+	{
+		if (y > 407 && y < 464)
+			save_scene_to_file(data[0]->scene, "testesave.rt");
+	}
 	if (button == 1 && x >= WND_WIDTH)
 	{
 		if (y > 50 && y < 100 && data[0]->scene->draw_mode == RENDER)
@@ -30,26 +40,27 @@ int	mouse_click(int button, int x, int y, t_glob **data)
 
 int	ft_keys_bonus(int keycode, t_glob **datas)
 {
-	char msg[120];
+	char	msg[120];
+	float	*size;
 
+	size = &datas[0]->scene->size_modif;
 	if (keycode == 65307)
 	{
 		printf("ESC pressed.\nWindow closed\n");
 		mlx_loop_end(datas[0]->scene->ima->mlx_ptr);
 		return (0);
 	}
-	//printf("A\n");
 	if (datas[0]->scene->draw_mode == CHOOSE_AXE)
 	{
 		take_axe(keycode, datas[0]->scene);
-		if (datas[0]->scene->size_modif != 0 && gcvt(datas[0]->scene->size_modif, 6, msg))
-			print_on_screen(datas[0]->scene, msg , 3, 255);
+		if (*size != 0 && gcvt(*size, 6, msg))
+			print_on_screen(datas[0]->scene, msg, 3, 255);
 	}
 	if (datas[0]->scene->draw_mode == CHOOSE_DIM)
 	{
 		take_dimensions(keycode, datas);
-		if (datas[0]->scene->size_modif != 0 && gcvt(datas[0]->scene->size_modif, 6, msg))
-			print_on_screen(datas[0]->scene, msg , 3, 255);
+		if (*size != 0 && gcvt(*size, 6, msg))
+			print_on_screen(datas[0]->scene, msg, 3, 255);
 	}
 	return (0);
 }

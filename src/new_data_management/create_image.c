@@ -53,7 +53,7 @@ void	create_window(t_image *ima, t_scene *scene)
 bool	create_image_cmd(t_image *ima)
 {
 	ima->ima_cmd = mlx_xpm_file_to_image(ima->mlx_ptr,
-			"dessin_commandes/cmd.xpm",
+			"dessin_commandes/cmd1.xpm",
 			&ima->line_length_cmd, &ima->endian_cmd);
 	if (!ima->ima_cmd)
 	{

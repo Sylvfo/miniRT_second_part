@@ -68,8 +68,6 @@ int	main(int argc, char **argv)
 	pix_to_window(pix, scene);
 	printf("Image calculated \n");
 	image_hooks_bonus(datas);
-	export_bmp(pix, "file2");
-	save_scene_to_file(scene, "testesave.rt");
 	free_main_bonus(pix, scene, multi_memory_shuttle);
 	free_data(datas);
 	return (EXIT_SUCCESS);

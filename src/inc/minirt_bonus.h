@@ -48,18 +48,18 @@ enum e_transf_axe
 
 //00_main_bonus.c
 
-
 //00_raytracing_main_bonus.c
 void	raytracing_main_bonus(t_glob **datas);
 t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *memory_shuttle);
 void	*routine(void *arg);
 void	reset_recursivity_level(t_glob **datas);
-t_color next_ray(t_scene *scene, t_mem *mem_shtle, t_color color_light);
+t_color	next_ray(t_scene *scene, t_mem *mem_shtle, t_color color_light);
 
 //00_init_bonus.c
-int	init_bonus(t_scene *scene, t_pix ***pix, t_mem **memory_shuttle, char *str);
-t_glob **init_data(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle);
-void clear_data(t_glob	**data, int i);
+int		init_bonus(t_scene *scene, t_pix ***pix, t_mem **memory_shuttle,\
+	char *str);
+t_glob	**init_data(t_pix ***pix, t_scene *scene, t_mem **m_mem_shuttle);
+void	clear_data(t_glob	**data, int i);
 
 //00_time.c
 void	get_timestamp(struct timeval start);
@@ -76,35 +76,37 @@ void	next_ray_transp(t_mem *mem_shuttle);
 //01_refraction.c
 t_color	refraction(t_scene *scene, t_mem *mem_shtle);
 void	next_ray_refraction(t_scene *scene, t_mem *mem_shuttle);
-void	vect_refraction(t_coord *r_base_dir, t_coord *v_normal, float indice_refraction);
+void	vect_refraction(t_coord *r_base_dir, t_coord *v_normal,\
+	float indice_refraction);
 
 //free_bonus.c 
-void	free_main_bonus(t_pix ***pix, t_scene *scene, t_mem **multi_mem_shuttle);
-void 	free_multi_memory_shuttle(t_mem **multi_mem_shuttle);
-void 	free_data(t_glob **datas);
+void	free_main_bonus(t_pix ***pix, t_scene *scene,\
+	t_mem **multi_mem_shuttle);
+void	free_multi_memory_shuttle(t_mem **multi_mem_shuttle);
+void	free_data(t_glob **datas);
 
 //30_clean_mem_shuttle.c
 t_mem	**init_multi_memory_shuttle(void);
-void memory_shuttle_bonus_values_null(t_mem *mem_shuttle);
+void	memory_shuttle_bonus_values_null(t_mem *mem_shuttle);
 void	clean_memory_shuttle_refl(t_mem *memory_shuttle);
-void raytracer_threads(t_glob **datas);
+void	raytracer_threads(t_glob **datas);
 
 void	clear_multi_mem_shuttle(t_mem **multi_mem_shuttle, int i);
 //mouse_hooks.c
-int	mouse_click(int button, int x, int y, t_glob **data);
+int		mouse_click(int button, int x, int y, t_glob **data);
 //int		mouse_click(int button, int x, int y, t_scene *scene);
 //int		ft_keys_bonus(int keycode, t_scene *scene);
-int	ft_keys_bonus(int keycode, t_glob **datas);
+int		ft_keys_bonus(int keycode, t_glob **datas);
 void	take_axe(int keycode, t_scene *scene);
 void	clear_modif(t_scene *scene);
 
 //01_lighting_bonus.c
-t_color	lighting_bonus(t_scene *scene, t_mem *memory_shuttle, t_color obj_color);
-void light_intersections_shadow(t_obj ***obj, t_mem *memory_shuttle);
+t_color	lighting_bonus(t_scene *scene, t_mem *memory_shuttle,\
+	t_color obj_color);
+void	light_intersections_shadow(t_obj ***obj, t_mem *memory_shuttle);
 void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj);
-void raytracer_shadow_bonus(t_scene *scene, t_mem *mem_shtle, int num_light);
+void	raytracer_shadow_bonus(t_scene *scene, t_mem *mem_shtle, int num_light);
 void	next_ray_light(t_mem *mem_shuttle, t_coord *lux_p_coord);
-
 
 //01_shadow_intersect.c
 void	intersect_plan_shadow_bonus(t_mem *memory_shuttle, t_obj *obj);
@@ -113,7 +115,8 @@ void	intersect_cylinder_bonus(t_mem *memory_shuttle, t_obj *obj);
 void	apply_transformation_bonus(t_obj *obj, t_mem *memory_shuttle);
 void	intersect_triangle_bonus(t_mem *memory_shuttle, t_obj ***obj, int n);
 void	cal_intersect_bonus(t_mem *mem, t_obj ***obj, int n, t_intertt result);
-void	intersect_cone_bonus(t_mem *memory_shuttle,  t_obj *obj);
+void	intersect_cone_bonus(t_mem *memory_shuttle, t_obj *obj);
+
 //00_base_recursion.c
 void	clean_memory_shuttle_light(t_mem *mem_shuttle);
 //transf_obj.c
@@ -170,5 +173,24 @@ void	print_on_screen(t_scene *scene, char *msg, int place, int color);
 void	export_bmp(t_pix ***pix, const char *filename);
 
 //04_save_rt_main.c
-int	save_scene_to_file(t_scene *scene, const char *filename);
+void	write_camera(FILE *f, t_camera *c);
+int		save_scene_to_file(t_scene *scene, const char *filename);
+
+//coord_modified
+void	change_coord_modified(t_obj *obj, int type);
+void	change_axe_modified(t_obj *obj, int type);
+
+//04_save_file_rt.c
+void	write_color(FILE *f, t_color *c, t_color *c2);
+void	write_vec3(FILE *f, t_coord *p);
+void	write_visual_effect(FILE *f, t_obj *obj);
+void	write_ambient(FILE *f, t_light *lux);
+void	write_light(FILE *f, t_light *l);
+
+//04_save_suite_rt.c
+void	write_sphere(FILE *f, t_obj *obj);
+void	write_plan(FILE *f, t_obj *obj);
+void	write_cylinder(FILE *f, t_obj *obj);
+void	write_cone(FILE *f, t_obj *obj);
+void	write_triangle(FILE *f, t_obj *obj);
 #endif
