@@ -6,13 +6,12 @@
 /*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2026/01/20 16:37:22 by sforster         ###   ########.fr       */
+/*   Updated: 2026/01/20 16:50:14 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//valgrind --tool=helgrind ./miniRT_bonus image/bonus.rt/bubble.rt
 static int	check_args(int argc, char **argv)
 {
 	if (NB_THREADS > WND_HEIGHT)
@@ -62,10 +61,13 @@ int	main(int argc, char **argv)
 		free_main_bonus(pix, scene, multi_memory_shuttle);
 		return (1);
 	}
+	///////////////////
 	raytracing_main_bonus(datas);
 	pix_to_window(pix, scene);
 	image_hooks_bonus(datas);
+	////////////////////////
 	free_main_bonus(pix, scene, multi_memory_shuttle);
 	free_data(datas);
+	///////////////////////
 	return (EXIT_SUCCESS);
 }
