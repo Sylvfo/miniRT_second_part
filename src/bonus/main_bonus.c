@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/10/09 16:21:34 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:37:22 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,12 @@ void	link_scene_pix(t_scene *scene, t_pix ***pix)
 	scene->pix = pix;
 }
 
-
 int	main(int argc, char **argv)
 {
 	t_scene		*scene;
 	t_pix		***pix;
 	t_mem		**multi_memory_shuttle;
 	t_glob		**datas;
-	//pthread_t	threads[NB_THREADS];
 
 	scene = init_first_scene_memory(true);
 	if (!scene)
@@ -66,7 +64,6 @@ int	main(int argc, char **argv)
 	}
 	raytracing_main_bonus(datas);
 	pix_to_window(pix, scene);
-	printf("Image calculated \n");
 	image_hooks_bonus(datas);
 	free_main_bonus(pix, scene, multi_memory_shuttle);
 	free_data(datas);

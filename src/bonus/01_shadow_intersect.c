@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   01_shadow_intersect.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/08 11:02:36 by syl               #+#    #+#             */
-/*   Updated: 2025/10/08 19:46:20 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:17:53 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,17 @@
 
 void	intersect_plan_shadow_bonus(t_mem *memory_shuttle, t_obj *obj)
 {
-	return;
 	t_intertt	result;
 
-	printf("la");
+	return ;
 	if (fabs(memory_shuttle->r_dir_m->y) < EPSILON)
 		return ;
 	result.t1 = -(memory_shuttle->r_origin_m->y / memory_shuttle->r_dir_m->y);
 	result.t2 = INT_MAX;
 	result.t_count = 1;
-	
 	take_shadow_color(memory_shuttle, result, obj);
 }
 
-//void	intersect_sphere_shadow_bonus(t_mem *memory_shuttle)
 void	intersect_sphere_shadow_bonus(t_mem *memory_shuttle, t_obj *obj)
 {
 	float		discriminant;
@@ -50,7 +47,6 @@ void	intersect_sphere_shadow_bonus(t_mem *memory_shuttle, t_obj *obj)
 	result.t2 = (-b + simple_sqrt(discriminant)) / (2 * a);
 	result.t_count = 2;
 	take_shadow_color(memory_shuttle, result, obj);
-//	closestt(memory_shuttle, result, SPHERE, sph_num);
 	return ;
 }
 
@@ -82,18 +78,7 @@ void	intersect_cylinder_bonus(t_mem *memory_shuttle, t_obj *obj)
 	take_shadow_color(memory_shuttle, result, obj);
 }
 
-//	t_coord		*v_light_to_point;
-//	t_coord		*p_light_to_point;// a init et free
-void	apply_transformation_bonus(t_obj *obj, t_mem *memory_shuttle)
-{
-	matrix_point_multiplication_new(memory_shuttle->r_origin_m,
-		obj->m_inv, memory_shuttle->p_light_to_point);
-	matrix_point_multiplication_new(memory_shuttle->r_dir_m,
-		obj->m_inv, memory_shuttle->v_light_to_point);
-}
-
-
-void	intersect_cone_bonus(t_mem *memory_shuttle,  t_obj *obj)
+void	intersect_cone_bonus(t_mem *memory_shuttle, t_obj *obj)
 {
 	float		a;
 	float		b;
@@ -117,73 +102,7 @@ pow(memory_shuttle->r_origin_m->y, 2) + pow(memory_shuttle->r_origin_m->z, 2);
 		result = cut_cone(memory_shuttle, -c / (2 * b), -c / (2 * b));
 	else
 		result = cut_cone(memory_shuttle, (-b - sqrt(discriminant)) / (2 * a), \
-	(-b + sqrt(discriminant)) / (2 * a));
+(-b + sqrt(discriminant)) / (2 * a));
 	result = intersect_caps(memory_shuttle, result);
 	take_shadow_color(memory_shuttle, result, obj);
 }
-
-
-void	cal_intersect_bonus(t_mem *mem, t_obj ***obj, int n, t_intertt result)
-{
-	t_coord	cross_e;
-	float	det;
-	float	f;
-	float	u[2];
-	t_coord	p1_to_origin;
-
-	substraction_p_to_v_na(&p1_to_origin, mem->r_origin_m, obj[5][n]->tr_p1);
-	cross_product_na(&cross_e, mem->r_dir_m, obj[TRIANGLE][n]->tr_e2);
-	det = dot_product(obj[TRIANGLE][n]->tr_e1, &cross_e);
-	if (fabs(det) < EPSILON)
-		return ;
-	f = 1.0 / det;
-	u[0] = f * dot_product(&p1_to_origin, &cross_e);
-	if (u[0] < 0.0 || u[0] > 1.0)
-		return ;
-	cross_product_na(&cross_e, &p1_to_origin, obj[TRIANGLE][n]->tr_e1);
-	u[1] = f * dot_product(mem->r_dir_m, &cross_e);
-	if (u[1] < 0.0 || (u[0] + u[1]) > 1.0)
-		return ;
-	result.t1 = f * dot_product(obj[TRIANGLE][n]->tr_e2, &cross_e);
-	result.t2 = (float)INT_MAX;
-	result.t_count = 1;
-	if (result.t1 < EPSILON)
-		return ;
-	take_shadow_color(mem, result, obj[TRIANGLE][n]);
-	//closestt(mem, result, TRIANGLE, n);
-}
-
-void	intersect_triangle_bonus(t_mem *memory_shuttle, t_obj ***obj, int n)
-{
-	t_intertt	result;
-
-	result.t_count = 0;
-	cal_intersect_bonus(memory_shuttle, obj, n, result);
-}
-/*
-//inutlie?
-void	clean_memory_shuttle_light(t_mem *mem_shuttle)
-{
-	//vector_fill(mem_shuttle->r_base_dir, 0, 0, 0);
-	//vector_fill(mem_shuttle->r_dir_m, 0, 0, 0);
-	point_fill(mem_shuttle->r_base_origin, 0, 0, 0);
-	point_fill(mem_shuttle->r_origin_m, 0, 0, 0);
-	mem_shuttle->closestt = INT_MAX;
-	mem_shuttle->obj_a = 0;
-	mem_shuttle->obj_b = 0;
-	mem_shuttle->t_count = 0;
-	mem_shuttle->distance_light_p_touch = 0.0;
-	mem_shuttle->p_space->x = 0.0;
-	mem_shuttle->p_space->y = 0.0;
-	mem_shuttle->p_space->z = 0.0;
-	mem_shuttle->p_touch->x = 0.0;
-	mem_shuttle->p_touch->y = 0.0;
-	mem_shuttle->p_touch->z = 0.0;
-	vector_fill(mem_shuttle->v_light_to_point, 0, 0, 0);
-	vector_fill(mem_shuttle->v_point_to_light, 0, 0, 0);
-	vector_fill(mem_shuttle->reflect_dir, 0, 0, 0);
-	vector_fill(mem_shuttle->scalar, 0, 0, 0);
-	vector_fill(mem_shuttle->view_dir, 0, 0, 0);
-	init_matrix_zero(mem_shuttle->obj_inv);
-	init_matrix_zero(mem_shuttle->transp_inv);
-}*/

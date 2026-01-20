@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   23_select_obj_dim.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/10 16:37:18 by syl               #+#    #+#             */
-/*   Updated: 2025/10/09 17:22:09 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:36:10 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,25 +27,23 @@ void	select_object(t_scene *scene, int x, int y)
 	scene->draw_mode = CHOOSE_AXE;
 }
 
+void	take_number(int keycode, t_glob **datas)
+{
+	int	digit;
+
+	digit = keycode - 48;
+	if (datas[0]->scene->after_virgule == 0.0)
+		datas[0]->scene->size_modif = (datas[0]->scene->size_modif * 10.0)
+			+ digit;
+	else if (datas[0]->scene->after_virgule < 1000.0)
+	{
+		datas[0]->scene->after_virgule *= 10.0;
+		datas[0]->scene->size_modif += digit / datas[0]->scene->after_virgule;
+	}
+}
+
 void	take_dimensions(int keycode, t_glob **datas)
 {
-	
-/*	float	digit;
-	(void) keycode;
-
-	if (scanf("%f", &digit))
-		datas[0]->scene->size_modif = digit;
-	printf("digit %f", digit);
-	if (keycode == 65293)
-	{
-		datas[0]->scene->size_modif *= datas[0]->scene->size_modif_neg;
-		if (datas[0]->scene->size_modif != 0.0)
-			apply_transformations(datas);
-		clear_modif(datas[0]->scene);
-	}*/
-
-
-	int digit;
 	if (datas[0]->scene->size_modif == 0.0 && keycode == 45
 		&& datas[0]->scene->size_modif_neg == 1.0)
 		datas[0]->scene->size_modif_neg *= -1.0;
@@ -58,22 +56,14 @@ void	take_dimensions(int keycode, t_glob **datas)
 	}
 	if (keycode >= 48 && keycode <= 57)
 	{
-		digit = keycode - 48;
-		if (datas[0]->scene->after_virgule == 0.0)
-			datas[0]->scene->size_modif = (datas[0]->scene->size_modif * 10.0) + digit;
-		else if (datas[0]->scene->after_virgule < 1000.0)
-		{
-			datas[0]->scene->after_virgule *= 10.0;
-			datas[0]->scene->size_modif += digit / datas[0]->scene->after_virgule;
-		}
+		take_number(keycode, datas);
 	}
-	if (keycode == 46 && datas[0]->scene->after_virgule == 0.0)//point?
+	if (keycode == 46 && datas[0]->scene->after_virgule == 0.0)
 		datas[0]->scene->after_virgule = 1.0;
 }
 
 void	take_axe(int keycode, t_scene *scene)
 {
-	printf("laaa");
 	if (keycode == 120)
 		scene->axe_draw = X_AXE;
 	else if (keycode == 121)
@@ -94,5 +84,4 @@ void	take_axe(int keycode, t_scene *scene)
 			print_on_screen(scene, "ROTATION ANGLE", 1, 255);
 		print_on_screen(scene, "MAX 360, MIN 0.001", 2, 255);
 	}
-	printf("laaa2");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_bonus.h                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2025/10/09 16:19:17 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:08:41 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void	clear_data(t_glob	**data, int i);
 //00_time.c
 void	get_timestamp(struct timeval start);
 void	paint_it_black(t_color *color);
+
 //01_reflection.c
 void	next_ray_reflection(t_mem *memory_shuttle);
 t_color	reflexion(t_scene *scene, t_mem *mem_shtle, t_color prev_color);
@@ -78,6 +79,7 @@ t_color	refraction(t_scene *scene, t_mem *mem_shtle);
 void	next_ray_refraction(t_scene *scene, t_mem *mem_shuttle);
 void	vect_refraction(t_coord *r_base_dir, t_coord *v_normal,\
 	float indice_refraction);
+void	cal_intersect_bonus(t_mem *mem, t_obj ***obj, int n, t_intertt result);
 
 //free_bonus.c 
 void	free_main_bonus(t_pix ***pix, t_scene *scene,\
@@ -90,12 +92,10 @@ t_mem	**init_multi_memory_shuttle(void);
 void	memory_shuttle_bonus_values_null(t_mem *mem_shuttle);
 void	clean_memory_shuttle_refl(t_mem *memory_shuttle);
 void	raytracer_threads(t_glob **datas);
-
 void	clear_multi_mem_shuttle(t_mem **multi_mem_shuttle, int i);
+
 //mouse_hooks.c
 int		mouse_click(int button, int x, int y, t_glob **data);
-//int		mouse_click(int button, int x, int y, t_scene *scene);
-//int		ft_keys_bonus(int keycode, t_scene *scene);
 int		ft_keys_bonus(int keycode, t_glob **datas);
 void	take_axe(int keycode, t_scene *scene);
 void	clear_modif(t_scene *scene);
@@ -104,17 +104,24 @@ void	clear_modif(t_scene *scene);
 t_color	lighting_bonus(t_scene *scene, t_mem *memory_shuttle,\
 	t_color obj_color);
 void	light_intersections_shadow(t_obj ***obj, t_mem *memory_shuttle);
-void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj);
+t_color	color_light(int i, t_color light_color, t_scene *scene,\
+	t_mem *memory_shuttle);
+void	obj_intersect(t_obj ***obj, t_mem *memory_shuttle, int a, int b);
+void	apply_transformation_bonus(t_obj *obj, t_mem *memory_shuttle);
+
+//01_raytracer_shadow.c
 void	raytracer_shadow_bonus(t_scene *scene, t_mem *mem_shtle, int num_light);
 void	next_ray_light(t_mem *mem_shuttle, t_coord *lux_p_coord);
+
+//01_take_shadow_color.c
+void	take_shadow_color(t_mem *mem_shuttle, t_intertt result, t_obj *obj);
+void	new_shadow_color(t_mem *mem_shuttle, t_obj *obj);
 
 //01_shadow_intersect.c
 void	intersect_plan_shadow_bonus(t_mem *memory_shuttle, t_obj *obj);
 void	intersect_sphere_shadow_bonus(t_mem *memory_shuttle, t_obj *obj);
 void	intersect_cylinder_bonus(t_mem *memory_shuttle, t_obj *obj);
-void	apply_transformation_bonus(t_obj *obj, t_mem *memory_shuttle);
 void	intersect_triangle_bonus(t_mem *memory_shuttle, t_obj ***obj, int n);
-void	cal_intersect_bonus(t_mem *mem, t_obj ***obj, int n, t_intertt result);
 void	intersect_cone_bonus(t_mem *memory_shuttle, t_obj *obj);
 
 //00_base_recursion.c
@@ -144,7 +151,6 @@ void	take_dimensions(int keycode, t_glob **datas);
 
 //apply_modifications.c
 void	apply_transformations(t_glob **datas);
-//void	apply_transformations(t_scene *scene);
 void	apply_move_changes(t_scene *scene);
 void	apply_rotate_changes(t_scene *scene);
 void	apply_scale_changes(t_scene *scene);

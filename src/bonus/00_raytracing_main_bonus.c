@@ -95,7 +95,7 @@ t_color	raytracer_bonus(t_pix *pix, t_scene *scene, t_mem *mem_shtle)
 		return (*(scene->obj[mem_shtle->obj_a][mem_shtle->obj_b]->color));
 	prepare_computation(mem_shtle, scene->obj);
 	color = pattern(mem_shtle, scene);
-	color_light =	lighting_bonus(scene, mem_shtle, color);
+	color_light = lighting_bonus(scene, mem_shtle, color);
 	mem_shtle->recursivity_level++;
 	if (mem_shtle->recursivity_level < MAX_RECURSIVITY)
 		color_light = next_ray(scene, mem_shtle, color_light);
@@ -125,34 +125,3 @@ t_color	next_ray(t_scene *scene, t_mem *mem_shtle, t_color prev_color)
 	}
 	return (prev_color);
 }
-/*
-//methode avec mutex. fonctionne. A voir si plus efficace avec transparence etc...
-void* routine(void *arg)
-{
-	int x;
-	int y;
-
-	x = ((t_glob *)arg)->mem_shuttle->pix_x;
-	y = ((t_glob *)arg)->mem_shuttle->pix_y;
-	while(y < WND_HEIGHT)
-	{
-		clean_memory_shuttle(((t_glob *)arg)->mem_shuttle);
-		init_viewport_x_y(((t_glob *)arg)->mem_shuttle, ((t_glob *)arg)->scene->cam, x, y);
-		init_camera_pix_ray(((t_glob *)arg)->mem_shuttle, ((t_glob *)arg)->scene->cam);
-		*(((t_glob *)arg)->pix[x][y]->color) = raytracer_bonus(((t_glob *)arg)->pix[x][y],
-			((t_glob *)arg)->scene, ((t_glob *)arg)->mem_shuttle);
-		pthread_mutex_lock(&((t_glob *)arg)->scene->mutex_x);
-		((t_glob *)arg)->scene->x_thread += 1;
-		if (((t_glob *)arg)->scene->x_thread >= WND_WIDTH)
-		{
-			((t_glob *)arg)->scene->x_thread = 0;
-			((t_glob *)arg)->scene->y_thread += 1;
-		}
-		((t_glob *)arg)->mem_shuttle->pix_x = ((t_glob *)arg)->scene->x_thread;
-		((t_glob *)arg)->mem_shuttle->pix_y = ((t_glob *)arg)->scene->y_thread;
-		pthread_mutex_unlock(&((t_glob *)arg)->scene->mutex_x);
-		x = ((t_glob *)arg)->mem_shuttle->pix_x;
-		y = ((t_glob *)arg)->mem_shuttle->pix_y;
-	}
-	return (0);
-}*/

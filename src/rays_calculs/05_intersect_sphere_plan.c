@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   05_intersect_sphere_plan.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 14:04:59 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 14:27:25 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:19:08 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	intersect_plan(t_mem *memory_shuttle, int plan_num)
 	if (fabs(memory_shuttle->r_dir_m->y) < EPSILON)
 		return ;
 	result.t1 = -(memory_shuttle->r_origin_m->y / memory_shuttle->r_dir_m->y);
-	result.t2 = INT_MAX;
+	result.t2 = (float)INT_MAX;
 	result.t_count = 1;
 	closestt(memory_shuttle, result, PLAN, plan_num);
 }

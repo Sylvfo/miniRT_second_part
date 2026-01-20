@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   30_clean_mem_shuttle.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/05 15:54:54 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 21:15:12 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:19:21 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	clean_memory_shuttle_refl(t_mem *mem_shuttle)
 	vector_fill(mem_shuttle->scalar, 0, 0, 0);
 	vector_fill(mem_shuttle->view_dir, 0, 0, 0);
 	mem_shuttle->t_count = 0;
-	mem_shuttle->closestt = INT_MAX;
+	mem_shuttle->closestt = (float)INT_MAX;
 	mem_shuttle->obj_a = 0;
 	mem_shuttle->obj_b = 0;
 	init_matrix_zero(mem_shuttle->obj_inv);

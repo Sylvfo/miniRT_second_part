@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   00_raytracing_main.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/09 12:27:13 by syl               #+#    #+#             */
-/*   Updated: 2025/10/09 16:16:59 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/20 15:52:20 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
-
-
 
 void	raytracing(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle)
 {
@@ -31,7 +29,7 @@ void	raytracing(t_pix ***pix, t_scene *scene, t_mem *mem_shuttle)
 			init_viewport_x_y(mem_shuttle, scene->cam, x, y);
 			init_camera_pix_ray(mem_shuttle, scene->cam);
 			*(pix[x][y]->color) = raytracer(pix[x][y],
-						scene, mem_shuttle);
+					scene, mem_shuttle);
 			y++;
 		}
 		x++;

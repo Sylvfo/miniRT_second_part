@@ -14,7 +14,6 @@
 # define MINIRT_H
 
 # include "../../lib/libft/libft.h"
-//# include "../../lib/minilibx-linux/mlx_int.h"
 # include "../../lib/minilibx-linux/mlx.h"
 # include <math.h>
 # include <stdio.h>
@@ -37,7 +36,6 @@
 # include "minirt_bonus.h"
 # define WND_WIDTH 2000
 # define WND_HEIGHT 1200
-
 
 # define BAKGROUND_COLOR 711850
 # define EPSILON 0.0001

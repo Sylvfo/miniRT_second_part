@@ -73,7 +73,7 @@ int	main(int argc, char **argv)
 	base_data(scene);
 	raytracing(pix, scene, memory_shuttle);
 	pix_to_window(pix, scene);
-	image_hooks(scene);//??
+	image_hooks(scene);
 	free_main(pix, scene, memory_shuttle);
 	return (EXIT_SUCCESS);
 }

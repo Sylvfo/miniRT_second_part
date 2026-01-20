@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   free_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/07 15:13:09 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 16:37:58 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/20 16:39:07 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
 void	free_main_bonus(t_pix ***pix, t_scene *scene, t_mem **multi_mem_shuttle)
-{	
+{
 	pthread_mutex_destroy(&scene->mutex_x);
 	pthread_mutex_destroy(&scene->mutex_y);
 	if (scene)
@@ -33,12 +33,12 @@ void	free_main_bonus(t_pix ***pix, t_scene *scene, t_mem **multi_mem_shuttle)
 	}
 }
 
-void free_multi_memory_shuttle(t_mem **multi_mem_shuttle)
+void	free_multi_memory_shuttle(t_mem **multi_mem_shuttle)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(i < NB_THREADS)
+	while (i < NB_THREADS)
 	{
 		free_memory_shuttle(multi_mem_shuttle[i]);
 		free(multi_mem_shuttle[i]);
@@ -47,12 +47,12 @@ void free_multi_memory_shuttle(t_mem **multi_mem_shuttle)
 	}
 }
 
-void free_data(t_glob **datas)
+void	free_data(t_glob **datas)
 {
-	int i;
+	int	i;
 
 	if (!datas)
-		return;
+		return ;
 	i = 0;
 	while (i < NB_THREADS)
 	{
