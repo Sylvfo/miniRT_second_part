@@ -3,27 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   free_main.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/22 20:41:40 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:19:20 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/21 10:23:26 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-void free_main(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
+void	free_main(t_pix ***pix, t_scene *scene, t_mem *memory_shuttle)
 {
 	if (scene)
+	{
+		scene->pix = NULL;
+		scene->mem_shuttle = NULL;
 		free_scene(scene);
-	free(scene);
+	}
 	scene = NULL;
 	free_pix_struct(pix, WND_WIDTH, WND_HEIGHT);
-	//free_pix_struct(pix, WND_HEIGHT, WND_WIDTH);
 	free_pix_array(pix, WND_WIDTH, WND_HEIGHT);
-	//free_pix_array(pix, WND_HEIGHT, WND_WIDTH);
-	if (memory_shuttle);
+	if (memory_shuttle)
 		free_memory_shuttle(memory_shuttle);
 	free(memory_shuttle);
 	memory_shuttle = NULL;
+}
+
+int	free_arg(char **str)
+{
+	int	i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+	return (0);
 }

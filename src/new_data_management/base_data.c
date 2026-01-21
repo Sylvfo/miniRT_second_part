@@ -6,85 +6,48 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 08:58:41 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 11:20:54 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/13 11:30:33 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-// modifications a faire avec les donnes de base...
-// a faire apres que les donnees ont ete enregistrees. 
-void	base_data2(t_scene *scene)
+static void	base_cylcone(t_scene *scene, int a, int n)
 {
-	int i;
+	int	i;
 
-	scene->bonus_mode = false; // A VOIR POUR CHANGER APRES
+	i = 0;
+	while (i < n)
+	{
+		scene->obj[a][i]->diam = scene->obj[a][i]->diam / 2;
+		scene->obj[a][i]->radius = scene->obj[a][i]->diam;
+		scene->obj[a][i]->height = scene->obj[a][i]->height / 2;
+		i++;
+	}
+}
+
+void	base_data(t_scene *scene)
+{
+	int	i;
+
+	i = 0;
+	background_base_color(scene);
 	scene->cam->fov = scene->cam->fov * 0.0174533;
+	while (i < scene->nb_sphere)
+	{
+		scene->obj[1][i]->diam = scene->obj[1][i]->diam / 2;
+		scene->obj[1][i]->radius = scene->obj[1][i]->diam;
+		i++;
+	}
+	base_cylcone(scene, CYLINDER, scene->nb_cylinder);
+	base_cylcone(scene, CONE, scene->nb_cone);
+}
+
+void	background_base_color(t_scene *scene)
+{
 	color_int_to_rgb(BAKGROUND_COLOR, scene->obj[0][0]->color);
 	scene->obj[0][0]->color->r = int_to_float(scene->obj[0][0]->color->r);
 	scene->obj[0][0]->color->g = int_to_float(scene->obj[0][0]->color->g);
 	scene->obj[0][0]->color->b = int_to_float(scene->obj[0][0]->color->b);
 	scalar_mult_color(scene->lux[0][0]->color, scene->lux[0][0]->ratio);
-	
-	i = 0;
-/*	if (scene->bonus_mode == false)
-	{
-		while (i < scene->nb_lights)
-		{
-			scene->lux[1][i]->color->r = 1.0;
-			scene->lux[1][i]->color->g = 1.0;
-			scene->lux[1][i]->color->b = 1.0;
-			scene->lux[1][i]->color->rgb = 0; //??
-			i++;
-		}
-	}*/
-/*	if (scene->bonus_mode == true)
-	{
-		while (i < scene->nb_lights)// mettres les lum a 1
-		{
-			if (scene->lux[1][i]->color->r != 0.0)
-				scene->lux[1][i]->color->r /= 255.0;
-			if (scene->lux[1][i]->color->g != 0.0)
-				scene->lux[1][i]->color->g /= 255.0;
-			if (scene->lux[1][i]->color->b != 0.0)	
-				scene->lux[1][i]->color->b /= 255.0;
-			scene->lux[1][i]->color->rgb = 0; //??
-			i++;
-		}
-	}*/
-	int a;
-	int b;
-
-	a = 1;
-	b = 0;
-	// SPHERES
-	while(b < 2)
-	{
-		scene->obj[1][b]->diam = scene->obj[1][b]->diam / 2;
-		scene->obj[1][b]->radius = scene->obj[1][b]->diam / 2;
-		scene->obj[1][b]->difuse = 0.7;
-		scene->obj[1][b]->specular = 0.8;
-//		scene->obj[1][b]->radius /= 2;
-		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
-		b++;
-	}
-	while(b < 2)
-	{
-		scene->obj[2][b]->difuse = 0.9;
-		scene->obj[2][b]->specular = 0.9;
-//		scene->obj[1][b]->radius /= 2;
-		//scene->obj[1][b]->radius = scene->obj[1][b]->diam;
-		b++;
-	}
-	// CYL
-	b = 0;
-	while(b < 1)
-	{
-		scene->obj[3][b]->diam = scene->obj[3][b]->diam / 2;
-		scene->obj[3][b]->radius = scene->obj[3][b]->diam / 2;
-		scene->obj[3][b]->height = scene->obj[3][b]->height / 2;
-		scene->obj[3][b]->difuse = 0.9;
-		scene->obj[3][b]->specular = 0.9;
-		b++;
-	}
 }

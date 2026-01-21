@@ -12,61 +12,46 @@
 
 #include "../inc/minirt.h"
 
-/*
-static void	save_ambient_light(char *line, t_pix **pix)
+int	save_ambient(char *str, t_light *lux)
 {
-	t_color	color;
-	float	ratio;
-	t_light	*ambient_light;
+	char	**params;
 
-	ambient_light = pix[0][0].lux[0][0];
-	if (!ambient_light)
-		return ;
-	line++;
-	skip_whitespace((const char **)&line);
-	ratio = ft_strtod(line, &line);
-	skip_whitespace((const char **)&line);
-	parse_color(&line, &color.r, &color.g, &color.b);
-	ambient_light->ratio = ratio;
-	ambient_light->color->r = color.r;
-	ambient_light->color->g = color.g;
-	ambient_light->color->b = color.b;
+	params = ft_split(str, ' ');
+	if (!params)
+		return (error_system());
+	lux->ratio = number(params[1]);
+	if (!save_color(params[2], lux->color, lux->color))
+	{
+		free_arg(params);
+		return (0);
+	}
+	free_arg(params);
+	return (1);
 }
 
-static void	save_other_light(char *line, t_pix **pix, t_num_obj *num_obj)
+int	save_light(char *str, t_light **lux)
 {
-	t_color	color;
-	t_coord	position;
-	float	ratio;
-	t_light	*other_light;
+	char	**params;
+	int		i;
 
-	other_light = pix[0][0].lux[1][num_obj->light];
-	if (!other_light)
-		return ;
-	line++;
-	skip_whitespace((const char **)&line);
-	parse_coordinates(&line, &position.x, &position.y, &position.z);
-	ratio = ft_strtod(line, &line);
-	skip_whitespace((const char **)&line);
-	parse_color(&line, &color.r, &color.g, &color.b);
-	color.r = int_to_float(color.r);
-	color.g = int_to_float(color.g);
-	color.b = int_to_float(color.b);
-	other_light->p_coord->x = position.x;
-	other_light->p_coord->y = position.y;
-	other_light->p_coord->z = position.z;
-	other_light->ratio = ratio;
-	other_light->color->r = color.r;
-	other_light->color->g = color.g;
-	other_light->color->b = color.b;
-	num_obj->light++;
+	i = 0;
+	params = ft_split(str, ' ');
+	if (!params)
+		return (error_system());
+	while (lux[i]->ratio >= 0)
+		i++;
+	if (!save_coordonnee(params[1], lux[i]->p_coord))
+	{
+		free_arg(params);
+		return (0);
+	}
+	if (ft_size(params) == NB_EL_LIGHT && !save_color(params[3], lux[i]->color, \
+lux[i]->color))
+	{
+		free_arg(params);
+		return (0);
+	}
+	lux[i]->ratio = number(params[2]);
+	free_arg(params);
+	return (1);
 }
-
-void	save_light(char *line, t_program_context *context)
-{
-	if (line[0] == 'A')
-		save_ambient_light(line, context->pix[0]);
-	else if (line[0] == 'L')
-		save_other_light(line, context->pix[0], context->num_obj);
-}
-*/

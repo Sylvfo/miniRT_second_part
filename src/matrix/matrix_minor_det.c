@@ -16,15 +16,12 @@ float	determinant_44(float *m_matrix, float *m_minor)
 {
 	float	determinant;
 	int		i;
-	int		sign;
 
-	sign = 1;
 	determinant = 0;
 	i = 2;
 	while (i < 6)
 	{
-		determinant += sign * m_matrix[i] * m_minor[i];
-		sign = -sign;
+		determinant += m_matrix[i] * m_minor[i];
 		i++;
 	}
 	return (determinant);

@@ -1,2 +1,0 @@
-valgrind --track-origins=yes ./minirt image/simple.rt 
-

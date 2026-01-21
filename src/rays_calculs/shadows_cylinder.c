@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:46:14 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/31 16:20:21 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:52:58 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static bool	check_shadow_cyl_body_t(float t, t_coord *s_o_local,
 {
 	float	y_intersect;
 
-	if (t > EPSILON && t < max_dist)// changer epsilon par 0.001?
+	if (t > 0.00001 && t < max_dist)
 	{
 		y_intersect = s_o_local->y + t * s_d_local->y;
 		if (y_intersect >= -1.0f && y_intersect <= 1.0f)
@@ -71,28 +71,22 @@ static bool	intersect_cyl_body_shadow_calc(t_coord *s_o_l, t_coord *s_d_l,
 }
 
 static bool	intersect_cyl_caps_shadow_calc(t_coord *s_o_l, t_coord *s_d_l,
-	float max_d, t_obj *cyl)
+	float max_d)
 {
 	float	t;
 
 	if (fabs(s_d_l->y) < EPSILON)
 		return (false);
-//	if (cyl->closed_down)
-//	{
 	t = (-1.0f - s_o_l->y) / s_d_l->y;
 	if (check_shadow_cyl_cap_t(t, s_o_l, s_d_l, max_d))
 		return (true);
-//	}
-//	if (cyl->closed_up)
-//	{
 	t = (1.0f - s_o_l->y) / s_d_l->y;
 	if (check_shadow_cyl_cap_t(t, s_o_l, s_d_l, max_d))
 		return (true);
-//	}
 	return (false);
 }
 
-bool	intersect_cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder)
+bool	cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder)
 {
 	t_coord	s_o_world;
 	t_coord	s_o_local;
@@ -111,7 +105,9 @@ bool	intersect_cylinder_shadow(t_mem *memory_shuttle, t_obj *cylinder)
 			memory_shuttle->distance_light_p_touch, cylinder))
 		return (true);
 	if (intersect_cyl_caps_shadow_calc(&s_o_local, &s_d_local,
-			memory_shuttle->distance_light_p_touch, cylinder))
+			memory_shuttle->distance_light_p_touch))
 		return (true);
 	return (false);
 }
+
+// rajouter l'ombre pour le cone

@@ -12,57 +12,63 @@
 
 #include "../inc/minirt.h"
 
-/*
-static void	parse_cylinder_params(char **line, t_cylinder_params *params)
+int	save_cylinder(char *str, t_obj **obj, int *pos)
 {
-	skip_whitespace((const char **)line);
-	parse_coordinates(line, &params->coord.x, &params->coord.y,
-		&params->coord.z);
-	params->coord.t = 1;
-	skip_whitespace((const char **)line);
-	parse_coordinates(line, &params->orientation.x, &params->orientation.y,
-		&params->orientation.z);
-	params->orientation.t = 0;
-	skip_whitespace((const char **)line);
-	parse_float(line, &params->diameter);
-	skip_whitespace((const char **)line);
-	parse_float(line, &params->height);
-	skip_whitespace((const char **)line);
-	parse_color(line, &params->color.r, &params->color.g, &params->color.b);
-	params->color.r = int_to_float(params->color.r);
-	params->color.g = int_to_float(params->color.g);
-	params->color.b = int_to_float(params->color.b);
+	char	**params;
+	int		i;
+
+	i = 0;
+	params = ft_split(str, ' ');
+	if (!params)
+		return (error_system());
+	while (obj[i]->type == CYLINDER)
+		i++;
+	obj[i]->type = CYLINDER;
+	if (!save_coordonnee(params[1], obj[i]->p_coord) || \
+!save_coordonnee(params[2], obj[i]->v_axe) || \
+!save_color(params[5], obj[i]->color, &obj[i]->color2))
+	{
+		free_arg(params);
+		return (0);
+	}
+	obj[i]->p_coord->t = 1;
+	obj[i]->v_axe->t = 0;
+	obj[i]->diam = number(params[3]);
+	obj[i]->radius = obj[i]->diam / 2;
+	obj[i]->height = number(params[4]);
+	normalize_vector_na(obj[i]->v_axe);
+	free_arg(params);
+	*pos = i;
+	return (1);
 }
 
-static void	set_cylinder_obj(t_obj *cylinder, t_cylinder_params *params)
+//	save cone
+int	save_cone(char *str, t_obj **obj, int *pos)
 {
-	cylinder->diam = params->diameter / 2.0f;
-	cylinder->radius = params->diameter / 2.0f;
-	cylinder->height = params->height / 2.0f;
-	cylinder->p_coord->x = params->coord.x;
-	cylinder->p_coord->y = params->coord.y;
-	cylinder->p_coord->z = params->coord.z;
-	cylinder->color->r = params->color.r;
-	cylinder->color->g = params->color.g;
-	cylinder->color->b = params->color.b;
-	cylinder->v_axe->x = params->orientation.x;
-	cylinder->v_axe->y = params->orientation.y;
-	cylinder->v_axe->z = params->orientation.z;
-	cylinder->type = CYLINDER;
-	cylinder->closed_up = false;
-	cylinder->closed_down = true;
+	char	**params;
+	int		i;
+
+	i = 0;
+	params = ft_split(str, ' ');
+	if (!params)
+		return (error_system());
+	while (obj[i]->type == CONE)
+		i++;
+	obj[i]->type = CONE;
+	if (!save_coordonnee(params[1], obj[i]->p_coord) || \
+!save_coordonnee(params[2], obj[i]->v_axe) || \
+!save_color(params[5], obj[i]->color, &obj[i]->color2))
+	{
+		free_arg(params);
+		return (0);
+	}
+	obj[i]->p_coord->t = 1;
+	obj[i]->v_axe->t = 0;
+	obj[i]->diam = number(params[3]);
+	obj[i]->radius = obj[i]->diam / 2;
+	obj[i]->height = number(params[4]);
+	normalize_vector_na(obj[i]->v_axe);
+	free_arg(params);
+	*pos = i;
+	return (1);
 }
-
-void	save_cylinder(char *line, t_program_context *context)
-{
-	t_cylinder_params	params;
-	t_obj				*cylinder;
-
-	line += 2;
-	parse_cylinder_params(&line, &params);
-	cylinder = context->pix[0][0]->obj[3][context->num_obj->cylinder];
-	if (!cylinder)
-		return ;
-	set_cylinder_obj(cylinder, &params);
-	context->num_obj->cylinder++;
-}*/

@@ -29,7 +29,7 @@ void	matrix_point_multiplication_new(t_coord *result, float *m, t_coord *p)
 	result->t = t;
 }
 
-void	matrix_point_multiplication_new_2(t_coord *result, float *m, t_coord *p)
+void	matrix_point_multiplication_2(t_coord *result, float *m, t_coord *p)
 {
 	float	x;
 	float	y;

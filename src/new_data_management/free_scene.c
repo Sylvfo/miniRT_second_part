@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 13:35:27 by syl               #+#    #+#             */
-/*   Updated: 2025/05/31 17:12:12 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 22:33:44 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_scene(t_scene *scene)
 {
 	if (!scene)
-		return;
+		return ;
 	if (scene->obj)
 	{
 		free_obj_cph(scene);
@@ -32,9 +32,24 @@ void	free_scene(t_scene *scene)
 	{
 		free_lux_cph(scene);
 		free(scene->lux);
-		scene->lux = NULL;		
+		scene->lux = NULL;
 	}
 	free_cam_cph(scene);
+	free(scene);
+}
+
+static void	destroy_ima_bonus(t_scene *scene)
+{
+	if (scene->ima->ima_cmd)
+	{
+		mlx_destroy_image(scene->ima->mlx_ptr, scene->ima->ima_cmd);
+		scene->ima->ima_cmd = NULL;
+	}
+	if (scene->ima->ima_blk)
+	{
+		mlx_destroy_image(scene->ima->mlx_ptr, scene->ima->ima_blk);
+		scene->ima->ima_blk = NULL;
+	}
 }
 
 void	free_ima(t_scene *scene)
@@ -46,6 +61,7 @@ void	free_ima(t_scene *scene)
 		mlx_destroy_image(scene->ima->mlx_ptr, scene->ima->img);
 		scene->ima->img = NULL;
 	}
+	destroy_ima_bonus(scene);
 	if (scene->ima->mlx_win)
 	{
 		mlx_destroy_window(scene->ima->mlx_ptr, scene->ima->mlx_win);

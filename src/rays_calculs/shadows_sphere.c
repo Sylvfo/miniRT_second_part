@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/15 10:45:17 by cmegret           #+#    #+#             */
-/*   Updated: 2025/05/31 16:46:56 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 14:48:21 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static bool	check_shadow_sphere_roots(float discriminant, float *coeffs,
 	return (false);
 }
 
-bool	intersect_sphere_shadow(t_obj *sphere, t_mem *memory_shuttle)
+bool	sphere_shadow(t_obj *sphere, t_mem *memory_shuttle)
 {
 	float	coeffs[3];
 	float	discriminant;

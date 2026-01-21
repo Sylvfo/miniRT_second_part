@@ -6,13 +6,12 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 09:30:45 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 13:27:34 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 22:33:10 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/minirt.h"
 
-//fait pas chat gpt... je sais pas si ca fonctionne bien,.
 void	*free_partial_pix(t_pix ***pix, int height, int width)
 {
 	int	i;
@@ -37,7 +36,6 @@ void	*free_partial_pix(t_pix ***pix, int height, int width)
 	return (NULL);
 }
 
-//fonctionne :)
 void	free_pix_array(t_pix ***pix, int height, int width)
 {
 	int	i;
@@ -79,31 +77,11 @@ void	free_pix_struct(t_pix ***pix, int height, int width)
 		{
 			if (pix[i][j] != NULL)
 			{
-			/*	if (pix[i][j]->p_viewport != NULL)
-				{
-					free(pix[i][j]->p_viewport);
-					pix[i][j]->p_viewport = NULL;
-				}
-				if (pix[i][j]->p_viewport_world != NULL)
-				{
-					free(pix[i][j]->p_viewport_world);
-					pix[i][j]->p_viewport_world = NULL;
-				}*/
-			/*	if (pix[i][j]->r_dir != NULL)
-				{
-					free(pix[i][j]->r_dir);
-					pix[i][j]->r_dir = NULL;
-				}
-				if (pix[i][j]->r_origin != NULL)
-				{
-					free(pix[i][j]->r_origin);
-					pix[i][j]->r_origin = NULL;
-				}*/
 				if (pix[i][j]->color != NULL)
 				{
 					free(pix[i][j]->color);
 					pix[i][j]->color = NULL;
-				}		
+				}
 			}
 			j++;
 		}

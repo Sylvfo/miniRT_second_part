@@ -6,7 +6,7 @@
 /*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/12 12:57:13 by syl               #+#    #+#             */
-/*   Updated: 2025/06/02 10:49:33 by syl              ###   ########.fr       */
+/*   Updated: 2025/06/12 16:46:59 by syl              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	float_to_byte(float f)
 {
 	if (f <= 0.0f)
 		return (0);
-	if (f >= 255)
+	if (f >= 1.0)
 		return (255);
 	return ((int)(f * 255));
 }
@@ -88,9 +88,9 @@ void	color_float_to_int(t_color *c_color)
 
 void	color_int_to_rgb(int int_color, t_color *rgb)
 {
-	rgb->r = (int_color >> 16) & 0xFF;
-	rgb->g = (int_color >> 8) & 0xFF;
-	rgb->b = int_color & 0xFF;
+	rgb->r = (int_color >> 16) & 0xFF / 255;
+	rgb->g = (int_color >> 8) & 0xFF / 255;
+	rgb->b = int_color & 0xFF / 255;
 	rgb->rgb = int_color;
 	return ;
 }
@@ -124,33 +124,3 @@ void	scalar_mult_color(t_color *c_1, float scale)
 	if (c_1->b > 1)
 		c_1->b = 1;
 }
-
-t_color	scalar_mult_color2(t_color c_1, float scale)
-{
-	t_color new;
-
-	if (scale < 0)
-	{
-		printf("negative scale \n");
-	//	return ();
-	}
-	new.r =  c_1.r * scale;
-	new.g =  c_1.g * scale;
-	new.b =  c_1.b * scale;
-	new.rgb = 0;
-	return (new);
-}
-
-/*
-void	multipling_color(t_color *c_1, t_color *c_2)
-{
-	if (!c_1 || !c_2)
-	{
-		printf("miss a colour \n");
-		return ;
-	}
-	c_1->r *= c_2->r;
-	c_1->g *= c_2->g;
-	c_1->b *= c_2->b;
-	color_float_to_int(c_1);
-}*/

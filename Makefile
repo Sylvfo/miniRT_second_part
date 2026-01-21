@@ -3,28 +3,15 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
+#    By: sforster <sforster@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/06/02 09:48:46 by syl              ###   ########.fr        #
+#    Updated: 2026/01/20 15:46:54 by sforster         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# https://patorjk.com/software/taag/
-HEADER1 =                                               
-HEADER2 =                                               
-HEADER3 = "███╗   ███╗██╗███╗   ██╗██╗██████╗ ████████╗"
-HEADER4 = "████╗ ████║██║████╗  ██║██║██╔══██╗╚══██╔══╝"
-HEADER5 = "██╔████╔██║██║██╔██╗ ██║██║██████╔╝   ██║   "
-HEADER6 = "██║╚██╔╝██║██║██║╚██╗██║██║██╔══██╗   ██║   "
-HEADER7 = "██║ ╚═╝ ██║██║██║ ╚████║██║██║  ██║   ██║   "
-HEADER8 = "╚═╝     ╚═╝╚═╝╚═╝  ╚═══╝╚═╝╚═╝  ╚═╝   ╚═╝   "
-HEADER9 =                                               
-HEADER10 =                                              
-
-# Délai d'affichage du logo
-DELAY = 0.1
-
+HEADER1 = "redo header"                                              
+                                              
 # Redirection des erreurs
 REDIRECT = > /dev/null 2>&1
 
@@ -38,44 +25,27 @@ CYAN = \033[0;36m
 RESET = \033[0m
 
 # Nom de l'exécutable
-NAME = minirt
-
+NAME = miniRT
+NAME2 = miniRT_bonus
 # Compilateur
-CC = cc
+CC = cc -O3
 
 # Flags de compilation -Wall -Wextra -Werror
-CFLAGS = #-Wall -Wextra -Werror #-Iincludes
+CFLAGS = -Wall -Wextra #-Werror #-Iincludes
 LIBFLAGS = -Llib/libft -lft
 
 # Fichiers sources
 SRC_DIR = ./src
 #SRCS = ${shell find ${SRC_DIR} -type f -name '*.c'}\
 
-SRCS = ./src/main.c \
-	./src/initialization/init_camera.c \
-	./src/initialization/init_data.c \
-	./src/initialization/init_hits_alloc.c \
-	./src/initialization/init_hits_background.c \
-	./src/initialization/init_hits.c \
-	./src/initialization/init_hits_cylinders.c \
-	./src/initialization/init_hits_init.c \
-	./src/initialization/init_hits_plans.c \
-	./src/initialization/init_hits_spheres.c \
-	./src/initialization/init_light_alloc.c \
-	./src/initialization/init_light.c \
-	./src/initialization/init_light_init.c \
-	./src/initialization/init_object_alloc.c \
-	./src/initialization/init_object.c \
-	./src/initialization/init_object_free.c \
-	./src/initialization/init_object_free_utils.c \
-	./src/initialization/init_object_init.c \
-	./src/initialization/init_scene.c \
-	./src/initialization/init_scene_camera.c \
-	./src/initialization/init_scene_comps.c \
-	./src/initialization/init_scene_hits.c \
-	./src/initialization/init_scene_obj.c \
-	./src/initialization/init_scene_viewport.c \
-	./src/matrix/00_matrix_check.c \
+DEBUG = $(SRC_DIR)/debug/
+PARSING = $(SRC_DIR)/parsing_me/
+SAVING = $(SRC_DIR)/saving_data/
+UTILS = $(SRC_DIR)/utils/
+INIT = $(SRC_DIR)/new_data_management/
+BONUS = $(SRC_DIR)/bonus/
+RAY_CALCUL = $(SRC_DIR)/rays_calculs/
+SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/matrix/00_matrix_creation.c \
 	./src/matrix/00_matrix_multiplication.c \
 	./src/matrix/00_matrix_operations.c \
@@ -86,16 +56,6 @@ SRCS = ./src/main.c \
 	./src/matrix/matrix_inverse.c \
 	./src/matrix/matrix_minor_det.c \
 	./src/matrix/matrix_submatrix.c \
-	./src/parsing/parse_camera.c \
-	./src/parsing/parse_checks.c \
-	./src/parsing/parse_color.c \
-	./src/parsing/parse_light.c \
-	./src/parsing/parse_plane.c \
-	./src/parsing/parse_sphere_cylinder.c \
-	./src/parsing/parse_utils.c \
-	./src/parsing/scene_parsing.c \
-	./src/parsing_terminate/init_matrix_ima.c \
-	./src/parsing_terminate/s_create_point_vector.c \
 	./src/rays_calculs/00_raytracing_main.c \
 	./src/rays_calculs/01_camera_construction.c \
 	./src/rays_calculs/02_viewport_construction.c \
@@ -127,82 +87,107 @@ SRCS = ./src/main.c \
 	./src/vect_point_color/vector_operations.c \
 	./src/vect_point_color/vector_operations_length.c \
 	./src/vect_point_color/color_operation2.c \
+	./src/vect_point_color/s_create_point_vector.c \
 	./src/window/event_hooks.c \
 	./src/window/event_hooks_function.c \
 	./src/window/image_to_window.c \
 	./src/window/pixel_put.c \
-	./src/free/free_all.c \
-	./src/free/free_basics.c \
-	./src/free/free_components.c \
-	./src/free/free_comps.c \
-	./src/free/free_hits.c \
-	./src/free/free_lights.c \
-	./src/free/free_pixels.c \
-	./src/free/free_pixels2.c \
 	./src/new_data_management/init_memory_main.c \
 	./src/new_data_management/init_pix.c \
 	./src/new_data_management/free_main.c \
 	./src/new_data_management/free_pix.c \
-	./src/new_data_management/check_main.c \
 	./src/new_data_management/init_scene.c \
 	./src/new_data_management/free_scene.c \
-	./src/new_data_management/no_parsing.c \
 	./src/new_data_management/init_memory_shuttle.c \
+	./src/new_data_management/free_memory_shuttle.c \
 	./src/new_data_management/base_data.c \
 	./src/new_data_management/init_cam.c \
 	./src/new_data_management/init_lux.c \
-	 
+	./src/new_data_management/create_image.c \
+	./src/new_data_management/free_cam.c \
+	./src/new_data_management/free_obj.c \
+	./src/new_data_management/free_obj2.c \
+	./src/new_data_management/init_each_obj.c \
+	./src/new_data_management/free_lux.c \
+	./src/bonus/00_raytracing_main_bonus.c \
+	./src/bonus/01_reflection.c \
+	./src/bonus/20_mouse_hooks.c \
+	./src/bonus/transf_obj.c \
+	./src/bonus/21_render_mode.c \
+	./src/bonus/22_select_transformation.c \
+	./src/bonus/23_select_obj_dim.c \
+	./src/bonus/apply_modifications.c \
+	./src/bonus/matrix_rotation.c \
+	./src/bonus/print_action.c \
+	./src/bonus/print_on_screen.c \
+	./src/bonus/30_clean_mem_shuttle.c \
+	./src/bonus/00_init_bonus.c\
+	./src/bonus/00_time.c\
+	./src/bonus/01_transparence.c\
+	./src/bonus/01_refraction.c\
+	./src/bonus/free_bonus.c \
+	./src/bonus/01_lighting_bonus.c\
+	./src/bonus/01_shadow_intersect.c\
+	./src/bonus/01_raytracer_shadow.c\
+	./src/bonus/01_take_shadow_color.c\
+	./src/bonus/export_jpg.c\
+	./src/bonus/04_save_rt_main.c\
+	$(INIT)init_object.c\
+	$(INIT)init_object2.c\
+	$(PARSING)map_check.c $(PARSING)map_check2.c\
+	$(PARSING)map_struct.c $(PARSING)map_struct2.c\
+	$(PARSING)verification.c $(PARSING)check_parameter.c\
+	$(SAVING)save_triangle.c\
+	$(SAVING)save_parameter.c\
+	$(DEBUG)error.c\
+	$(UTILS)utils.c $(UTILS)utils2.c\
+	$(RAY_CALCUL)07_intersect_cone.c\
+	$(RAY_CALCUL)08_intersect_triangle.c\
+	$(RAY_CALCUL)pattern.c\
+	$(RAY_CALCUL)pattern_form.c\
+	$(RAY_CALCUL)pattern_perlin.c\
+	$(RAY_CALCUL)texture.c\
+	$(BONUS)coord_modified.c\
+	$(BONUS)04_save_suite_rt.c\
+	$(BONUS)04_write_file_rt.c\
+
+SRCS = $(SOURCES)\
+		./src/main.c 
+
+SRCS_BONUS = $(SOURCES)\
+		$(BONUS)main_bonus.c 
+
 # Détection de l'OS pour choisir la bonne version de la MLX
-UNAME_S := $(shell uname -s)
-ifeq ($(UNAME_S),Darwin)
-	MLX_DIR := lib/minilibx_opengl
-	MLX_INC := -I$(MLX_DIR)
-	MLX_LNK := -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
-else
+#UNAME_S := $(shell uname -s)
+#ifeq ($(UNAME_S),Darwin)
+#	MLX_DIR := lib/minilibx_opengl
+#	MLX_INC := -I$(MLX_DIR)
+#	MLX_LNK := -L$(MLX_DIR) -lmlx -framework OpenGL -framework AppKit
+#else
 	MLX_DIR := lib/minilibx-linux
 	MLX_INC := -I$(MLX_DIR)
 	MLX_LNK := -L$(MLX_DIR) -lmlx -lXext -lX11 -lm
-endif
+#endif
 
 # Bibliothèques
 LIBFT = lib/libft/libft.a
 
 # Fichiers objets
 OBJ_DIR = objs
+
 OBJ = $(SRCS:%.c=$(OBJ_DIR)/%.o)
 
-# Fichiers de test
-TEST_SRCS = tests/run_test.c tests/test_validate_ambient.c tests/test_validate_light.c tests/test_validate_camera.c $(filter-out srcs/main/main.c, $(SRCS))
-TEST_OBJS = $(TEST_SRCS:.c=.o)
-TEST_NAME = test_fonction
+OBJ_BONUS = $(SRCS_BONUS:%.c=$(OBJ_DIR)/%.o)
 
 # all: start norm $(MLX_DIR)/libmlx.a $(NAME)
 all: start norm $(MLX_DIR)/libmlx.a $(NAME)
 
-# Règle pour afficher le logo au démarrage
-start:
-	clear
-	@echo $(HEADER1)
-	@sleep $(DELAY)
-	@echo $(HEADER2)
-	@sleep $(DELAY)
-	@echo $(HEADER3)
-	@sleep $(DELAY)
-	@echo $(HEADER4)
-	@sleep $(DELAY)
-	@echo $(HEADER5)
-	@sleep $(DELAY)
-	@echo $(HEADER6)
-	@sleep $(DELAY)
-	@echo $(HEADER7)
-	@sleep $(DELAY)
-	@echo $(HEADER8)
-	@sleep $(DELAY)
-	@echo $(HEADER9)
-	@sleep $(DELAY)
-	@echo $(HEADER10)
-	@sleep $(DELAY)
+bonus:start norm $(MLX_DIR)/libmlx.a $(NAME2)
 
+$(NAME2): $(LIBFT) $(OBJ_BONUS)
+	@echo "$(BLUE)Linking: $@$(RESET)"
+	@$(CC) $(CFLAGS) -o $(NAME2) $(OBJ_BONUS) $(LIBFLAGS) $(MLX_LNK)
+	@echo "$(GREEN)\nCompilation successful!\n$(RESET)"
 # Règle pour compiler MinilibX
 $(MLX_DIR)/libmlx.a:
 	@echo "$(BLUE)Compiling MinilibX...$(RESET)"
@@ -270,6 +255,7 @@ clean:
 fclean: clean
 	@echo "$(RED)Cleaning executable(s)...$(RESET)"
 	@rm -f $(NAME)
+	@rm -f $(NAME2)
 	@rm -f $(TEST_NAME)
 	@$(MAKE) -C lib/libft/ fclean $(REDIRECT)
 	@sleep 1
