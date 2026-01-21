@@ -6,7 +6,7 @@
 /*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2026/01/21 11:00:17 by sforster         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:02:25 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,12 @@ int	main(int argc, char **argv)
 	datas = init_data(pix, scene, multi_memory_shuttle);
 	if (!datas)
 	{
-		free_main_bonus(pix, scene, multi_memory_shuttle, NULL);
+		free_bonus(pix, scene, multi_memory_shuttle, NULL);
 		return (1);
 	}
 	raytracing_main_bonus(datas);
 	pix_to_window(pix, scene);
 	image_hooks_bonus(datas);
-	free_main_bonus(pix, scene, multi_memory_shuttle, datas);
+	free_bonus(pix, scene, multi_memory_shuttle, datas);
 	return (EXIT_SUCCESS);
 }

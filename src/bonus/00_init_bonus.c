@@ -6,7 +6,7 @@
 /*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 09:45:48 by syl               #+#    #+#             */
-/*   Updated: 2026/01/21 11:07:04 by sforster         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:02:15 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	init_bonus(t_scene *scene, t_pix ***pix, t_mem **memory_shuttle, char *str)
 	}
 	if (!save_data(str, scene))
 	{
-		free_main_bonus(pix, scene, memory_shuttle, NULL);
+		free_bonus(pix, scene, memory_shuttle, NULL);
 		return (0);
 	}
 	pthread_mutex_init(&scene->mutex_x, NULL);

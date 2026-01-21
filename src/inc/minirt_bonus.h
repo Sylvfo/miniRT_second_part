@@ -6,7 +6,7 @@
 /*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2026/01/21 11:16:45 by sforster         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:53:54 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,35 @@
 
 # include <pthread.h>
 # include "minirt_data_struct.h"
+# include <stdint.h>
+
+# pragma pack(push, 1)
+
+typedef struct s_bmp_header
+{
+	uint16_t	type;
+	uint32_t	size;
+	uint16_t	reserved1;
+	uint16_t	reserved2;
+	uint32_t	offset;
+}	t_bmp_header;
+
+typedef struct s_bmp_info_header
+{
+	uint32_t	size;
+	int32_t		width;
+	int32_t		height;
+	uint16_t	planes;
+	uint16_t	bits_per_pixel;
+	uint32_t	compression;
+	uint32_t	image_size;
+	int32_t		x_pixels_per_meter;
+	int32_t		y_pixels_per_meter;
+	uint32_t	colors_used;
+	uint32_t	important_colors;
+}	t_bmp_info_header;
+
+# pragma pack(pop)
 
 enum e_transf_type
 {
@@ -82,8 +111,7 @@ void	vect_refraction(t_coord *r_base_dir, t_coord *v_normal,\
 void	cal_intersect_bonus(t_mem *mem, t_obj ***obj, int n, t_intertt result);
 
 //free_bonus.c 
-void	free_main_bonus(t_pix ***pix, t_scene *scene,\
-	t_mem **multi_mem_shuttle, t_glob **datas);
+void	free_bonus(t_pix ***pix, t_scene *scn, t_mem **m_mshtl, t_glob **datas);
 void	free_multi_memory_shuttle(t_mem **multi_mem_shuttle);
 void	free_data(t_glob **datas);
 
