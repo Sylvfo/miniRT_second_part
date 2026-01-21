@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_operations.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:43:15 by sforster          #+#    #+#             */
-/*   Updated: 2025/05/25 20:17:54 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/21 17:12:17 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,3 @@ float	dot_product(t_coord *v_1, t_coord *v_2)
 	return (dot);
 }
 
-/*
-A MODIFIER
-void	position_na(t_pix *pix, t_coord *r_dir, float t)
-{
-	t_coord	tmp;
-	t_coord	r_dir_norm;
-
-	copy_coord(&r_dir_norm, r_dir);
-	normalize_vector_na(&r_dir_norm);
-	scalar_mult_na(&tmp, &r_dir_norm, t);
-	addition_na(pix->comps->p_touch, pix->cam->p_coord, &tmp);
-}*/
