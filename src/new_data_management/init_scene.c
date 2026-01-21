@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_scene.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 12:03:29 by syl               #+#    #+#             */
-/*   Updated: 2025/06/12 23:24:11 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/21 11:21:44 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,9 @@ bool	init_scene_memory(t_scene *scene)
 	if (init_lux_cph(scene) == false)
 		return (false);
 	return (true);
+}
+
+void	link_scene_pix(t_scene *scene, t_pix ***pix)
+{
+	scene->pix = pix;
 }

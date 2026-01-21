@@ -6,7 +6,7 @@
 /*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2026/01/20 16:50:14 by sforster         ###   ########.fr       */
+/*   Updated: 2026/01/21 11:00:17 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ static int	check_args(int argc, char **argv)
 	return (1);
 }
 
-void	link_scene_pix(t_scene *scene, t_pix ***pix)
-{
-	scene->pix = pix;
-}
-
 int	main(int argc, char **argv)
 {
 	t_scene		*scene;
@@ -45,29 +40,20 @@ int	main(int argc, char **argv)
 	if (!scene)
 		return (1);
 	if (!check_args(argc, argv) || !verification(argv[1], scene))
-	{
-		free(scene);
-		return (1);
-	}
+		return (free(scene), 1);
 	pix = init_memory_main();
 	multi_memory_shuttle = init_multi_memory_shuttle();
 	if (!init_bonus(scene, pix, multi_memory_shuttle, argv[1]))
 		return (1);
-	link_scene_pix(scene, pix);
-	base_data(scene);
 	datas = init_data(pix, scene, multi_memory_shuttle);
 	if (!datas)
 	{
-		free_main_bonus(pix, scene, multi_memory_shuttle);
+		free_main_bonus(pix, scene, multi_memory_shuttle, NULL);
 		return (1);
 	}
-	///////////////////
 	raytracing_main_bonus(datas);
 	pix_to_window(pix, scene);
 	image_hooks_bonus(datas);
-	////////////////////////
-	free_main_bonus(pix, scene, multi_memory_shuttle);
-	free_data(datas);
-	///////////////////////
+	free_main_bonus(pix, scene, multi_memory_shuttle, datas);
 	return (EXIT_SUCCESS);
 }

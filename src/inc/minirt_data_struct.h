@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   minirt_data_struct.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:15:05 by syl               #+#    #+#             */
-/*   Updated: 2025/10/09 16:16:23 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/21 11:05:16 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_DATA_STRUCT_H
 # define MINIRT_DATA_STRUCT_H
 
+#include <stdbool.h>
 //coordonnes pour vecteurs et points
 // 0 si c est un vecteur, 1 si c est un point
 typedef struct s_coord

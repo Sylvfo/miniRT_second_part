@@ -6,7 +6,7 @@
 /*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/02 14:31:12 by syl               #+#    #+#             */
-/*   Updated: 2026/01/20 16:08:41 by sforster         ###   ########.fr       */
+/*   Updated: 2026/01/21 11:16:45 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	cal_intersect_bonus(t_mem *mem, t_obj ***obj, int n, t_intertt result);
 
 //free_bonus.c 
 void	free_main_bonus(t_pix ***pix, t_scene *scene,\
-	t_mem **multi_mem_shuttle);
+	t_mem **multi_mem_shuttle, t_glob **datas);
 void	free_multi_memory_shuttle(t_mem **multi_mem_shuttle);
 void	free_data(t_glob **datas);
 
@@ -199,4 +199,5 @@ void	write_plan(FILE *f, t_obj *obj);
 void	write_cylinder(FILE *f, t_obj *obj);
 void	write_cone(FILE *f, t_obj *obj);
 void	write_triangle(FILE *f, t_obj *obj);
+
 #endif

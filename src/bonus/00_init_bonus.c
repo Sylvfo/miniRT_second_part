@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   00_init_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/06 09:45:48 by syl               #+#    #+#             */
-/*   Updated: 2025/10/07 21:02:49 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/21 11:07:04 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,13 @@ int	init_bonus(t_scene *scene, t_pix ***pix, t_mem **memory_shuttle, char *str)
 	}
 	if (!save_data(str, scene))
 	{
-		free_main_bonus(pix, scene, memory_shuttle);
+		free_main_bonus(pix, scene, memory_shuttle, NULL);
 		return (0);
 	}
 	pthread_mutex_init(&scene->mutex_x, NULL);
 	pthread_mutex_init(&scene->mutex_y, NULL);
+	link_scene_pix(scene, pix);
+	base_data(scene);
 	return (1);
 }
 

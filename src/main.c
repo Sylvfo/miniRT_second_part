@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/19 15:30:46 by cmegret           #+#    #+#             */
-/*   Updated: 2025/10/09 16:58:44 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/21 11:21:31 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ static int	check_args(int argc, char **argv)
 		return (0);
 	}
 	return (1);
-}
-
-void	link_scene_pix(t_scene *scene, t_pix ***pix)
-{
-	scene->pix = pix;
 }
 
 void	link_scene_mem(t_scene *scene, t_mem *memory_shuttle)

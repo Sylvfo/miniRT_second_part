@@ -1,3 +1,9 @@
+*A lightweight HTTP server built from scratch, handling multiple clients concurrently and supporting basic HTTP/1.1 features (GET, POST, DELETE). Includes configuration parsing, socket programming, and CGI handling.*
+
+**Languages & Tools:** C++, Sockets, Poll/Select, Networking, HTTP Protocol, Parsing, Multithreading, File I/O, html
+
+**Skills:** Network programming, concurrency management, protocol implementation, configuration design
+
 les parametres
 
 mir: represente l'effet mirroir sur l'object

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: syl <syl@student.42.fr>                    +#+  +:+       +#+         #
+#    By: sforster <sforster@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/02/12 08:32:46 by cmegret           #+#    #+#              #
-#    Updated: 2025/10/09 16:15:06 by syl              ###   ########.fr        #
+#    Updated: 2026/01/20 15:46:54 by sforster         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -128,6 +128,8 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/bonus/free_bonus.c \
 	./src/bonus/01_lighting_bonus.c\
 	./src/bonus/01_shadow_intersect.c\
+	./src/bonus/01_raytracer_shadow.c\
+	./src/bonus/01_take_shadow_color.c\
 	./src/bonus/export_jpg.c\
 	./src/bonus/04_save_rt_main.c\
 	$(INIT)init_object.c\

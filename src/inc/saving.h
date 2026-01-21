@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   saving.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: syl <syl@student.42.fr>                    +#+  +:+       +#+        */
+/*   By: sforster <sforster@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/07 15:06:16 by cmegret           #+#    #+#             */
-/*   Updated: 2025/06/12 14:59:25 by syl              ###   ########.fr       */
+/*   Updated: 2026/01/21 11:13:32 by sforster         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,7 @@ int		error_line(char **params, int line, int col);
 int		number_param_error(char **params, int ligne);
 int		error_system(void);
 bool	error_missing(t_doublons num, int nb_light);
+
+void	link_scene_pix(t_scene *scene, t_pix ***pix);
 
 #endif
