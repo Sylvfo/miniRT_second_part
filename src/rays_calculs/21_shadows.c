@@ -34,7 +34,6 @@ void	prepare_v_light(t_mem *mem_shuttle, t_coord *lux_p_coord)
 	normalize_vector_na(mem_shuttle->v_light_to_point);
 }
 
-//A REVOIR AVEC NOUVELLE DATA STRUCTURE
 bool	intersect_objects_shadow(t_scene *scene, t_mem *mem_shuttle)
 {
 	int		a;

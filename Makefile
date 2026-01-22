@@ -45,14 +45,14 @@ UTILS = $(SRC_DIR)/utils/
 INIT = $(SRC_DIR)/new_data_management/
 BONUS = $(SRC_DIR)/bonus/
 RAY_CALCUL = $(SRC_DIR)/rays_calculs/
-SOURCES =	./src/matrix/00_matrix_check.c \
-	./src/matrix/00_matrix_creation.c \
-	./src/matrix/00_matrix_multiplication.c \
-	./src/matrix/00_matrix_operations.c \
-	./src/matrix/00_matrix_rotation_rodrigues.c \
-	./src/matrix/00_matrix_transl_scale.c \
-	./src/matrix/00_matrix_transposing.c \
-	./src/matrix/00_matrix_utils.c \
+SOURCES =	./src/matrix/matrix_check.c \
+	./src/matrix/matrix_creation.c \
+	./src/matrix/matrix_multiplication.c \
+	./src/matrix/matrix_operations.c \
+	./src/matrix/matrix_rotation_rodrigues.c \
+	./src/matrix/matrix_transl_scale.c \
+	./src/matrix/matrix_transposing.c \
+	./src/matrix/matrix_utils.c \
 	./src/matrix/matrix_inverse.c \
 	./src/matrix/matrix_minor_det.c \
 	./src/matrix/matrix_submatrix.c \
@@ -60,17 +60,23 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/rays_calculs/01_camera_construction.c \
 	./src/rays_calculs/02_viewport_construction.c \
 	./src/rays_calculs/03_m_transformations.c \
-	./src/rays_calculs/04_intersect_main.c \
-	./src/rays_calculs/05_intersect_sphere_plan.c \
-	./src/rays_calculs/06_intersect_cylinder.c \
-	./src/rays_calculs/07_closest_obj.c \
-	./src/rays_calculs/08_prepare_comps.c \
-	./src/rays_calculs/09_light_shadow_main.c \
-	./src/rays_calculs/10_shadows.c \
-	./src/rays_calculs/11_light.c \
-	./src/rays_calculs/shadows_cylinder.c \
-	./src/rays_calculs/shadows_plan.c \
-	./src/rays_calculs/shadows_sphere.c \
+	./src/rays_calculs/10_intersect_main.c \
+	./src/rays_calculs/11_intersect_sphere_plan.c \
+	./src/rays_calculs/12_intersect_cylinder.c \
+	$(RAY_CALCUL)13_intersect_cone.c\
+	$(RAY_CALCUL)14_intersect_triangle.c\
+	./src/rays_calculs/15_closest_obj.c \
+	./src/rays_calculs/16_prepare_comps.c \
+	./src/rays_calculs/20_light_shadow_main.c \
+	./src/rays_calculs/21_shadows.c \
+	./src/rays_calculs/22_shadows_plan.c \
+	./src/rays_calculs/23_shadows_cylinder.c \
+	./src/rays_calculs/24_shadows_sphere.c \
+	./src/rays_calculs/25_light.c \
+	$(RAY_CALCUL)32_pattern.c\
+	$(RAY_CALCUL)30_pattern_form.c\
+	$(RAY_CALCUL)31_pattern_perlin.c\
+	$(RAY_CALCUL)33_texture.c\
 	./src/saving_data/save_camera.c \
 	./src/saving_data/save_cylinder.c \
 	./src/saving_data/save_light.c \
@@ -141,12 +147,6 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	$(SAVING)save_parameter.c\
 	$(DEBUG)error.c\
 	$(UTILS)utils.c $(UTILS)utils2.c\
-	$(RAY_CALCUL)07_intersect_cone.c\
-	$(RAY_CALCUL)08_intersect_triangle.c\
-	$(RAY_CALCUL)pattern.c\
-	$(RAY_CALCUL)pattern_form.c\
-	$(RAY_CALCUL)pattern_perlin.c\
-	$(RAY_CALCUL)texture.c\
 	$(BONUS)coord_modified.c\
 	$(BONUS)04_save_suite_rt.c\
 	$(BONUS)04_write_file_rt.c\
