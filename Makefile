@@ -45,14 +45,14 @@ UTILS = $(SRC_DIR)/utils/
 INIT = $(SRC_DIR)/new_data_management/
 BONUS = $(SRC_DIR)/bonus/
 RAY_CALCUL = $(SRC_DIR)/rays_calculs/
-SOURCES =	./src/matrix/00_matrix_check.c \
-	./src/matrix/00_matrix_creation.c \
-	./src/matrix/00_matrix_multiplication.c \
-	./src/matrix/00_matrix_operations.c \
-	./src/matrix/00_matrix_rotation_rodrigues.c \
-	./src/matrix/00_matrix_transl_scale.c \
-	./src/matrix/00_matrix_transposing.c \
-	./src/matrix/00_matrix_utils.c \
+SOURCES =	./src/matrix/matrix_check.c \
+	./src/matrix/matrix_creation.c \
+	./src/matrix/matrix_multiplication.c \
+	./src/matrix/matrix_operations.c \
+	./src/matrix/matrix_rotation_rodrigues.c \
+	./src/matrix/matrix_transl_scale.c \
+	./src/matrix/matrix_transposing.c \
+	./src/matrix/matrix_utils.c \
 	./src/matrix/matrix_inverse.c \
 	./src/matrix/matrix_minor_det.c \
 	./src/matrix/matrix_submatrix.c \
@@ -60,17 +60,23 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/rays_calculs/01_camera_construction.c \
 	./src/rays_calculs/02_viewport_construction.c \
 	./src/rays_calculs/03_m_transformations.c \
-	./src/rays_calculs/04_intersect_main.c \
-	./src/rays_calculs/05_intersect_sphere_plan.c \
-	./src/rays_calculs/06_intersect_cylinder.c \
-	./src/rays_calculs/07_closest_obj.c \
-	./src/rays_calculs/08_prepare_comps.c \
-	./src/rays_calculs/09_light_shadow_main.c \
-	./src/rays_calculs/10_shadows.c \
-	./src/rays_calculs/11_light.c \
-	./src/rays_calculs/shadows_cylinder.c \
-	./src/rays_calculs/shadows_plan.c \
-	./src/rays_calculs/shadows_sphere.c \
+	./src/rays_calculs/10_intersect_main.c \
+	./src/rays_calculs/11_intersect_sphere_plan.c \
+	./src/rays_calculs/12_intersect_cylinder.c \
+	$(RAY_CALCUL)13_intersect_cone.c\
+	$(RAY_CALCUL)14_intersect_triangle.c\
+	./src/rays_calculs/15_closest_obj.c \
+	./src/rays_calculs/16_prepare_comps.c \
+	./src/rays_calculs/20_light_shadow_main.c \
+	./src/rays_calculs/21_shadows.c \
+	./src/rays_calculs/22_shadows_plan.c \
+	./src/rays_calculs/23_shadows_cylinder.c \
+	./src/rays_calculs/24_shadows_sphere.c \
+	./src/rays_calculs/25_light.c \
+	$(RAY_CALCUL)32_pattern.c\
+	$(RAY_CALCUL)30_pattern_form.c\
+	$(RAY_CALCUL)31_pattern_perlin.c\
+	$(RAY_CALCUL)33_texture.c\
 	./src/saving_data/save_camera.c \
 	./src/saving_data/save_cylinder.c \
 	./src/saving_data/save_light.c \
@@ -109,29 +115,32 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	./src/new_data_management/free_obj2.c \
 	./src/new_data_management/init_each_obj.c \
 	./src/new_data_management/free_lux.c \
-	./src/bonus/00_raytracing_main_bonus.c \
-	./src/bonus/01_reflection.c \
-	./src/bonus/20_mouse_hooks.c \
-	./src/bonus/transf_obj.c \
-	./src/bonus/21_render_mode.c \
-	./src/bonus/22_select_transformation.c \
-	./src/bonus/23_select_obj_dim.c \
-	./src/bonus/apply_modifications.c \
-	./src/bonus/matrix_rotation.c \
-	./src/bonus/print_action.c \
-	./src/bonus/print_on_screen.c \
-	./src/bonus/30_clean_mem_shuttle.c \
-	./src/bonus/00_init_bonus.c\
-	./src/bonus/00_time.c\
-	./src/bonus/01_transparence.c\
-	./src/bonus/01_refraction.c\
-	./src/bonus/free_bonus.c \
-	./src/bonus/01_lighting_bonus.c\
-	./src/bonus/01_shadow_intersect.c\
-	./src/bonus/01_raytracer_shadow.c\
-	./src/bonus/01_take_shadow_color.c\
-	./src/bonus/export_jpg.c\
-	./src/bonus/04_save_rt_main.c\
+	./src/bonus/01_init_bonus.c\
+	./src/bonus/02_raytracing_main_bonus.c \
+	./src/bonus/03_time.c\
+	./src/bonus/04_transparence.c\
+	./src/bonus/05_refraction.c\
+	./src/bonus/06_reflection.c \
+	./src/bonus/07_clean_mem_shuttle.c \
+	./src/bonus/08_free_bonus.c \
+	./src/bonus/21_lighting_bonus.c\
+	./src/bonus/22_raytracer_shadow.c\
+	./src/bonus/23_shadow_intersect.c\
+	./src/bonus/24_take_shadow_color.c\
+	./src/bonus/30_render_mode.c \
+	./src/bonus/31_mouse_hooks.c \
+	./src/bonus/32_select_transformation.c \
+	./src/bonus/33_select_obj_dim.c \
+	./src/bonus/34_apply_modifications.c \
+	./src/bonus/35_transf_obj.c \
+	./src/bonus/36_matrix_rotation.c \
+	./src/bonus/37_print_action.c \
+	./src/bonus/38_print_on_screen.c \
+	./src/bonus/40_export_jpg.c\
+	./src/bonus/41_save_rt_main.c\
+	$(BONUS)42_save_suite_rt.c\
+	$(BONUS)43_coord_modified.c\
+	$(BONUS)44_write_file_rt.c\
 	$(INIT)init_object.c\
 	$(INIT)init_object2.c\
 	$(PARSING)map_check.c $(PARSING)map_check2.c\
@@ -141,21 +150,12 @@ SOURCES =	./src/matrix/00_matrix_check.c \
 	$(SAVING)save_parameter.c\
 	$(DEBUG)error.c\
 	$(UTILS)utils.c $(UTILS)utils2.c\
-	$(RAY_CALCUL)07_intersect_cone.c\
-	$(RAY_CALCUL)08_intersect_triangle.c\
-	$(RAY_CALCUL)pattern.c\
-	$(RAY_CALCUL)pattern_form.c\
-	$(RAY_CALCUL)pattern_perlin.c\
-	$(RAY_CALCUL)texture.c\
-	$(BONUS)coord_modified.c\
-	$(BONUS)04_save_suite_rt.c\
-	$(BONUS)04_write_file_rt.c\
 
 SRCS = $(SOURCES)\
 		./src/main.c 
 
 SRCS_BONUS = $(SOURCES)\
-		$(BONUS)main_bonus.c 
+		$(BONUS)00_main_bonus.c 
 
 # Détection de l'OS pour choisir la bonne version de la MLX
 #UNAME_S := $(shell uname -s)

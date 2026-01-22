@@ -38,7 +38,7 @@
 # define WND_HEIGHT 1200
 
 # define BAKGROUND_COLOR 711850
-# define EPSILON 0.0001
+# define EPSILON 0.01
 # define PI 3.1415926535
 # define PIRAD 0.017453
 # define SHININESS 100.0

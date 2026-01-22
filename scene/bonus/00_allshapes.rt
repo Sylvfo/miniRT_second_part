@@ -1,0 +1,45 @@
+#camera - coordonates - axe - focal
+C 0,0,10	0,0,-1 90
+
+#ambiant light - ratio[0.0-1.0] - rgb color
+A 0.3 255,255,255
+
+#light - coordonates - ratio[0.0-1.0] - rgb color
+L 4,8,3 	0.6	255,255,255
+
+#sphere - coordonates - diametre - rgb color
+sp 1.5,3,2 3 0,200,250
+
+#plan - coordonates - axe - rgb color
+pl 0,-2,0 0,1,0 200,200,200
+
+#cylinder - coordonates - axe - diam - height - rgb color
+cy 4,1,0 1,1,1 1 4 250,220,100
+
+#cone - coordonates - axe - diam - height - rgb color
+co 0,-1,0 1,0.5,1 2 4 250,0,0
+
+#triangle - coordonates A - coordonates B - coordonates C - rgb color
+tr 0,0,0 5,3,-2 2,1,7 250,161,168 
+
+# effects we can add to every objects
+
+# mirror [0.0-1.0]
+# mir:0.6
+
+#transparence [0.0-1.0]
+# tran:0.6
+
+#refraction [0.0-3] ???
+#ref:1.01
+
+#pattern 
+#pat:2|8 pattern
+
+#images
+#txt:imgs/jupitermap.xpm
+
+# change image size
+# in inc/minirt.h
+# define WND_WIDTH 1500
+# define WND_HEIGHT 800
