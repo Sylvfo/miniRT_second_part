@@ -28,7 +28,7 @@ void	next_ray_light(t_mem *mem_shuttle, t_coord *lux_p_coord)
 	t_coord	offset;
 	t_coord	tmp;
 
-	offset = scalar_mult_ret(mem_shuttle->v_norm_parral, 0.01f);
+	offset = scalar_mult_ret(mem_shuttle->v_norm_parral, 0.1f);
 	addition_na(mem_shuttle->p_light_to_point, mem_shuttle->p_touch, &offset);
 	offset.x = 0.0;
 	offset.y = 0.0;

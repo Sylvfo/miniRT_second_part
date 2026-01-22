@@ -1,0 +1,14 @@
+#camera - coordonates - axe - focal
+C 0,0,7	0,0,-1 90
+
+#ambiant light - ratio[0.0-1.0] - rgb color
+A 0.3 255,255,255
+
+#light - coordonates - ratio[0.0-1.0] - rgb color
+L -5,8,-8 	0.8	255,255,255
+
+#sphere - coordonates - diametre - rgb color
+sp 0,0,0 3 187,210,225 tran:0.5 ref:1.5
+
+#plan - coordonates - axe - rgb color
+pl 0,0,-10 0,0,1 255,255,255;0,0,255 pat:1|4 

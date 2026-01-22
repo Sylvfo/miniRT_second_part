@@ -50,4 +50,3 @@ float	dot_product(t_coord *v_1, t_coord *v_2)
 	dot = (v_1->x * v_2->x) + (v_1->y * v_2->y) + (v_1->z * v_2->z);
 	return (dot);
 }
-

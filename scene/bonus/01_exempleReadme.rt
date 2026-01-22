@@ -1,0 +1,41 @@
+# ambiant lighting - ratio [0.0,1.0] - rgb color
+A 0.4		255,255,255
+
+# camera - x,y,z coordinates - orientation vector - focal
+C 0,0,28	0,0,-1	40
+
+# light - x,y,z coordinates - ratio [0.0,1.0] - rgb color
+L 1,7,0		0.8	255,255,255
+
+# sphere - x,y,z coordinates - diameter - rgb color
+sp 0,0,0 	1 	250,250,250
+
+# plane - x,y,z coordinates - normalized vector - rgb color
+pl 0,-3,0	0,1,0	255,150,150
+
+# cylinder - x,y,z coordinates - normalized vector - diameter - height - rgb color
+cy 0,2,4	0,1,0	1	2	150,230,150
+
+# cone - x,y,z coordinates - - normalized vector - diameter - height - rgb color - ;second rgb color
+co 0,-1,0 1,0.5,1 2 4 250,0,0;120,250,150
+
+# triangle - x,y,z coordinates angle A - x,y,z coordinates angle B - x,y,z coordinates angle C - rgb color
+tr 4,5,2	-4,5,2		8,4,2	152,161,168
+
+# transparency in range [0.0,1.0]
+sp -2,3,1 	0.5 	250,250,250 tran: 0.5
+s
+# reflexion in range [0.0,1.0]
+sp 0,3,1 	0.5 	250,250,250 mir: 0.8
+
+# refraction range [1.0,3.0]
+sp 2,3,1 	0.5 	250,250,250 ref:1.5
+
+# texture path/image.xpm
+sp	4,4,1	2			0,0,20	txt:imgs/jupitermap.xpm
+
+# patterns <type>|<divisions>
+sp -4,1,5 2 250,70,0;0,255,100 pat:2|8 
+
+# multiple features
+sp -6,1,5 2 250,70,0;0,255,100 pat:4|8 mir:0.4

@@ -53,7 +53,7 @@ void	create_window(t_image *ima, t_scene *scene)
 bool	create_image_cmd(t_image *ima)
 {
 	ima->ima_cmd = mlx_xpm_file_to_image(ima->mlx_ptr,
-			"dessin_commandes/cmd1.xpm",
+			"./src/bonus/dessin_commandes/cmd1.xpm",
 			&ima->line_length_cmd, &ima->endian_cmd);
 	if (!ima->ima_cmd)
 	{
@@ -70,7 +70,7 @@ bool	create_image_cmd(t_image *ima)
 bool	create_image_blk(t_image *ima)
 {
 	ima->ima_blk = mlx_xpm_file_to_image(ima->mlx_ptr,
-			"dessin_commandes/blackboard.xpm",
+			"./src/bonus/dessin_commandes/blackboard.xpm",
 			&ima->line_length_blk, &ima->endian_blk);
 	if (!ima->ima_blk)
 	{

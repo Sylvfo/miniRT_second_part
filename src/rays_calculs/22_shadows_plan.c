@@ -19,7 +19,7 @@ bool	plan_shadow(t_mem *memory_shuttle, t_obj *plan)
 	float	t;
 
 	denom = dot_product(plan->v_axe, memory_shuttle->v_light_to_point);
-	if (fabs(denom) < 0.0001)
+	if (fabs(denom) < 0.001)
 		return (false);
 	p0_minus_p.x = plan->p_coord->x - memory_shuttle->p_touch->x;
 	p0_minus_p.y = plan->p_coord->y - memory_shuttle->p_touch->y;

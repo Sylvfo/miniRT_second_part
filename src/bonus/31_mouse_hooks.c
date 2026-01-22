@@ -17,12 +17,12 @@ int	mouse_click(int button, int x, int y, t_glob **data)
 	if (x > 2016 && x < 2132)
 	{
 		if (y > 407 && y < 464)
-			export_bmp(data[0]->pix, "file2");
+			export_bmp(data[0]->pix, "miniRTimage");
 	}
 	if (x > 2160 && x < 2277)
 	{
 		if (y > 407 && y < 464)
-			save_scene_to_file(data[0]->scene, "testesave.rt");
+			save_scene_to_file(data[0]->scene, "miniRTsave.rt");
 	}
 	if (button == 1 && x >= WND_WIDTH)
 	{
