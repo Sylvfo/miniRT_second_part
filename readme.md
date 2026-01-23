@@ -1,5 +1,7 @@
 *This project has been created as part of the 42 curriculum by sforster and fatsaa-m*
 
+<img width="3197" height="1806" alt="image" src="https://github.com/user-attachments/assets/45fb96eb-96eb-490f-98c5-3313a6f74e21" />
+
 # miniRT
 
 ## Description
