@@ -6,11 +6,13 @@
 
 ## Description
 
-*A lightweight HTTP server built from scratch, handling multiple clients concurrently and supporting basic HTTP/1.1 features (GET, POST, DELETE). Includes configuration parsing, socket programming, and CGI handling.*
+*miniRT
 
-**Languages & Tools:** C++, Sockets, Poll/Select, Networking, HTTP Protocol, Parsing, Multithreading, File I/O, html
+Program that reads a file containing terrain data and renders a 3D wireframe representation of that landscape in a graphical window on Linux.*
 
-**Skills:** Network programming, concurrency management, protocol implementation, configuration design
+**Languages & Tools:** C, MiniLibX, Math (vectors, matrices, geometry), Parsing, Data structure, Optimisation
+
+**Skills:** 3D graphics, linear algebra, algorithmic optimization, parsing custom scene files 
 
 ### Something interesting about this project ✨
 
