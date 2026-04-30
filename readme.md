@@ -35,7 +35,7 @@ After years of using 3D and rendering software as a designer, it was fascinating
 ### 🖥️ Compilation & Usage
 ```bash
 $> make
-$> ./miniRT <file.rt].
+$> ./miniRT [file.rt].
 $> ./miniRT scene/man.rt
 ```
 
