@@ -8,7 +8,7 @@
 
 *miniRT
 
-Program that reads a file containing terrain data and renders a 3D wireframe representation of that landscape in a graphical window on Linux.*
+A ray tracer written in C from scratch. It parses a scene file and renders 3D objects (spheres, planes, cylinders) with a camera, ambient and diffuse lighting, and hard shadows.*
 
 **Languages & Tools:** C, MiniLibX, Math (vectors, matrices, geometry), Parsing, Data structure, Optimisation
 
